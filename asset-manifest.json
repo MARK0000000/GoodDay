@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/GoodDay/static/css/main.49b61aa1.css",
+    "main.js": "/GoodDay/static/js/main.95e568c3.js",
+    "index.html": "/GoodDay/index.html",
+    "main.49b61aa1.css.map": "/GoodDay/static/css/main.49b61aa1.css.map",
+    "main.95e568c3.js.map": "/GoodDay/static/js/main.95e568c3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.49b61aa1.css",
+    "static/js/main.95e568c3.js"
+  ]
+}
