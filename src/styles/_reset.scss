@@ -1,11 +1,15 @@
-// html{
-//    box-sizing: border-box;
-//  }
- 
+html{
+    box-sizing: border-box;
+  }
+  
  *,
  *::after,
  *::before{
    box-sizing: inherit;
+ }
+ *{
+   margin: 0px;
+   padding: 0px;
  }
  
  ul[class],
@@ -52,4 +56,8 @@
  a{
    text-decoration: none;
  }
+ li{
+   list-style: none;
+ }
+ 
  

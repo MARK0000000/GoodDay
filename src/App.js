@@ -1,11 +1,15 @@
 import React from "react";
 import './styles/style.scss'
-
+import { BrowserRouter, HashRouter} from 'react-router-dom';
+import AppRouter from "./router/AppRouter";
 
 function App() {
   return (
-   <div>
-   </div>
+   <>
+    <HashRouter>
+      <AppRouter/>
+    </HashRouter>
+   </>
   );
 }
 
