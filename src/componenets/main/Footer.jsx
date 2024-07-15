@@ -1,4 +1,10 @@
 import React from 'react'
+import instagram from '../../images/instagram-outline.svg'
+import tiktok from '../../images/tiktok.svg'
+import youtube from '../../images/youtube.svg'
+import googlePlay from '../../images/googleplay.svg'
+import appstore from '../../images/appstore.svg'
+import qrCode from '../../images/qr.svg'
 
 export default function Footer() {
   return (
@@ -6,9 +12,9 @@ export default function Footer() {
       <div className="footer__content container">
         <div className="footer__contactUs">
           <span className='footer__contactUs-text'>
-            <sup style={{verticalAlign: 'top'}}>+</sup>
+            <sup style={{verticalAlign: 'bottom'}}>+</sup>
             375 33 
-            <sup style={{verticalAlign: 'top'}}> 111-11-11</sup>
+            <sup style={{verticalAlign: 'bottom'}}> 111-11-11</sup>
           </span>
           <button className="footer__contactUs-btn">
             <a href="tel:" className="footer__tel">Связаться с нами</a>
@@ -18,9 +24,15 @@ export default function Footer() {
           <span>МОБИЛЬНОЕ ПРИЛОЖЕНИЕ</span>
           <hr/>
           <div className='footer__buttons-box'>
-            <button className="footer__button "></button>
-            <button className="footer__button "></button>
-            <button className="footer__button footer__button_big"></button>
+            <button className="footer__button ">
+              <img src={googlePlay} alt="" className="footer__button-img" />
+            </button>
+            <button className="footer__button ">
+              <img src={appstore} alt="" className="footer__button-img" />
+            </button>
+            <button className="footer__button footer__button_big">
+              <img src={qrCode} alt="" className="footer__button-img" />
+            </button>
           </div>
         </div>
         <div className="footer__item">
@@ -57,13 +69,13 @@ export default function Footer() {
         </div>
         <div className="footer__social">
           <button className="footer__social-btn">
-            <img src="" alt="" className="footer__social-img" />
+            <img src={instagram} alt="" className="footer__social-img" />
           </button>
           <button className="footer__social-btn">
-            <img src="" alt="" className="footer__social-img" />
+            <img src={youtube} alt="" className="footer__social-img" />
           </button>
           <button className="footer__social-btn">
-            <img src="" alt="" className="footer__social-img" />
+            <img src={tiktok} alt="" className="footer__social-img" />
           </button>
         </div>
       </div>

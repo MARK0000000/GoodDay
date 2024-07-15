@@ -1,10 +1,16 @@
-import React, {useContext} from 'react'
+import React, {useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-import logo from '../../images/logo.png'
-
+import logoHeader from '../../images/logoHeader.svg'
+import lupa from '../../images/lupa.svg'
 export default function Header() {
-    const navigate = useNavigate()
-  
+  const navigate = useNavigate()
+  const [activeButton, setActiveButton] = useState('discounts');
+
+  const handleButtonClick = (route, buttonId) => {
+    navigate(route, { replace: false });
+    setActiveButton(buttonId);
+  };
+
   return (
     <header className="header">
       <div className='container'>
@@ -20,8 +26,13 @@ export default function Header() {
         </div>
 
         <div className='header__secondLine'>
-          <img src={logo} alt="#" className="header__logo" />
-          <input type="text" className="header__search" placeholder='Поиск услуг и компаний...'/>
+          <img src={logoHeader} alt="#" className="header__logo" />
+          <form action="" className="header__search-box">
+            <input type="text" className="header__search" placeholder='Поиск услуг и компаний...'/>
+            <div className='header__search-iconBox'>
+              <img className='header__search-icon' src={lupa} alt="#" />
+            </div>
+          </form>
           <span className="header__auth">
             <a href="">Вход</a>
             <span className="header__auth-slash">/</span>
@@ -30,8 +41,18 @@ export default function Header() {
         </div>
 
         <nav className="header__nav">
-          <button className="header__nav-button header__nav-button_blue">Скидки</button>
-          <button className="header__nav-button header__nav-button_orange">Акции</button>
+          <button
+            className={`header__nav-button header__nav-button_blue ${activeButton === 'discounts' ? 'header__nav-button_blue_active' : ''}`}
+            onClick={() => handleButtonClick('discounts', 'discounts')}
+            >
+            Скидки
+          </button>
+          <button 
+            className={`header__nav-button header__nav-button_orange ${activeButton === 'stock' ? 'header__nav-button_orange_active' : ''}`}
+            onClick={() => handleButtonClick('stock', 'stock')}
+            >
+            Акции
+          </button>
           <button className="header__nav-button">Развлечения</button>
           <button className="header__nav-button">Красота</button>
           <button className="header__nav-button">Еда</button>

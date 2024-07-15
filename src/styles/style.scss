@@ -8,6 +8,7 @@
 
 
 .header{
+   user-select: none;
    background-color: $headerWhite;
    box-shadow: 0px 4px 10px 0px $iconGray;
    margin-bottom: 25px;
@@ -19,6 +20,18 @@
    &__location{
       text-decoration: underline dotted;
       text-underline-offset: 5px;
+      display: inline-flex;
+      align-items: center;
+      &::before {
+         content: url("../images/metka.svg");
+         display: inline-block;
+         width: 20px;
+         height: 20px;
+         background-size: contain;
+         background-repeat: no-repeat;
+         background-position: center;
+         margin-bottom: -5px;
+       }
       
    }
    &__about{
@@ -54,17 +67,32 @@
    }
    &__search{
       width: 100%;
-      margin: 0px 20px;
       padding: 10px;
       padding-left: 15px;
-      //line-height: 32px;
       border: 1px solid rgb(162, 163, 172);
       border-radius: 5px;
+      &-box{
+         position: relative;
+         width: 100%;
+         margin: 0px 20px;
+   
+      }
       &::placeholder{
          font-size: 14px;
          color: rgb(162, 163, 172);
       }
+      &-iconBox{
+         cursor: pointer;
+         position: absolute;
+         top: 2.5px;
+         right: 2.5px;
+         background-color: $blue;
+         height: 36px;
+         width: 40px;
+         border-radius: 5px;
+         @include f(center, center);
 
+      }
    }
 
    &__nav{
@@ -78,14 +106,27 @@
       &_blue{
          background-color: $blue;
          color: white;
+         &_active{
+            background-color: transparent;
+            color: $blue;
+            border: 1px solid $blue;
+            box-sizing: border-box;
+         }
       }
       &_orange{
          background-color: $orange;
          color: white;
+         &_active{
+            background-color: transparent;
+            color: $orange;
+            border: 1px solid $orange;
+            box-sizing: border-box;
+         }
       }
    }
 
 }
+
 .footer {
    user-select: none;
    background-color: $footerBlue;
@@ -109,6 +150,7 @@
       flex-direction: column;
    }
    &__contactUs-text{
+      font-family: "Raleway", sans-serif;
       font-size: 18px;
       margin-bottom: 15px;
    }
@@ -134,11 +176,12 @@
    }
    &__buttons-box {
       width: 234.75px;
-      height: 100.94px;
+      max-height: 100.94px;
       display: grid;
       grid-template-columns: 57% 43%;
       grid-template-rows: 1fr 1fr;
       gap: 10px;
+      box-sizing: content-box;
       :first-child{
          margin-bottom: 0px;
          margin-right: 0px;
@@ -147,7 +190,11 @@
    &__button {
       background-color: rgb(76, 79, 95);
       border-radius: 10px;
+      padding: 5px 10px;
+      height: auto;
+      @include f(center, center);
       &_big{
+         padding: 10px 10px;
          grid-row: 1/3;
          grid-column: 2/3;
       }
@@ -174,15 +221,499 @@
       vertical-align: top;
    }
    &__social {
+      @include f(start, start);
       :last-child{
          margin-right: 0px;
       }
    }
    &__social-btn {
+      @include f(center, center);
       background-color: white;
       border-radius: 50%;
       height: 45px;
       width: 45px;
       margin-right: 15px;
+   }
+}
+
+.add{
+   &__container{
+   }
+   &__slide{
+      background-color: rgb(150, 150, 150);
+      border-radius: 10px;
+      @include f(center, center);
+   }
+}
+
+.swiper{
+   &__pagination-bullets{
+      background-color: rgb(124, 119, 103);
+   }
+   &__pagination-bullets_active{
+      background-color: $blue;
+   }
+
+}
+
+.content {
+   margin: 30px 0px 100px 0px;   
+   &__container{
+      margin: 0px 5px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 35px;
+      align-items: start;
+   }
+   &__title-box {
+      @include f(space-between, center);
+      margin-bottom: 30px;
+   }
+   &__title {
+      font-size: 28px;
+   }
+   &__city {
+      color: $orange;
+   }
+   &__count {
+      font-family: "Raleway", sans-serif;
+      margin-left: 30px;
+      font-size: 16px;
+      color: $iconGray;
+   }
+   &__viewMapBtn {
+      background-color: $blue;
+      border-radius: 5px;
+      color: white;
+      padding: 10px 20px;
+      font-size: 14px
+   }
+}
+
+.card {
+   @include f(start, start);
+   flex-direction: column;
+   border-radius: 20px 20px 0px 0px;
+   box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+   &__img-box {
+      width: 100%;
+      background-color: $darkGray;
+      height: 160px;
+      border-radius: 20px 20px 0px 0px;
+      position: relative;
+   }
+   &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px 20px 0px 0px;
+   }
+   &__stock{
+      z-index: 2;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: $orange;
+      padding: 10px;
+      border-radius: 10px;
+      color: white;
+      border: none;
+      box-shadow: none;
+      font-size: 12px;
+   }
+   &__likeIcon-box {
+      position: absolute;
+      bottom: -20px;
+      right: 20px;
+      height: 40px;
+      width: 40px;
+      background-color: white;
+      border-radius: 50%;
+      @include f(center, center);
+   }
+   &__likeIcon {
+   }
+   &__content {
+      padding: 25px 15px 25px 15px;
+   }
+   &__title {
+      font-size: 20px;
+      margin-bottom: 5px;
+   }
+   &__text-box {
+      display: flex;
+      &_vertical{
+         flex-direction: column;
+         :first-child{
+            margin-bottom: 5px;
+         }
+      }
+   }
+   &__text {
+      &_p{
+         margin: 20px 0px;
+      }
+      font-size: 14px;
+      font-weight: 500;
+      &_gray {
+         color: $iconGray;
+         display: inline;
+      }
+      &_bottom {
+         display: inline-flex;
+         align-items: center;
+         margin-right: 20px;
+         font-size: 14px;
+         font-weight: 500;
+      }
+      &_bottom_paid {
+         &::before{
+            content: url("../images/paid.svg");
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 10px;
+
+         }
+      }
+      &_bottom_comments{
+         &::before{
+            display: inline-block;
+            content: url("../images/comment.svg");
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-right: 10px;
+         }    
+      }
+
+   }
+   &__hr{
+      width: 100%;
+      border: 1px solid rgb(246, 246, 246);
+   }
+   &__bottom {
+      width: 100%;
+      padding: 15px;
+      @include f (space-between, center)
+   }
+   &__button {
+      border-radius: 10px;
+      background-color: $orange;
+      color: white;
+      padding: 10px 15px;
+      font-size: 12px;
+   }
+}
+
+.pagination{
+   &__container{
+      @include f(start, center);
+      margin-top: 20px;
+   }
+   &__item{
+      font-family: "Segoe UI Regular";
+      border: solid 1px rgb(246, 246, 246);
+      padding: 12px 0px;
+      width: 40px;
+      text-align: center;
+      user-select: none;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 12px;
+      box-sizing: border-box;
+      &_active{
+         background-color: $orange;
+         color: white;
+      }
+      &_prev{
+         border-radius: 50% 0px 0px 50%;
+      }
+      &_next{
+         border-radius: 0px 50% 50% 0px;
+      }
+      &_disabled{
+         display: none;
+      }
+   }
+}
+
+.infoMobileApp {
+   &__container {
+      @include f(space-between, start);
+      margin-bottom: 100px;
+   }
+   &__content {
+   }
+   &__title {
+      font-size: 34px;
+      font-weight: 900;
+      width: 700px;
+      margin-bottom: 10px;
+   }
+   &__text {
+      font-weight: 500;
+      width: 580px;
+      margin-bottom: 25px;
+   }
+   &__buttons-box {
+      width: 40%;
+      height: 128.13px;
+      display: grid;
+      grid-template-columns: 57% 43%;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+   }
+   &__button {
+      background-color: black;
+      border-radius: 10px;
+      border: solid 2px rgb(76, 79, 95);
+      @include f(start, center);
+      padding: 5px 10px;
+      &_big {
+         @include f(center, center);
+         padding: 10px 10px;
+         background-color: white;
+         grid-row: 1/3;
+         grid-column: 2/3;
+         box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+         border: none;
+      }
+   }
+   &__button-img {
+      fill: black;
+   }
+   &__img {
+      height: 300px;
+      object-fit: contain;
+   }
+}
+.info {
+   margin-bottom: 50px;
+   &__h4 {
+      font-size: 20px;
+      margin-bottom: 5px;
+   }
+   &__text {
+      font-size: 12px;
+      margin-left: 15px;
+      margin-bottom: 5px;
+      &_first{
+         margin-left: 10px;
+      }
+   }
+   &__h5 {
+      font-size: 12px;
+      margin-left: 10px;
+      margin-bottom: 5px;
+   }
+}
+
+.singleCard {
+   width: 1110px;
+   &__firstLine {
+      @include f(space-between, start);
+      width: 100%;
+      margin-bottom: 20px;
+   }
+   &__firstLine-textBox {
+
+   }
+   &__title {
+      font-size: 20px;
+      margin-bottom: 5px;
+   }
+   &__text-box {
+   }
+   &__text {
+      font-weight: 500px;
+      font-size: 14px;
+      font-weight: 500;
+      &_gray {
+         color: $iconGray;
+         display: inline;
+      }
+      &_p {
+         max-width: 500px;
+      }
+   }
+   &__firstLine-btnBox {
+         @include f(start, start);
+   }
+   &__button {
+      height: 50px;
+      width: 50px;
+      border-radius: 15px;
+      box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+      margin-right: 10px;
+      @include f(center, center);
+      &_big {
+         width: auto;
+         height: auto;
+         padding: 16px 25px;
+         margin-right: 0;
+         background-color: $orange;
+      }
+   }
+   &__secondLine {
+      @include f(space-between, start);
+      margin-bottom: 20px;
+   }
+   &__link {
+      text-decoration: underline dotted;
+      text-underline-offset: 5px;
+   }
+   &__img-box {
+      width: 100%;
+      background-color: $darkGray;
+      height: 400px;
+      border-radius: 16px;
+      position: relative;
+      margin-bottom: 20px;
+   }
+   &__stock {
+      z-index: 2;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: $orange;
+      padding: 10px;
+      border-radius: 10px;
+      color: white;
+      border: none;
+      box-shadow: none;
+      font-size: 12px;
+   }
+   &__img {
+      width: 100%;
+      border-radius: 16px;
+      height: 100%;
+      object-fit: cover;
+   }
+   &__widgets {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+      &:first-child{
+         max-height: 150px;
+      }
+
+   }
+   &__widgetsRight {
+      grid-row: 1/3;
+      grid-column: 2/3;
+      :last-child{
+         //margin-bottom: -30px;
+      }
+
+   }
+}
+
+.widget {
+   background-color: white;
+   box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+   padding: 15px;
+   border-radius: 10px;
+   &_info {
+   }
+   &__title {
+      font-size: 16px;
+      margin-bottom: 20px
+   }
+   &__content {
+      @include f(start, start);
+      margin-bottom: 20px
+   }
+   &__text-box {
+      @include f(start, start);
+      flex-direction: column;
+      margin-right: 20px;
+   }
+   &__text {
+      &_gray {
+         color: $iconGray;
+         margin-bottom: 10px;
+      }
+   }
+   &__hr {
+   }
+   &__item {
+      @include f(start, center);
+      gap: 10px;
+      margin-bottom: 20px;
+      &_address {
+         position: relative;
+         span{
+            color: blue;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+         }
+      }
+      &_big{
+         @include f(start, start);
+      }
+      &-btn{
+         height: 40px;
+         min-width: 40px;
+         border-radius: 10px;
+         background-color: rgb(245, 245, 245);
+         margin-right: 3px;
+         @include f(center, center);
+         &_vk{
+            background-color: rgb(70, 128, 194);
+            @include f(center, center);
+         }
+         &_telegram{
+            background-color: rgb(68, 166, 255);
+            @include f(center, center);
+         }
+         &_viber{
+            background-color: rgb(116, 96, 242);
+            @include f(center, center);
+         }
+         &_ok{
+            background-color: rgb(238, 130, 8);
+            @include f(center, center);
+         }
+         &_mailru{
+            background-color: rgb(1, 94, 249);
+            @include f(center, center);
+         }
+         &_big{
+            height: 40px;
+            width: 100%;
+            border-radius: 10px;
+            background-color: rgb(245, 245, 245);   
+         }
+      }
+   }
+   &__item-icon {
+   }
+   &__item-text {
+      font-weight: 500;
+      word-wrap: break-word;
+      &_green {
+         color: green;
+      }
+      &_big{
+         @include f(start, start);
+         flex-direction: column;
+      }
+   }
+   &__item-btn {
+   }
+}
+
+.widget_info {
+   margin-top: -100px;
+   &__link {
+   }
+   &__content {
    }
 }
