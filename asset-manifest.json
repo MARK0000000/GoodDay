@@ -1,13 +1,38 @@
 {
   "files": {
-    "main.css": "/GoodDay/static/css/main.49b61aa1.css",
-    "main.js": "/GoodDay/static/js/main.95e568c3.js",
+    "main.css": "/GoodDay/static/css/main.c3fd4571.css",
+    "main.js": "/GoodDay/static/js/main.8ee59946.js",
+    "static/media/4k.jpg": "/GoodDay/static/media/4k.f85feb5ed9339ae62735.jpg",
+    "static/media/phone.png": "/GoodDay/static/media/phone.ead61f3e2c8c81c99211.png",
+    "static/media/qr.svg": "/GoodDay/static/media/qr.b113a3a445551c4876dfa0e29b0a44ef.svg",
+    "static/media/logoHeader.svg": "/GoodDay/static/media/logoHeader.371489a81a5aa04dd344cbadaaaa999d.svg",
+    "static/media/metka.svg": "/GoodDay/static/media/metka.390001448f4e8206a5c8.svg",
+    "static/media/Segoe UI.woff": "/GoodDay/static/media/Segoe UI.293e692f583af77a347b.woff",
+    "static/media/googleplay.svg": "/GoodDay/static/media/googleplay.66822cf5116823c04ec7d0fca9e8006d.svg",
+    "static/media/appstore.svg": "/GoodDay/static/media/appstore.8af39d0db26dfc5f878016b8103b84e6.svg",
+    "static/media/social-viber.svg.svg": "/GoodDay/static/media/social-viber.svg.369a46f991f81243e1e1978640a4fa9c.svg",
+    "static/media/paid.svg": "/GoodDay/static/media/paid.01bee8765eaf07f835eb.svg",
+    "static/media/social-ok.svg.svg": "/GoodDay/static/media/social-ok.svg.34e44ab5b741648e62984c11523999bc.svg",
+    "static/media/mailru-white.svg.svg": "/GoodDay/static/media/mailru-white.svg.a45b9b6eac3336dd8af53a80085dda13.svg",
+    "static/media/quick-globe.svg.svg": "/GoodDay/static/media/quick-globe.svg.0b29074efeb010ba710b3d1483875b83.svg",
+    "static/media/social-vk.svg.svg": "/GoodDay/static/media/social-vk.svg.da33fabcdd53de16c06f9a245becf326.svg",
+    "static/media/comment.svg": "/GoodDay/static/media/comment.15d20bdda2d2a1f92d2f.svg",
+    "static/media/quick-call.svg.svg": "/GoodDay/static/media/quick-call.svg.359c5371ec7585d82e3616fad41e6283.svg",
+    "static/media/comment-heart.svg": "/GoodDay/static/media/comment-heart.7479ae4bbdb16c7f891e.svg",
+    "static/media/clock-ok.svg.svg": "/GoodDay/static/media/clock-ok.svg.18d7cfc57e6450b48786cff70acf31bd.svg",
+    "static/media/instagram-outline.svg": "/GoodDay/static/media/instagram-outline.b37409046cb3b96a8f2ef411d4c78c20.svg",
+    "static/media/youtube.svg": "/GoodDay/static/media/youtube.4123bca594b510b8b98c44bb43be0ac9.svg",
+    "static/media/lupa.svg": "/GoodDay/static/media/lupa.aab083b9115f820feba63c3296d4eb04.svg",
+    "static/media/telegram-white.svg.svg": "/GoodDay/static/media/telegram-white.svg.48d129e682d058ecf74dd979c2c4c20b.svg",
+    "static/media/share-map.svg.svg": "/GoodDay/static/media/share-map.svg.bbdc8fa31653557a5b0cf273e5de2412.svg",
+    "static/media/tiktok.svg": "/GoodDay/static/media/tiktok.595831b4e24bd28b1e3402e29fd8145e.svg",
+    "static/media/ph_heart.svg": "/GoodDay/static/media/ph_heart.b0bdc23ddbf8d41098f4b0ebd928d01d.svg",
     "index.html": "/GoodDay/index.html",
-    "main.49b61aa1.css.map": "/GoodDay/static/css/main.49b61aa1.css.map",
-    "main.95e568c3.js.map": "/GoodDay/static/js/main.95e568c3.js.map"
+    "main.c3fd4571.css.map": "/GoodDay/static/css/main.c3fd4571.css.map",
+    "main.8ee59946.js.map": "/GoodDay/static/js/main.8ee59946.js.map"
   },
   "entrypoints": [
-    "static/css/main.49b61aa1.css",
-    "static/js/main.95e568c3.js"
+    "static/css/main.c3fd4571.css",
+    "static/js/main.8ee59946.js"
   ]
 }
