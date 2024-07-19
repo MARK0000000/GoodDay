@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-import logoHeader from '../../images/logoHeader.svg'
-import lupa from '../../images/lupa.svg'
+import logoHeader from '../../images/other/logoHeader.svg'
+import lupa from '../../images/icons/lupa.svg'
+import { useAuth } from '../../hooks/useAuth';
 export default function Header() {
   const navigate = useNavigate()
   const [activeButton, setActiveButton] = useState('discounts');
+  const {logout} = useAuth()
 
   const handleButtonClick = (route, buttonId) => {
     navigate(route, { replace: false });
@@ -33,10 +35,10 @@ export default function Header() {
               <img className='header__search-icon' src={lupa} alt="#" />
             </div>
           </form>
-          <span className="header__auth">
-            <a href="">Вход</a>
+          <span className="header__auth" onClick={() => logout()}>
+            <a onClick={() => navigate('login/in', { replace: false })}>Вход</a>
             <span className="header__auth-slash">/</span>
-            <a href="">Регистрация</a>
+            <a onClick={() => navigate('login/in', { replace: false })}>Регистрация</a>
           </span>
         </div>
 
@@ -53,14 +55,54 @@ export default function Header() {
             >
             Акции
           </button>
-          <button className="header__nav-button">Развлечения</button>
-          <button className="header__nav-button">Красота</button>
-          <button className="header__nav-button">Еда</button>
-          <button className="header__nav-button">Здоровье</button>
-          <button className="header__nav-button">Дети</button>
-          <button className="header__nav-button">Спорт</button>
-          <button className="header__nav-button">Обучение</button>
-          <button className="header__nav-button">Авто</button>
+          <button 
+            className={`header__nav-button header__nav-button_gray ${activeButton === 'entertainment' ? 'header__nav-button_gray_active' : ''}`}
+            onClick={() => handleButtonClick('entertainment', 'entertainment')}
+            >
+            Развлечения
+          </button>
+          <button 
+            className={`header__nav-button header__nav-button_gray ${activeButton === 'beauty' ? 'header__nav-button_gray_active' : ''}`}
+            onClick={() => handleButtonClick('beauty', 'beauty')}
+            >
+            Красота
+          </button>
+          <button 
+            className={`header__nav-button header__nav-button_gray ${activeButton === 'food' ? 'header__nav-button_gray_active' : ''}`}
+            onClick={() => handleButtonClick('food', 'food')}
+            >
+            Еда
+          </button>
+          <button 
+            className={`header__nav-button header__nav-button_gray ${activeButton === 'health' ? 'header__nav-button_gray_active' : ''}`}
+            onClick={() => handleButtonClick('health', 'health')}
+            >
+            Здоровье
+          </button>
+          <button 
+            className={`header__nav-button header__nav-button_gray ${activeButton === 'children' ? 'header__nav-button_gray_active' : ''}`}
+            onClick={() => handleButtonClick('children', 'children')}
+            >
+            Дети
+          </button>
+          <button 
+            className={`header__nav-button header__nav-button_gray ${activeButton === 'sport' ? 'header__nav-button_gray_active' : ''}`}
+            onClick={() => handleButtonClick('sport', 'sport')}
+            >
+            Спорт
+          </button>
+          <button 
+            className={`header__nav-button header__nav-button_gray ${activeButton === 'education' ? 'header__nav-button_gray_active' : ''}`}
+            onClick={() => handleButtonClick('education', 'education')}
+            >
+            Обучение
+          </button>
+          <button 
+            className={`header__nav-button header__nav-button_gray ${activeButton === 'auto' ? 'header__nav-button_gray_active' : ''}`}
+            onClick={() => handleButtonClick('auto', 'auto')}
+            >
+            Авто
+          </button>
         </nav>
       </div>
     </header>

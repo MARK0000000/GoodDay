@@ -1,0 +1,9 @@
+.swiper{
+    &__pagination-bullets{
+       background-color: rgb(124, 119, 103);
+    }
+    &__pagination-bullets_active{
+       background-color: $blue;
+    }
+ }
+ 

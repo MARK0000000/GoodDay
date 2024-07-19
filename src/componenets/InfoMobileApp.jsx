@@ -1,8 +1,8 @@
 import React from 'react'
-import googlePlay from '../images/googleplay.svg'
-import appstore from '../images/appstore.svg'
-import qrCode from '../images/qr.svg'
-import phone from '../images/phone.png'
+import googlePlay from '../images/icons/googleplay.svg'
+import appstore from '../images/icons/appstore.svg'
+import qrCode from '../images/icons/qrBlack.svg'
+import phone from '../images/other/phone.png'
 export default function InfoMobileApp() {
   return (
     <section className='infoMobileApp__container'>

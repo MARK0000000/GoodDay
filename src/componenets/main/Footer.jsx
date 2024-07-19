@@ -1,10 +1,10 @@
 import React from 'react'
-import instagram from '../../images/instagram-outline.svg'
-import tiktok from '../../images/tiktok.svg'
-import youtube from '../../images/youtube.svg'
-import googlePlay from '../../images/googleplay.svg'
-import appstore from '../../images/appstore.svg'
-import qrCode from '../../images/qr.svg'
+import instagram from '../../images/icons/instagram-outline.svg'
+import tiktok from '../../images/icons/tiktok.svg'
+import youtube from '../../images/icons/youtube.svg'
+import googlePlay from '../../images/icons/googleplay.svg'
+import appstore from '../../images/icons/appstore.svg'
+import qrCode from '../../images/icons/qr.svg'
 
 export default function Footer() {
   return (

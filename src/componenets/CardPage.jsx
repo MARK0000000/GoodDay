@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation } from 'react-router-dom';
-import exampleImg from '../images/4k.jpg'
-import addressIcon from '../images/share-map.svg.svg'
-import timeIcon from '../images/clock-ok.svg.svg'
-import telIcon from '../images/quick-call.svg.svg'
-import internetIcon from '../images/quick-globe.svg.svg'
-import vkIcon from '../images/social-vk.svg.svg'
-import telegramIcon from '../images/telegram-white.svg.svg'
-import viberIcon from '../images/social-viber.svg.svg'
-import okIcon from '../images/social-ok.svg.svg'
-import mailruIcon from '../images/mailru-white.svg.svg'
+import exampleImg from '../images/other/4k.jpg'
+import addressIcon from '../images/icons/share-map.svg.svg'
+import timeIcon from '../images/icons/clock-ok.svg.svg'
+import telIcon from '../images/icons/quick-call.svg.svg'
+import internetIcon from '../images/icons/quick-globe.svg.svg'
+import vkIcon from '../images/icons/social-vk.svg.svg'
+import telegramIcon from '../images/icons/telegram-white.svg.svg'
+import viberIcon from '../images/icons/social-viber.svg.svg'
+import okIcon from '../images/icons/social-ok.svg.svg'
+import mailruIcon from '../images/icons/mailru-white.svg.svg'
 
 export default function CardPage() {
     const [cards, setCards] = useState([
@@ -183,8 +183,24 @@ export default function CardPage() {
     }, [cards, id]);
       
 
+    const [activeLink, setActiveLink] = useState('Условия');
+
+    const handleLinkClick = (link) => {
+        setActiveLink(link);
+    };
+      
+    const links = ['Условия', 'Описание', 'Адреса'];
+    
+    const [activeMap, setActiveMap] = useState(false)
+
+
   return (
     <section className='cardPage'>
+        <div className="breadCrambs">
+            <a href="" className="breadCrambs__link">Главная</a>
+            <span className="breadCrambs__span">&gt;</span>
+            <a href="" className="breadCrambs__link">Развлечения</a>
+        </div>
         {currentCard ? (
         <div className='cardPage__content'>
             <article className="singleCard">
@@ -238,19 +254,27 @@ export default function CardPage() {
                             <span className="widget__text widget__text_gray">Успейте воспользоваться акцией до окончания времени действия</span>
                         </div>
                     </div>
-                    <div className="widget_info"> 
-                        <span className="widget_info__link">Условия</span>
-                        <span className="widget_info__link">Описание</span>
-                        <span className="widget_info__link">Адреса</span>
-                        <hr className="widget__hr" />
-                        <p className="widget_info__content">
+                    <div className="widget-info"> 
+                        {links.map((link, index) => (
+                            <span
+                            key={index}
+                            className={`widget-info__link ${
+                                activeLink === link ? 'widget-info__link_active' : ''
+                            }`}
+                            onClick={() => handleLinkClick(link)}
+                            >
+                            {link}
+                            </span>
+                        ))}  
+                        <hr className="widget-info__hr" />
+                        <p className="widget-info__content">
                             Акция предоставляет возможность...
                         </p>
                     </div>
                     <div className='singleCard__widgetsRight'>
                         <div className="widget">
                             <h4 className="widget__title">Контакты</h4>
-                            <div className="widget__item widget__item_address">
+                            <div className="widget__item widget__item_address widget__item_border">
                                 <button className="widget__item-btn">
                                     <img src={addressIcon} alt="" className="widget__item-icon" />
                                 </button>
@@ -259,7 +283,7 @@ export default function CardPage() {
                                     <span>Показать</span>
                                 </p>
                             </div>
-                            <div className="widget__item">
+                            <div className="widget__item widget__item_border">
                                 <button className="widget__item-btn">
                                     <img src={timeIcon} alt="" className="widget__item-icon" />
                                 </button>
@@ -268,7 +292,7 @@ export default function CardPage() {
                                     <span className='widget__item-text_green'>Открыто</span>
                                 </p>
                             </div>
-                            <div className="widget__item">
+                            <div className="widget__item widget__item_border">
                                 <button className="widget__item-btn">
                                     <img src={telIcon} alt="" className="widget__item-icon" />
                                 </button>
@@ -292,7 +316,7 @@ export default function CardPage() {
                                 </div>
                             </div>
                         </div>
-                        <br />
+                        <div style={{height: "30px"}}></div>
                         <div className="widget">
                             <h4 className="widget__title">Поделиться</h4>
                             <div className="widget__item">
@@ -324,31 +348,69 @@ export default function CardPage() {
         ) : (
         <p>Loading...</p>
         )}
-        <div className='cardPage__map'></div>
-        <div className='cardPage__comments'></div>
+        <div className={`map ${activeMap && "map_active"}`}>
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aef3e109cb1f3e5bfe38181b0bc54e53150a5481dbd4ad6409a32a77f4d411e38&amp;source=constructor" width="1280" height="450" frameborder="0"></iframe>        <div className='cardPage__comments'></div>
+            <div className="map__content">
+                <h3 className="map__title">АдресАдресАдресАдресАдресАдрес</h3>
+                <div className="map__btnBox">
+                    <button className="map__button" onClick={() => setActiveMap(true)}>Проложить маршрут</button>
+                </div>
+                <hr className="map__hr" />
+                <div className="map__item">
+                    <button className="map__item-btn">
+                        <img src={timeIcon} alt="" className="map__item-icon" />
+                    </button>
+                    <p className="map__item-text">
+                        Ежедневно с 8:00 до 18:00 <br />
+                        <span className='map__item-text_green'>Открыто</span>
+                    </p>
+                </div>
+                <hr className="map__hr" />
+                <div className="map__item">
+                    <button className="map__item-btn">
+                        <img src={telIcon} alt="" className="map__item-icon" />
+                    </button>
+                    <a className="map__item-text">
+                        +375 33 111-11-11
+                    </a>
+                </div>
+                <hr className="map__hr" />
+            </div>
+        </div>
+        <div className="comments">
+            <div className="comments__firstLine">
+                <div>
+                    <h3 className="comments__title">Отзывы</h3>
+                    <span>Раскажите о ваших впечатлениях...</span>
+                </div>
+                <button className="comments__button">Написать отзыв</button>
+            </div>
+            <div className="comments__category-box">
+                <button className="comments__categotyBtn">
+                    Все
+                </button>
+            </div>
+            <div className="comments__content">
+                <div className="comment">
+                    <div className="comment__FirstLine">
+                        <img src="" alt="" className="comment__avatar" />
+                        <div className="comment__author-box">
+                            <span className="comment__name">Ноунэйм</span>
+                            <span>
+                                <span className="comment__author-info">Позитивный отзыв</span>
+                                <span className="comment__author-info">8 июля 2024 в 15:45</span>
+                            </span>
+                        </div>
+                    </div>
+                    <p className="comment__text">БлаБлаБла</p>
+                    <div className="comment__lastLine">
+                        <span className="comment__commInfo comment__commInfo_like">2 человека считают этот отзыв полезным</span>
+                        <span className="comment__commInfo comment__commInfo_comment">Ответить</span>
+                        <button className="comment__more">...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
   )
 }
-{/* <div className="card__img-box">
-<span className='card__stock'>{currentCard.stock}</span>
-<img src={currentCard.img} alt="" className="card__img" />
-</div>
-<div className="card__content">
-<h3 className="card__title">{currentCard.title}</h3>
-<div className="card__text-box">
-    <span className="card__text card__text_gray">Действует: </span>
-    <span className="card__text">{currentCard.validUntil}</span>
-</div>
-<p className="card__text card__text_p">{currentCard.description}</p>
-<div className="card__text-box card__text-box_vertical">
-    <span className="card__text">Адрес {currentCard.address}</span>
-    <span className="card__text">{currentCard.status}</span>
-</div>
-</div>
-<hr className='card__hr' />
-<div className="card__bottom">
-<div>
-    <span className="card__text_bottom card__text_bottom_paid">{currentCard.buyCount}</span>
-    <span className="card__text_bottom card__text_bottom_comments">{currentCard.commntsCount}</span>
-</div>
-</div> */}

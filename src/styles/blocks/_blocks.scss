@@ -1,0 +1,510 @@
+.add{
+    &__container{
+    }
+    &__slide{
+       background-color: rgb(150, 150, 150);
+       border-radius: 10px;
+       @include f(center, center);
+    }
+}
+
+.card {
+    @include f(start, start);
+    flex-direction: column;
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+    &__img-box {
+       width: 100%;
+       background-color: $darkGray;
+       height: 160px;
+       border-radius: 20px 20px 0px 0px;
+       position: relative;
+    }
+    &__img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       border-radius: 20px 20px 0px 0px;
+    }
+    &__stock{
+       z-index: 2;
+       position: absolute;
+       top: 20px;
+       left: 20px;
+       background-color: $orange;
+       padding: 10px;
+       border-radius: 10px;
+       color: white;
+       border: none;
+       box-shadow: none;
+       font-size: 12px;
+    }
+    &__likeIcon-box {
+       position: absolute;
+       bottom: -20px;
+       right: 20px;
+       height: 40px;
+       width: 40px;
+       background-color: white;
+       border-radius: 50%;
+       @include f(center, center);
+    }
+    &__likeIcon {
+    }
+    &__content {
+       padding: 25px 15px 25px 15px;
+    }
+    &__title {
+       font-size: 20px;
+       margin-bottom: 5px;
+    }
+    &__text-box {
+       display: flex;
+       &_vertical{
+          flex-direction: column;
+          :first-child{
+             margin-bottom: 5px;
+          }
+       }
+    }
+    &__text {
+       &_p{
+          margin: 20px 0px;
+       }
+       font-size: 14px;
+       font-weight: 500;
+       &_gray {
+          color: $iconGray;
+          display: inline;
+       }
+       &_bottom {
+          display: inline-flex;
+          align-items: center;
+          margin-right: 20px;
+          font-size: 14px;
+          font-weight: 500;
+       }
+       &_bottom_paid {
+          &::before{
+             content: url("../../images/icons/paid.svg");
+             display: inline-block;
+             width: 20px;
+             height: 20px;
+             background-size: contain;
+             background-repeat: no-repeat;
+             margin-right: 10px;
+ 
+          }
+       }
+       &_bottom_comments{
+          &::before{
+             display: inline-block;
+             content: url("../../images/icons/comment.svg");
+             width: 20px;
+             height: 20px;
+             background-size: contain;
+             background-repeat: no-repeat;
+             background-position: center;
+             margin-right: 10px;
+          }    
+       }
+ 
+    }
+    &__hr{
+       width: 100%;
+       border: 1px solid rgb(246, 246, 246);
+    }
+    &__bottom {
+       width: 100%;
+       padding: 15px;
+       @include f (space-between, center)
+    }
+    &__button {
+       border-radius: 10px;
+       background-color: $orange;
+       color: white;
+       padding: 10px 15px;
+       font-size: 12px;
+    }
+}
+ 
+.pagination{
+    &__container{
+       @include f(start, center);
+       margin-top: 20px;
+    }
+    &__item{
+       font-family: "Segoe UI Regular";
+       border: solid 1px rgb(246, 246, 246);
+       padding: 12px 0px;
+       width: 40px;
+       text-align: center;
+       user-select: none;
+       cursor: pointer;
+       font-weight: 500;
+       font-size: 12px;
+       box-sizing: border-box;
+       &_active{
+          background-color: $orange;
+          color: white;
+       }
+       &_prev{
+          border-radius: 50% 0px 0px 50%;
+       }
+       &_next{
+          border-radius: 0px 50% 50% 0px;
+       }
+       &_disabled{
+          display: none;
+       }
+    }
+}
+ 
+.infoMobileApp {
+    &__container {
+       @include f(space-between, start);
+       margin-bottom: 100px;
+    }
+    &__content {
+    }
+    &__title {
+       font-size: 34px;
+       font-weight: 900;
+       width: 700px;
+       margin-bottom: 10px;
+    }
+    &__text {
+       font-weight: 500;
+       width: 580px;
+       margin-bottom: 25px;
+    }
+    &__buttons-box {
+       width: 40%;
+       height: 128.13px;
+       display: grid;
+       grid-template-columns: 57% 43%;
+       grid-template-rows: 1fr 1fr;
+       gap: 20px;
+    }
+    &__button {
+       background-color: black;
+       border-radius: 10px;
+       border: solid 2px rgb(76, 79, 95);
+       @include f(start, center);
+       padding: 5px 10px;
+       &_big {
+          @include f(center, center);
+          padding: 10px 10px;
+          background-color: white;
+          grid-row: 1/3;
+          grid-column: 2/3;
+          box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+          border: none;
+       }
+    }
+    &__button-img {
+       fill: black;
+    }
+    &__img {
+       height: 300px;
+       object-fit: contain;
+    }
+}
+ 
+.info {
+    margin-bottom: 50px;
+    &__h4 {
+       font-size: 20px;
+       margin-bottom: 5px;
+    }
+    &__text {
+       font-size: 12px;
+       margin-left: 15px;
+       margin-bottom: 5px;
+       &_first{
+          margin-left: 10px;
+       }
+    }
+    &__h5 {
+       font-size: 12px;
+       margin-left: 10px;
+       margin-bottom: 5px;
+    }
+}
+
+.widget {
+    background-color: white;
+    box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+    padding: 15px;
+    border-radius: 10px;
+    &__title {
+       font-size: 16px;
+       margin-bottom: 20px
+    }
+    &__content {
+       @include f(start, start);
+       margin-bottom: 20px
+    }
+    &__text-box {
+       @include f(start, start);
+       flex-direction: column;
+       margin-right: 20px;
+    }
+    &__text {
+       &_gray {
+          color: $iconGray;
+          margin-bottom: 10px;
+       }
+    }
+    &__item {
+       @include f(start, center);
+       gap: 10px;
+       margin-bottom: 20px;
+       &_address {
+          position: relative;
+          span{
+             cursor: pointer;
+             color: blue;
+             position: absolute;
+             bottom: 10px;
+             right: 0;
+          }
+       }
+       &_big{
+          @include f(start, start);
+          margin-bottom: 0px;
+       }
+       &_border{
+          padding-bottom: 10px;
+          border-bottom: 1px solid rgb(242, 242, 244);
+       }
+       &-btn{
+          height: 40px;
+          min-width: 40px;
+          border-radius: 10px;
+          background-color: rgb(245, 245, 245);
+          margin-right: 3px;
+          @include f(center, center);
+          &_vk{
+             background-color: rgb(70, 128, 194);
+             @include f(center, center);
+          }
+          &_telegram{
+             background-color: rgb(68, 166, 255);
+             @include f(center, center);
+          }
+          &_viber{
+             background-color: rgb(116, 96, 242);
+             @include f(center, center);
+          }
+          &_ok{
+             background-color: rgb(238, 130, 8);
+             @include f(center, center);
+          }
+          &_mailru{
+             background-color: rgb(1, 94, 249);
+             @include f(center, center);
+          }
+          &_big{
+             height: 40px;
+             width: 100%;
+             border-radius: 10px;
+             background-color: rgb(245, 245, 245);   
+          }
+       }
+    }
+    &__item-text {
+       font-weight: 500;
+       word-wrap: break-word;
+       &_green {
+          color: green;
+          cursor: pointer;
+       }
+       &_big{
+          @include f(start, start);
+          flex-direction: column;
+       }
+    }
+    &__item-btn {
+    }
+}
+ 
+.widget-info {
+    position: absolute;
+    top: 183px;
+    width: 756px;
+    &__link {
+       font-size: 18px;
+       margin-right: 50px;
+       display: inline-block;
+       padding-bottom: 20px;
+       font-weight: 450;
+       cursor: pointer;
+       &_active{
+          font-weight: 700;
+          border-bottom: 1px solid $orange;
+       }
+    }
+    &__hr{
+       border: 1px solid rgb(242, 242, 244);
+       color: rgb(242, 242, 244);
+       margin-top: -1px;
+    }
+    &__content {
+       margin-top: 20px;
+    }
+}
+ 
+.map {
+    width: 100vw; 
+    height: 600px; 
+    position: relative; 
+    left: 50%; 
+    transform: translateX(-50%);
+    pointer-events: none;
+    margin-bottom: 50px;
+    iframe{
+       filter: blur(5px);
+       width: 100%;
+       height: 100%;
+    }
+    &_active{
+       pointer-events: all;
+       iframe{
+          filter: blur(0px);
+       }
+    }
+ 
+    &__content {
+       pointer-events: all;
+       position: absolute;
+       top: 50%;
+       left: 20%;
+       transform: translateY(-50%);
+       background-color: white;
+       box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+       border-radius: 16px;   
+    }
+    &__btnBox {
+       margin: 15px 0px;
+       padding: 0px 15px;
+       width: 100%;
+    }
+    &__button {
+       padding: 10px 30px;
+       background-color: $blue;
+       border-radius: 10px;
+       color: white;
+       width: 100%;
+    }
+    &__title {
+       font-size: 16px;
+       margin: 15px;
+       margin-bottom: 20px;
+       max-width: 280px;
+    }
+ 
+    &__item {
+       margin: 15px;
+       @include f(start, center);
+       gap: 10px;
+       margin-bottom: 20px;
+    }
+    &__hr{
+       border: 1px solid rgb(242, 242, 244);
+       margin-bottom: 20px;
+       position: relative;
+       width: 100%;
+    }
+    &__item-btn {
+       height: 40px;
+       min-width: 40px;
+       border-radius: 10px;
+       background-color: rgb(245, 245, 245);
+       margin-right: 3px;
+       @include f(center, center);
+    }
+    &__item-text {
+       font-weight: 500;
+       word-wrap: break-word;
+       &_green {
+          color: green;
+       }
+    }
+}
+
+.comment {
+   background-color: white;
+   box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+   padding: 15px;
+   border-radius: 10px;
+
+   &__FirstLine {
+      @include f(start, center);
+      margin-bottom: 30px;
+   }
+   &__avatar {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: $iconGray;
+      margin-right: 10px;
+   }
+   &__author-box {
+      @include f(start, start);
+      flex-direction: column;
+      //margin-bottom: 30px;
+   }
+   &__name {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 5px;
+   }
+   &__author-info {
+      font-size: 12px;
+      color: $iconGray;
+   }
+   &__text {
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 30px;
+   }
+   &__lastLine {
+      @include f(start, start)
+   }
+   &__commInfo {
+      font-size: 12px;
+      color: $iconGray;
+      margin-right: 20px;
+      display: inline-flex;
+      align-items: center;
+      &_like{
+         &::before {
+            content: url("../../images/icons/comment-heart.svg");
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-right: 10px;
+          }   
+      }
+      &_comment{
+         &::before {
+            content: url("../../images/icons/comment.svg");
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-right: 10px;
+          }   
+      }
+   }
+   &__more {
+      background-color: transparent;
+      vertical-align: top;
+   }
+}

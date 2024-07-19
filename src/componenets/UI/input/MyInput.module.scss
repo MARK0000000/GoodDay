@@ -1,0 +1,15 @@
+@keyframes fadeIn {
+   from { opacity: 0; }
+   to { opacity: 1; }
+ }
+
+.myInput{
+   display: block;
+   width: 100%;
+   padding: 5px 10px;
+   background-color: transparent;
+   border: 2px solid rgb(255, 146, 46);
+   border-radius: 5px;
+   margin: 10px auto;
+   animation: fadeIn 2s  
+}
