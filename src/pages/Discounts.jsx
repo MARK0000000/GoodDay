@@ -1,25 +1,32 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Add from '../componenets/Add'
 import Content from '../componenets/Content'
 import InfoMobileApp from '../componenets/InfoMobileApp'
 import Info from '../componenets/Info'
-import { fetchGet } from '../APi/fetch'
-import { fetchWithCookies } from '../APi/fetch'
+import { fetchGet } from '../api/fetch'
+import endpoints from '../api/apiConfig'
 
 export default function Discounts() {
+  const [businesses, setBusinesses] = useState([])
 
   useEffect(() => {
+    console.log('discounts page')
     const fetchData = async () => {
-        const me = await fetchGet('https://api-gd.sava.site/user/me');
+        const me = await fetchGet(endpoints.USER_ME);
         me && console.log(me);
-
-        const businessData = await fetchGet('https://jsonplaceholder.typicode.com/posts');
-        businessData && console.log(businessData);
+        const data = await fetchGet(endpoints.DISCOUNTSBUSINESS)
+        if (data) {
+          setBusinesses(data)
+          setIsLoading(false)
+          console.log(data)
+        }
     };
     fetchData();
   }, []);
 
-//https://api-gd.sava.site/business?categoryId=4&isServices=false&isInfo=false
+    const [isLoading, setIsLoading] = useState(true)
+
+
   return (
     <>
       <Add/>
@@ -30,7 +37,7 @@ export default function Discounts() {
           </h1>
           <button className="content__viewMapBtn">посмотреть на карте</button>
         </div>
-        <Content/>
+        <Content businesses={businesses} isLoading={isLoading}/>
       </section>
       <InfoMobileApp/>
       <Info/>

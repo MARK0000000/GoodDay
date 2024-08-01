@@ -3,7 +3,9 @@ import MyInput from '../UI/input/MyInput'
 import MyPasswordInput from '../UI/input/MyPasswordInput'
 import { validatePassword } from '../../utils/validation'
 import { useAuth } from '../../hooks/useAuth'
-import { fetchPost } from '../../APi/fetch'
+import { fetchPost } from '../../api/fetch'
+import endpoints from '../../api/apiConfig'
+
 export default function SingIn() {
     const {login} = useAuth()
 
@@ -37,7 +39,7 @@ export default function SingIn() {
             email: email,
             password: password,
         }
-        const getUser = await fetchPost(personData, 'https://api-gd.sava.site/user/login');
+        const getUser = await fetchPost(personData, endpoints.LOGIN);
         getUser && await login( getUser );
     //}
   }
@@ -50,7 +52,7 @@ export default function SingIn() {
             type="email" 
             placeholder='email' 
             ref={emailInput}  
-            autocomplete="email"
+            autoComplete="email"
             onFocus={() => setEmailVal('')}
         /> 
         <span>
@@ -60,6 +62,7 @@ export default function SingIn() {
             placeholder="Пароль"
             ref={passwordInput}
             onFocus={() => setPasswordVal([])}
+            autoComplete="current-password"
         />
         {passwordVal.map((item) => 
             <p>

@@ -11,6 +11,10 @@
 // }
 *{
    -webkit-tap-highlight-color: transparent;
+   user-select: none;
+}
+p, span{
+   user-select: text;
 }
 #root{
    display: flex;
@@ -41,16 +45,18 @@ html{
 body {
    font-size: 14px;
    min-width: 360px;
-   font-family: 'Montserrat', sans-serif;
+   font-family: 'Segoe UI';
    color: $text;
    font-weight: 400;
    word-wrap: break-word;
    line-height: normal;
 }
-
+h1, h2, h3, h4, h5, h6{
+   font-family: 'Segoe UI';
+}
 
 .container{
-  max-width: 1140px;
+  max-width: 1054px;
   margin: 0 auto;
   padding: 0 15px;
 }

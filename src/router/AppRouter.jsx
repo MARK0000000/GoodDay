@@ -4,7 +4,6 @@ import Main from '../componenets/Main';
 import Stock from '../pages/Stock'
 import Discounts from '../pages/Discounts';
 import CardPage from '../componenets/CardPage';
-import { ProtectedRoute } from './ProtectedRoute';
 import { AuthProvider } from '../hooks/useAuth';
 import Login from '../pages/Login';
 import SingUp from '../componenets/login/SingUp';
@@ -15,14 +14,10 @@ function AppRouter() {
    return (
       <AuthProvider>
          <Routes>
-            {publicRoute.map((item, index) => 
-               <Route path={item.path} element={item.element} key={index}/>
-            )}
+            <Route path='/login' element={<Login/>}/>
             <Route path='/' element={
-                  <ProtectedRoute>
                      <Main />
-                  </ProtectedRoute>
-            }>
+                  }>
                <Route index element={<Navigate to="discounts" />} />
                 {privateRoute.map((item, index) => 
                   <Route path={item.path} element={item.element} key={index}/>

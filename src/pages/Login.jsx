@@ -1,35 +1,15 @@
 import React, {useState, useContext, useEffect, useRef} from 'react';
 import MyInput from '../componenets/UI/input/MyInput';
 import { validatePassword, validateRepeatPassword } from '../utils/validation';
-import { fetchPost } from '../APi/fetch';
+import { fetchPost } from '../api/fetch';
 import { useAuth } from '../hooks/useAuth';
 import MyPasswordInput from '../componenets/UI/input/MyPasswordInput';
 import SingUp from '../componenets/login/SingUp';
 import SingIn from '../componenets/login/SingIn';
-import { fetchDelete } from '../APi/fetch';
+import { fetchDelete } from '../api/fetch';
 
 const Login = ({}) => {
-  //fetchDelete('https://api-gd.sava.site/user/delete')
-
   const [typeOfLog, setTypeOfLog] = useState('in')
-  const {login} = useAuth()
-
-  
-
-  // const restorePassword = event => {
-  //   event.preventDefault()
-  //   let email, code, password, repeatPassword;
-  //   email = emailInput.current.value
-  //   if (email !== "") {
-  //     setEnterEmail(true)
-
-  //   } 
-  // }
-
-  // const [forgotPasswordPage, setForgotPasswordPage] = useState(false)
-  // const [enterEmail, setEnterEmail] = useState(false)
-  // const [correctCode, setCorrectCode] = useState(false)
-
  
   return (
     <div className='container container_login'>

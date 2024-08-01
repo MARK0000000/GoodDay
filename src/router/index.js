@@ -9,6 +9,9 @@ import Entertainment from '../pages/Entertainment';
 import Food from '../pages/Food';
 import Sport from '../pages/Sport';
 import Health from '../pages/Health';
+import Partnership from '../pages/Partnership';
+import AboutApp from '../pages/AboutApp';
+import Services from '../pages/Services';
 
 import Login from '../pages/Login';
 import SingIn from '../componenets/login/SingIn';
@@ -26,8 +29,11 @@ export const privateRoute = [
     {path: 'sport', element: <Sport/>},
     {path: 'education', element: <Education/>},
     {path: 'auto', element: <Auto/>},
+    {path: 'partnership', element: <Partnership/>},
+    {path: 'aboutapp', element: <AboutApp/>},
+    {path: 'services', element: <Services/>},
  ]
- 
+
  export const publicRoute = [
     {path: 'login', element: <Login/>},
     {path: 'login/in', element: <SingIn/>},

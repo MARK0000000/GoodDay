@@ -3,14 +3,9 @@ import './styles/style.scss'
 import { BrowserRouter, HashRouter} from 'react-router-dom';
 import AppRouter from "./router/AppRouter";
 import { useState, useEffect } from 'react';
-import { fetchGet, fetchPost } from "./APi/fetch";
+import { fetchGet, fetchPost, fetchPost2 } from "./api/fetch";
 
 function App() {
-  // const personData = {
-  //   "email": "test@test.ru",
-  //   "password": "7sdff12d"
-  // }
-  
   return (
    <>
     <BrowserRouter>

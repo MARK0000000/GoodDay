@@ -1,17 +1,10 @@
 import React, {useState} from 'react'
-import { useNavigate, Link } from 'react-router-dom';
 import logoHeader from '../../images/other/logoHeader.svg'
 import lupa from '../../images/icons/lupa.svg'
 import { useAuth } from '../../hooks/useAuth';
-export default function Header() {
-  const navigate = useNavigate()
-  const [activeButton, setActiveButton] = useState('discounts');
+export default function Header({handleButtonClick, activeButton}) {
   const {logout} = useAuth()
 
-  const handleButtonClick = (route, buttonId) => {
-    navigate(route, { replace: false });
-    setActiveButton(buttonId);
-  };
 
   return (
     <header className="header">
@@ -19,9 +12,9 @@ export default function Header() {
         <div className='header__firstLine'>
           <a className='header__location' href="">Полоцк</a>
           <div className="header__about">
-            <a href="">Для вашего бизнеса</a>
+            <a onClick={() => handleButtonClick('partnership', 'partnership')}>Для вашего бизнеса</a>
             <a href="">Пригласить друга</a>
-            <a href="">О приложении</a>
+            <a onClick={() => handleButtonClick('aboutapp', 'aboutapp')}>О приложении</a>
             <a href="">Франшиза</a>
           </div>
           <a href="tel:">+375 (33) 111-11-11</a>
@@ -36,9 +29,9 @@ export default function Header() {
             </div>
           </form>
           <span className="header__auth" onClick={() => logout()}>
-            <a onClick={() => navigate('login/in', { replace: false })}>Вход</a>
+            <a >Вход</a>
             <span className="header__auth-slash">/</span>
-            <a onClick={() => navigate('login/in', { replace: false })}>Регистрация</a>
+            <a >Регистрация</a>
           </span>
         </div>
 
@@ -55,6 +48,13 @@ export default function Header() {
             >
             Акции
           </button>
+          <button 
+            className={`header__nav-button header__nav-button_red ${activeButton === 'services' ? 'header__nav-button_red_active' : ''}`}
+            onClick={() => handleButtonClick('services', 'services')}
+            >
+            Услуги
+          </button>
+
           <button 
             className={`header__nav-button header__nav-button_gray ${activeButton === 'entertainment' ? 'header__nav-button_gray_active' : ''}`}
             onClick={() => handleButtonClick('entertainment', 'entertainment')}

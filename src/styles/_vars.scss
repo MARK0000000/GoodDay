@@ -34,3 +34,9 @@ $borderRadiusDesktop: 16px;
 
 $paddingDesktop: 15px;
 //$paddingMobile: 5px;
+%block{
+    background-color: white;
+    box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+    padding: 15px;
+    border-radius: 10px;
+}

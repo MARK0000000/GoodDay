@@ -6,10 +6,13 @@
 .myInput{
    display: block;
    width: 100%;
-   padding: 5px 10px;
+   padding: 10px 0px 10px 15px;
    background-color: transparent;
-   border: 2px solid rgb(255, 146, 46);
+   border: 1px solid rgb(205, 206, 211);
    border-radius: 5px;
    margin: 10px auto;
-   animation: fadeIn 2s  
+   animation: fadeIn 2s;
+   &::placeholder{
+      color: rgb(205, 206, 211);
+   }
 }

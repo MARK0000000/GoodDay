@@ -3,8 +3,11 @@ import MyInput from '../UI/input/MyInput'
 import MyPasswordInput from '../UI/input/MyPasswordInput'
 import { validatePassword } from '../../utils/validation'
 import { useAuth } from '../../hooks/useAuth'
-import { fetchPost } from '../../APi/fetch'
+import { fetchPost } from '../../api/fetch'
 import { validateRepeatPassword } from '../../utils/validation'
+import endpoints from '../../api/apiConfig'
+
+
 export default function SingUp() {
     const {login} = useAuth()
     const [loaderForAuth, setloaderForAuth] = useState('')
@@ -45,12 +48,12 @@ export default function SingUp() {
 
     firstName= firstNameInput.current.value
     lastName = lastNameInput.current.value
-    email = emailInput.current.value;
+    email = emailInput.current.value
     phone = phoneInput.current.value
     country = countryInput.current.value
     city = cityInput .current.value
-    password = passwordInput.current.value;
-    repeatPassword = repeatPasswordInput.current.value;
+    password = passwordInput.current.value
+    repeatPassword = repeatPasswordInput.current.value
     from = fromInput.current.value
 
 
@@ -105,7 +108,7 @@ export default function SingUp() {
         password: password,
         from: from,
     }
-    const  newUser = await fetchPost(personData, 'https://api-gd.sava.site/user/registration');
+    const  newUser = await fetchPost(personData, endpoints.REGISTRATION);
     console.log(newUser)
     newUser && await login( newUser );
     
@@ -119,6 +122,7 @@ export default function SingUp() {
             type="text"
             ref={firstNameInput}
             onFocus={() => setFirstNameVal('')}
+            autoComplete="username"
         />
         <span>
             {firstNameVal}
@@ -147,6 +151,7 @@ export default function SingUp() {
             type="tel"
             ref={phoneInput}
             onFocus={() => setPhoneVal('')}
+            autoComplete="telephone"
         />
         <span>
             {phoneVal}
@@ -157,7 +162,7 @@ export default function SingUp() {
             type="country"
             ref={countryInput}
             onFocus={() => setCountryVal('')}
-            autocomplete="country"
+            autoComplete="country"
         />
         <span>
             {countryVal}
@@ -178,6 +183,7 @@ export default function SingUp() {
               placeholder="Пароль"
               ref={passwordInput}
               onFocus={() => setPasswordVal([])}
+              autoComplete="current-password"
         />
         {passwordVal.map((item) => 
             <p>
@@ -188,6 +194,7 @@ export default function SingUp() {
             placeholder="Повторите пароль"
             ref={repeatPasswordInput}
             onFocus={() => setRepPasswordVal("")}
+            autoComplete="current-password"
         />
         <span>
             {repPasswordVal}

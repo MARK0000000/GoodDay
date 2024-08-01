@@ -8,7 +8,8 @@ export default function InfoMobileApp() {
     <section className='infoMobileApp__container'>
       <article className="infoMobileApp__content">
         <h2 className="infoMobileApp__title">Мобильное приложение Good Day</h2>
-        <p className="infoMobileApp__text">Мы разработали удобные мобильные приложения для всех распространеных устройств. Теперь услуги, развлечения, кафе, <br /> рестораны и многое другое со скидками доступными для вас в любом месте. Удобный поиск по карте и вашему местоположению поможет экономить удобнее и быстрее!</p>
+        <p className="infoMobileApp__text">Мы разработали удобные мобильные приложения для всех <br />
+           распространеных устройств. Теперь услуги, развлечения, кафе, <br /> рестораны и многое другое со скидками доступными для вас в любом месте. Удобный поиск по карте и вашему местоположению поможет экономить <br /> удобнее и быстрее!</p>
         <div className='infoMobileApp__buttons-box'>
           <button className="infoMobileApp__button ">
             <img src={googlePlay} alt="" className="infoMobileApp__button-img" />

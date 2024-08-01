@@ -2,7 +2,6 @@
   "name": "GoodDay",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mark0000000.github.io/GoodDay/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -13,7 +12,6 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.24.1",
     "react-scripts": "5.0.1",
-    "redux-thunk": "^3.1.0",
     "sass": "^1.69.6",
     "swiper": "^11.1.4",
     "web-vitals": "^2.1.4"

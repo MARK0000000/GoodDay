@@ -6,7 +6,7 @@ import googlePlay from '../../images/icons/googleplay.svg'
 import appstore from '../../images/icons/appstore.svg'
 import qrCode from '../../images/icons/qr.svg'
 
-export default function Footer() {
+export default function Footer({handleButtonClick}) {
   return (
     <footer className='footer'>
       <div className="footer__content container">
@@ -51,7 +51,7 @@ export default function Footer() {
         <div className="footer__item">
           <span>ПАРТНЕРАМ</span>
           <hr />
-          <a href="">Для вашего бизнеса</a>
+          <a onClick={() => handleButtonClick('partnership', 'partnership')}>Для вашего бизнеса</a>
           <a href="">Франчайзинг</a>
           <a href="">Все акции</a>
         </div>
