@@ -1,11 +1,11 @@
 import React, {useState, useContext, useEffect, useRef} from 'react';
-import MyInput from '../componenets/UI/input/MyInput';
+import MyInput from '../components/UI/input/MyInput';
 import { validatePassword, validateRepeatPassword } from '../utils/validation';
 import { fetchPost } from '../api/fetch';
 import { useAuth } from '../hooks/useAuth';
-import MyPasswordInput from '../componenets/UI/input/MyPasswordInput';
-import SingUp from '../componenets/login/SingUp';
-import SingIn from '../componenets/login/SingIn';
+import MyPasswordInput from '../components/UI/input/MyPasswordInput';
+import SingUp from '../components/login/SingUp';
+import SingIn from '../components/login/SingIn';
 import { fetchDelete } from '../api/fetch';
 
 const Login = ({}) => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import phone from '../images/other/phone.png'
+import phone from '../../images/other/phone.png'
 
 export default function InfoAboutApp() {
   return (

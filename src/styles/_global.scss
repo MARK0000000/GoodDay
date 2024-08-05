@@ -9,11 +9,12 @@
 //    height: 5px;
 //    border: 1px solid #5A5A5A;
 // }
+
 *{
    -webkit-tap-highlight-color: transparent;
    user-select: none;
 }
-p, span{
+p{
    user-select: text;
 }
 #root{
@@ -30,6 +31,7 @@ footer {
 margin-top: auto;
 }
 a{
+user-select: none;
    color: $textGray;
    text-decoration: none;
    font-size: 14px;

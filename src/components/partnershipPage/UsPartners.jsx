@@ -1,13 +1,13 @@
 import React from 'react'
-import par1 from '../images/other/партнеры1.png'
-import par2 from '../images/other/партнеры2.png'
-import par3 from '../images/other/партнеры3.png'
-import par4 from '../images/other/партнеры4.png'
-import par5 from '../images/other/партнеры5.png'
-import par6 from '../images/other/партнеры6.png'
-import par7 from '../images/other/партнеры7.png'
-import par8 from '../images/other/партнеры8.png'
-import par9 from '../images/other/партнеры9.png'
+import par1 from '../../images/other/партнеры1.png'
+import par2 from '../../images/other/партнеры2.png'
+import par3 from '../../images/other/партнеры3.png'
+import par4 from '../../images/other/партнеры4.png'
+import par5 from '../../images/other/партнеры5.png'
+import par6 from '../../images/other/партнеры6.png'
+import par7 from '../../images/other/партнеры7.png'
+import par8 from '../../images/other/партнеры8.png'
+import par9 from '../../images/other/партнеры9.png'
 
 export default function UsPartners() {
   return (

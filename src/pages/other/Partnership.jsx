@@ -1,9 +1,9 @@
 import React, {useRef, useState} from 'react'
-import MyInput from '../componenets/UI/input/MyInput'
-import InfoAboutApp from '../componenets/InfoAboutApp';
-import InfoPartnership from '../componenets/InfoPartnership';
-import UsPartners from '../componenets/UsPartners';
-import phone from '../images/other/phone.png'
+import MyInput from '../../components/UI/input/MyInput'
+import InfoAboutApp from '../../components/partnershipPage/InfoAboutApp';
+import InfoPartnership from '../../components/partnershipPage/InfoPartnership';
+import UsPartners from '../../components/partnershipPage/UsPartners';
+import phone from '../../images/other/phone.png'
 
 export default function Partnership() {
 

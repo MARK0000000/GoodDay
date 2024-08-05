@@ -1,9 +1,17 @@
-.swiper{
-    &__pagination-bullets{
-       background-color: rgb(124, 119, 103);
-    }
-    &__pagination-bullets_active{
-       background-color: $blue;
-    }
- }
- 
+// .swiper{
+//     &__pagination-bullets{
+//        background: rgb(124, 119, 103);
+//     }
+//     &__pagination-bullets_active{
+//        background-color: red !important;
+//     }
+//  }
+.ymaps-2-1-79-gototech{
+   display: none !important;
+}
+.ymaps-2-1-79-copyright__link{
+   display: none !important;
+}
+:root {
+    --swiper-theme-color: rgb(255, 146, 46) !important;
+}

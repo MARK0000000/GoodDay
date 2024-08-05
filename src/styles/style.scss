@@ -84,65 +84,136 @@
       &-iconBox{
          cursor: pointer;
          position: absolute;
-         top: 2.5px;
+         top: 2px;
          right: 2.5px;
          background-color: $blue;
          height: 34px;
          width: 40px;
          border-radius: 5px;
-         @include f(center, center);
-
+         button{
+            @include f(center, center);
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+         }
       }
    }
 
    &__nav{
+   }
+   &__navCore{
       @include f(space-between, center);
+      height: 38px;
    }
    &__nav-button{
-      background-color: $backGray;
-      padding: 10px 15px;
-      border-radius: 5px;
-      border: none;
-      font-weight: 300;
-      &_blue{
-         background-color: $blue;
-         color: white;
-         &_active{
+    background-color: $backGray;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 300;
+    transition: background-color 0.3s, transform 0.1s, margin-top 0.2s;
+    &More{
+        background-color: $backGray;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        font-weight: 300;    
+    }
+    &:hover{
+        margin-top: -5px;
+        background-color: rgba(245, 245, 245, 0.5);
+    }
+    &_blue{
+        background-color: $blue;
+        color: white;
+        &:hover{
+            margin-top: -5px;
+            background-color: rgba(57, 83, 138, 0.7);
+        }    
+        &_active{
             background-color: transparent;
             color: $blue;
             border: 1px solid $blue;
             box-sizing: border-box;
-         }
-      }
-      &_orange{
-         background-color: $orange;
-         color: white;
-         &_active{
+            &:hover{
+                margin-top: 0px;
+                background-color: transparent;
+            }
+        }
+    }
+    &_orange{
+        background-color: $orange;
+        color: white;
+        &:hover{
+            margin-top: -5px;
+            background-color: rgba(255, 146, 46, 0.7);
+        }    
+        &_active{
             background-color: transparent;
             color: $orange;
             border: 1px solid $orange;
             box-sizing: border-box;
-         }
-      }
-      &_red{
-         background-color: rgb(244, 67, 54);
-         color: white;
-         &_active{
+            &:hover{
+                margin-top: 0px;
+                background-color: transparent;
+            }
+        }
+    }
+    &_red{
+        background-color: rgb(244, 67, 54);
+        color: white;
+        &:hover{
+            margin-top: -5px;
+            background-color: rgba(244, 67, 54, 0.7);
+        }    
+        &_active{
             background-color: transparent;
             color: rgb(244, 67, 54);
             border: 1px solid rgb(244, 67, 54);
             box-sizing: border-box;
+            &:hover{
+                margin-top: 0px;
+                background-color: transparent;
+            }
+        }
+    }
+    &_gray_active{
+        background-color: transparent;
+        border: 2px solid $backGray;
+        &:hover{
+            margin-top: 0px;
+            background-color: transparent;
+        }
+    }
+    }
+    &__navMore{
+         position: relative;
+         top: -19px;
+         height: 0px;
+         visibility: hidden;
+         transition: top 0.7s;
+         button {
+            opacity: 0;
+            transition: opacity 2s;
          }
-      }
-      &_gray_active{
-         background-color: transparent;
-         border: 2px solid $backGray;
-      }
-   }
+         &_active{
+            transition: top 0.7s;
+            margin-bottom: 10px;
+            button {
+               opacity: 1;
+            }   
+            visibility: visible;
+            height: 38px;
+            top: 10px;   
+            @include f(space-between, center);
+         }
+
+    }
 
 }
 
 .breadCrambs {
+   width: 1024px;
    @include f(start, center);
    margin: 20px 0px 50px 0px;
    font-weight: 300;
@@ -307,7 +378,7 @@
 }
 
 .singleCard {
-   width: 1110px;
+   width: 1024px;
    &__firstLine {
       @include f(space-between, start);
       width: 100%;
@@ -363,7 +434,7 @@
    &__img-box {
       width: 100%;
       background-color: $darkGray;
-      height: 400px;
+      height: 500px;
       border-radius: 16px;
       position: relative;
       margin-bottom: 20px;
@@ -388,10 +459,10 @@
       object-fit: cover;
    }
    &__widgets {
-      width: 1080px;
+      width: 994px;
       display: grid;
       grid-template-columns: 70% 30%;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: 158px 1fr;
       gap: 30px;
       position: relative;
       margin-bottom: 50px;
@@ -407,43 +478,6 @@
          //margin-bottom: -30px;
       }
 
-   }
-}
-
-.comments {
-   margin-bottom: 200px;
-   &__firstLine {
-      @include f(space-between, center);
-      margin-bottom: 20px;
-      div{
-         span{
-            color: $iconGray;     
-            font-size: 12px;    
-         }
-      }
-   }
-   &__title {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 10px;
-   }
-   &__button {
-      color: white;
-      padding: 10px 40px;
-      border-radius: 10px;
-      background-color: $orange;
-   }
-   &__category-box {
-      @include f(start, start);
-      margin-bottom: 20px;
-   }
-   &__categotyBtn {
-      background-color: rgb(237, 237, 237);
-      border-radius: 10px;
-      padding: 15px 20px;
-      font-weight: 500;
-   }
-   &__content {
    }
 }
 

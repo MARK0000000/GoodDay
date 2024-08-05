@@ -15,7 +15,7 @@ export default function Add() {
       }}
       loop={true}
       pagination={{
-        clickable: false,
+        clickable: true,
       }}
       modules={[Pagination, Autoplay]}
     >
