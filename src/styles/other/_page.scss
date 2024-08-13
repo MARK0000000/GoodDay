@@ -1,0 +1,91 @@
+.add{
+    &__container{
+    }
+    &__slide{
+       background-color: rgb(150, 150, 150);
+       border-radius: 10px;
+       @include f(center, center);
+    }
+}
+.infoMobileApp {
+    &__container {
+       @include f(space-between, center);
+       margin-bottom: 50px;
+    }
+    &__content {
+    }
+    &__title {
+       font-size: 34px;
+       font-weight: 900;
+       width: 700px;
+       margin-bottom: 10px;
+       font-family: "Raleway", sans-serif;
+    }
+    &__text {
+       font-weight: 500;
+       width: 580px;
+       margin-bottom: 25px;
+       font-family: "Raleway", sans-serif;
+    }
+    &__buttons-box {
+       width: 40%;
+       height: 128.13px;
+       display: grid;
+       grid-template-columns: 57% 43%;
+       grid-template-rows: 1fr 1fr;
+       gap: 20px;
+    }
+    &__button {
+       background-color: black;
+       border-radius: 10px;
+       border: solid 2px rgb(76, 79, 95);
+       @include f(start, center);
+       padding: 5px 10px;
+       transition: background-color 0.3s, transform 0.1s;
+       &:hover{
+          background-color: rgba($color: #000000, $alpha: 0.8);
+       }
+       &_big {
+          @include f(center, center);
+          padding: 10px 10px;
+          background-color: white;
+          grid-row: 1/3;
+          grid-column: 2/3;
+          box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+          border: none;
+          width: 128px;
+          &:hover{
+             background-color: white;
+          }   
+       }
+    }
+    &__img {
+       height: 350px;
+       object-fit: contain;
+       position: relative;
+       top: 10px;
+       left: -50px;
+    }
+}
+.info {
+font-family: 'Raleway';
+margin-bottom: 50px;
+&__h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+&__text {
+    font-size: 12px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    &_first{
+        margin-left: 10px;
+    }
+}
+&__h5 {
+    font-size: 12px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+}
+ 

@@ -5,27 +5,31 @@ export function getWorkTimeStatus(workTimeDetailed) {
     const currentDay = getDay(currentDate); // Возвратит число от 0 (воскресенье) до 6 (суббота)
     const currentHour = getHours(currentDate);
     const currentMinute = getMinutes(currentDate);
-
-    const todayWorkHours = workTimeDetailed[currentDay];
-    let statusMessage = 'Закрыто';
-
-    if (todayWorkHours.isDayOff) {
-        return statusMessage; // сегодняшний выходной
-    }
-
-    const openingTime = todayWorkHours.start;
-    const closingTime = todayWorkHours.end;
     
-    if (currentHour < openingTime) {
-        const minutesToOpen = (openingTime - currentHour) * 60 - currentMinute;
-        if (minutesToOpen <= 60) {
-            statusMessage = `Откроется через ${minutesToOpen} минут`;
-        } 
-    } else if (currentHour >= closingTime) {
-        statusMessage = 'Закрыто';
+    if(workTimeDetailed[currentDay]) {
+        const todayWorkHours = workTimeDetailed[currentDay];
+        let statusMessage = 'Закрыто';
+        
+        if (todayWorkHours.isDayOff) {
+            return statusMessage; // сегодняшний выходной
+        }
+    
+        const openingTime = todayWorkHours.start;
+        const closingTime = todayWorkHours.end;
+        
+        if (currentHour < openingTime) {
+            const minutesToOpen = (openingTime - currentHour) * 60 - currentMinute;
+            if (minutesToOpen <= 60) {
+                statusMessage = `Откроется через ${minutesToOpen} минут`;
+            } 
+        } else if (currentHour >= closingTime) {
+            statusMessage = 'Закрыто';
+        } else {
+            statusMessage = 'Открыто';
+        }
+    
+        return statusMessage;
     } else {
-        statusMessage = 'Открыто';
+        return 'Не указано'
     }
-
-    return statusMessage;
 }

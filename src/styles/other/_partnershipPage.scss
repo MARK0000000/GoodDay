@@ -1,0 +1,219 @@
+.partnership {
+    width: 100vw; 
+    position: relative;
+    left: 50%; 
+    transform: translateX(-50%);
+    background-color: rgb(242, 242, 242);
+    padding-top: 50px;
+    font-family: 'Raleway';
+    &__title, h2 {
+       margin: 0 auto;
+       width: 1054px;
+       padding: 0px 15px;
+       font-size: 38px;
+       margin-bottom: 20px;
+       font-family: 'Arial';
+ 
+    }
+    &__title, h3 {
+       margin: 0px;
+       width: auto;
+       padding: 0px;
+       font-size: 24px;
+       margin-top: 16px;
+ 
+    }
+    &__content {
+       margin: 0 auto;
+       width: 1054px;
+       padding: 0px 15px 0px 15px;
+       @include f(start, start);
+       gap: 90px
+    }
+    &__form {
+       @extend %block;
+       width: 55%;
+       padding: 30px;
+       margin-bottom: 100px;
+       border-radius: 16px;
+    }
+    &__label {
+       color: rgb(161, 162, 170);
+       display: block;
+       margin: 30px 0px 15px 0px;
+       &:first-child{
+          margin-top: 0px;
+       }
+    }
+    &__inputVal {
+    }
+    &__formBtn {
+       background-color: $blue;
+       border-radius: 10px;
+       padding: 15px 80px;
+       color: white;
+       margin-top: 30px;
+       font-size: 16px
+       
+    }
+    &__contacts {
+       @include f(start, start);
+       flex-direction: column;
+       span:nth-child(even) {
+          font-weight: bold;
+          margin: 20px 0px 15px 0px;
+          font-size: 20px;
+          font-family: 'Arial';
+        }
+    }
+    &__contact{
+       font-weight: 500;
+ 
+    }
+}
+.infoAboutApp {
+    &__container {
+        @include f(space-between, center);
+        margin-bottom: 100px;
+        margin-top: 50px;
+    }
+    &__title {
+        font-size: 37px;
+        font-weight: 700;
+        width: 700px;
+        margin-bottom: 10px;
+        font-family: 'Arial';
+    }
+    &__text {
+        font-weight: 500;
+        width: 580px;
+        margin: 30px 0px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+    }
+    &__button{
+        background-color: $blue;
+        border-radius: 10px;
+        padding: 15px 80px;
+        color: white;
+        font-size: 16px
+    }
+    &__img {
+        height: 350px;
+        object-fit: contain;
+        position: relative;
+        top: -15px;
+        left: -100px;
+    }
+}
+.infoPartnership {
+padding: 60px 0px;
+width: 100vw; 
+position: relative;
+left: 50%; 
+transform: translateX(-50%);
+background-color: $blue;
+&__title {
+    margin: 0 auto;
+    width: 1140px;
+    padding: 0px 15px;
+    font-size: 38px;
+    color: white;
+    font-family: "Raleway", sans-serif;
+    margin-bottom: 20px;
+}
+&__content-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);      
+    column-gap: 20px;
+    margin: 0 auto;
+    width: 1140px;
+    padding: 0px 15px 0px 15px;
+}
+&__item {
+    @extend %block;
+    box-shadow: none;
+    padding: 30px 30px;
+}
+&__item-title {
+    font-family: "Raleway";
+    font-weight: 800;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+&__item-text {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+}
+.usPartners {
+margin: 70px 0px;
+&__title {
+    font-size: 38px;
+    font-family: "Raleway", sans-serif;
+    margin-bottom: 20px;
+}
+&__icons-box {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);      
+    grid-template-rows: repeat(2, 192.8px);
+    gap: 15px;
+}
+&__icon {
+    height: 192.8px;
+    border-radius: 30px;
+    &_border{
+        border: 1px solid black;
+        box-sizing: border-box;
+    }
+}
+&__more-icon {
+    background-color: $blue;
+    @include f(center, center);
+    border-radius: 30px;
+    padding: 20px;
+    height: 192.8px;
+    span{
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+}
+.becomePartner {
+width: 100vw; 
+position: relative;
+left: 50%; 
+transform: translateX(-50%);
+background-color: rgb(242, 242, 242);
+@include f(center, center);
+padding: 60px 0px;
+&__img {
+    height: 390px;
+    object-fit: contain;
+}
+&__content {
+    @include f(start, start);
+    flex-direction: column;
+}
+&__text {
+    font-size: 56px;
+    font-weight: 500;
+    font-family: 'Arial';
+    &_bold {
+        font-weight: 700;
+        font-size: 52;
+    }
+}
+&__button {
+    margin-top: 20px;
+    background-color: $blue;
+    border-radius: 10px;
+    padding: 10px 30px;
+    color: white;
+    font-size: 16px;
+}
+}
+  

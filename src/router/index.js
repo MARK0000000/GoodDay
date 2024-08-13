@@ -1,16 +1,8 @@
 import Discounts from '../pages/Discounts';
 import Stock from '../pages/Stock'
+import BusinessPage from '../pages/BusinessPage';
 import Services from '../pages/Services';
-import CardPage from '../pages/CardPage';
-
-import Auto from '../pages/categories/Auto';
-import Beauty from '../pages/categories/Beauty';
-import Children from '../pages/categories/Children';
-import Education from '../pages/categories/Education';
-import Entertainment from '../pages/categories/Entertainment';
-import Food from '../pages/categories/Food';
-import Sport from '../pages/categories/Sport';
-import Health from '../pages/categories/Health';
+import ServicePage from '../pages/ServicePage';
 
 import Partnership from '../pages/other/Partnership';
 import AboutApp from '../pages/other/AboutApp';
@@ -19,56 +11,49 @@ import Login from '../pages/Login';
 import SingIn from '../components/login/SingIn';
 import SingUp from '../components/login/SingUp';
 
-import Recreation from '../pages/categories/Recreation';
-import Accessories from '../pages/categories/Accessories';
-import Gifts from '../pages/categories/Gifts';
-import ClothesAndShoes from '../pages/categories/ClothesAndShoes';
-import Equipment from '../pages/categories/Equipment';
-import EverythingForHome from '../pages/categories/EverythingForHome';
-import MasterClasses from '../pages/categories/MasterClasses';
-import Other from '../pages/categories/Other';
-import Pets from '../pages/categories/Pets';
-import Repair from '../pages/categories/Repair';
+import * as Categories from '../pages/categories';
 
 export const privateRoute = [
     {path: 'discounts', element: <Discounts/>},
     {path: 'stock', element: <Stock/>},
 
-    {path: 'entertainment', element: <Entertainment/>},
-    {path: 'beauty', element: <Beauty/>},
-    {path: 'food', element: <Food />},
-    {path: 'health', element: <Health/>},
-    {path: 'children', element: <Children/>},
-    {path: 'sport', element: <Sport/>},
-    {path: 'education', element: <Education/>},
-    {path: 'auto', element: <Auto/>},
-    {path: 'recreation', element: <Recreation/>},
-    {path: 'accessories', element: <Accessories/>},
-    {path: 'gifts', element: <Gifts/>},
-    {path: 'clothesandshoes', element: <ClothesAndShoes/>},
-    {path: 'equipment', element: <Equipment/>},
-    {path: 'evetythingforhome', element: <EverythingForHome/>},
-    {path: 'masterclasses', element: <MasterClasses/>},
-    {path: 'other', element: <Other/>},
-    {path: 'Pets', element: <Pets/>},
-    {path: 'repair', element: <Repair/>},
+    {path: 'entertainment', element: <Categories.Entertainment/>},
+    {path: 'beauty', element: <Categories.Beauty/>},
+    {path: 'food', element: <Categories.Food />},
+    {path: 'health', element: <Categories.Health/>},
+    {path: 'children', element: <Categories.Children/>},
+    {path: 'sport', element: <Categories.Sport/>},
+    {path: 'education', element: <Categories.Education/>},
+    {path: 'auto', element: <Categories.Auto/>},
+    {path: 'recreation', element: <Categories.Recreation/>},
+    {path: 'accessories', element: <Categories.Accessories/>},
+    {path: 'gifts', element: <Categories.Gifts/>},
+    {path: 'clothesandshoes', element: <Categories.ClothesAndShoes/>},
+    {path: 'equipment', element: <Categories.Equipment/>},
+    {path: 'evetythingforhome', element: <Categories.EverythingForHome/>},
+    {path: 'masterclasses', element: <Categories.MasterClasses/>},
+    {path: 'other', element: <Categories.Other/>},
+    {path: 'Pets', element: <Categories.Pets/>},
+    {path: 'repair', element: <Categories.Repair/>},
 
 
-    {path: 'discounts/:id', element: <CardPage/>},
-    {path: 'stock/:id', element: <CardPage/>},
-    {path: 'entertainment/:id', element: <CardPage/>},
-    {path: 'beauty/:id', element: <CardPage/>},
-    {path: 'food/:id', element: <CardPage/>},
-    {path: 'health/:id', element: <CardPage/>},
-    {path: 'children/:id', element: <CardPage/>},
-    {path: 'sport/:id', element: <CardPage/>},
-    {path: 'education/:id', element: <CardPage/>},
-    {path: 'auto/:id', element: <CardPage/>},
-    {path: 'partnership/:id', element: <CardPage/>},
+
+    {path: 'discounts/:id', element: <BusinessPage/>},
+    {path: 'stock/:id', element: <BusinessPage/>},
+    {path: 'entertainment/:id', element: <BusinessPage/>},
+    {path: 'beauty/:id', element: <BusinessPage/>},
+    {path: 'food/:id', element: <BusinessPage/>},
+    {path: 'health/:id', element: <BusinessPage/>},
+    {path: 'children/:id', element: <BusinessPage/>},
+    {path: 'sport/:id', element: <BusinessPage/>},
+    {path: 'education/:id', element: <BusinessPage/>},
+    {path: 'auto/:id', element: <BusinessPage/>},
+    {path: 'partnership/:id', element: <BusinessPage/>},
 
     {path: 'partnership', element: <Partnership/>},
     {path: 'aboutapp', element: <AboutApp/>},
     {path: 'services', element: <Services/>},
+    {path: 'services/:id', element: <ServicePage/>},
  ]
 
  export const publicRoute = [

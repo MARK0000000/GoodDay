@@ -1,0 +1,33 @@
+import React from 'react'
+import googlePlay from '../../images/icons/googleplay.svg'
+import appstore from '../../images/icons/appstore.svg'
+import qrCode from '../../images/icons/qrBlack.svg'
+import phone from '../../images/other/phone.png'
+
+export default function InfoMobileApp() {
+  return (
+    <section className='infoMobileApp__container'>
+      <article className="infoMobileApp__content">
+        <h2 className="infoMobileApp__title">Мобильное приложение Good Day</h2>
+        <p className="infoMobileApp__text">Мы разработали удобные мобильные приложения для всех <br />
+           распространеных устройств. Теперь услуги, развлечения, кафе, <br /> рестораны и многое другое со скидками доступными для вас в любом месте. Удобный поиск по карте и вашему местоположению поможет экономить <br /> удобнее и быстрее!</p>
+        <div className='infoMobileApp__buttons-box'>
+          <button className="infoMobileApp__button ">
+            <a href=" https://play.google.com/store/apps/details?id=by.goodday" target='_blank'>
+              <img src={googlePlay} alt="" className="infoMobileApp__button-img" />
+            </a>
+          </button>
+          <button className="infoMobileApp__button ">
+            <a href="https://apps.apple.com/us/app/good-day-экономь-всегда/id1668241700" target='_blank'>
+              <img src={appstore} alt="" className="infoMobileApp__button-img" />
+            </a>
+          </button>
+          <button className="infoMobileApp__button infoMobileApp__button_big">
+            <img src={qrCode} alt="" className="infoMobileApp__button-img" />
+          </button>
+        </div>
+      </article>
+      <img src={phone} alt="" className="infoMobileApp__img" />
+    </section>
+  )
+}

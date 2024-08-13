@@ -3,8 +3,8 @@ import MyInput from '../../components/UI/input/MyInput'
 import InfoAboutApp from '../../components/partnershipPage/InfoAboutApp';
 import InfoPartnership from '../../components/partnershipPage/InfoPartnership';
 import UsPartners from '../../components/partnershipPage/UsPartners';
-import phone from '../../images/other/phone.png'
-
+import BreadCrumbs from '../../components/main/Breadcrambs'
+import BecomePartnes from '../../components/partnershipPage/BecomePartnes';
 export default function Partnership() {
 
     const companyNameInput = useRef();
@@ -47,6 +47,7 @@ export default function Partnership() {
 
   return (
     <>
+    <BreadCrumbs current={"Для вашего бизнеса"}/>
     <section className='partnership'>
         <h2 className="partnership__title">Стать партнёром Good Day</h2>
         <div className="partnership__content">
@@ -94,14 +95,7 @@ export default function Partnership() {
     <InfoAboutApp/>
     <InfoPartnership/>
     <UsPartners/>
-    <div className="becomePartner">
-        <img src={phone} alt="" className="becomePartner__img" />
-        <div className="becomePartner__content">
-            <span className="becomePartner__text becomePartner__text_bold">Good Day</span>
-            <span className="becomePartner__text">для вашего бизнеса</span>
-            <button className="becomePartner__button">Стать партнером</button>
-        </div>
-    </div>
+    <BecomePartnes/>
     </>
   )
 }

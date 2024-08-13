@@ -1,8 +1,8 @@
-import React, {useContext, useEffect, useState} from 'react'
-import Add from '../components/general/Add'
-import Content from '../components/Content'
-import InfoMobileApp from '../components/general/InfoMobileApp'
-import Info from '../components/general/Info'
+import React, {useEffect, useState} from 'react'
+import Add from '../components/page/Add'
+import Content from '../components/page/Content'
+import InfoMobileApp from '../components/page/InfoMobileApp'
+import Info from '../components/page/Info'
 import { fetchGet } from '../api/fetch'
 import endpoints from '../api/apiConfig'
 
@@ -33,11 +33,7 @@ export default function Discounts() {
           </h1>
           <button className="content__viewMapBtn">посмотреть на карте</button>
         </div>
-        {isLoading ?
-          <div>Download</div>
-          :
-          <Content businesses={businesses} isLoading={isLoading} />
-        }
+        <Content businesses={businesses} isLoading={isLoading} />
       </section>
       <InfoMobileApp />
       <Info />
