@@ -10,9 +10,7 @@ export async function fetchPost(data, url) {
         },
       });
   
-      // Проверка на успешный ответ
       if (!response.ok) {
-        // Логирование для различных статус-кодов
         if (response.status >= 400 && response.status < 500) {
           console.error(`Ошибка ${response.status}: Некорректный запрос.`);
         } else if (response.status >= 500 && response.status < 600) {
@@ -34,7 +32,7 @@ export async function fetchGet(url) {
   try {
     const res = await fetch(url, {
       method: 'GET',
-      credentials: 'include',
+      //credentials: 'include',
     });
     const json = await res.json();
     return json;
@@ -42,6 +40,7 @@ export async function fetchGet(url) {
     console.warn(err);
   }
 }
+
 export async function fetchDelete(url) {
   try {
       const response = await fetch(url, {

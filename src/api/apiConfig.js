@@ -1,12 +1,13 @@
-const API_BASE_URL = 'https://api-gd.sava.site';
+const API_BASE_URL = 'https://vh369.by2040.ihb.by';
 
 const cityid = '1';
 const endpoints = {
-  UPLOADS: `${API_BASE_URL}/uploads`,
+  UPLOADS: `https://api-gd.sava.site/uploads`,
 //   USER_ME: `${API_BASE_URL}/user/me`,
 //   LOGIN: `${API_BASE_URL}/user/login`,
 //   REGISTRATION: `${API_BASE_URL}/user/registration`,
-  DISCOUNTSBUSINESS: `${API_BASE_URL}/business?cityId=${cityid}&isServices=false&isInfo=false&isDiscount=true`,
+  // DISCOUNTSBUSINESS: `${API_BASE_URL}/business?cityId=${cityid}&isServices=false&isInfo=false&isDiscount=true`,
+  DISCOUNTSBUSINESS: `${API_BASE_URL}/business/category?cityId=1&categoryId=1&pageNumber=1&pageSize=9&isDiscount=true`,
 
   PROMOTION: `${API_BASE_URL}/promotion?cityId=${cityid}`,
 

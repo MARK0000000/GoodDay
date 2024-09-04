@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import Add from '../components/page/Add'
-import Content from '../components/page/Content'
-import InfoMobileApp from '../components/page/InfoMobileApp'
-import Info from '../components/page/Info'
+import Add from '../components/categoryPage/Add'
+import Content from '../components/categoryPage/Content'
+import InfoMobileApp from '../components/categoryPage/InfoMobileApp'
+import Info from '../components/categoryPage/Info'
 import endpoints from '../api/apiConfig'
 import { fetchGet } from '../api/fetch'
 

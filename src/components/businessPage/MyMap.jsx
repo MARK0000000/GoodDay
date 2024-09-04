@@ -52,7 +52,13 @@ export default function MyMap({ data }) {
                             </button>
                             <p className="map__item-text">
                                 {data.workTime} <br />
-                                <span className='map__item-text_green'>{status}</span>
+                                <span className={`widget__item-text ${
+                                getWorkTimeStatus(data.workTimeDetailed) === 'Открыто' 
+                                    ? 'widget__item-text_green' 
+                                    : getWorkTimeStatus(data.workTimeDetailed).includes('Откроется через') 
+                                        ? 'widget__item-text_orange' 
+                                        : 'widget__item-text_red'
+                                }`}>{status}</span>
                             </p>
                         </div>
                         <hr className="map__hr" />

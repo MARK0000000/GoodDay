@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import Add from '../../components/page/Add'
-import Content from '../../components/page/Content'
-import InfoMobileApp from '../../components/page/InfoMobileApp'
-import Info from '../../components/page/Info'
+import Add from '../../components/categoryPage/Add'
+import Content from '../../components/categoryPage/Content'
+import InfoMobileApp from '../../components/categoryPage/InfoMobileApp'
+import Info from '../../components/categoryPage/Info'
 import { fetchGet } from '../../api/fetch'
 import endpoints from '../../api/apiConfig'
 
@@ -28,7 +28,7 @@ export default function Accessories() {
       <section className="content">
         <div className="content__title-box">
           <h1 className="content__title">
-            Аксуссуары в <span className="content__city">Полоцке</span>
+            Аксессуары в <span className="content__city">Полоцке</span>
             <span className="content__count">{businesses.length}</span>
           </h1>
           <button className="content__viewMapBtn">посмотреть на карте</button>

@@ -4,7 +4,7 @@ import appgalery  from '../../images/icons/appgalerry.svg'
 import appstore  from '../../images/icons/appstoree.svg'
 import telHand from '../../images/other/телефонвруке.png'
 
-export default function InfoAboutCompony() {
+export default function InfoAboutCompany() {
   return (
     <div className='infoAboutCompany'>
         <div className="infoAboutCompany__block infoAboutCompany__block_white">

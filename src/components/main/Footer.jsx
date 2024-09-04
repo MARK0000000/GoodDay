@@ -45,22 +45,22 @@ export default function Footer() {
         <div className="footer__item">
           <span>КОМПАНИЯ</span>
           <hr />
-          <a href="">О компании</a>
-          <a href="">Сотрудничество</a>
-          <a href="">Блог</a>
+          <a onClick={() => handleNavigate('aboutcompany', 'aboutcompany')}>О компании</a>
+          <a onClick={() => handleNavigate('cooperation', 'cooperation')}>Сотрудничество</a>
+          <a onClick={() => handleNavigate('blog', 'blog')}>Блог</a>
         </div>
         <div className="footer__item">
           <span>ПОЛЬЗОВАТЕЛЯМ</span>
           <hr />
-          <a href="">Вопросы и ответы</a>
-          <a href="">Пригласить друга</a>
+          <a onClick={() => handleNavigate('questions', 'questions')}>Вопросы и ответы</a>
+          <a onClick={() => handleNavigate('invite', 'invite')}>Пригласить друга</a>
         </div>
         <div className="footer__item">
           <span>ПАРТНЕРАМ</span>
           <hr />
           <a onClick={() => handleNavigate('partnership', 'partnership')}>Для вашего бизнеса</a>
-          <a href="">Франчайзинг</a>
-          <a href="">Все акции</a>
+          <a onClick={() => handleNavigate('franchise', 'franchise')}>Франчайзинг</a>
+          <a onClick={() => handleNavigate('allstock', 'allstock')}>Все акции</a>
         </div>
       </div>
       <hr  className='footer__hr'/>

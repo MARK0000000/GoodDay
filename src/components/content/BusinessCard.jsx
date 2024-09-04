@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router';
 
 export default function BusinessCard({item}) {
     const navigate = useNavigate();
-
   return (
     <article className="businessCard">
         <div className="businessCard__img-box">

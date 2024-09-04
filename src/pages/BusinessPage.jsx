@@ -1,10 +1,8 @@
 import React, {useEffect, useState, useContext} from 'react'
 import { useParams } from 'react-router-dom';
-
 import addressIcon from '../images/icons/share-map.svg.svg'
 import telIcon from '../images/icons/quick-call.svg.svg'
 import internetIcon from '../images/icons/quick-globe.svg.svg'
-
 import { fetchGet } from '../api/fetch';
 import endpoints from '../api/apiConfig';
 import { Link, animateScroll as scroll } from 'react-scroll';
@@ -13,18 +11,15 @@ import { formatDate } from '../utils/formatDate';
 import { getValueOrDefault } from '../utils/getValueOrDefault';
 import Breadcrambs from '../components/main/Breadcrambs';
 import MyMap from '../components/businessPage/MyMap';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { SkeletonBusinessPage } from '../components/UI/loaders/SkeletonBusinessPage'
-
 import ShareWidget from '../components/businessPage/ShareWidget';
 import ContactsWidget from '../components/businessPage/ContactsWidget';
 import InfoWidget from '../components/businessPage/InfoWidget';
 import AboutStock from '../components/businessPage/AboutStock';
 
 export default function BusinessPage() {
-
     const { id } = useParams();
     const [business, setBusiness] = useState({});
     const [isLoading, setIsLoading] = useState(true);

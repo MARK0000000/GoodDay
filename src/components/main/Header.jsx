@@ -35,9 +35,9 @@ export default function Header() {
           <a className='header__location' href="">Полоцк</a>
           <div className="header__about">
             <a onClick={() => handleNavigate('partnership', 'partnership')}>Для вашего бизнеса</a>
-            <a href="">Пригласить друга</a>
+            <a onClick={() => handleNavigate('invite', 'invite')}>Пригласить друга</a>
             <a onClick={() => handleNavigate('aboutapp', 'aboutapp')}>О приложении</a>
-            <a href="">Франшиза</a>
+            <a onClick={() => handleNavigate('franchise', 'franchise')}>Франшиза</a>
           </div>
           <a href="tel:">+375 (33) 111-11-11</a>
         </div>
@@ -166,8 +166,8 @@ export default function Header() {
             Техника
           </button>
           <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'evetythingforhome' ? 'header__nav-button_gray_active' : ''}`}
-            onClick={() => handleNavigate('evetythingforhome', 'evetythingforhome')}
+            className={`header__nav-button header__nav-button_gray ${activeButton === 'everythingforhome' ? 'header__nav-button_gray_active' : ''}`}
+            onClick={() => handleNavigate('everythingforhome', 'everythingforhome')}
             >
             Всё для дома
           </button>
