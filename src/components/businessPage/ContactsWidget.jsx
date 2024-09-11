@@ -15,13 +15,13 @@ export default function ContactsWidget({business, status}) {
     <>
     <div className="widget">
         <h4 className="widget__title">Контакты</h4>
-        {business.address && 
+        {business.address[0] && 
             <div className="widget__item widget__item_address widget__item_border">
                 <button className="widget__item-btn">
                     <img src={addressIcon} alt="" className="widget__item-icon" />
                 </button>
                 <p className="widget__item-text">
-                    {business.address}
+                    {business.address[0].description}
                     <Link className='widget__item-text_linkOnMap' to="map" smooth={true}>
                         Показать
                     </Link>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { handleNextPage, handlePrevPage } from '../../utils/pagination'
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 export default function Pagination(props) {
     const {
@@ -7,16 +8,15 @@ export default function Pagination(props) {
         currentPage,
         setCurrentPage,
         businesses,
-        businessCards,
         currentPageNumbers,
         pageNumbers,
         indexOfFirstPage,
         indexOfLastPage,
         setIndexOfFirstPage,
         setIndexOfLastPage,
-        setCurrentPageNumbers
+        setCurrentPageNumbers,
+        totalCount
     } = props;
-
 return (
     <ul className='pagination__container'>
         <li
@@ -25,15 +25,17 @@ return (
         >
             &lt;&lt;
         </li>
-        {businessCards.length > 9 &&
+        {totalCount > 9 &&
             currentPageNumbers.map(number => (
-                <li key={number} onClick={() => setCurrentPage(number)} className={`pagination__item ${number === currentPage ? "pagination__item_active" : ""}`}>
-                    {number}
-                </li>
+                <Link key={number}  to="content" smooth={true}>
+                    <li onClick={() => setCurrentPage(number)} className={`pagination__item ${number === currentPage ? "pagination__item_active" : ""}`}>
+                        {number}
+                    </li>
+                </Link>
             ))
         }
         <li
-            className={`pagination__item pagination__item_next ${indexOfLastPage >= Math.ceil(businesses.length / itemsPerPage) ? 'pagination__item_disabled' : ''}`}
+            className={`pagination__item pagination__item_next ${indexOfLastPage >= Math.ceil(totalCount / itemsPerPage) ? 'pagination__item_disabled' : ''}`}
             onClick={() => handleNextPage(pageNumbers, indexOfFirstPage, indexOfLastPage, setIndexOfFirstPage, setIndexOfLastPage, setCurrentPageNumbers)}
         >
             &gt;&gt;

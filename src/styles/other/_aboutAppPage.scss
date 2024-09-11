@@ -73,6 +73,9 @@ max-height: 515px;
     top: -39px;
     object-fit: contain;
     max-width: 385px;
+    &_mobile{
+        display: none;
+    }
 }
 &__icons {
     display: flex;
@@ -251,7 +254,7 @@ font-family: "Raleway";
     }
     &_2{
         transform: translateX(-80px);
-        bottom: -14px;
+        bottom: 0px;
         width: 71px;
     }
     &_3{
@@ -363,6 +366,9 @@ font-family: "Raleway";
         background-color: transparent;
         border: 2px solid white;
     }
+    // &_second{
+    //     position: relative;
+    // }
 }
 &__count {
     font-family: "Raleway", sans-serif;

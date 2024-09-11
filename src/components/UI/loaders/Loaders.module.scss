@@ -1,7 +1,37 @@
 .nothingFound{
-    margin: 50px;
     font-size: 52px;
-    width: 100%;
+    margin: 0px auto;
     text-align: center;
     font-family: 'Segoe UI'
+}
+.contentLoader{
+    width: 100%;
+    max-width: 100%; 
+    height: 523px;
+}
+
+@media (max-width: 1024px) {
+    .contentLoader {
+        height: 415px; 
+    }
+    .nothingFound{
+        font-size: 40px;
+    }
+}
+@media (max-width: 768px) {
+    .contentLoader {
+        height: 372px; 
+    }
+    .nothingFound{
+        font-size: 30px;
+    }
+}
+@media (max-width: 480px) {
+    .contentLoader {
+        height: 372px; 
+    }
+    .nothingFound{
+        font-size: 20px;
+    }
+
 }

@@ -4,6 +4,9 @@ import tel from '../../images/other/телефонgd.png'
 import GDblue from '../../images/other/gd3d.png'
 
 export default function HowItWorks() {
+    const handleNavigate = () => {
+        window.open('https://goodday.taplink.ws/', '_blank');
+    }
   return (
     <section className='howItWorks'>
         <h3 className="howItWorks__title">Как это работает?</h3>
@@ -23,7 +26,7 @@ export default function HowItWorks() {
                 <span className="howItWorks__span">Шаг 3</span>
                 <p className="howItWorks__paragrath">Получай скидку</p>
                 <img src={discounts} alt="" className="howItWorks__img" />
-                <button className="howItWorks__button">Скачать!</button>
+                <button onClick={() => handleNavigate()} className="howItWorks__button">Скачать!</button>
             </div>
         </div>
     </section>

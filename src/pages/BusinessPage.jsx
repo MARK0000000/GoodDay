@@ -1,10 +1,10 @@
-import React, {useEffect, useState, useContext} from 'react'
-import { useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react'
+import { useLocation, useParams } from 'react-router-dom';
 import addressIcon from '../images/icons/share-map.svg.svg'
 import telIcon from '../images/icons/quick-call.svg.svg'
 import internetIcon from '../images/icons/quick-globe.svg.svg'
 import { fetchGet } from '../api/fetch';
-import endpoints from '../api/apiConfig';
+import useEndpoints from '../api/apiConfig';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import { getWorkTimeStatus } from '../utils/workTimeDetailed';
 import { formatDate } from '../utils/formatDate';
@@ -18,13 +18,14 @@ import ShareWidget from '../components/businessPage/ShareWidget';
 import ContactsWidget from '../components/businessPage/ContactsWidget';
 import InfoWidget from '../components/businessPage/InfoWidget';
 import AboutStock from '../components/businessPage/AboutStock';
+import { handleNavigateSocial } from '../utils/navigateSocial';
 
 export default function BusinessPage() {
-    const { id } = useParams();
+    const endpoints = useEndpoints();
+    const {id} = useParams();
     const [business, setBusiness] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    
-    
+
     const [links, setLinks] = useState([])
     const [activeLink, setActiveLink] = useState(links[0] || {}); 
     const handleLinkClick = (link) => {
@@ -33,11 +34,10 @@ export default function BusinessPage() {
 
     const [status, setStatus] = useState('Закрыто');
 
-
     useEffect(() => {
       async function getData() {
         const data = await fetchGet(`${endpoints.BUSINESSBYID}${id}`);
-        if (data) {
+        if (data && data != Promise) {
             setBusiness(data);
             console.log(data)
             setLinks([
@@ -51,20 +51,20 @@ export default function BusinessPage() {
                 },
                 {
                 title: 'Адреса',
-                body: data.addresses.map(address => address.description).join('\n') || "Адреса не указаны",
+                body: (data.addresses[0] ? data.addresses.map(address => address.description).join('\n') : false) ||  "Адреса не указаны",
                 },
             ])
-            setActiveLink('Условия')    
+            setActiveLink('Условия')     
 
             setStatus(getWorkTimeStatus(data.workTimeDetailed));
 
+            console.log(data.addresses[0])
 
-            setIsLoading(false);
+            setIsLoading(false);            
         }
-      }
-      getData();
-    }, []);
-  
+    }
+    getData();
+    }, [id]);
     return (
         <section>
             <Breadcrambs current={business.name}/>
@@ -91,16 +91,18 @@ export default function BusinessPage() {
                             }
                             {business.webLink &&
                                 <button className="businessPage__button">
-                                    <a href={`tel:${business.phone}`}>
+                                    <a onClick={() => handleNavigateSocial('web', `${business.webLink}`)}>
                                         <img src={internetIcon} alt="" />
                                     </a>
                                 </button>
                             }
-                            <button className="businessPage__button">
-                                <Link to="map" smooth={true}>
-                                    <img src={addressIcon} alt="" />
-                                </Link>
-                            </button>
+                            {business.address[0] &&
+                                <button className="businessPage__button">
+                                    <Link to="map" smooth={true}>
+                                        <img src={addressIcon} alt="" />
+                                    </Link>
+                                </button>
+                            }
                             {business.isPromoCode &&
                                 <button className="businessPage__button businessPage__button_big">
                                     <a href="https://goodday.taplink.ws/" target='_blank'>

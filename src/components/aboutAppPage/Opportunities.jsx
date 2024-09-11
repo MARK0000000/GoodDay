@@ -34,14 +34,14 @@ export default function Opportunities() {
                 <img src={telSmall} alt="" className="opportunities__block-icon opportunities__block-icon_2" />
             </div>
             <div className="opportunities__block opportunities__block_3">
-                <h4 className="opportunities__block-title">Найти на карте и <br /> по категориям</h4>
+                <h4 className="opportunities__block-title">Найти на карте и по категориям</h4>
                 <hr className="opportunities__block-hr" />
                 <p className="opportunities__block-p">
-                Доступна карта, на которой <br />
-                легко можно найти всех <br />
-                партнеров мобильного <br />
-                приложения поблизости. <br />
-                А также все места города по <br />
+                Доступна карта, на которой 
+                легко можно найти всех 
+                партнеров мобильного 
+                приложения поблизости. 
+                А также все места города по 
                 категориям
                 </p>
                 <img src={mapSmall} alt="" className="opportunities__block-icon opportunities__block-icon_3" />

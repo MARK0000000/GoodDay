@@ -1,20 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useLocation } from 'react-router-dom';
 import exampleImg from '../../images/other/4k.jpg';
-import endpoints from '../../api/apiConfig';
+import useEndpoints from '../../api/apiConfig'
+
 import { formatDate } from '../../utils/formatDate';
 import { getValueOrDefault } from '../../utils/getValueOrDefault';
 import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 import { useNavigate } from 'react-router';
+import { getEndpoint } from '../../utils/workWithUrl';
 
 export default function BusinessCard({item}) {
+    const endpoints = useEndpoints()
+
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const endpoint = getEndpoint(location)
   return (
     <article className="businessCard">
         <div className="businessCard__img-box">
             {item.discount &&
                 <span className='businessCard__stock'>{item.discount}</span>
             }
-            <img src={item.images && item.images[0] ? (endpoints.UPLOADS + item.images[0].url) : exampleImg} alt="Изображение" className="businessCard__img" />
+            <img src={item.images && item.images[0] ? (endpoints.UPLOADS + item.images[0].url) : ''} alt="Изображение" className="businessCard__img" />
             {/* like icon */}
             {/* <div className="businessCard__likeIcon-box">
                 <svg
@@ -43,7 +51,7 @@ export default function BusinessCard({item}) {
             </div>
             <p className="businessCard__text businessCard__text_p">{getValueOrDefault(item.shortDescription, 'Описание не указано')}</p>
             <div className="businessCard__text-box businessCard__text-box_vertical">
-                <span className="businessCard__text">Адрес: {getValueOrDefault(item.address, 'Адрес не указан')}</span>
+                <span className="businessCard__text">Адрес: {getValueOrDefault(item.address[0] ? item.address[0].description : false, 'Адрес не указан')}</span>
                 <span className={`businessCard__text ${
                     getWorkTimeStatus(item.workTimeDetailed) === 'Открыто' 
                         ? 'businessCard__text_open' 
@@ -62,7 +70,7 @@ export default function BusinessCard({item}) {
                 {/* <span className="businessCard__text_bottom businessCard__text_bottom_paid">{getValueOrDefault(item.buyCount, 0)}</span>
                 <span className="businessCard__text_bottom businessCard__text_bottom_comments">{getValueOrDefault(item.commentsCount, 0)}</span> */}
             </div>
-            <button className="businessCard__button" onClick={() => navigate(`${item.id}`, { replace: false })}> <span>Посмотреть</span></button>
+            <button className="businessCard__button" onClick={() => navigate(`${endpoint == "promotion" ? item.businessId :  item.id}`, { replace: false })}> <span>Посмотреть</span></button>
         </div>
     </article>
   )

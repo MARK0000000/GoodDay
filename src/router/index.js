@@ -1,6 +1,6 @@
 import React from 'react';
 import Discounts from '../pages/Discounts';
-import Stock from '../pages/Stock'
+import Promotion from '../pages/Promotion'
 import BusinessPage from '../pages/BusinessPage';
 import Services from '../pages/Services';
 import ServicePage from '../pages/ServicePage';
@@ -28,8 +28,8 @@ const generateBusinessRoutes = (basePath) => {
 export const privateRoute = [
    { path: 'discounts', element: <Discounts /> },
    { path: 'discounts/:id', element: <BusinessPage /> },
-   { path: 'stock', element: <Stock /> },
-   { path: 'stock/:id', element: <BusinessPage /> },
+   { path: 'promotion', element: <Promotion/> },
+   { path: 'promotion/:id', element: <BusinessPage /> },
    { path: 'services', element: <Services /> },
    { path: 'services/:id', element: <ServicePage /> },
 

@@ -4,7 +4,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 export const CityContext = createContext(null);
 
 export const CityProvider = ({ children }) => {
-    const [city, setCity] = useLocalStorage('city', null)
+    const [city, setCity] = useLocalStorage('city', 1)
 
     function updateCity (city) {
         setCity(city)
@@ -15,7 +15,7 @@ export const CityProvider = ({ children }) => {
     }, [])
     
   return (
-    <CityContext.Provider value={{ city }}>
+    <CityContext.Provider value={{ city, updateCity }}>
       {children}
     </CityContext.Provider>
   );

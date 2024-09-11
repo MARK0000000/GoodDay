@@ -26,7 +26,8 @@ export default function QuestionsBlock() {
         <details>
             <summary>Какие приемущества дает "активная" подписка?</summary>
             <p>
-                Доступ к уникальным скидкам от партнеров и действующие промокоды              </p>
+                Доступ к уникальным скидкам от партнеров и действующие промокоды
+            </p>
         </details>
         <hr className="question__hr" />
         <details>

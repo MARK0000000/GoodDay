@@ -17,10 +17,10 @@ export default function Footer() {
           <span className='footer__contactUs-text'>
             <sup style={{verticalAlign: 'bottom'}}>+</sup>
             375 33 
-            <sup style={{verticalAlign: 'bottom'}}> 111-11-11</sup>
+            <sup style={{verticalAlign: 'bottom'}}> 694-96-38</sup>
           </span>
           <button className="footer__contactUs-btn">
-            <a href="tel:" className="footer__tel">Связаться с нами</a>
+            <a href="tel:+375336949638" className="footer__tel">Связаться с нами</a>
           </button>
         </div>
         <div className="footer__item footer__item_apps">
@@ -42,25 +42,27 @@ export default function Footer() {
             </button>
           </div>
         </div>
-        <div className="footer__item">
-          <span>КОМПАНИЯ</span>
-          <hr />
-          <a onClick={() => handleNavigate('aboutcompany', 'aboutcompany')}>О компании</a>
-          <a onClick={() => handleNavigate('cooperation', 'cooperation')}>Сотрудничество</a>
-          <a onClick={() => handleNavigate('blog', 'blog')}>Блог</a>
-        </div>
-        <div className="footer__item">
-          <span>ПОЛЬЗОВАТЕЛЯМ</span>
-          <hr />
-          <a onClick={() => handleNavigate('questions', 'questions')}>Вопросы и ответы</a>
-          <a onClick={() => handleNavigate('invite', 'invite')}>Пригласить друга</a>
-        </div>
-        <div className="footer__item">
-          <span>ПАРТНЕРАМ</span>
-          <hr />
-          <a onClick={() => handleNavigate('partnership', 'partnership')}>Для вашего бизнеса</a>
-          <a onClick={() => handleNavigate('franchise', 'franchise')}>Франчайзинг</a>
-          <a onClick={() => handleNavigate('allstock', 'allstock')}>Все акции</a>
+        <div className='footer__pagesLinks'>
+          <div className="footer__item">
+            <span>КОМПАНИЯ</span>
+            <hr />
+            <a onClick={() => handleNavigate('aboutcompany', 'aboutcompany')}>О компании</a>
+            <a onClick={() => handleNavigate('cooperation', 'cooperation')}>Сотрудничество</a>
+            <a onClick={() => handleNavigate('blog', 'blog')}>Блог</a>
+          </div>
+          <div className="footer__item">
+            <span>ПОЛЬЗОВАТЕЛЯМ</span>
+            <hr />
+            <a onClick={() => handleNavigate('questions', 'questions')}>Вопросы и ответы</a>
+            <a onClick={() => handleNavigate('invite', 'invite')}>Пригласить друга</a>
+          </div>
+          <div className="footer__item">
+            <span>ПАРТНЕРАМ</span>
+            <hr />
+            <a onClick={() => handleNavigate('partnership', 'partnership')}>Для вашего бизнеса</a>
+            <a onClick={() => handleNavigate('franchise', 'franchise')}>Франчайзинг</a>
+            <a onClick={() => handleNavigate('allstock', 'allstock')}>Все акции</a>
+          </div>
         </div>
       </div>
       <hr  className='footer__hr'/>

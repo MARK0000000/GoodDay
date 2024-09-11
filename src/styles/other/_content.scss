@@ -45,6 +45,7 @@
    }
    &__content {
       padding: 25px 15px 25px 15px;
+      max-width: 100%;
    }
    &__title {
       font-size: 20px;
@@ -212,7 +213,7 @@
 }
 .pagination{
    &__container{
-      @include f(start, center);
+      @include f(center, center);
       margin-top: 20px;
    }
    &__item{

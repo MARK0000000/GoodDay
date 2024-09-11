@@ -10,9 +10,15 @@
 @import './other/partnershipPage';
 @import './other/service';
 @import './other/servicePage';
-
+.hidden-button {
+   display: none;
+ }
 //main
 .header{
+   &__container{
+      position: relative;
+      max-width: 100%;
+   }
    user-select: none;
    background-color: $headerWhite;
    box-shadow: 0px 4px 10px 0px $iconGray;
@@ -49,6 +55,12 @@
          margin-right: 0px
       }
    }
+   &__burger{
+      display: none;
+   }
+   &__close{
+      display: none;
+   }
 
    &__secondLine{
       @include f(space-between, center);
@@ -80,7 +92,7 @@
       &-box{
          position: relative;
          width: 100%;
-         margin: 0px 20px;
+         margin-left: 20px;
    
       }
       &::placeholder{
@@ -105,131 +117,105 @@
       }
    }
 
-   &__nav{
-   }
-   &__navCore{
-      @include f(space-between, center);
-      height: 38px;
-   }
-   &__navMore{
+   &__navCore {
       position: relative;
-      top: -19px;
-      height: 0px;
-      visibility: hidden;
-      transition: top 0.7s;
-      button {
-         opacity: 0;
-         transition: opacity 2s;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      width: 100%;
+   }
+   
+   &__nav-button {
+      //width: 114px;
+      margin-bottom: 10px;
+      background-color: $backGray;
+      padding: 10px 15px;
+      border-radius: 5px;
+      border: none;
+      font-weight: 300;
+      transition: background-color 0.3s, transform 0.1s, margin-top 0.2s;
+      margin-right: 5px;
+      cursor: pointer;
+      &_hidden{
+         display: none;
+         &_active{
+            display: block;
+         }
       }
-      &_active{
-         transition: top 0.7s;
-         margin-bottom: 10px;
-         button {
-            opacity: 1;
-         }   
-         visibility: visible;
-         height: 38px;
-         top: 10px;   
-         @include f(space-between, center);
-      }
-
- }
-
-   &__nav-button{
-    background-color: $backGray;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: none;
-    font-weight: 300;
-    transition: background-color 0.3s, transform 0.1s, margin-top 0.2s;
-    &More{
-        background-color: $backGray;
-        padding: 10px 15px;
-        border-radius: 5px;
-        border: none;
-        font-weight: 300;  
-        &::after{
-         content: url('../images/icons/moreNavHeader.svg');
-         margin-left: 5px;
-         transition: transform 0.3s;
-         display: inline-block;
-         }  
+   }
+   &__nav-buttonMore {
+      z-index: 3;
+      border: 1px solid black;
+      margin-bottom: 10px;
+      text-wrap: nowrap;
+      background-color: $backGray;
+      padding: 10px 15px;
+      border-radius: 5px;
+      &::after{
+       content: url('../images/icons/moreNavHeader.svg');
+       margin-left: 5px;
+       transition: transform 0.3s;
+       display: inline-block;
+       }  
       &_active::after{
             transform: rotate(-180deg) !important;
       }
-    }
-    &:hover{
-        margin-top: -5px;
-        background-color: $backGrayOpacity;
-    }
-    &_blue{
-        background-color: $blue;
-        color: white;
-        &:hover{
-            margin-top: -5px;
-            background-color: rgba(57, 83, 138, 0.7);
-        }    
-        &_active{
-            background-color: transparent;
-            color: $blue;
-            border: 1px solid $blue;
-            box-sizing: border-box;
-            &:hover{
-                margin-top: 0px;
-                background-color: transparent;
-            }
-        }
-    }
-    &_orange{
-        background-color: $orange;
-        color: white;
-        &:hover{
-            margin-top: -5px;
-            background-color: rgba(255, 146, 46, 0.7);
-        }    
-        &_active{
-            background-color: transparent;
-            color: $orange;
-            border: 1px solid $orange;
-            box-sizing: border-box;
-            &:hover{
-                margin-top: 0px;
-                background-color: transparent;
-            }
-        }
-    }
-    &_red{
-        background-color: rgb(244, 67, 54);
-        color: white;
-        &:hover{
-            margin-top: -5px;
-            background-color: rgba(244, 67, 54, 0.7);
-        }    
-        &_active{
-            background-color: transparent;
-            color: rgb(244, 67, 54);
-            border: 1px solid rgb(244, 67, 54);
-            box-sizing: border-box;
-            &:hover{
-                margin-top: 0px;
-                background-color: transparent;
-            }
-        }
-    }
-    &_gray_active{
-        background-color: transparent;
-        border: 2px solid $backGray;
-        &:hover{
-            margin-top: 0px;
-            background-color: transparent;
-        }
-    }
-    }
-
+   }
+   
+   &__nav-button_gray_active, .header__nav-button_blue_active, .header__nav-button_orange_active, .header__nav-button_red_active {
+      background-color: transparent;
+   }
+   &__nav-button_gray_active{
+      border: 2px solid $backGray;
+   }
+   &__nav-button:hover {
+      position: relative;
+      top: -3px;
+      background-color: $backGrayOpacity;
+   }
+   
+   &__nav-button_blue {
+      background-color: $blue;
+      color: white;
+      &_active{
+         color: $blue;
+         border: 1px solid $blue;
+         pointer-events: none;
+      }
+      &:hover{
+         background-color: rgba(57, 83, 138, 0.7);
+      }
+   }
+   
+   &__nav-button_orange {
+      background-color: $orange;
+      color: white;
+      &_active{
+         color: $orange;
+         border: 1px solid $orange;
+         pointer-events: none;
+      }
+      &:hover{
+         background-color: rgba(255, 146, 46, 0.7);
+      }
+   }
+   
+   &__nav-button_red {
+      background-color: rgb(244, 67, 54);
+      color: white;
+      &_active{
+         color: rgb(244, 67, 54);
+         border: 1px solid rgb(244, 67, 54);
+         pointer-events: none;
+      }
+      &:hover{
+         background-color: rgba(244, 67, 54, 0.7);
+      }
+   }
+    
 }
-
 .breadCrambs {
-   width: 1024px;
+   width: 100%;
    @include f(start, center);
    margin: 20px 0px 50px 0px;
    font-weight: 300;
@@ -240,7 +226,64 @@
       margin: 0px 20px;
    }
 }
+.inDevelopment {
+   margin: auto auto;
+   @include f(start, center);
+   flex-direction: column;
+   &__img {
+      margin-bottom: 30px;
+      }
+   &__title {
+      margin-bottom: 30px;
+      font-size: 20px;
+   }
+   &__btn {
+      margin-bottom: 50px;
+      border-radius: 10px;
+      background-color: transparent;
+      color: white;
+      padding: 10px 15px;
+      font-size: 12px;
+      position: relative;
+      width: 160px;
+      height: 36px;
+      span{
+         width: 100%;
+         color: white;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         display: block;
+         z-index: 3;
+         transition: left 0.3s;
+      }
+      &:hover span{
+            left: 45%;
+      }      
+      &::before {
+         content: '';
+         background-color: $orange;
+         border-radius: 10px;
+         width: 160px;
+         height: 36px;
+         position: absolute;
+         top: 0;
+         left: 0;
+         display: block;
+         -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
+         clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
+         transition: clip-path 0.4s cubic-bezier(0.2, 1, 0.8, 1), -webkit-clip-path 0.4s cubic-bezier(0.2, 1, 0.8, 1);
+         z-index: 2;
+      }
+      &:hover::before {
+         background: $orange;
+         -webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+         clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+      }
 
+   }
+}
 .footer {
    user-select: none;
    background-color: $footerBlue;
@@ -248,6 +291,10 @@
    padding: 50px 0px 15px 0px;
    font-size: 14px;
    font-family: "Raleway";
+   &__pagesLinks{
+      @include f(space-between, start);
+      width: 50%;
+   }
    a{
       color: white;
       font-size: 14px;
@@ -258,6 +305,7 @@
    }
    &__content {
       @include f(space-between, start);
+      flex-wrap: wrap;
       margin-bottom: 50px;
    }
    &__contactUs {
@@ -332,6 +380,8 @@
    }
    &__underLine {
       @include f(space-between, start);
+      gap: 20px;
+      padding: 0px 10px;
       color: rgb(99, 101, 111);
       a{
          color: rgb(99, 101, 111);
@@ -370,123 +420,97 @@
    }
 }
 
-//containers
-.content {
-   margin: 30px 0px 40px 0px;   
-   &__container{
-      margin: 0px 5px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 33px;
-      align-items: start;
-   }
-   &__title-box {
-      @include f(space-between, center);
-      margin-bottom: 30px;
-   }
-   &__title {
-      font-size: 28px;
-   }
-   &__city {
-      color: $orange;
-   }
-   &__count {
-      font-family: "Raleway", sans-serif;
-      margin-left: 30px;
-      font-size: 16px;
-      color: $iconGray;
-   }
-   &__viewMapBtn {
-      background-color: $blue;
-      border-radius: 5px;
-      color: white;
-      padding: 10px 20px;
-      font-size: 14px
-   }
-}
 //pages
-.login{
-   margin: 40vh auto 0px auto;
-   transform: translateY(-50%);
-   background-color: white;
-   box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
-   padding: 15px;
-   border-radius: 10px;
-   position: relative;
-   &__prompt{
-      font-size: 28px;
-      text-align: center;
-   }
-   &__form{
-   padding: 0 3%;
-   }
-   &__title{
-      cursor: pointer;
-      user-select: none;
-      text-align: center;
-      -webkit-tap-highlight-color: transparent;
-      span{
-      transition: ease 0.5s;
-         font-size: 16px;
-         &.active{
-         transition: ease 0.5s;
-            font-size: 42px;
-         }
-         &.login__title_slash{
-            font-size: 28px;
-         }
-      }
-   }
-   &__btn{
-      display: block;
-      margin: 0 auto;
-      padding: 10px 25px;
-      margin-top: 15px;
-      font-size: 14px;
-      color: white;
-      border-radius: 10px;
-      background-color: $orange;
-      cursor: pointer;
-      position: relative;
-      &:hover{
-         transition: ease-out 0.3s;
-         transform: scale(1.1);
-      }
-      &:before {
-         content: '';
-         position: absolute;
-         right: -35px;
-         top: 50%;
-         margin-top: -12px;
-         width: 24px;
-         height: 24px;
-         border: 2px solid var(--icons-color);
-         border-left-color: transparent;
-         border-right-color: transparent;
-         border-radius: 50%;
-         opacity: 0;
-         transition: opacity 0.5s;
-         animation: 0.8s linear infinite rotate;
-       }
-       &_sending{
-         pointer-events: none;
-         cursor: not-allowed;
-         &:before {
-            transition-duration: 1s;
-            opacity: 1;
-          } 
-      }     
-      @keyframes rotate {
-         0% {
-           transform: rotate(0deg);
-         }
-         100% {
-           transform: rotate(360deg);
-         }
-       }
-   }
-}
+// .login{
+//    margin: 40vh auto 0px auto;
+//    transform: translateY(-50%);
+//    background-color: white;
+//    box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+//    padding: 15px;
+//    border-radius: 10px;
+//    position: relative;
+//    &__prompt{
+//       font-size: 28px;
+//       text-align: center;
+//    }
+//    &__form{
+//    padding: 0 3%;
+//    }
+//    &__title{
+//       cursor: pointer;
+//       user-select: none;
+//       text-align: center;
+//       -webkit-tap-highlight-color: transparent;
+//       span{
+//       transition: ease 0.5s;
+//          font-size: 16px;
+//          &.active{
+//          transition: ease 0.5s;
+//             font-size: 42px;
+//          }
+//          &.login__title_slash{
+//             font-size: 28px;
+//          }
+//       }
+//    }
+//    &__btn{
+//       display: block;
+//       margin: 0 auto;
+//       padding: 10px 25px;
+//       margin-top: 15px;
+//       font-size: 14px;
+//       color: white;
+//       border-radius: 10px;
+//       background-color: $orange;
+//       cursor: pointer;
+//       position: relative;
+//       &:hover{
+//          transition: ease-out 0.3s;
+//          transform: scale(1.1);
+//       }
+//       &:before {
+//          content: '';
+//          position: absolute;
+//          right: -35px;
+//          top: 50%;
+//          margin-top: -12px;
+//          width: 24px;
+//          height: 24px;
+//          border: 2px solid var(--icons-color);
+//          border-left-color: transparent;
+//          border-right-color: transparent;
+//          border-radius: 50%;
+//          opacity: 0;
+//          transition: opacity 0.5s;
+//          animation: 0.8s linear infinite rotate;
+//        }
+//        &_sending{
+//          pointer-events: none;
+//          cursor: not-allowed;
+//          &:before {
+//             transition-duration: 1s;
+//             opacity: 1;
+//           } 
+//       }     
+//       @keyframes rotate {
+//          0% {
+//            transform: rotate(0deg);
+//          }
+//          100% {
+//            transform: rotate(360deg);
+//          }
+//        }
+//    }
+// }
 
 
 
+@import './otherMedia/pageMedia';
+@import './otherMedia/aboutAppPageMedia';
+@import './otherMedia/businessPageMedia';
+@import './otherMedia/contentMedia';
+@import './otherMedia/partnershipPageMedia';
+@import './otherMedia/serviceMedia';
+@import './otherMedia/servicePageMedia';
 @import 'media';
+

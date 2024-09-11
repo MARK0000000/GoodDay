@@ -1,21 +1,22 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+import classes from './Loaders.module.scss';
 
 export const SkeletonContent = () => (
   <ContentLoader
     speed={2}
-    width={316}
     height={523}
-    //viewBox="0 0 320 50"
+    className={classes.contentLoader}
     backgroundColor="#f3f3f3"
-    foregroundColor="#ecebeb">
-    <rect x="0" y="0" rx="20" ry='20' width='316' height='220' />
-    <rect x="15" y="245" rx="6" ry='6' width='250' height='30' />
-    <rect x="15" y="280" rx="6" ry='6' width='200' height='21' />
-    <rect x="15" y="321" rx="6" ry='6' width='200' height='19' />
-    <rect x="15" y="345" rx="6" ry='6' width='200' height='19' />
-    <rect x="15" y="384" rx="6" ry='6' width='200' height='21' />
-    <rect x="15" y="410" rx="6" ry='6' width='200' height='21' />
-    <rect x="205" y="470" rx="6" ry='6' width='96' height='36' />
+    foregroundColor="#ecebeb"
+  >
+    <rect x="0" y="0" rx="20" ry='20' width='100%' height='42%' />
+    <rect x="15" y="47%" rx="6" ry='6' width='80%' height='6%' />
+    <rect x="15" y="54%" rx="6" ry='6' width='60%' height='4%' />
+    <rect x="15" y="61%" rx="6" ry='6' width='60%' height='4%' />
+    <rect x="15" y="66%" rx="6" ry='6' width='60%' height='4%' />
+    <rect x="15" y="73%" rx="6" ry='6' width='60%' height='4%' />
+    <rect x="15" y="78%" rx="6" ry='6' width='60%' height='4%' />
+    <rect x="50%" y="90%" rx="6" ry='6' width='40%' height='7%' />
   </ContentLoader>
 );

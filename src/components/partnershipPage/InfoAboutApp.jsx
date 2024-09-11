@@ -1,22 +1,32 @@
-import React from 'react'
-import phone from '../../images/other/phone.png'
+import React, { useState, useEffect } from 'react';
+import phone from '../../images/other/phone.png';
+import axios from 'axios'; 
 
 export default function InfoAboutApp() {
+  const [pdfFile, setPdfFile] = useState(null);
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = 'https://elated-turing.178-124-131-24.plesk.page/pdfs/presentation';
+    link.download = 'presentation.pdf'; // Имя файла для скачивания
+    link.click();
+  };
+
   return (
     <section className='infoAboutApp__container'>
       <article className="infoAboutApp__content">
         <h2 className="infoAboutApp__title">Что такое Good Day?</h2>
         <p className="infoAboutApp__text">  
-            Мы - мобильное приложение Good Day, которое позволяет экономить <br /> 
-            всегда и везде! Экономия касается не только денег, но и времени. Секрет <br />
-            нашего успеха наши партнеры. На данный момент, Good Day имеет <br /> 
-            представительства более чем в 20 городах Беларуси и России и более <br />
-            1600 партнеров, которые нам доверяют и помогают каждый день делать <br /> 
+            Мы - мобильное приложение Good Day, которое позволяет экономить 
+            всегда и везде Экономия касается не только денег, но и времени. Секрет
+            нашего успеха наши партнеры. На данный момент, Good Day имеет 
+            представительства более чем в 20 городах Беларуси и России и более
+            1600 партнеров, которые нам доверяют и помогают каждый день делать 
             наших клиентов чуть более счастливыми, чем вчера.
         </p>
-        <button className="infoAboutApp__button">Презентация</button>
+        <button className="infoAboutApp__button" onClick={handleDownload}>Презентация</button>
       </article>
       <img src={phone} alt="" className="infoAboutApp__img" />
     </section>
-  )
+  );
 }
