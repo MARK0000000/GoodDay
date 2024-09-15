@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.fc747133.css",
-    "main.js": "/static/js/main.d96c0167.js",
+    "main.css": "/static/css/main.2371cae8.css",
+    "main.js": "/static/js/main.f0ec4bdc.js",
     "static/media/4k.jpg": "/static/media/4k.f85feb5ed9339ae62735.jpg",
     "static/media/подразместитьсвоиуслуги.png": "/static/media/подразместитьсвоиуслуги.94673ee13df6dc68b0a6.png",
     "static/media/развлечения.png": "/static/media/развлечения.103cf4f8a2c40918dd27.png",
@@ -17,6 +17,7 @@
     "static/media/парикмахерскиеуслуги.jpg": "/static/media/парикмахерскиеуслуги.d4c13da43154bbf4ae0b.jpg",
     "static/media/партнеры4.png": "/static/media/партнеры4.7ff22176c1b6f29ddf61.png",
     "static/media/skidki.png": "/static/media/skidki.5f0b4fd3388310b3cb60.png",
+    "static/media/add.png": "/static/media/add.5ca859e595980766ded6.png",
     "static/media/татуаж,тату.jpg": "/static/media/татуаж,тату.a19827c31eaea3aa5aa6.jpg",
     "static/media/депиляция.jpg": "/static/media/депиляция.6fcb2d89ecd18401ecee.jpg",
     "static/media/косметология,уход.jpg": "/static/media/косметология,уход.f21b40b347ffbf365c79.jpg",
@@ -71,8 +72,8 @@
     "static/media/instagram-outline.svg": "/static/media/instagram-outline.186ec4107c439af3b3d8248c83bb7b4e.svg",
     "static/media/youtube.svg": "/static/media/youtube.9aba0f74a1367feb9ae31b9948f3b2dd.svg",
     "static/media/lupa.svg": "/static/media/lupa.efe4d5cb0c9e22d9a5ef54b5715a4f7e.svg",
-    "static/media/telegram-white.svg.svg": "/static/media/telegram-white.svg.b51b2dd220bfbe131b0273e60a8c778e.svg",
     "index.html": "/index.html",
+    "static/media/telegram-white.svg.svg": "/static/media/telegram-white.svg.b51b2dd220bfbe131b0273e60a8c778e.svg",
     "static/media/close.svg": "/static/media/close.6caa95e3dfec41d9fd4e693b83ff8a3b.svg",
     "static/media/icon_menu.svg": "/static/media/icon_menu.461b7dd082c2f6d01ba21b32bd7ca291.svg",
     "static/media/share-map.svg.svg": "/static/media/share-map.svg.0b87e140e237ea702c3270b916038794.svg",
@@ -82,11 +83,11 @@
     "static/media/plus12.svg": "/static/media/plus12.076d2634e6677acd4950.svg",
     "static/media/plus16.svg": "/static/media/plus16.6a42f27869650e09954c.svg",
     "static/media/moreNavHeader.svg": "/static/media/moreNavHeader.9d83dd5776ccce8ffd30.svg",
-    "main.fc747133.css.map": "/static/css/main.fc747133.css.map",
-    "main.d96c0167.js.map": "/static/js/main.d96c0167.js.map"
+    "main.2371cae8.css.map": "/static/css/main.2371cae8.css.map",
+    "main.f0ec4bdc.js.map": "/static/js/main.f0ec4bdc.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc747133.css",
-    "static/js/main.d96c0167.js"
+    "static/css/main.2371cae8.css",
+    "static/js/main.f0ec4bdc.js"
   ]
 }
