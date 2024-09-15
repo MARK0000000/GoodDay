@@ -57,6 +57,7 @@
        margin-top: 30px;
        font-size: 16px;
        width: 100%;
+       @include f(center, center);
     }
     &__contacts {
        @include f(start, start);
@@ -70,7 +71,12 @@
     }
     &__contact{
        font-weight: 500;
- 
+       a{
+        font-size: 18px
+       }
+    }
+    &__contact, a{
+        font-size: 18px
     }
 }
 .infoAboutApp {

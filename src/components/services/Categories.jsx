@@ -12,7 +12,8 @@ import img10 from '../../images/other/визаж.jpg'
 import img11 from '../../images/other/усыборода.jpg'
 import img12 from '../../images/other/спа.jpeg'
 
-export default function Categories() {
+export default function Categories({choiceCategory, changeCategory}) {
+
     const [categories, setCategories] = useState([
         { id: 1, text: 'Парихмахерские услуги', img: img1 },
         { id: 2, text: 'Ресницы', img: img2 },
@@ -27,12 +28,7 @@ export default function Categories() {
         { id: 11, text: 'Усы, борода', img: img11 },
         { id: 12, text: 'СПА', img: img12 },
     ]);
-    const [clickedIndexes, setClickedIndexes] = useState([]);
-    const [activeCategory, setActiveCategory] = useState(1);
 
-    const handleCategoryClick = (categoryId) => {
-    setActiveCategory(categoryId);
-    };
 
   return (
     <section className="categories">
@@ -41,8 +37,8 @@ export default function Categories() {
         {categories.map((category, index) => (
             <div
                 key={category.id}
-                className={`categories__item ${activeCategory === category.id ? 'categories__item_active' : ''}`}
-                onClick={() => handleCategoryClick(category.id)}
+                className={`categories__item ${choiceCategory === category.id ? 'categories__item_active' : ''}`}
+                onClick={() => changeCategory(category.id)}
             >   
                 <div className="categories__grayBack"></div>
                 <img src={category.img} className='categories__img' />

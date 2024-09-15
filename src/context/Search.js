@@ -44,6 +44,7 @@ export const SearchProvider = ({ children }) => {
   const [isSearchLoading, setIsSearchLoading] = useState(true)
 
   useEffect(() => {
+    setIsSearchLoading(true)
     const fetchSearchData = async () => {
       if (searchValue !== '') {
         let url;

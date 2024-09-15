@@ -13,15 +13,15 @@ export default function ContactsWidget({business, status}) {
     <>
     {(business.address || business.workTime || business.phone || (business.webLink || business.vkLink)) &&
     <>
-    <div className="widget">
+    <div className="widget widget_contact">
         <h4 className="widget__title">Контакты</h4>
-        {business.address[0] && 
+        {business.address && 
             <div className="widget__item widget__item_address widget__item_border">
                 <button className="widget__item-btn">
                     <img src={addressIcon} alt="" className="widget__item-icon" />
                 </button>
                 <p className="widget__item-text">
-                    {business.address[0].description}
+                    {business.address}
                     <Link className='widget__item-text_linkOnMap' to="map" smooth={true}>
                         Показать
                     </Link>
@@ -77,7 +77,6 @@ export default function ContactsWidget({business, status}) {
             </div>
         }
     </div>
-    <div style={{height: "30px"}}></div>
     </>
     }
     </>

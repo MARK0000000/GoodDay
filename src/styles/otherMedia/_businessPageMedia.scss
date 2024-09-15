@@ -1,7 +1,270 @@
 @media (max-width: 1024px) {
-
+    .businessPage {
+        padding: 0px 10px;
+    }
+    .map {
+        width: 100vw; 
+        &__content {
+            left: 0%;
+        }
+    }
+        
+    
 }
 @media (max-width: 768px) {
+    .businessPage {
+        &__firstLine {
+           margin-bottom: 10px;
+        }
+        &__title {
+           font-size: 16px;
+        }
+        &__text {
+           font-size: 12px;
+        }
+        &__button {
+           height: 40px;
+           width: 40px;
+           margin-right: 5px;
+           &_big {
+              a{
+                 padding: 16px 25px;
+                 color: black;
+              }
+           }
+        }
+
+        &__secondLine {
+           margin-bottom: 10px;
+        }
+        &__img-box{
+            margin-bottom: 10px;
+        }
+        &__widgets {
+           width: 100%;
+           display: grid;
+           grid-template-columns: 100%;
+           grid-template-rows: repeat(3, auto);
+           padding-right: 0px;
+           gap: 10px;
+           position: relative;
+           margin-bottom: 20px;
+           &:first-child{
+              max-height: 150px;
+           }
+     
+        }
+        &__widgetsRight {
+           grid-row: 2/3;
+           grid-column: 1/2;
+           :last-child{
+              //margin-bottom: -30px;
+           }
+     
+        }
+    }
+    .widget {
+        background-color: white;
+        box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+        padding: 15px;
+        border-radius: 10px;
+        &__shareContainer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &_contact{
+            margin-bottom: 10px;
+        }
+        &__title {
+           font-size: 14px;
+           margin-bottom: 10px
+        }
+        &__content {
+           @include f(start, start);
+           margin-bottom: 10px
+        }
+        &__text-box {
+           @include f(start, start);
+           flex-direction: column;
+           margin-right: 10px;
+        }
+        &__text {
+            font-size: 12px;
+           &_gray {
+              color: $iconGray;
+              margin-bottom: 10px;
+           }
+        }
+        &__item {
+           @include f(start, center);
+           gap: 10px;
+           margin-bottom: 10px;
+           &_share{
+            align-items: center;
+            gap: 0px;
+            margin-bottom: 0px;
+           }
+           &_address {
+              position: relative;
+           }
+           &_big{
+              @include f(start, start);
+              margin-bottom: 0px;
+           }
+           &_border{
+              padding-bottom: 10px;
+              border-bottom: 1px solid rgb(242, 242, 244);
+           }
+           &-btn{
+              height: 30px;
+              min-width: 30px;
+              border-radius: 10px;
+              background-color: rgb(245, 245, 245);
+              margin-right: 5px;
+              @include f(center, center);
+              transition: border 0.2s;
+              &_selected{
+                 border: 2px solid black;
+             }
+              &_vk{
+                 background-color: rgb(70, 128, 194);
+                 @include f(center, center);
+              }
+              &_telegram{
+                 background-color: rgb(68, 166, 255);
+                 @include f(center, center);
+              }
+              &_viber{
+                 background-color: rgb(116, 96, 242);
+                 @include f(center, center);
+              }
+              &_ok{
+                 background-color: rgb(238, 130, 8);
+                 @include f(center, center);
+              }
+              &_mailru{
+                 background-color: rgb(1, 94, 249);
+                 @include f(center, center);
+              }
+              &_big{
+                 height: 35px;
+                 width: auto;
+                 padding: 0px 20px;
+                 border-radius: 10px;
+                 font-size: 12px;
+                 background-color: rgb(245, 245, 245);   
+                 transition: background-color 0.3s, transform 0.1s;
+                 &:hover{
+                     background-color: $orange;
+                     color: white;
+                 }
+              }
+           }
+        }
+        &__item-text {
+            font-size: 12px;
+             &_green {
+                 user-select: none;
+                 color: green;
+             }
+             &_red{
+                 color: rgb(244, 67, 54);
+             }
+             &_orange{
+                 color: rgb(255, 171, 0);
+             }
+             &_big{
+                @include f(start, start);
+                flex-direction: column;
+             }
+             &_linkOnMap{
+                font-size: 12px;
+                cursor: pointer;
+                color: blue;
+                position: absolute;
+                bottom: -3px;
+                right: 0;
+             }
+         }
+        &__item-btn {
+        }
+    }
+    .widget-info {
+        &__link {
+            font-size: 14px;
+            margin-right: 20px;
+            padding-bottom: 10px;
+        }
+        &__content {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+    }
+    .map {
+        min-width: 360px;
+        margin-bottom: 30px;
+        &__content {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, -115%);
+        }
+        &__btnBox {
+            margin: 15px 0px;
+            padding: 0px 15px;
+            width: 100%;
+        }
+        &__button {
+            padding: 10px 30px;
+            background-color: $blue;
+            border-radius: 10px;
+            color: white;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.1s;
+            font-size: 12px;
+            &:hover{
+                background-color: rgba(57, 83, 138, 0.7);
+            }
+        }
+        &__title {
+            font-size: 14px;
+            margin: 15px;
+            margin-bottom: 10px;
+            width: 280px;
+        }
+        
+        &__item {
+            margin: 15px;
+            @include f(start, center);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        &__hr{
+            border: 1px solid rgb(242, 242, 244);
+            margin-bottom: 10px;
+            position: relative;
+            width: 100%;
+        }
+        &__item-btn {
+            height: 35px;
+            min-width: 35px;
+            border-radius: 10px;
+            background-color: rgb(245, 245, 245);
+            margin-right: 3px;
+            @include f(center, center);
+        }
+        &__item-text {
+            font-size: 12px;
+            font-weight: 500;
+            word-wrap: break-word;
+            &_green {
+                color: green;
+            }
+        }
+    }
+
+
 
 }
 @media (max-width: 480px) {

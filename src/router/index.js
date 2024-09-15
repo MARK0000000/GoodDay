@@ -38,7 +38,7 @@ export const privateRoute = [
    { path: 'partnership', element: <OtherPages.Partnership /> },
    { path: 'aboutapp', element: <OtherPages.AboutApp /> },
    { path: 'aboutcompany', element: <OtherPages.AboutCompany /> },
-   { path: 'allstock', element: <OtherPages.AllStock /> },
+   { path: 'cityDiscounts', element: <OtherPages.CityDiscounts /> },
    { path: 'blog', element: <OtherPages.Blog /> },
    { path: 'cooperation', element: <OtherPages.Cooperation /> },
    { path: 'franchise', element: <OtherPages.Franchise /> },

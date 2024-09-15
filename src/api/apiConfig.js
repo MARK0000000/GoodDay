@@ -17,8 +17,9 @@ const useEndpoints = () => {
 
     PROMOTION: `${API_BASE_URL}/promotion/all?cityId=${cityid}`,
     PROMOTIONBYID: `${API_BASE_URL}/promotion/`,
+    SERVICE: `${API_BASE_URL}/service/all?cityId=${cityid}`,
+    SERVICEBYID: `${API_BASE_URL}/service/`,
 
-    //SERVICEBUSINESS: `${API_BASE_URL}/business/category?cityId=${cityid}&categoryId=1&isServices=false&isInfo=false`,
     EDUCATIONBUSINESS: `${API_BASE_URL}/business/category?cityId=${cityid}&categoryId=2&isServices=false&isInfo=false`,
     GIFTSBUSINESS: `${API_BASE_URL}/business/category?cityId=${cityid}&categoryId=3&isServices=false&isInfo=false`,
     FOODBUSINESS: `${API_BASE_URL}/business/category?cityId=${cityid}&categoryId=4&isServices=false&isInfo=false`,

@@ -4,7 +4,7 @@ import phone from '../../images/other/phone.png';
 export default function BecomePartnes() {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = 'https://elated-turing.178-124-131-24.plesk.page/pdfs/doPartnership';
+    link.href = 'https://vh369.by2040.ihb.by/pdfs/doPartnership';
     link.download = 'doPartnership.pdf'; // Имя файла для скачивания
     link.click();
   };

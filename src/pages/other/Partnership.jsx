@@ -1,4 +1,3 @@
-// Partnership.js
 import React, { useRef, useState } from 'react';
 import MyInput from '../../components/UI/input/MyInput';
 import InfoAboutApp from '../../components/partnershipPage/InfoAboutApp';
@@ -8,6 +7,7 @@ import BreadCrumbs from '../../components/main/Breadcrambs';
 import BecomePartnes from '../../components/partnershipPage/BecomePartnes';
 import { fetchPost } from '../../api/fetch';
 import useEndpoints from '../../api/apiConfig';
+import LoadingSpinner from '../../components/UI/loaders/LoaderSpinner';
 
 export default function Partnership() {
   const endpoints = useEndpoints();
@@ -20,7 +20,8 @@ export default function Partnership() {
   const nameInput = useRef();
   const phoneInput = useRef();
 
-  const [isSubmit, setIsSubmit] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({
     companyName: '',
     companyContact: '',
@@ -34,8 +35,10 @@ export default function Partnership() {
   const validateInput = (inputValue, inputName) => {
     if (!inputValue.trim()) {
       setErrors((prevErrors) => ({ ...prevErrors, [inputName]: 'Поле не заполнено' }));
+      return false; // Возвращаем false, если поле не заполнено
     } else {
       setErrors((prevErrors) => ({ ...prevErrors, [inputName]: '' }));
+      return true; // Возвращаем true, если поле заполнено
     }
   };
 
@@ -43,8 +46,9 @@ export default function Partnership() {
     setErrors((prevErrors) => ({ ...prevErrors, [inputName]: '' }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     const companyName = companyNameInput.current.value;
     const companyContact = companyContactInput.current.value;
@@ -54,22 +58,24 @@ export default function Partnership() {
     const name = nameInput.current.value;
     const phone = phoneInput.current.value;
 
-    validateInput(companyName, 'companyName');
-    validateInput(companyContact, 'companyContact');
-    validateInput(fieldOfActivity, 'fieldOfActivity');
-    validateInput(activity, 'activity');
-    validateInput(city, 'city');
-    validateInput(name, 'name');
-    validateInput(phone, 'phone');
+    // Выполняем валидацию и сохраняем результат
+    const isValidCompanyName = validateInput(companyName, 'companyName');
+    const isValidCompanyContact = validateInput(companyContact, 'companyContact');
+    const isValidFieldOfActivity = validateInput(fieldOfActivity, 'fieldOfActivity');
+    const isValidActivity = validateInput(activity, 'activity');
+    const isValidCity = validateInput(city, 'city');
+    const isValidName = validateInput(name, 'name');
+    const isValidPhone = validateInput(phone, 'phone');
 
+    // Проверяем, все ли поля валидны
     if (
-      !errors.companyName &&
-      !errors.companyContact &&
-      !errors.fieldOfActivity &&
-      !errors.activity &&
-      !errors.city &&
-      !errors.name &&
-      !errors.phone
+      isValidCompanyName &&
+      isValidCompanyContact &&
+      isValidFieldOfActivity &&
+      isValidActivity &&
+      isValidCity &&
+      isValidName &&
+      isValidPhone
     ) {
       const data = {
         companyName: companyName,
@@ -80,8 +86,19 @@ export default function Partnership() {
         partnerName: name,
         phone: phone,
       };
-      console.log(data)
-      const res = fetchPost(data, endpoints.PARTNERSHIP_FORM);
+
+      try {
+        const res = await fetchPost(data, endpoints.PARTNERSHIP_FORM);
+        if (res) {
+          setIsSubmitted(true);
+        }
+      } catch (error) {
+        console.error('Ошибка при отправке данных:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      setIsLoading(false); // Сбрасываем состояние загрузки, если есть ошибки
     }
   };
 
@@ -168,13 +185,15 @@ export default function Partnership() {
             <span className='partnership__inputVal'>{errors.phone}</span>
 
             <div>
-              <button className='partnership__formBtn'>Отправить</button>
+              <button className='partnership__formBtn' disabled={isLoading}>
+                {isLoading ? <LoadingSpinner /> : (isSubmitted ? 'Отправлено' : 'Отправить')}
+              </button>
             </div>
           </form>
           <div className='partnership__contacts'>
             <h3 className='partnership__title'>Наши контакты</h3>
             <span className='partnership__contact'>Email</span>
-            <span className='partnership__contact'>partners@good-day.by</span>
+            <a className='partnership__contact' href="mailto::support@good-day.by" target='_blank'>support@good-day.by</a>
           </div>
         </div>
       </section>

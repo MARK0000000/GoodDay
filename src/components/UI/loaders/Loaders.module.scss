@@ -9,14 +9,42 @@
     max-width: 100%; 
     height: 523px;
 }
-
+.businessPageMedia{
+    padding: 0 10px;
+}
+.loadingSpinner {
+    border: 4px solid transparent; 
+    border-top: 4px solid white; 
+    border-radius: 50%;
+    width: 25px; 
+    height: 25px; 
+    animation: spin 1s linear infinite; 
+}
+.skeletonContentService{
+    height: 165px;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg); 
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 @media (max-width: 1024px) {
     .contentLoader {
         height: 415px; 
     }
+    .businessPage{
+        padding: 0px 10px;
+    }
     .nothingFound{
         font-size: 40px;
     }
+    .skeletonContentService{
+        height: 135px;
+    }    
+
 }
 @media (max-width: 768px) {
     .contentLoader {

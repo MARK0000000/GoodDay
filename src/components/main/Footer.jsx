@@ -15,9 +15,7 @@ export default function Footer() {
       <div className="footer__content container">
         <div className="footer__contactUs">
           <span className='footer__contactUs-text'>
-            <sup style={{verticalAlign: 'bottom'}}>+</sup>
-            375 33 
-            <sup style={{verticalAlign: 'bottom'}}> 694-96-38</sup>
+            +375 (33) 694-96-38
           </span>
           <button className="footer__contactUs-btn">
             <a href="tel:+375336949638" className="footer__tel">Связаться с нами</a>
@@ -47,21 +45,19 @@ export default function Footer() {
             <span>КОМПАНИЯ</span>
             <hr />
             <a onClick={() => handleNavigate('aboutcompany', 'aboutcompany')}>О компании</a>
-            <a onClick={() => handleNavigate('cooperation', 'cooperation')}>Сотрудничество</a>
             <a onClick={() => handleNavigate('blog', 'blog')}>Блог</a>
           </div>
           <div className="footer__item">
             <span>ПОЛЬЗОВАТЕЛЯМ</span>
             <hr />
             <a onClick={() => handleNavigate('questions', 'questions')}>Вопросы и ответы</a>
-            <a onClick={() => handleNavigate('invite', 'invite')}>Пригласить друга</a>
+            <a onClick={() => handleNavigate('cityDiscounts', 'cityDiscounts')}>Скидки города</a>
           </div>
           <div className="footer__item">
             <span>ПАРТНЕРАМ</span>
             <hr />
             <a onClick={() => handleNavigate('partnership', 'partnership')}>Для вашего бизнеса</a>
             <a onClick={() => handleNavigate('franchise', 'franchise')}>Франчайзинг</a>
-            <a onClick={() => handleNavigate('allstock', 'allstock')}>Все акции</a>
           </div>
         </div>
       </div>

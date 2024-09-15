@@ -1,7 +1,7 @@
 export { default as Partnership } from './Partnership';
 export { default as AboutApp } from './AboutApp';
 export { default as AboutCompany } from './AboutCompany';
-export { default as AllStock } from './AllStock';
+export { default as CityDiscounts } from './CityDiscounts';
 export { default as Blog } from './Blog';
 export { default as Cooperation } from './Cooperation';
 export { default as Franchise } from './Franchise';

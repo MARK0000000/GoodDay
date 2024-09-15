@@ -1,165 +1,74 @@
-import React, {useEffect, useState, useContext} from 'react'
-import ContentServices from '../components/services/ContentServices'
-import Breadcrambs from '../components/main/Breadcrambs'
-import { fetchGet } from '../api/fetch'
-import endpoints from '../api/apiConfig'
-import PlaceServices from '../components/services/PlaceServices'
-import Categories from '../components/services/Categories'
+import React, { useEffect, useState } from 'react';
+import ContentServices from '../components/services/ContentServices';
+import Breadcrambs from '../components/main/Breadcrambs';
+import { fetchGet } from '../api/fetch';
+import useEndpoints from '../api/apiConfig';
+import PlaceServices from '../components/services/PlaceServices';
+import Categories from '../components/services/Categories';
+import { SkeletonContentServices } from '../components/UI/loaders/SkeletonContetServices';
 
 export default function Services() {
-    const [cards, setCards] = useState([
-    {   
-        id: 1,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 2,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 3,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 4,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 5,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 6,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 7,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 8,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 9,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 10,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 11,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 12,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 13,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 14,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 15,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
-    {   
-        id: 16,
-        img: null,
-        name:  "Название",
-        address: "Адрес",
-        rating: "5.0",
-        ratingCount: "1",
-    },
+    const endpoints = useEndpoints();
 
-    ])
-    const [isLoading, setIsLoading] = useState(true)
+    const [cards, setCards] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    // const [choiceCategory, setChoiceCategory] = useState(1); &caregotyId=${choiceCategory}
+    const [itemsPerPage] = useState(12);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
-          const data = await fetchGet(endpoints.SERVICEBUSINESS);
-          if (data) {
-            setCards(data);
-            setIsLoading(false);
-            console.log(data);
-          }
+            const data = await fetchGet(`${endpoints.SERVICE}&pageSize=${itemsPerPage}&pageNumber=${currentPage}`);
+            if (Array.isArray(data)) { // Проверяем, что data - это массив
+                setCards(prev => [...prev, ...data]); // Объединяем массивы
+                setIsLoading(false);
+                console.log(data);
+            } else {
+                console.error('Data is not an array:', data); // Логируем ошибку, если data не массив
+            }
         };
         fetchData();
-      }, []);    
-
-    const [indexOfLastItem, setIndexOfLastItem] = useState(12)
-    const [currentCards, setCurrentCards] = useState(cards.slice(0, indexOfLastItem)) 
+    }, [currentPage]);
 
     const showMoreCards = () => {
-        console.log('show')
-        setCurrentCards(cards.slice(0, indexOfLastItem + 6));
-        setIndexOfLastItem((prev) => prev + 6)
-    }
+        console.log('show');
+        setCurrentPage(prev => prev + 1);
+    };
+
+    // const changeCategory = (id) => {
+    //     setChoiceCategory(id);
+    //     setCards([]); // Сбрасываем карты при смене категории
+    //     setCurrentPage(1); // Сбрасываем текущую страницу
+    // };
+
+    console.log(cards);
+    return (
+        <>
+            {/* <Breadcrambs current={'Услуги'} /> */}
+            {/* <Categories choiceCategory={choiceCategory} changeCategory={changeCategory} /> */}
+            <section className='catalog'>
+                <h2 className="catalog__title">Каталог</h2>
+                {isLoading ?
+                    <div className='service__loaderBox'>
+                        <SkeletonContentServices />
+                        <SkeletonContentServices />
+                        <SkeletonContentServices />
+                        <SkeletonContentServices />
+                        <SkeletonContentServices />
+                        <SkeletonContentServices />
+                        <SkeletonContentServices />
+                        <SkeletonContentServices />
+                        <SkeletonContentServices />
+                    </div>
+                    :
+                    <ContentServices data={cards} showMoreCards={showMoreCards}/>
+                }
+            </section>
+            <PlaceServices />
+        </>
+    );
+}
+
     //   const handleHeartClick = (index) => {
     //     if (clickedIndexes.includes(index)) {
     //       setClickedIndexes(clickedIndexes.filter((i) => i !== index));
@@ -167,15 +76,3 @@ export default function Services() {
     //       setClickedIndexes([...clickedIndexes, index]);
     //     }
     //   };
-    return (
-        <>
-        <Breadcrambs current={'Услуги'}/>
-        <Categories/>
-        <section className='catalog'>
-            <h2 className="catalog__title">Каталог</h2>
-            <ContentServices data={currentCards} isLoading={isLoading} showMoreCards={showMoreCards}/>
-        </section>
-        <PlaceServices/>
-    </>
-  )
-}

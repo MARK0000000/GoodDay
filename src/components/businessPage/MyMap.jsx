@@ -33,7 +33,7 @@ export default function MyMap({ data }) {
                         <YMaps>
                             <Map
                                 defaultState={{ center: coordinates, zoom: 16 }}
-                                width="100%" height="600px"
+                                width="100%" height="100%"
                                 options={{ controls: ['zoomControl'] }}
                             >
                                 <Placemark
@@ -47,8 +47,8 @@ export default function MyMap({ data }) {
                             </Map>
                         </YMaps>
                     <div className="map__content">
-                        {data.address[0] &&
-                            <h3 className="map__title">{data.address[0].description}</h3>
+                        {data.address &&
+                            <h3 className="map__title">{data.address}</h3>
                         }
                         <div className="map__btnBox">
                             <button className="map__button" onClick={handleRouteClick}>Проложить маршрут</button>

@@ -7,10 +7,10 @@ import { NavigateContext } from '../../context/Navigate';
 import iconMenu from '../../images/icons/icon_menu.svg';
 import closeIcon from '../../images/icons/close.svg';
 import { CityContext } from '../../context/City';
-
+import LoadingSpinner from '../UI/loaders/LoaderSpinner';
 export default function Header() {
   const {logout} = useAuth()
-  const {setSearchValue} = useContext(SearchContext)
+  const {setSearchValue, isSearchLoading, searchValue} = useContext(SearchContext)
   const {city, updateCity} = useContext(CityContext)
   const {handleNavigate, activeButton} = useContext(NavigateContext)
   const searchInput = useRef()
@@ -50,11 +50,10 @@ export default function Header() {
           <div className={`header__about ${burgerActive && 'header__about_active'}`}>
             <img src={closeIcon} alt="#" className="header__close" onClick={() => setBurgerActive(false)} />
             <a onClick={() => handleNavigate('partnership', 'partnership')}>Для вашего бизнеса</a>
-            <a onClick={() => handleNavigate('invite', 'invite')}>Пригласить друга</a>
             <a onClick={() => handleNavigate('aboutapp', 'aboutapp')}>О приложении</a>
             <a onClick={() => handleNavigate('franchise', 'franchise')}>Франшиза</a>
           </div>
-          <a href="tel:+375336949638">+375(33)694-96-38</a>
+          <a href="tel:+375336949638" className='header__tel'>+375 (33) 694-96-38</a>
         </div>
 
         <div className='header__secondLine'>
@@ -63,7 +62,11 @@ export default function Header() {
             <input ref={searchInput} type="text" className="header__search" placeholder='Поиск услуг и компаний...'/>
             <div className='header__search-iconBox'>
               <button>
-                <img className='header__search-icon' src={lupa} alt="#" />
+                {(isSearchLoading == true && searchValue != '') ?
+                  <LoadingSpinner/>
+                  :
+                  <img className='header__search-icon' src={lupa} alt="#" />
+                }
               </button>
             </div>
           </form>

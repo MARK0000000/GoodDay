@@ -1,20 +1,20 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+import classes from './Loaders.module.scss';
 
 export const SkeletonContentServices = () => (
   <ContentLoader
     speed={2}
-    width={328}
-    height={165}
-    //viewBox="0 0 320 50"
+    width="100%" // Ширина 100% от родительского контейнера
     backgroundColor="#f3f3f3"
-    foregroundColor="#ecebeb">
-    <rect x="10" y="10" rx="20" ry='20' width='80' height='80' />
+    foregroundColor="#ecebeb"
+    className={classes.skeletonContentService}
+  >
+    <rect x="10" y="10" rx="20" ry="20" width="20%" height="42%" /> {/* Изменены размеры на относительные */}
 
-    <rect x="100" y="15" rx="6" ry='6' width='100' height='20' />
-    <rect x="100" y="55" rx="6" ry='6' width='100' height='20' />
+    <rect x="30%" y="15%" rx="6" ry="6" width="40%" height="5%" />
+    <rect x="30%" y="35%" rx="6" ry="6" width="40%" height="5%" />
 
-    <rect x="185" y="120" rx="6" ry='6' width='133' height='35' />
-
+    <rect x="65%" y="80%" rx="6" ry="6" width="30%" height="15%" />
   </ContentLoader>
 );

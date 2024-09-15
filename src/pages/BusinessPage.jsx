@@ -14,6 +14,7 @@ import MyMap from '../components/businessPage/MyMap';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { SkeletonBusinessPage } from '../components/UI/loaders/SkeletonBusinessPage'
+import { SkeletonBusinessPageMedia } from '../components/UI/loaders/SkeletonBusinessPageMedia' 
 import ShareWidget from '../components/businessPage/ShareWidget';
 import ContactsWidget from '../components/businessPage/ContactsWidget';
 import InfoWidget from '../components/businessPage/InfoWidget';
@@ -22,6 +23,7 @@ import { handleNavigateSocial } from '../utils/navigateSocial';
 
 export default function BusinessPage() {
     const endpoints = useEndpoints();
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const {id} = useParams();
     const [business, setBusiness] = useState({});
     const [isLoading, setIsLoading] = useState(true);
@@ -69,7 +71,7 @@ export default function BusinessPage() {
         <section>
             <Breadcrambs current={business.name}/>
             {isLoading ? (
-                    <SkeletonBusinessPage/>
+                isMobile ? <SkeletonBusinessPageMedia/> : <SkeletonBusinessPage/> 
             ) : (
             <>
                 <article className="businessPage">
@@ -103,18 +105,18 @@ export default function BusinessPage() {
                                     </Link>
                                 </button>
                             }
-                            {business.isPromoCode &&
+                            {/* Promocode */}
+                            {/* {business.isPromoCode &&
                                 <button className="businessPage__button businessPage__button_big">
                                     <a href="https://goodday.taplink.ws/" target='_blank'>
                                         Получить промокод
                                     </a>
                                 </button>
-                            }
+                            } */}
                         </div>
                     </div>
                     <div className="businessPage__secondLine">
                         <p className="businessPage__text businessPage__text_p">{getValueOrDefault(business.shortDescription, 'Описание не указано')}</p>
-                        {/* coments link */}
                         {/* <a href="" className="businessPage__link">Отзывы</a> */}
                     </div>
                     <div className="businessPage__img-box">
@@ -122,7 +124,7 @@ export default function BusinessPage() {
                             <span className='businessPage__stock'>{getValueOrDefault(business.discount, 'Скидка не указана')}</span>
                         }
                             <Swiper
-                                style={{height: '600px'}}
+                                style={{height: '100%'}}
                                 spaceBetween={50}
                                 autoplay={{
                                     delay: 5000,

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { useLocation } from 'react-router-dom';
 import exampleImg from '../../images/other/4k.jpg';
 import useEndpoints from '../../api/apiConfig'
@@ -8,14 +8,13 @@ import { getValueOrDefault } from '../../utils/getValueOrDefault';
 import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 import { useNavigate } from 'react-router';
 import { getEndpoint } from '../../utils/workWithUrl';
-
+import { NavigateContext } from '../../context/Navigate';
 export default function BusinessCard({item}) {
+    const {handleNavigate} = useContext(NavigateContext)
     const endpoints = useEndpoints()
-
-    const navigate = useNavigate();
     const location = useLocation();
-
     const endpoint = getEndpoint(location)
+
   return (
     <article className="businessCard">
         <div className="businessCard__img-box">
@@ -49,7 +48,7 @@ export default function BusinessCard({item}) {
                 <span className="businessCard__text businessCard__text_gray">Действует по:</span>
                 <span className="businessCard__text">{getValueOrDefault(formatDate(item.promoCodeExpires), "Дата не указана")}</span>
             </div>
-            <p className="businessCard__text businessCard__text_p">{getValueOrDefault(item.shortDescription, 'Описание не указано')}</p>
+            <p className="businessCard__text  businessCard__text_p">{getValueOrDefault(item.shortDescription, 'Описание не указано')}</p>
             <div className="businessCard__text-box businessCard__text-box_vertical">
                 <span className="businessCard__text">Адрес: {getValueOrDefault(item.address[0] ? item.address[0].description : false, 'Адрес не указан')}</span>
                 <span className={`businessCard__text ${
@@ -70,7 +69,7 @@ export default function BusinessCard({item}) {
                 {/* <span className="businessCard__text_bottom businessCard__text_bottom_paid">{getValueOrDefault(item.buyCount, 0)}</span>
                 <span className="businessCard__text_bottom businessCard__text_bottom_comments">{getValueOrDefault(item.commentsCount, 0)}</span> */}
             </div>
-            <button className="businessCard__button" onClick={() => navigate(`${endpoint == "promotion" ? item.businessId :  item.id}`, { replace: false })}> <span>Посмотреть</span></button>
+            <button className="businessCard__button" onClick={() => handleNavigate(`${endpoint == "promotion" ? `promotion/${item.businessId}`  :  `${endpoint}/${item.id}`}`, `${endpoint == "promotion" ? `promotion/${item.businessId}`  :  `${endpoint}/${item.id}`}`)}> <span>Посмотреть</span></button>
         </div>
     </article>
   )

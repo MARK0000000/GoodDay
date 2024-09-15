@@ -19,6 +19,9 @@
       position: relative;
       max-width: 100%;
    }
+   &__tel{
+      font-family: "Segoe";
+   }
    user-select: none;
    background-color: $headerWhite;
    box-shadow: 0px 4px 10px 0px $iconGray;
@@ -313,7 +316,7 @@
       flex-direction: column;
    }
    &__contactUs-text{
-      font-family: "Raleway", sans-serif;
+      font-family: "Segoe";
       font-size: 18px;
       margin-bottom: 15px;
    }

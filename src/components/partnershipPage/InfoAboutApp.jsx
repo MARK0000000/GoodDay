@@ -7,7 +7,7 @@ export default function InfoAboutApp() {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = 'https://elated-turing.178-124-131-24.plesk.page/pdfs/presentation';
+    link.href = 'https://vh369.by2040.ihb.by/pdfs/presentation';
     link.download = 'presentation.pdf'; // Имя файла для скачивания
     link.click();
   };
