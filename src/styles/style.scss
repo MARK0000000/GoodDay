@@ -10,6 +10,7 @@
 @import './other/partnershipPage';
 @import './other/service';
 @import './other/servicePage';
+@import './other/contactsPage';
 .hidden-button {
    display: none;
  }
@@ -117,6 +118,9 @@
             width: 100%;
             height: 100%;
          }
+      }
+      &-icon_cross{
+         transform: rotate(45deg);
       }
    }
 
@@ -507,7 +511,7 @@
 // }
 
 
-
+@import 'media';
 @import './otherMedia/pageMedia';
 @import './otherMedia/aboutAppPageMedia';
 @import './otherMedia/businessPageMedia';
@@ -515,5 +519,6 @@
 @import './otherMedia/partnershipPageMedia';
 @import './otherMedia/serviceMedia';
 @import './otherMedia/servicePageMedia';
-@import 'media';
+@import './otherMedia/contactsPageMedia';
+
 

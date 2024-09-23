@@ -190,11 +190,6 @@ export default function Partnership() {
               </button>
             </div>
           </form>
-          <div className='partnership__contacts'>
-            <h3 className='partnership__title'>Наши контакты</h3>
-            <span className='partnership__contact'>Email</span>
-            <a className='partnership__contact' href="mailto::support@good-day.by" target='_blank'>support@good-day.by</a>
-          </div>
         </div>
       </section>
       <InfoAboutApp />

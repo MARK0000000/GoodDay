@@ -5,7 +5,7 @@ import classes from './Loaders.module.scss';
 export const SkeletonContent = () => (
   <ContentLoader
     speed={2}
-    height={523}
+    height={502}
     className={classes.contentLoader}
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
@@ -16,7 +16,6 @@ export const SkeletonContent = () => (
     <rect x="15" y="61%" rx="6" ry='6' width='60%' height='4%' />
     <rect x="15" y="66%" rx="6" ry='6' width='60%' height='4%' />
     <rect x="15" y="73%" rx="6" ry='6' width='60%' height='4%' />
-    <rect x="15" y="78%" rx="6" ry='6' width='60%' height='4%' />
-    <rect x="50%" y="90%" rx="6" ry='6' width='40%' height='7%' />
+    <rect x="50%" y="85%" rx="6" ry='6' width='40%' height='7%' />
   </ContentLoader>
 );

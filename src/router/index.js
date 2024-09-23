@@ -37,13 +37,11 @@ export const privateRoute = [
 
    { path: 'partnership', element: <OtherPages.Partnership /> },
    { path: 'aboutapp', element: <OtherPages.AboutApp /> },
-   { path: 'aboutcompany', element: <OtherPages.AboutCompany /> },
    { path: 'cityDiscounts', element: <OtherPages.CityDiscounts /> },
-   { path: 'blog', element: <OtherPages.Blog /> },
    { path: 'cooperation', element: <OtherPages.Cooperation /> },
-   { path: 'franchise', element: <OtherPages.Franchise /> },
    { path: 'invite', element: <OtherPages.Invite /> },
    { path: 'questions', element: <OtherPages.Questions /> },
+   { path: 'contacts', element: <OtherPages.Contacts /> },
 ];
 
 export const publicRoute = [

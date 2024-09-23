@@ -11,7 +11,7 @@ export const SearchProvider = ({ children }) => {
   const location = useLocation();
   const endpoint = getEndpoint(location);
 
-  const getCategotyId = {
+  const getCategoryId = {
     education: 2,
     gifts: 3,
     food: 4,
@@ -31,7 +31,7 @@ export const SearchProvider = ({ children }) => {
     masterclasses: 18,
     sport: 19,
   };
-
+  console.log(endpoint)
   const routes = {
     discounts: `${endpoints.SEARCH_DISCOUNTS}`,
     category: (categoryId) => `${endpoints.SEARCH_CATEGORY}&categoryId=${categoryId}`,
@@ -50,13 +50,14 @@ export const SearchProvider = ({ children }) => {
         let url;
         if (endpoint === 'discounts') {
           url = routes.discounts;
-        } else if (endpoint in getCategotyId) {
-          url = routes.category(getCategotyId[endpoint]);
-        } else if (endpoint === 'promotions') {
+        } else if (endpoint in getCategoryId) {
+          url = routes.category(getCategoryId[endpoint]);
+        } else if (endpoint === 'promotion') {
           url = routes.promotions;
         } else if (endpoint === 'services') {
           url = routes.services;
         } else {
+          setSearchValue('')
           console.log('Unknown endpoint');
           return;
         }
@@ -79,7 +80,7 @@ export const SearchProvider = ({ children }) => {
   }, [searchValue, endpoint]);
 
   return (
-    <SearchContext.Provider value={{ searchValue, setSearchValue, data, isSearchLoading, setIsSearchLoading }}>
+    <SearchContext.Provider value={{ searchValue, setSearchValue, data, isSearchLoading, setIsSearchLoading, getCategoryId }}>
       {children}
     </SearchContext.Provider>
   );

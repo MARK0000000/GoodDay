@@ -1,7 +1,238 @@
 @media (max-width: 1024px) {
-
+    .serviceContent {
+        padding: 0px 10px;
+        gap: 20px;
+        height: auto;
+        grid-template-rows: 1fr;
+        grid-template-columns: minmax(50px, 425px) minmax(100px, 580px);
+        &__info{
+            padding: 0px 10px;
+        }    
+        &__img-container{
+            max-height: 300px;
+            max-width: 370px;
+        }    
+        &__img{
+            aspect-ratio: 16 / 9;
+        }
+        &__imgSmall {
+        height: 90px;
+        max-width: 90px;
+        min-width: 90px;
+        border-radius: 15px;
+        background-color: rgb(183, 183, 183);
+        margin-right: 10px;
+        }
+        &__title {
+        font-size: 24px;
+        margin-bottom: 10px;
+        }
+        &__address {
+        font-size: 16px;
+        }
+        &_list{
+            &::after{
+                content: url('../../images/icons/moreNavHeader.svg');
+                margin-left: 5px;
+                transition: transform 0.3s;
+                display: inline-block;
+            }  
+            &_active::after{
+                    transform: rotate(-180deg) !important;
+            }
+        }
+        &__social {
+        margin-right: 10px;
+        }
+        &__bottom {
+        @include f(space-between, center);
+        position: absolute;
+        right: 25px;
+        bottom: 25px
+        }
+        &__buttonSendMassage {
+        margin-right: 15px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CAE1FF;
+        @include f(center, center);
+        }
+        &__button {
+        background-color: #3A5A91;
+        border-radius: 12px;
+        padding: 15.5px 60px;
+        a{
+            color: white;
+        }
+        }
+    }
+    .serviceList {
+        padding: 0px 10px;
+    }
+    
 }
 @media (max-width: 768px) {
+    .serviceContent {
+        padding: 0px 10px;
+        gap: 20px;
+        height: auto;
+        grid-template-rows: auto auto;
+        grid-template-columns: 100%;
+        &__info{
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }    
+        &__img-container{
+            width: 100%;
+        }    
+        &__img{
+            min-width: 100%;
+        }
+        &__img-box {
+            min-width: 100%;
+        }
+        &__imgSmall {
+        height: 80px;
+        max-width: 80px;
+        min-width: 80px;
+        }
+        &__content{
+            width: 100%;
+        }
+        &__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        }
+        &__address {
+        font-size: 12px;
+        }
+        &__social {
+        margin-right: 10px;
+        }
+        &__phone{
+            font-size: 12px;
+        }
+        &__workTime{
+            font-size: 12px;
+        }
+        &__button {
+        padding: 15.5px 40px;
+        a{
+            font-size: 12px;
+            color: white;
+        }
+        }
+    }
+    .serviceDescription {
+        width: 100%;
+        margin-right: 00px;
+        max-height: auto;
+        margin-bottom: 20px;
+        &__title {
+        font-size: 18px;
+        font-family: 'Segoe UI';
+        margin-bottom: 10px;
+        }
+        &__text {
+            font-size: 12px;
+        }
+    }
+    .serviceMap {
+        width: 100%;
+        max-width: 100%;
+        max-height: 200px;
+        &__title {
+        font-size: 18px;
+        font-family: 'Segoe UI';
+        font-weight: 700;
+        margin-bottom: 10px;
+        width: 100%;
+        }
+        &__content {
+        position: relative;
+        width: 100%;
+        height: 143px;
+        border-radius: 20px;
+        }
+        &__button {
+        width: 150px;
+        height: 50px;
+        border-radius: 53px;
+        color: #0066C5;
+        font-size: 12px;
+        // box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
+        }
+    }
+    .serviceList {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        &__title {
+        font-size: 18px;
+        margin-bottom: 10px;
+        }
+        &__content {
+        }
+        &__item {
+        @include f(space-between, center);
+            flex-wrap: wrap;
+        }
+        &__left {
+        @include f(start, center);
+        img{
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        }
+        &__item-title {
+            width: 100%;
+            overflow-wrap: break-word;
+            word-break: break-all;            
+        }
+        &__description {
+            width: 100%;
+        color: #8A99A0;
+        overflow-wrap: break-word;
+        word-break: break-all;        
+        }
+        &__right {
+        width: 100%;
+        @include f(start, center);
+        position: relative;
+        height: 39px;
+        margin-top: 5px;
+        }
+        &__price {
+        min-width: 100px;
+        }
+        &__time {
+        min-width: 100px;
+        }
+        &__item-button {
+        background-color: #EEEEEF;
+        color: #3A5A91;
+        padding: 10px 50px;
+        border-radius: 50px;
+        position: absolute;
+        right: 0px;
+        }
+        &__button {
+            a{
+                color: white;
+            }
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 20px;
+        background-color: #3A5A91;
+        border-radius: 12px;
+        color: white;
+        padding: 15.5px 80px;
+        }
+    }
+    
 
 }
 @media (max-width: 480px) {

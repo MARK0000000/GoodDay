@@ -18,7 +18,6 @@ export async function fetchPost(data, url) {
     }
 
     const json = await response.json();
-    console.log("Успех:", JSON.stringify(json));
     return json;
   } catch (error) {
     console.error("Ошибка:", error);

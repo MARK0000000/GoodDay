@@ -1,0 +1,42 @@
+.contacts {
+    font-family: "Segoe";
+    &__title {
+        font-size: 28px;
+        margin-bottom: 10px;
+        &_big{
+            max-width: 660px;
+        }
+    }
+    &__content {
+        @include f(space-between, start);
+        margin: 40px 0px 50px 0px;
+    }
+    &__block {
+        &:first-child{
+            margin-right: 20px;
+        }
+    }
+    &__link {
+        font-family: "Segoe";
+        color: #395389;
+        font-size: 20px;
+    }
+    &__text {
+        font-size: 20px;
+        margin-top: 10px
+    }
+    &__item {
+        @include f(start, center);
+        margin-bottom: 20px;
+    }
+    &__button {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color:  #395389;
+        @include f(center, center);
+        margin-right: 15px;
+    }
+    &__img {
+    }
+}

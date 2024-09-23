@@ -91,6 +91,9 @@
       margin-left: 10px;
       margin-bottom: 5px;
    }
+   summary{
+      list-style-type: none;
+   }
    summary::after{
       content: url("../../images/icons/plus16.svg");
       margin-left: auto;

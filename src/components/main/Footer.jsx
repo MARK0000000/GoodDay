@@ -44,8 +44,8 @@ export default function Footer() {
           <div className="footer__item">
             <span>КОМПАНИЯ</span>
             <hr />
-            <a onClick={() => handleNavigate('aboutcompany', 'aboutcompany')}>О компании</a>
-            <a onClick={() => handleNavigate('blog', 'blog')}>Блог</a>
+            <a onClick={() => handleNavigate('aboutapp', 'aboutapp')}>О приложении</a>
+            <a onClick={() => handleNavigate('contacts', 'contacts')}>Контакты</a>
           </div>
           <div className="footer__item">
             <span>ПОЛЬЗОВАТЕЛЯМ</span>
@@ -57,7 +57,7 @@ export default function Footer() {
             <span>ПАРТНЕРАМ</span>
             <hr />
             <a onClick={() => handleNavigate('partnership', 'partnership')}>Для вашего бизнеса</a>
-            <a onClick={() => handleNavigate('franchise', 'franchise')}>Франчайзинг</a>
+            <a href='http://partners.good-day.by/franshizabel' target='_blank'>Франчайзинг</a>
           </div>
         </div>
       </div>
@@ -65,16 +65,15 @@ export default function Footer() {
       <div className='footer__underLine container'>
         <div className="footer__item footer__item_underLine">
           <span>&copy; 202<span className='footer__bigLetter'>4</span> Good Day</span>
-          <a href="">Обработка персональных данных</a>
-          <a href="">Пользовательское соглашение</a>
-          <a href="">Публичная оферта</a>
+          <a href="https://docs.google.com/document/d/1wyhH682ZA0xYQrs4vX89_EaHKBMZLQ_QMnY7ppavQUs/edit?usp=sharing" target='_blank'>Обработка персональных данных</a>
+          <a href="https://docs.google.com/document/d/1CGd0r9m1pvsAJqrkru2kZ2NvB5fPO9XXILUI4okUP6Q/edit?usp=sharing" target='_blank'>Публичная оферта</a>
         </div>
         <div className="footer__item footer__item_underLine">
           <span>Гарантия, поддержка <br /> 2<span className='footer__bigLetter'>4</span> часа возврата средств</span>
         </div>
         <div className="footer__social">
           <button className="footer__social-btn">
-            <a href="https://instagram.com/good_day_info/" target="_blank">
+            <a href="https://instagram.com/good_day_info/" target='_blank'>
               <img src={instagram} alt="" className="footer__social-img" />
             </a>
           </button>

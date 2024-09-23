@@ -41,7 +41,6 @@ export default function BusinessPage() {
         const data = await fetchGet(`${endpoints.BUSINESSBYID}${id}`);
         if (data && data != Promise) {
             setBusiness(data);
-            console.log(data)
             setLinks([
                 {
                 title: 'Условия',
@@ -60,7 +59,6 @@ export default function BusinessPage() {
 
             setStatus(getWorkTimeStatus(data.workTimeDetailed));
 
-            console.log(data.addresses[0])
 
             setIsLoading(false);            
         }
@@ -119,32 +117,32 @@ export default function BusinessPage() {
                         <p className="businessPage__text businessPage__text_p">{getValueOrDefault(business.shortDescription, 'Описание не указано')}</p>
                         {/* <a href="" className="businessPage__link">Отзывы</a> */}
                     </div>
-                    <div className="businessPage__img-box">
-                        {business.discount &&
-                            <span className='businessPage__stock'>{getValueOrDefault(business.discount, 'Скидка не указана')}</span>
-                        }
-                            <Swiper
-                                style={{height: '100%'}}
-                                spaceBetween={50}
-                                autoplay={{
-                                    delay: 5000,
-                                    disableOnInteraction: false
-                                }}
-                                loop={true}
-                                pagination={{
-                                    clickable: true,
-                                }}
-                                modules={[Pagination, Autoplay]}
-                                >
-
-                                {business.images.map((item, index) => 
-                                    <SwiperSlide  key={index} >
-                                        <img src={endpoints.UPLOADS + item.url} alt="" className="businessPage__img"/>
-                                    </SwiperSlide>
-                                )}
-                            </Swiper>
-                    </div>
                     <div className="businessPage__widgets">
+                        <div className="businessPage__img-box">
+                            {business.discount &&
+                                <span className='businessPage__stock'>{getValueOrDefault(business.discount, 'Скидка не указана')}</span>
+                            }
+                                <Swiper
+                                    style={{height: '100%'}}
+                                    spaceBetween={50}
+                                    autoplay={{
+                                        delay: 5000,
+                                        disableOnInteraction: false
+                                    }}
+                                    loop={true}
+                                    pagination={{
+                                        clickable: true,
+                                    }}
+                                    modules={[Pagination, Autoplay]}
+                                    >
+
+                                    {business.images.map((item, index) => 
+                                        <SwiperSlide  key={index} >
+                                            <img src={endpoints.UPLOADS + item.url} alt="" className="businessPage__img"/>
+                                        </SwiperSlide>
+                                    )}
+                                </Swiper>
+                        </div>
                         <AboutStock business={business}/>
                         <InfoWidget links={links} activeLink={activeLink} handleLinkClick={handleLinkClick}/>
                         <div className='businessPage__widgetsRight'>

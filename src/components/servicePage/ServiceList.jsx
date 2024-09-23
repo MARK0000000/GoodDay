@@ -1,27 +1,36 @@
-import React from 'react'
-import serviceItemImg from '../../images/other/serviceItem.png'
+import React, { useState } from 'react'
+import serviceItemImg from '../../images/icons/serviceIcon.png'
+import { handleNavigateSocial } from '../../utils/navigateSocial'
 
-export default function ServiceList() {
+export default function ServiceList({data, link}) {
+    const [services, setServices] = useState(data)
+
   return (
     <section className="serviceList">
-        <h3 className="serviceList__title">Услуги <span>67</span></h3>
+        <h3 className="serviceList__title">Услуги <span>{services.length}</span></h3>
         <div className="serviceList__content">
-            <div className="serviceList__item">
+            {services.map((item, index) => 
+            <div className="serviceList__item" key={index}>
                 <div className="serviceList__left">
                     <img src={serviceItemImg} alt="" />
                     <div>
-                        <h4 className="serviceList__item-title">Название услуги</h4>
-                        <span className="serviceList__description">Краткое описание</span>
+                        <h4 className="serviceList__item-title">{item.name}</h4>
+                        <span className="serviceList__description">{item.description}</span>
                     </div>
                 </div>
                 <div className="serviceList__right">
-                    <span className="serviceList__price">100 BYN</span>
-                    <span className="serviceList__time">2ч 30м</span>
-                    <button className="serviceList__item-button">Записаться</button>
+                    <span className="serviceList__price">{item.price} BYN</span>
+                    <span className="serviceList__time">{item.duration} м</span>
+                    <button className="serviceList__item-button">
+                        <a onClick={() => handleNavigateSocial( `${ (data[0] && data[0].link) ? 'serviceLink' : 'instagram'}` , `${(data[0] && data[0].link) || link}`)}>
+                            Записаться
+                        </a>
+                    </button>
                 </div>
             </div>
+            )}
         </div>
-        <button className="serviceList__button">Посмотреть всё</button>
+        {/* <button className="serviceList__button">Посмотреть всё</button> */}
     </section>
   )
 }

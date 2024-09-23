@@ -2,8 +2,8 @@
 import React, { useContext } from 'react';
 import { CityContext } from '../context/City';
 
-// const API_BASE_URL = 'https://vh369.by2040.ihb.by';
-const API_BASE_URL = 'http://elated-turing.178-124-131-24.plesk.page';
+const API_BASE_URL = 'https://vh369.by2040.ihb.by';
+// const API_BASE_URL = 'https://elated-turing.178-124-131-24.plesk.page';
 
 
 const useEndpoints = () => {
@@ -11,7 +11,7 @@ const useEndpoints = () => {
   const cityid = city;
 
   return {
-    UPLOADS: `https://api-gd.sava.site/uploads`,
+    UPLOADS: `https://api.good-day.by/uploads`,
     DISCOUNTSBUSINESS: `${API_BASE_URL}/business/discount?cityId=${cityid}&isDiscount=true&isServices=false&isInfo=false`,
     BUSINESSBYID: `${API_BASE_URL}/business/`,
 

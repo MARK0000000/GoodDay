@@ -20,8 +20,9 @@ export default function Discounts() {
   const { city } = useContext(CityContext);
 
   useEffect(() => {
-    if (data && data.data) { // Проверяем, есть ли данные в контексте
+    if (data && data.data) { 
       const slicedData = data.data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+      setCurrentPage(1)
       setBusinesses(slicedData);
       setIsLoading(false);
       setTotalCount(data.totalCount);

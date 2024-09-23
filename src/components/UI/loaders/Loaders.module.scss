@@ -32,8 +32,14 @@
     }
 }
 @media (max-width: 1024px) {
+    .servicePage{
+        padding: 0px 10px;
+    }    
+    .servicePageMedia{
+        padding: 0px 10px;
+    }    
     .contentLoader {
-        height: 415px; 
+        height: 397px; 
     }
     .businessPage{
         padding: 0px 10px;
@@ -48,7 +54,7 @@
 }
 @media (max-width: 768px) {
     .contentLoader {
-        height: 372px; 
+        height: 354px; 
     }
     .nothingFound{
         font-size: 30px;
@@ -56,7 +62,7 @@
 }
 @media (max-width: 480px) {
     .contentLoader {
-        height: 372px; 
+        height: 354px; 
     }
     .nothingFound{
         font-size: 20px;

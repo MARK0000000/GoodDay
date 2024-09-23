@@ -22,6 +22,13 @@
         &__text {
            font-size: 12px;
         }
+        &__img-box {
+            max-width: none;
+            max-height: none;
+            aspect-ratio: 16 / 9;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
         &__button {
            height: 40px;
            width: 40px;
@@ -36,9 +43,6 @@
 
         &__secondLine {
            margin-bottom: 10px;
-        }
-        &__img-box{
-            margin-bottom: 10px;
         }
         &__widgets {
            width: 100%;
@@ -55,7 +59,7 @@
      
         }
         &__widgetsRight {
-           grid-row: 2/3;
+           grid-row: 3/4;
            grid-column: 1/2;
            :last-child{
               //margin-bottom: -30px;
@@ -191,6 +195,9 @@
         }
     }
     .widget-info {
+        max-width: none;
+        grid-row-start: 2;
+        grid-row-end: 3;
         &__link {
             font-size: 14px;
             margin-right: 20px;
@@ -204,6 +211,7 @@
     .map {
         min-width: 360px;
         margin-bottom: 30px;
+        height: 450px;
         &__content {
             position: absolute;
             top: 100%;

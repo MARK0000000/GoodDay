@@ -50,7 +50,6 @@ export default function BusinessCard({item}) {
             </div>
             <p className="businessCard__text  businessCard__text_p">{getValueOrDefault(item.shortDescription, 'Описание не указано')}</p>
             <div className="businessCard__text-box businessCard__text-box_vertical">
-                <span className="businessCard__text">Адрес: {getValueOrDefault(item.address[0] ? item.address[0].description : false, 'Адрес не указан')}</span>
                 <span className={`businessCard__text ${
                     getWorkTimeStatus(item.workTimeDetailed) === 'Открыто' 
                         ? 'businessCard__text_open' 

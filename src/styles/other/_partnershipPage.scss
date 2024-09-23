@@ -22,18 +22,19 @@
        padding: 0px;
        font-size: 24px;
        margin-top: 16px;
+       text-align: center;
  
     }
     &__content {
        margin: 0 auto;
        max-width: 1024px;
        padding: 0px 15px 0px 15px;
-       @include f(start, start);
+       @include f(center, start);
        gap: 90px
     }
     &__form {
        @extend %block;
-       width: 55%;
+       width: 570px;
        padding: 30px;
        margin-bottom: 100px;
        border-radius: 16px;

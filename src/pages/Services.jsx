@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ContentServices from '../components/services/ContentServices';
 import Breadcrambs from '../components/main/Breadcrambs';
 import { fetchGet } from '../api/fetch';
@@ -6,32 +6,45 @@ import useEndpoints from '../api/apiConfig';
 import PlaceServices from '../components/services/PlaceServices';
 import Categories from '../components/services/Categories';
 import { SkeletonContentServices } from '../components/UI/loaders/SkeletonContetServices';
-
+import { SearchContext } from '../context/Search';
+import { CityContext } from '../context/City';
 export default function Services() {
     const endpoints = useEndpoints();
-
+    const { data } = useContext(SearchContext); 
+    const { city } = useContext(CityContext);
     const [cards, setCards] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     // const [choiceCategory, setChoiceCategory] = useState(1); &caregotyId=${choiceCategory}
     const [itemsPerPage] = useState(12);
     const [currentPage, setCurrentPage] = useState(1);
+    const [originalCards, setOriginalCards] = useState(true); 
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await fetchGet(`${endpoints.SERVICE}&pageSize=${itemsPerPage}&pageNumber=${currentPage}`);
-            if (Array.isArray(data)) { // Проверяем, что data - это массив
-                setCards(prev => [...prev, ...data]); // Объединяем массивы
+            if (data && data.data) {
+                const slicedData = data.data.slice(0, itemsPerPage);
+                setCards(slicedData);
+                setOriginalCards(false)
                 setIsLoading(false);
-                console.log(data);
+                setCurrentPage(1)
             } else {
-                console.error('Data is not an array:', data); // Логируем ошибку, если data не массив
+                const response = await fetchGet(`${endpoints.SERVICE}&pageSize=${itemsPerPage}&pageNumber=${currentPage}`);
+                if (originalCards == false) {
+                    setCards([])
+                    setOriginalCards(true)
+                }
+                if (Array.isArray(response)) {
+                    setCards(prev => [...prev, ...response]); 
+                    setIsLoading(false);
+                } else {
+                    console.error('Data is not an array:', response); 
+                }
             }
         };
         fetchData();
-    }, [currentPage]);
-
+    }, [currentPage, data, city]); 
+       
     const showMoreCards = () => {
-        console.log('show');
         setCurrentPage(prev => prev + 1);
     };
 
@@ -41,7 +54,6 @@ export default function Services() {
     //     setCurrentPage(1); // Сбрасываем текущую страницу
     // };
 
-    console.log(cards);
     return (
         <>
             {/* <Breadcrambs current={'Услуги'} /> */}

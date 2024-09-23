@@ -1,11 +1,34 @@
 .serviceContent {
     display: grid;
-    grid-template-columns: 425px 580px;
     gap: 20px;
-    height: 340px;
     grid-template-rows: 340px;
+    grid-template-columns: 425px 580px;
+    &__info{
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__workTimeDetailed{
+        background-color: white;
+        position: absolute;
+        border-radius: 25px;
+        padding: 15px;
+        font-size: 12px;
+        display: none;
+
+        &_active{
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+        }
+    }
     &__img-box {
     border-radius: 25px;
+    max-width: 425px;
+    }
+    &__img-container{
+        height: 340px;
     }
     &__img {
     width: 100%;
@@ -14,15 +37,19 @@
     border-radius: 25px;
     }
     &__content {
-    border-radius: 25px;
-    background-color: rgb(242, 242, 246);
-    padding: 20px
+        position: relative;
+        border-radius: 25px;
+        background-color: rgb(242, 242, 246);
+        padding: 20px;
     }
     &__firstLine {
     @include f(start, center);
     div{
         @include f(start, start);
         flex-direction: column;
+        max-width: 100%;
+        min-height: 0; 
+        overflow: hidden;
     }
     }
     &__imgSmall {
@@ -34,6 +61,9 @@
     margin-right: 10px;
     }
     &__title {
+        min-height: 0; 
+        overflow: hidden;
+        max-width: 100%;
     font-size: 24px;
     font-family: 'Segoe UI';
     font-weight: 600;
@@ -54,7 +84,6 @@
     }
     &__phone {
     display: block;
-    margin-bottom: 10px;
     margin-top: 10px;
     &::before{
         content: url('../../images/icons/phoneIcon.svg');
@@ -64,16 +93,28 @@
     }
     }
     &__workTime {
+        margin-top: 10px;
     display: block;
-    margin-bottom: 15px;
     &::before{
         content: url('../../images/icons/clockIcon.svg');
         margin-right: 5px;
         position: relative;
         bottom: -2px;
     }
+    &_list{
+        &::after{
+            content: url('../../images/icons/moreNavHeader.svg');
+            margin-left: 5px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }  
+        &_active::after{
+                transform: rotate(-180deg) !important;
+        }
+    }
     }
     &__socialBox {
+        margin-top: 15px;
     @include f(start, start);
     margin-bottom: 50px;
     }
@@ -82,6 +123,9 @@
     }
     &__bottom {
     @include f(space-between, center);
+    position: absolute;
+    right: 25px;
+    bottom: 25px
     }
     &__ratingBox {
     }
@@ -105,10 +149,10 @@
     &__button {
     background-color: #3A5A91;
     border-radius: 12px;
-    color: white;
     padding: 15.5px 80px;
-    // width: 230px;
-    // height: 50px;
+    a{
+        color: white;
+    }
     }
 }
 .serviceDescription {
@@ -123,12 +167,17 @@
     margin-bottom: 30px;
     }
     &__text {
+        display: -webkit-box; 
+        -webkit-box-orient: vertical; 
+        overflow: hidden; 
+        -webkit-line-clamp: 9; 
+        text-overflow: ellipsis; 
     }
 }
 .serviceMap {
     display: inline-block;
     width: 450px;
-    max-height: 200px;
+    height: 200px;
     &__title {
     font-size: 20px;
     font-family: 'Segoe UI';
@@ -137,8 +186,8 @@
     }
     &__content {
     position: relative;
-    width: 100%;
-    height: 153px;
+    width: 450;
+    height: 143px;
     border-radius: 20px;
     }
     &__button {
@@ -147,7 +196,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 132px;
-    height: 32px;
+    height: 50px;
     border-radius: 53px;
     color: #0066C5;
     // box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
@@ -168,7 +217,8 @@
     &__content {
     }
     &__item {
-    @include f(space-between, center)
+    @include f(space-between, center);
+    margin-bottom: 10px;
     }
     &__left {
     @include f(start, center);
@@ -180,13 +230,26 @@
     }
     }
     &__item-title {
+        width: 310px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
     }
     &__description {
+        width: 310px;
+        margin-right: 10px;
     color: #8A99A0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
     }
     &__right {
     width: 50%;
-    @include f(space-between, center)
+    @include f(space-between, center);
     }
     &__price {
     min-width: 100px;
@@ -196,11 +259,16 @@
     }
     &__item-button {
     background-color: #EEEEEF;
-    color: #3A5A91;
     padding: 10px 50px;
     border-radius: 50px;
+    a{
+        color: #3A5A91;
+    }
     }
     &__button {
+        a{
+            color: white;
+        }
     position: relative;
     left: 50%;
     transform: translateX(-50%);

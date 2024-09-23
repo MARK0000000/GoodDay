@@ -22,6 +22,7 @@ export default function EverythingForHome() {
   useEffect(() => {
     if (data && data.data) { // Проверяем, есть ли данные в контексте
       const slicedData = data.data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+      setCurrentPage(1)
       setBusinesses(slicedData);
       setIsLoading(false);
       setTotalCount(data.totalCount);
