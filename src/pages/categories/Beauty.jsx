@@ -29,7 +29,7 @@ export default function Beauty() {
     } else {
       const fetchData = async () => {
         setIsLoading(true);
-        const result = await fetchGetCategory(`${endpoints.BEAUTYBUSINESS}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+        const result = await fetchGetCategory(`${endpoints.BEAUTY}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
         if (result) {
           setBusinesses(result.data);
           setIsLoading(false);

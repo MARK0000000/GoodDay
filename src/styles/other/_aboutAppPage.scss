@@ -3,478 +3,473 @@
     border-radius: 50px;
 }
 .infoAboutCompany {
-margin-top: 50px;
-margin-bottom: 50px;
-font-family: "Raleway", sans-serif;
-display: grid;
-grid-template-columns: repeat(2, 1fr); 
-grid-template-rows: 2fr 1fr; 
-grid-gap: 10px; 
-max-height: 515px;
-&__block {
-    @extend %blockAboutApp;
-    &_white {
-        background-color: rgb(235, 239, 251);
-        display: flex;
-        flex-direction: column;
-    }
-    &_blue {
-        background-color: $blue;
-        @include f(center, start);
-        grid-row: span 2;
-        padding: 0px;
-    }
-    &_orange {
-        background-color: rgb(255, 138, 98);
-    }
-}
-&__text {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 30px;
-    &_blue {
-        color: $blue;
-        font-size: 42px;
-        font-weight: 700;
-        margin-bottom: 30px;
-    }
-    &_white {
-        color: white;
-        margin-right: 20px;
-        font-size: 18px;
-        font-weight: 600;
-    }
-}
-&__list {
-}
-&__list-item {
-    font-size: 17px;
-    margin-bottom: 10px;
-    &:last-child{
-        margin-bottom: 0px;
-    }
-    &::before{
-        content: url('../../images/icons/Star.svg');
-        margin-right: 10px;
-        position: relative;
-        bottom: -4px;
-    }
-    &_big{
-        &::before{
-            bottom: -14px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: "Raleway", sans-serif;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: 2fr 1fr; 
+    grid-gap: 10px; 
+    max-height: 515px;
+    &__block {
+        @extend %blockAboutApp;
+        &_white {
+            background-color: rgb(235, 239, 251);
+            display: flex;
+            flex-direction: column;
+        }
+        &_blue {
+            background-color: $blue;
+            @include f(center, start);
+            grid-row: span 2;
+            padding: 0px;
+        }
+        &_orange {
+            background-color: rgb(255, 138, 98);
         }
     }
-    span{
-        margin-left: 30px;
+    &__text {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        &_blue {
+            color: $blue;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        &_white {
+            color: white;
+            margin-right: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
     }
-}
-&__img {
-    position: relative;
-    top: -39px;
-    object-fit: contain;
-    max-width: 385px;
-    &_mobile{
-        display: none;
+    &__list-item {
+        font-size: 17px;
+        margin-bottom: 10px;
+        &:last-child{
+            margin-bottom: 0px;
+        }
+        &::before{
+            content: url('../../images/icons/Star.svg');
+            margin-right: 10px;
+            position: relative;
+            bottom: -4px;
+        }
+        &_big{
+            &::before{
+                bottom: -14px;
+            }
+        }
+        span{
+            margin-left: 30px;
+        }
     }
-}
-&__icons {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-&__icon {
-    margin-right: 10px;
-}
-&__paragrath {
-    color: white;
-    margin-bottom: 15px;
-    font-size: 17px;
-}
-&__button {
-    background-color: white;
-    width: 100%;
-    border-radius: 50px;
-    padding: 15px 0px;
-    font-size: 20px;
-    font-weight: 700;
-}
+    &__img {
+        position: relative;
+        top: -39px;
+        object-fit: contain;
+        max-width: 385px;
+        &_mobile{
+            display: none;
+        }
+    }
+    &__icons {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    &__icon {
+        margin-right: 10px;
+    }
+    &__paragrath {
+        color: white;
+        margin-bottom: 15px;
+        font-size: 17px;
+    }
+    &__button {
+        background-color: white;
+        width: 100%;
+        border-radius: 50px;
+        padding: 15px 0px;
+        font-size: 20px;
+        font-weight: 700;
+    }
 }
 .howItWorks {
-margin-bottom: 50px;
-&__title {
-    color: rgb(198, 198, 198);
-    margin-bottom: 20px;
-    font-size: 30px;
-    font-weight: 400;
-}
-&__hr {
-    border: 1px solid rgb(198, 198, 198);
-    margin-bottom: 40px;
-}
-&__bloks {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr; 
-    gap: 20px;
-}
-&__block {
-    @extend %blockAboutApp;
-    color: white;
-    &_blue {
-        background-color: rgb(152, 175, 223);
-        @include f(space-between, start);
-        flex-direction: column;
-        padding: 30px 5px 0px 5px;
+    margin-bottom: 50px;
+    &__title {
+        color: rgb(198, 198, 198);
+        margin-bottom: 20px;
+        font-size: 30px;
+        font-weight: 400;
     }
-    &_white {
-        @include f(space-between, start);
-        background-color: rgb(235, 235, 235);
-        color: black;
-        flex-direction: column;
-        padding-bottom: 0px;
-        padding-top: 30px;
-        img{
-            max-width: 70%;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
+    &__hr {
+        border: 1px solid rgb(198, 198, 198);
+        margin-bottom: 40px;
+    }
+    &__bloks {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 1fr; 
+        gap: 20px;
+    }
+    &__block {
+        @extend %blockAboutApp;
+        color: white;
+        &_blue {
+            background-color: rgb(152, 175, 223);
+            @include f(space-between, start);
+            flex-direction: column;
+            padding: 30px 5px 0px 5px;
         }
-        span{
-            margin-left: 0px;
-        }
-        p{
-            margin-left: 0px;
-        }
+        &_white {
+            @include f(space-between, start);
+            background-color: rgb(235, 235, 235);
+            color: black;
+            flex-direction: column;
+            padding-bottom: 0px;
+            padding-top: 30px;
+            img{
+                max-width: 70%;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            span{
+                margin-left: 0px;
+            }
+            p{
+                margin-left: 0px;
+            }
 
-    }
-    &_orange {
-        @include f(space-between, start);
-        background-color: rgb(255, 138, 98);
-        flex-direction: column;
-        padding-top: 30px;
-        span{
-            margin-left: 0px;
         }
-        p{
-            margin-left: 0px;
+        &_orange {
+            @include f(space-between, start);
+            background-color: rgb(255, 138, 98);
+            flex-direction: column;
+            padding-top: 30px;
+            span{
+                margin-left: 0px;
+            }
+            p{
+                margin-left: 0px;
+            }
         }
     }
-}
-&__span {
-    margin-left: 30px;
-    margin-bottom: 30px;
-    font-size: 22px;
-}
-&__paragrath {
-    margin-left: 30px;
-    margin-bottom: 40px;
-    font-size: 22px;
-    font-weight: 700;
-}
-&__img {
-}
-&__button {
-    margin-top: 10px;
-    background-color: white;
-    width: 100%;
-    border-radius: 50px;
-    padding: 15px 0px;
-    font-size: 20px;
-    font-weight: 700;
-}
+    &__span {
+        margin-left: 30px;
+        margin-bottom: 30px;
+        font-size: 22px;
+    }
+    &__paragrath {
+        margin-left: 30px;
+        margin-bottom: 40px;
+        font-size: 22px;
+        font-weight: 700;
+    }
+    &__button {
+        margin-top: 10px;
+        background-color: white;
+        width: 100%;
+        border-radius: 50px;
+        padding: 15px 0px;
+        font-size: 20px;
+        font-weight: 700;
+    }
 }
 .opportunities {
-margin-bottom: 50px;
-@extend %blockAboutApp;
-background-color: rgb(36, 56, 99);
-padding: 30px 60px;
-font-family: "Raleway";
-&__title {
-    color: rgb(198, 198, 198);
-    margin-bottom: 20px;
-    font-size: 30px;
-    font-weight: 400;
-}
-&__hr {
-    border: 1px solid rgb(198, 198, 198);
-    margin-bottom: 40px;
-}
-&__bloks {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-template-rows: 1.5fr auto;
-    gap: 10px;
-}
-&__block {
+    margin-bottom: 50px;
     @extend %blockAboutApp;
-    color: white;
-    background-color: rgb(58, 84, 139);
-    position: relative;
-    padding: 40px 25px 0px 25px;
-    &_big {
-        grid-column: span 2;
-        padding: 40px 60px 25px 60px;
+    background-color: rgb(36, 56, 99);
+    padding: 30px 60px;
+    font-family: "Raleway";
+    &__title {
+        color: rgb(198, 198, 198);
+        margin-bottom: 20px;
+        font-size: 30px;
+        font-weight: 400;
     }
-    &_3{
-        h4{
-            margin-top: -15px;
-        }
-        hr{
-            margin-bottom: 11px;
-        }
+    &__hr {
+        border: 1px solid rgb(198, 198, 198);
+        margin-bottom: 40px;
     }
-    &_5{
-        padding: 40px 35px 25px 35px;
+    &__bloks {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-rows: 1.5fr auto;
+        gap: 10px;
     }
-}
-&__block-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-&__block-hr {
-    border: 1px solid rgb(170, 192, 238);
-    margin-bottom: 20px;
-}
-&__block-p {
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 30px;
-}
-&__block-icon {
-    position: relative;
-    object-fit: contain;
-    bottom: 0px;
-    left: 100%;
-    transform: translateX(-100px);
-    &_1{
-        bottom: -15px;
-        width: 100px;
-        transform: translateX(-120px);
-        width: 89px;
-    }
-    &_2{
-        transform: translateX(-80px);
-        bottom: 0px;
-        width: 71px;
-    }
-    &_3{
-        bottom: 10px;
-        width: 76px;
-    }
-
-}
-}
-.invitation {
-display: grid;
-grid-template-columns: 1fr 1fr 1.5fr;
-grid-template-rows: 1fr 1fr;
-gap: 15px;
-margin-bottom: 50px;
-font-family: "Raleway";
-&__block {
-    @extend %blockAboutApp;
-    border-radius: 40px;
-    &_img {
-        &_1{
-            background-image: url('../../images/other/красота.png');
-            background-position: center;
-            background-size: 360px 270px;
-            background-repeat: no-repeat;
-        }
-        &_2{
-            background-image: url('../../images/other/развлечения.png');
-            background-position: center;
-            background-size: 360px 270px;
-            background-repeat: no-repeat;
-
+    &__block {
+        @extend %blockAboutApp;
+        color: white;
+        background-color: rgb(58, 84, 139);
+        position: relative;
+        padding: 40px 25px 0px 25px;
+        &_big {
+            grid-column: span 2;
+            padding: 40px 60px 25px 60px;
         }
         &_3{
-            background-image: url('../../images/other/магазины.png');
-            background-position: center;
-            background-size: 360px 270px;
-            background-repeat: no-repeat;
+            h4{
+                margin-top: -15px;
+            }
+            hr{
+                margin-bottom: 11px;
+            }
         }
-        &_4{
-            background-image: url('../../images/other/рестораныикафе.png');
-            background-position: center;
-            background-size: 360px 270px;
-            background-repeat: no-repeat;
+        &_5{
+            padding: 40px 35px 25px 35px;
+        }
+    }
+    &__block-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    &__block-hr {
+        border: 1px solid rgb(170, 192, 238);
+        margin-bottom: 20px;
+    }
+    &__block-p {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 30px;
+    }
+    &__block-icon {
+        position: relative;
+        object-fit: contain;
+        bottom: 0px;
+        left: 100%;
+        transform: translateX(-100px);
+        &_1{
+            bottom: -15px;
+            width: 100px;
+            transform: translateX(-120px);
+            width: 89px;
+        }
+        &_2{
+            transform: translateX(-80px);
+            bottom: 0px;
+            width: 71px;
+        }
+        &_3{
+            bottom: 10px;
+            width: 76px;
         }
 
     }
-    &_text {
-        background-color: transparent;
+}
+.invitation {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 50px;
+    font-family: "Raleway";
+    &__block {
+        @extend %blockAboutApp;
+        border-radius: 40px;
+        &_img {
+            &_1{
+                background-image: url('../../images/other/красота.png');
+                background-position: center;
+                background-size: 360px 270px;
+                background-repeat: no-repeat;
+            }
+            &_2{
+                background-image: url('../../images/other/развлечения.png');
+                background-position: center;
+                background-size: 360px 270px;
+                background-repeat: no-repeat;
+
+            }
+            &_3{
+                background-image: url('../../images/other/магазины.png');
+                background-position: center;
+                background-size: 360px 270px;
+                background-repeat: no-repeat;
+            }
+            &_4{
+                background-image: url('../../images/other/рестораныикафе.png');
+                background-position: center;
+                background-size: 360px 270px;
+                background-repeat: no-repeat;
+            }
+
+        }
+        &_text {
+            background-color: transparent;
+        }
+        &_blue {
+            background-color: $blue;
+            display: flex;
+            position: relative;
+        }
     }
-    &_blue {
-        background-color: $blue;
-        display: flex;
-        position: relative;
+    &__span {
+        color: white;
+        font-size: 20px;
     }
-}
-&__span {
-    color: white;
-    font-size: 20px;
-}
-&__title {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-&__paragrath {
-    font-size: 26px;
-}
-&__img {
-    width: 261px;
-    object-fit: contain;
-    position: absolute;
-    top: 20px;
-    right: 30px;
-}
+    &__title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    &__paragrath {
+        font-size: 26px;
+    }
+    &__img {
+        width: 261px;
+        object-fit: contain;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+    }
 }
 .ratings {
-display: grid;
-grid-template-columns: 1fr 1fr;
-background-color: rgb(36, 56, 99);
-gap: 35px;
-@extend %blockAboutApp;
-padding: 25px;
-padding-right: 80px;
-position: relative;
-margin-bottom: 50px;
-font-family: "Raleway";
-&__rating {
-    span {
-        font-size: 62px;
-        font-weight: 700;
-        color: white;
-        font-family: "Raleway", sans-serif;
-    }
-    margin-bottom: 20px
-}
-&__block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(36, 56, 99);
+    gap: 35px;
     @extend %blockAboutApp;
-    @include f(start, center);
-    flex-direction: column;
-    &_white {
-        padding: 30px 10px 10px 10px;
+    padding: 25px;
+    padding-right: 80px;
+    position: relative;
+    margin-bottom: 50px;
+    font-family: "Raleway";
+    &__rating {
+        span {
+            font-size: 62px;
+            font-weight: 700;
+            color: white;
+            font-family: "Raleway", sans-serif;
+        }
+        margin-bottom: 20px
+    }
+    &__block {
+        @extend %blockAboutApp;
+        @include f(start, center);
+        flex-direction: column;
+        &_white {
+            padding: 30px 10px 10px 10px;
+            background-color: rgb(235, 239, 251);
+        }
+        &_transparent {
+            height: 50%;
+            padding: 0px;
+            padding-top: 40px;
+            position: relative;
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        // &_second{
+        //     position: relative;
+        // }
+    }
+    &__count {
+        font-family: "Raleway", sans-serif;
+        margin: 35px;
+        font-size: 62px;
+        color: rgb(58, 84, 139);
+        margin-bottom: 35px;
+        font-weight: 700;
+    }
+    &__paragrath {
+        color: rgb(119, 137, 178);
+        margin-bottom: 20px;
+        font-size: 18px;
+        text-align: justify;
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;
+    }
+    &__img {
+        border-radius: 0px 0px 50px 50px;
+    }
+    &__text {
+        color: white;
+        font-size: 18px;
+        &_bottom {
+            position: relative;
+            bottom: -30px;
+            padding-top: 20px;
+            width: 100%;
+            border-top: 1px solid white;
+            text-align: center;
+        }
+    }
+    &__qr {
+        width: 200px;
+        position: absolute;
+        bottom: 20px;
+        right: 80px;
+        height: 42%;
+        border-radius: 30px;
+        padding: 20px;
         background-color: rgb(235, 239, 251);
+        @include f(center, center);
+        flex-direction: column;
     }
-    &_transparent {
-        height: 50%;
-        padding: 0px;
-        padding-top: 40px;
-        position: relative;
-        background-color: transparent;
-        border: 2px solid white;
+    &__qr-text {
+        color: rgb(119, 137, 178);
+        font-size: 18px;
+        font-weight: 700;
     }
-    // &_second{
-    //     position: relative;
-    // }
-}
-&__count {
-    font-family: "Raleway", sans-serif;
-    margin: 35px;
-    font-size: 62px;
-    color: rgb(58, 84, 139);
-    margin-bottom: 35px;
-    font-weight: 700;
-}
-&__paragrath {
-    color: rgb(119, 137, 178);
-    margin-bottom: 20px;
-    font-size: 18px;
-    text-align: justify;
-    font-family: "Raleway", sans-serif;
-    font-weight: 500;
-}
-&__img {
-    border-radius: 0px 0px 50px 50px;
-}
-&__text {
-    color: white;
-    font-size: 18px;
-    &_bottom {
-        position: relative;
-        bottom: -30px;
-        padding-top: 20px;
+    &__qr-img {
         width: 100%;
-        border-top: 1px solid white;
-        text-align: center;
+        object-fit: contain;
     }
-}
-&__qr {
-    width: 200px;
-    position: absolute;
-    bottom: 20px;
-    right: 80px;
-    height: 42%;
-    border-radius: 30px;
-    padding: 20px;
-    background-color: rgb(235, 239, 251);
-    @include f(center, center);
-    flex-direction: column;
-}
-&__qr-text {
-    color: rgb(119, 137, 178);
-    font-size: 18px;
-    font-weight: 700;
-}
-&__qr-img {
-    width: 100%;
-    object-fit: contain;
-}
-&__logo {
-    height: 42%;
-    width: 240px;
-    position: absolute;
-    bottom: 20px;
-    right: 300px;
-    object-fit: contain;
+    &__logo {
+        height: 42%;
+        width: 240px;
+        position: absolute;
+        bottom: 20px;
+        right: 300px;
+        object-fit: contain;
 
-}
+    }
 }
 .question {
-margin-bottom: 70px;
-font-family: "Raleway";
-&__title {
-    font-size: 42px;
-    font-weight: 700;
-    padding-bottom: 50px;
-    border-bottom: 1px solid rgb(237, 237, 237);
-    width: 100%;
-    text-align: center;
-    margin-bottom: 15px;
-}
-&__hr{
-    border: 1px solid rgb(237, 237, 237);
-    margin: 15px 0px;
-}
-summary{
-    font-family: "Raleway", sans-serif;
-    list-style: none;
-    font-size: 24px;
-    font-weight: 600;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-summary::after{
-    content: url("../../images/icons/plus.svg");
-    margin-left: auto;
-    margin-right: 5px;
-    transition: transform 0.3s ease; /* Добавляем плавный переход */
-}
+    margin-bottom: 70px;
+    font-family: "Raleway";
+    &__title {
+        font-size: 42px;
+        font-weight: 700;
+        padding-bottom: 50px;
+        border-bottom: 1px solid rgb(237, 237, 237);
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    &__hr{
+        border: 1px solid rgb(237, 237, 237);
+        margin: 15px 0px;
+    }
+    summary{
+        font-family: "Raleway", sans-serif;
+        list-style: none;
+        font-size: 24px;
+        font-weight: 600;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    summary::after{
+        content: url("../../images/icons/plus.svg");
+        margin-left: auto;
+        margin-right: 5px;
+        transition: transform 0.3s ease; 
+    }
 
-details[open] summary::after {
-    transform: rotate(45deg); /* Поворачиваем на 45 градусов */
-}
-details[open] summary{
-    margin-bottom: 10px;
-}
-p{
-    font-size: 16px;
-    font-weight: 500;
-}
-
+    details[open] summary::after {
+        transform: rotate(45deg); 
+    }
+    details[open] summary{
+        margin-bottom: 10px;
+    }
+    p{
+        font-size: 16px;
+        font-weight: 500;
+    }
 }
   

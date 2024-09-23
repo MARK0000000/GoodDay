@@ -8,6 +8,7 @@ export default function InfoAboutCompany() {
     const handleNavigate = () => {
         window.open('https://goodday.taplink.ws/', '_blank');
     }
+    
   return (
     <div className='infoAboutCompany'>
         <div className="infoAboutCompany__block infoAboutCompany__block_white">

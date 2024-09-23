@@ -1,31 +1,26 @@
 import React, { useEffect, useState, useContext, useMemo } from 'react';
 import { SearchContext } from '../../context/Search';
-import { SkeletonContent } from '../UI/loaders/SkeletonContent';
 import { changePageNumbers } from '../../utils/pagination';
 import Pagination from '../content/Pagination';
 import BusinessCard from '../content/BusinessCard';
 import NothingFound from '../UI/loaders/NothingFound';
-import { filterBusinesses } from '../../utils/filterBusinesses';
-import { calculateIndexOfLastPage } from '../../utils/pagination';
 
 export default function Content({ businesses, itemsPerPage, currentPage, setCurrentPage, totalCount }) {
-  const [businessCards, setBusinessCards] = useState(businesses); // Инициализируем с пропсом businesses
+  const [businessCards, setBusinessCards] = useState(businesses); 
   const { searchValue } = useContext(SearchContext);
 
   const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const [indexOfFirstPage, setIndexOfFirstPage] = useState(0);
   const [indexOfLastPage, setIndexOfLastPage] = useState(0);
 
   const [pageNumbers, setPageNumbers] = useState([]);
   const [currentPageNumbers, setCurrentPageNumbers] = useState(pageNumbers.slice(indexOfFirstPage, indexOfLastPage));
 
-  // Обновляем бизнесы при изменении пропса businesses
+
   useEffect(() => {
     setBusinessCards(businesses);
   }, [businesses]);
 
-  // Обновляем пагинацию при изменении totalCount
   useEffect(() => {
     if (totalCount) {
       changePageNumbers(totalCount, itemsPerPage, setPageNumbers, businessCards);
@@ -42,12 +37,12 @@ export default function Content({ businesses, itemsPerPage, currentPage, setCurr
       setIndexOfFirstPage(0);
     };
 
-    updateIndexOfLastPage(); // Вызов функции при первоначальной загрузке
+    updateIndexOfLastPage();
 
-    window.addEventListener('resize', updateIndexOfLastPage); // Обновление при изменении ширины экрана
+    window.addEventListener('resize', updateIndexOfLastPage); 
 
     return () => {
-      window.removeEventListener('resize', updateIndexOfLastPage); // Удаление слушателя при размонтировании компонента
+      window.removeEventListener('resize', updateIndexOfLastPage); 
     };
   }, [pageNumbers]);
 

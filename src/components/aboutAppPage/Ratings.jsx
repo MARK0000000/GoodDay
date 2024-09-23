@@ -4,6 +4,7 @@ import ratingsImg from '../../images/other/20000скачиваний.png'
 import qr from '../../images/icons/qrBlack.svg'
 
 export default function Ratings() {
+    
   return (
     <div className='ratings'>
         <div className="ratings__block ratings__block_white">

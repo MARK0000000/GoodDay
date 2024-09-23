@@ -2,6 +2,7 @@ import React from 'react'
 import { getValueOrDefault } from '../../utils/getValueOrDefault'
 
 export default function ServiceDescription({service}) {
+  
   return (
     <section className="serviceDescription">
         <h3 className="serviceDescription__title">Описание</h3>

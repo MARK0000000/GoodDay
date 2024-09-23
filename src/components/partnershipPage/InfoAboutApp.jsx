@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import phone from '../../images/other/phone.png';
-import axios from 'axios'; 
-
+import useEndpoints from '../../api/apiConfig';
 export default function InfoAboutApp() {
-  const [pdfFile, setPdfFile] = useState(null);
+  const endpoints = useEndpoints();
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = 'https://vh369.by2040.ihb.by/pdfs/presentation';
-    link.download = 'presentation.pdf'; // Имя файла для скачивания
+    link.href = `${endpoints.PDF + 'presentation'}`;
+    link.download = 'presentation.pdf'; 
     link.click();
   };
 

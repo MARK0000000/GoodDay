@@ -198,7 +198,6 @@
                 &_4{
                     background-size: auto auto;
                 }
-        
             }
         }
         &__span {
@@ -226,7 +225,6 @@
         padding: 10px 10px;
         &__block {
             flex-direction: column;
-            
             &_transparent {
                 max-height: 50%;
                 margin-bottom: 20px;
@@ -300,11 +298,11 @@
             content: url("../../images/icons/plus.svg");
             margin-left: auto;
             margin-right: 5px;
-            transition: transform 0.3s ease; /* Добавляем плавный переход */
+            transition: transform 0.3s ease; 
         }
         
         details[open] summary::after {
-            transform: rotate(45deg); /* Поворачиваем на 45 градусов */
+            transform: rotate(45deg); 
         }
         details[open] summary{
             margin-bottom: 10px;
@@ -313,10 +311,7 @@
             font-size: 16px;
             font-weight: 500;
         }
-        
-        }
-        
-        
+    } 
 }
 @media (max-width: 768px) {
     .infoAboutCompany {
@@ -348,8 +343,6 @@
                 margin-right: 20px;
                 font-size: 18px;
             }
-        }
-        &__list {
         }
         &__list-item {
             font-size: 12px;
@@ -401,7 +394,6 @@
                 padding-top: 30px;
                 position: relative;
                 img{
-                    //max-width: 30%;
                     max-height: 90%;
                     position: absolute;
                     left: auto;
@@ -529,8 +521,6 @@
                 grid-row-start: 3;
                 grid-row-end: 4;
             }
-            &_blue {
-            }        
         }
         &__span {
             font-size: 16px;
@@ -609,8 +599,6 @@
                 grid-row-start: 3;
                 grid-row-end: 4;
             }
-            &_blue {
-            }        
         }
         &__span {
             font-size: 16px;
@@ -659,7 +647,6 @@
         }
         summary{
             font-size: 16px;
-            font-weight: 600;
         }    
     }        
 }

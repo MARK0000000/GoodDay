@@ -31,7 +31,7 @@ export const SearchProvider = ({ children }) => {
     masterclasses: 18,
     sport: 19,
   };
-  console.log(endpoint)
+
   const routes = {
     discounts: `${endpoints.SEARCH_DISCOUNTS}`,
     category: (categoryId) => `${endpoints.SEARCH_CATEGORY}&categoryId=${categoryId}`,

@@ -31,7 +31,7 @@ export default function Children() {
     } else {
       const fetchData = async () => {
         setIsLoading(true);
-        const result = await fetchGetCategory(`${endpoints.CHILDRENBUSINESS}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+        const result = await fetchGetCategory(`${endpoints.CHILDREN}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
         if (result) {
           setBusinesses(result.data);
           setIsLoading(false);

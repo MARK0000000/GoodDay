@@ -20,7 +20,7 @@ export default function Accessories() {
   const { city } = useContext(CityContext);
 
   useEffect(() => {
-    if (data && data.data) { // Проверяем, есть ли данные в контексте
+    if (data && data.data) { 
       const slicedData = data.data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
       setCurrentPage(1)
       setBusinesses(slicedData);
@@ -29,7 +29,7 @@ export default function Accessories() {
     } else {
       const fetchData = async () => {
         setIsLoading(true);
-        const result = await fetchGetCategory(`${endpoints.ACCESSORIESBUSINESS}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+        const result = await fetchGetCategory(`${endpoints.ACCESSORIES}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
         if (result) {
           setBusinesses(result.data);
           setIsLoading(false);

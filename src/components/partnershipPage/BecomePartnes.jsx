@@ -1,11 +1,13 @@
 import React from 'react';
 import phone from '../../images/other/phone.png';
-
+import useEndpoints from '../../api/apiConfig';
 export default function BecomePartnes() {
+  const endpoints = useEndpoints();
+
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = 'https://vh369.by2040.ihb.by/pdfs/doPartnership';
-    link.download = 'doPartnership.pdf'; // Имя файла для скачивания
+    link.href = `${endpoints.PDF + 'doPartnership'}`;
+    link.download = 'doPartnership.pdf'; 
     link.click();
   };
 

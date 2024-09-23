@@ -36,8 +36,6 @@
             bottom: 10px;
             right: 10px;
         }
-        &__rating {
-        }
         &__button {
             font-size: 12px;
             
@@ -58,19 +56,19 @@
         border-radius: 30px;
         margin-bottom: 30px;
         &__title {
-        font-size: 22px;
-        margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 20px;
         }
         &__text {
-        font-size: 14px;
-        margin-bottom: 10px;
-        line-height: 25px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            line-height: 25px;
         }
         &__button {
-        padding: 10px 10px;
-        border-radius: 10px;
-        transition: background-color 0.3s, transform 0.1s;
-        font-size: 12px;
+            padding: 10px 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.1s;
+            font-size: 12px;
         }
     }
 }

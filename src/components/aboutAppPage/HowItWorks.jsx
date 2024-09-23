@@ -7,6 +7,7 @@ export default function HowItWorks() {
     const handleNavigate = () => {
         window.open('https://goodday.taplink.ws/', '_blank');
     }
+    
   return (
     <section className='howItWorks'>
         <h3 className="howItWorks__title">Как это работает?</h3>

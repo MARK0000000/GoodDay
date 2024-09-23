@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function InfoPartnership() {
+    
   return (
     <section className='infoPartnership'>
         <h3 className="infoPartnership__title">Партнерство с Good day это</h3>

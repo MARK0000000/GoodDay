@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import { useLocation, useParams } from 'react-router-dom';
 import addressIcon from '../images/icons/share-map.svg.svg'
 import telIcon from '../images/icons/quick-call.svg.svg'
@@ -20,6 +20,7 @@ import ContactsWidget from '../components/businessPage/ContactsWidget';
 import InfoWidget from '../components/businessPage/InfoWidget';
 import AboutStock from '../components/businessPage/AboutStock';
 import { handleNavigateSocial } from '../utils/navigateSocial';
+import { TypeOfDataContext } from '../context/TypeOfData';
 
 export default function BusinessPage() {
     const endpoints = useEndpoints();
@@ -27,6 +28,7 @@ export default function BusinessPage() {
     const {id} = useParams();
     const [business, setBusiness] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const {type} = useContext(TypeOfDataContext)
 
     const [links, setLinks] = useState([])
     const [activeLink, setActiveLink] = useState(links[0] || {}); 
@@ -35,36 +37,34 @@ export default function BusinessPage() {
     };  
 
     const [status, setStatus] = useState('Закрыто');
-
+    
     useEffect(() => {
       async function getData() {
-        const data = await fetchGet(`${endpoints.BUSINESSBYID}${id}`);
+        const data = await fetchGet(`${type == 'discounts' ? endpoints.DISCOUNT_BY_ID + id : endpoints.PROMOTION_BY_ID + id} `);
         if (data && data != Promise) {
             setBusiness(data);
             setLinks([
                 {
-                title: 'Условия',
-                body: data.discountRules || "Условия не указаны",
-                },
-                {
                 title: 'Описание',
                 body: data.description || "Описание не указанно",
+                },
+                {
+                title: 'Условия',
+                body: data.discountRules || "Условия не указаны",
                 },
                 {
                 title: 'Адреса',
                 body: (data.addresses[0] ? data.addresses.map(address => address.description).join('\n') : false) ||  "Адреса не указаны",
                 },
             ])
-            setActiveLink('Условия')     
-
+            setActiveLink('Описание')     
             setStatus(getWorkTimeStatus(data.workTimeDetailed));
-
-
             setIsLoading(false);            
         }
     }
     getData();
     }, [id]);
+
     return (
         <section>
             <Breadcrambs current={business.name}/>

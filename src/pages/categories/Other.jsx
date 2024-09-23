@@ -29,7 +29,7 @@ export default function Other() {
     } else {
       const fetchData = async () => {
         setIsLoading(true);
-        const result = await fetchGetCategory(`${endpoints.OTHERBUSINESS}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+        const result = await fetchGetCategory(`${endpoints.OTHER}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
         if (result) {
           setBusinesses(result.data);
           setIsLoading(false);

@@ -1,15 +1,15 @@
-import React, {useContext, useEffect} from 'react';
-import { Routes, Route, useNavigate, Navigate} from 'react-router-dom';
+import React from 'react';
+import { Routes, Route, Navigate} from 'react-router-dom';
 import Main from '../components/Main';
-import { AuthProvider } from '../hooks/useAuth';
-import Login from '../pages/Login';
-import { privateRoute, publicRoute } from '.';
+// import { AuthProvider } from '../hooks/useAuth';
+import { privateRoute } from '.';
 function AppRouter() {
 
    return (
-      <AuthProvider>
+         // <AuthProvider>
+         // </AuthProvider>
          <Routes>
-            <Route path='/login' element={<Login/>}/>
+            {/* <Route path='/login' element={<Login/>}/> */}
             <Route path='/' element={
                      <Main />
                   }>
@@ -19,7 +19,6 @@ function AppRouter() {
                )}
             </Route>
          </Routes>
-      </AuthProvider>
    )
 }
 

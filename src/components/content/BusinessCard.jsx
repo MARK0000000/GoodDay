@@ -1,14 +1,12 @@
 import React, {useState, useContext} from 'react'
 import { useLocation } from 'react-router-dom';
-import exampleImg from '../../images/other/4k.jpg';
 import useEndpoints from '../../api/apiConfig'
-
 import { formatDate } from '../../utils/formatDate';
 import { getValueOrDefault } from '../../utils/getValueOrDefault';
 import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
-import { useNavigate } from 'react-router';
 import { getEndpoint } from '../../utils/workWithUrl';
 import { NavigateContext } from '../../context/Navigate';
+
 export default function BusinessCard({item}) {
     const {handleNavigate} = useContext(NavigateContext)
     const endpoints = useEndpoints()
@@ -68,7 +66,7 @@ export default function BusinessCard({item}) {
                 {/* <span className="businessCard__text_bottom businessCard__text_bottom_paid">{getValueOrDefault(item.buyCount, 0)}</span>
                 <span className="businessCard__text_bottom businessCard__text_bottom_comments">{getValueOrDefault(item.commentsCount, 0)}</span> */}
             </div>
-            <button className="businessCard__button" onClick={() => handleNavigate(`${endpoint == "promotion" ? `promotion/${item.businessId}`  :  `${endpoint}/${item.id}`}`, `${endpoint == "promotion" ? `promotion/${item.businessId}`  :  `${endpoint}/${item.id}`}`)}> <span>Посмотреть</span></button>
+            <button className="businessCard__button" onClick={() => handleNavigate(`${endpoint}/${item.id}`, `${endpoint}/${item.id}`)}> <span>Посмотреть</span></button>
         </div>
     </article>
   )

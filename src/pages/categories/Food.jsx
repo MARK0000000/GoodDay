@@ -29,7 +29,7 @@ export default function Food() {
     } else {
       const fetchData = async () => {
         setIsLoading(true);
-        const result = await fetchGetCategory(`${endpoints.FOODBUSINESS}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+        const result = await fetchGetCategory(`${endpoints.FOOD}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
         if (result) {
           setBusinesses(result.data);
           setIsLoading(false);

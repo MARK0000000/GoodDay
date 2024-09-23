@@ -4,12 +4,10 @@ import BreadCrumbs from '../components/main/Breadcrambs'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import sendMassageIcon from '../images/icons/sendMassageIcon.svg'
-import serviceExample from '../images/other/serviceExample.png'
 import instaSmall from '../images/icons/instagramSmall.svg'
 import vkSmall from '../images/icons/vkSmall.svg'
 import MyMapSmall from '../components/servicePage/MyMapSmall';
 import ServiceList from '../components/servicePage/ServiceList';
-import ServiceExamples from '../components/servicePage/ServiceExamples';
 import ServiceDescription from '../components/servicePage/ServiceDescription';
 import useEndpoints from '../api/apiConfig';
 import { fetchGet } from '../api/fetch';
@@ -18,6 +16,7 @@ import WorkTimeModal from '../components/servicePage/WorkTimeModal';
 import { handleNavigateSocial } from '../utils/navigateSocial';
 import { SkeletonServicePage } from '../components/UI/loaders/SkeletonServicePage';
 import { SkeletonServicePageMedia } from '../components/UI/loaders/SkeletonServicePageMedia';
+
 export default function ServicePage() {
     const endpoints = useEndpoints()
     const {id} = useParams();
@@ -35,7 +34,7 @@ export default function ServicePage() {
     }
     useEffect(() => {
         async function getData() {
-            const data = await fetchGet(`${endpoints.SERVICEBYID}${id}`);
+            const data = await fetchGet(`${endpoints.SERVICE_BY_ID}${id}`);
             if (data) {
                 setService(data)
                 setIsLoading(false)

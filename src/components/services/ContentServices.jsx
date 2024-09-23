@@ -5,10 +5,9 @@ import { NavigateContext } from '../../context/Navigate';
 import NothingFound from '../UI/loaders/NothingFound';
 export default function ContentServices({data, showMoreCards}) {
     const {handleNavigate} = useContext(NavigateContext)
-
-    const navigate = useNavigate();
     const endpoints = useEndpoints()
     const [cards, setCards] = useState([])
+    
     useEffect(() => {
         setCards(data)
     }, [data])

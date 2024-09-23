@@ -1,22 +1,22 @@
 @media (max-width: 1024px) {
    .header{
-         &__container{
-            padding: 0px 15px 0px 10px
-         }
-        &__firstLine{
-           @include f(space-between, center);
-           margin-bottom: 20px;
-        }
-        &__about{
-           margin-left: 0px;
-           a {
+      &__container{
+         padding: 0px 15px 0px 10px
+      }
+      &__firstLine{
+         @include f(space-between, center);
+         margin-bottom: 20px;
+      }
+      &__about{
+         margin-left: 0px;
+         a {
             margin-right: 30px;
-                &:last-child { 
-                    margin-right: 0px;
-                }
+            &:last-child { 
+               margin-right: 0px;
             }
-        }
-        &__nav-button:hover {
+         }
+      }
+      &__nav-button:hover {
          position: relative;
          top: 0px;
          background-color: transparent;
@@ -28,26 +28,29 @@
          &_active{
             color: $blue;
             border: 1px solid $blue;
-            pointer-events: none;
+            &:hover{
+               background-color: transparent;
+            }
          }
          &:hover{
             background-color: transparent;
+            color: $blue;
+            border: 1px solid $blue;
          }
       }
-      
       &__nav-button_orange {
          background-color: $orange;
          color: white;
          &_active{
             color: $orange;
             border: 1px solid $orange;
-            pointer-events: none;
          }
          &:hover{
             background-color: transparent;
+            color: $orange;
+            border: 1px solid $orange;
          }
       }
-      
       &__nav-button_red {
          background-color: rgb(244, 67, 54);
          color: white;
@@ -58,6 +61,8 @@
          }
          &:hover{
             background-color: transparent;
+            color: rgb(244, 67, 54);
+            border: 1px solid rgb(244, 67, 54);
          }
       }   
    }        
@@ -91,7 +96,6 @@
          &:hover{
             background-color: rgba($color: $blue, $alpha: 0.8);
          }
-   
       }
       &__item {
          @include f(start, start);
@@ -406,5 +410,5 @@
          font-size: 12px;
          margin: 0px 10px;
       }
-      }
+   }
 }

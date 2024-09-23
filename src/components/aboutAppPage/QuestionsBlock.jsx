@@ -2,6 +2,7 @@ import React from 'react'
 
 
 export default function QuestionsBlock() {
+    
   return (
     <section className='question'>
         <h3 className="question__title">Часто задаваемые воросы</h3>

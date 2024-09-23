@@ -4,6 +4,7 @@ import mapSmall from '../../images/other/найти.png'
 import telSmall from '../../images/other/онлайн-запись.png'
 
 export default function Opportunities() {
+    
   return (
     <section className='opportunities'>
         <h3 className="opportunities__title">Возможности Good Day</h3>

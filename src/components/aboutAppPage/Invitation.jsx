@@ -2,6 +2,7 @@ import React from 'react'
 import GDwhite from '../../images/other/gd3d1.png'
 
 export default function Invitation() {
+    
   return (
     <section className='invitation'>
         <div className="invitation__block invitation__block_img_1">

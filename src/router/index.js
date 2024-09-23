@@ -6,9 +6,6 @@ import Services from '../pages/Services';
 import ServicePage from '../pages/ServicePage';
 import * as Categories from '../pages/categories';
 import * as OtherPages from '../pages/other';
-import Login from '../pages/Login';
-import SingIn from '../components/login/SingIn';
-import SingUp from '../components/login/SingUp';
 
 const getCategoryComponent = (category) => {
    return Categories[category] || null; 
@@ -44,8 +41,8 @@ export const privateRoute = [
    { path: 'contacts', element: <OtherPages.Contacts /> },
 ];
 
-export const publicRoute = [
-   { path: 'login', element: <Login /> },
-   { path: 'login/in', element: <SingIn /> },
-   { path: 'login/up', element: <SingUp /> },
-];
+// export const publicRoute = [
+//    { path: 'login', element: <Login /> },
+//    { path: 'login/in', element: <SingIn /> },
+//    { path: 'login/up', element: <SingUp /> },
+// ];

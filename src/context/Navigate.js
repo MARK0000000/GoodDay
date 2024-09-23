@@ -17,7 +17,6 @@ export const NavigateProvider = ({ children }) => {
         navigate(route, { replace: false });
         setActiveButton(buttonId);
         localStorage.setItem('activeButton', buttonId);
-        // Моментальный скролл к верху страницы
         window.scrollTo(0, 0);
     };
 

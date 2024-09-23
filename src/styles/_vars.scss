@@ -1,14 +1,11 @@
 @mixin f ($j, $a) {display: flex; justify-content: $j; align-items: $a;}
 
 
-//Colors
 $blue: rgb(57, 83, 138);
 $orange: rgb(255, 146, 46);
 $orangeOpacity: rgba(255, 146, 46, 0.7);
 $blue: rgb(57, 83, 138);
 $orange: rgb(255, 146, 46);
-
-
 $shadowBlack: rgb(32, 32, 32);
 $text: rgb(44, 44, 44);
 $textGray: rgb(121, 124, 136);
@@ -17,29 +14,10 @@ $darkGray: rgb(149, 149, 149);
 $backGray: rgb(245, 245, 245);
 $backGrayOpacity: rgba(245, 245, 245, 0.5);
 $backGrayOpacitMore: rgba(245, 245, 245, 0.3);
-
 $headerWhite: rgb(253, 253, 253);
 $contentWhite: rgb(255, 255, 255);
 $footerBlue: rgb(33, 36, 51);
 
-//Sizes
-$textDesktop: 16px;
-//$textMobile: 13px;
-
-$textH1Desktop: 42px;
-//$textH1Mobile: 32px;
-
-$textH2Desktop: 28px;
-//$textH2Mobile: 22px;
-
-$textH3Desktop: 21px;
-//$textH3Mobile: 16px;
-
-$borderRadiusDesktop: 16px;
-//$borderRadiusMobile: 10px;
-
-$paddingDesktop: 15px;
-//$paddingMobile: 5px;
 %block{
     background-color: white;
     box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;

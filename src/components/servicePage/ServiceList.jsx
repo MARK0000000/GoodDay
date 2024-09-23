@@ -30,7 +30,6 @@ export default function ServiceList({data, link}) {
             </div>
             )}
         </div>
-        {/* <button className="serviceList__button">Посмотреть всё</button> */}
     </section>
   )
 }

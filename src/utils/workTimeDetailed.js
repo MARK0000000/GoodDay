@@ -2,7 +2,7 @@ import { getDay, getHours, getMinutes } from 'date-fns';
 
 export function getWorkTimeStatus(workTimeDetailed) {
     const currentDate = new Date();
-    const currentDay = getDay(currentDate); // Возвратит число от 0 (воскресенье) до 6 (суббота)
+    const currentDay = getDay(currentDate); 
     const currentHour = getHours(currentDate);
     const currentMinute = getMinutes(currentDate);
     
@@ -11,7 +11,7 @@ export function getWorkTimeStatus(workTimeDetailed) {
         let statusMessage = 'Закрыто';
         
         if (todayWorkHours.isDayOff) {
-            return statusMessage; // сегодняшний выходной
+            return statusMessage; 
         }
     
         const openingTime = todayWorkHours.start;

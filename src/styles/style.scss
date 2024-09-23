@@ -3,7 +3,7 @@
 @import 'reset';
 @import 'global';
 @import 'libs';
-@import './other/page';
+@import './other/categoryPage';
 @import './other/aboutAppPage';
 @import './other/businessPage';
 @import './other/content';
@@ -11,11 +11,14 @@
 @import './other/service';
 @import './other/servicePage';
 @import './other/contactsPage';
-.hidden-button {
-   display: none;
- }
-//main
+
 .header{
+   user-select: none;
+   background-color: $headerWhite;
+   box-shadow: 0px 4px 10px 0px $iconGray;
+   margin-bottom: 25px;
+   padding: 10px 0px;
+   font-family: 'Raleway';
    &__container{
       position: relative;
       max-width: 100%;
@@ -23,12 +26,6 @@
    &__tel{
       font-family: "Segoe";
    }
-   user-select: none;
-   background-color: $headerWhite;
-   box-shadow: 0px 4px 10px 0px $iconGray;
-   margin-bottom: 25px;
-   padding: 10px 0px;
-   font-family: 'Raleway';
    &__firstLine{
       @include f(space-between, center);
       margin-bottom: 20px;
@@ -65,7 +62,6 @@
    &__close{
       display: none;
    }
-
    &__secondLine{
       @include f(space-between, center);
       margin-bottom: 25px;
@@ -74,7 +70,6 @@
       height: 32px;
       object-fit: contain;
    }
-   
    &__auth{
       text-wrap: nowrap;
       a{
@@ -123,7 +118,6 @@
          transform: rotate(45deg);
       }
    }
-
    &__navCore {
       position: relative;
       display: flex;
@@ -131,9 +125,7 @@
       justify-content: start;
       width: 100%;
    }
-   
    &__nav-button {
-      //width: 114px;
       margin-bottom: 10px;
       background-color: $backGray;
       padding: 10px 15px;
@@ -159,18 +151,21 @@
       padding: 10px 15px;
       border-radius: 5px;
       &::after{
-       content: url('../images/icons/moreNavHeader.svg');
-       margin-left: 5px;
-       transition: transform 0.3s;
-       display: inline-block;
-       }  
+         content: url('../images/icons/moreNavHeader.svg');
+         margin-left: 5px;
+         transition: transform 0.3s;
+         display: inline-block;
+      }  
       &_active::after{
-            transform: rotate(-180deg) !important;
+         transform: rotate(-180deg) !important;
       }
    }
-   
    &__nav-button_gray_active, .header__nav-button_blue_active, .header__nav-button_orange_active, .header__nav-button_red_active {
       background-color: transparent;
+   }
+   &__nav-button_gray_disabled{
+      pointer-events: none;
+      opacity: 0.7;
    }
    &__nav-button_gray_active{
       border: 2px solid $backGray;
@@ -180,14 +175,17 @@
       top: -3px;
       background-color: $backGrayOpacity;
    }
-   
    &__nav-button_blue {
       background-color: $blue;
       color: white;
       &_active{
          color: $blue;
          border: 1px solid $blue;
-         pointer-events: none;
+         &:hover{
+            background-color: $blue;
+            top: 0px;
+            color: white;
+         }   
       }
       &:hover{
          background-color: rgba(57, 83, 138, 0.7);
@@ -200,13 +198,16 @@
       &_active{
          color: $orange;
          border: 1px solid $orange;
-         pointer-events: none;
+         &:hover{
+            background-color: $orange;
+            top: 0px;
+            color: white;
+         }   
       }
       &:hover{
          background-color: rgba(255, 146, 46, 0.7);
       }
    }
-   
    &__nav-button_red {
       background-color: rgb(244, 67, 54);
       color: white;
@@ -266,7 +267,7 @@
          transition: left 0.3s;
       }
       &:hover span{
-            left: 45%;
+         left: 45%;
       }      
       &::before {
          content: '';
@@ -288,7 +289,6 @@
          -webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
          clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
       }
-
    }
 }
 .footer {
@@ -427,92 +427,8 @@
    }
 }
 
-//pages
-// .login{
-//    margin: 40vh auto 0px auto;
-//    transform: translateY(-50%);
-//    background-color: white;
-//    box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
-//    padding: 15px;
-//    border-radius: 10px;
-//    position: relative;
-//    &__prompt{
-//       font-size: 28px;
-//       text-align: center;
-//    }
-//    &__form{
-//    padding: 0 3%;
-//    }
-//    &__title{
-//       cursor: pointer;
-//       user-select: none;
-//       text-align: center;
-//       -webkit-tap-highlight-color: transparent;
-//       span{
-//       transition: ease 0.5s;
-//          font-size: 16px;
-//          &.active{
-//          transition: ease 0.5s;
-//             font-size: 42px;
-//          }
-//          &.login__title_slash{
-//             font-size: 28px;
-//          }
-//       }
-//    }
-//    &__btn{
-//       display: block;
-//       margin: 0 auto;
-//       padding: 10px 25px;
-//       margin-top: 15px;
-//       font-size: 14px;
-//       color: white;
-//       border-radius: 10px;
-//       background-color: $orange;
-//       cursor: pointer;
-//       position: relative;
-//       &:hover{
-//          transition: ease-out 0.3s;
-//          transform: scale(1.1);
-//       }
-//       &:before {
-//          content: '';
-//          position: absolute;
-//          right: -35px;
-//          top: 50%;
-//          margin-top: -12px;
-//          width: 24px;
-//          height: 24px;
-//          border: 2px solid var(--icons-color);
-//          border-left-color: transparent;
-//          border-right-color: transparent;
-//          border-radius: 50%;
-//          opacity: 0;
-//          transition: opacity 0.5s;
-//          animation: 0.8s linear infinite rotate;
-//        }
-//        &_sending{
-//          pointer-events: none;
-//          cursor: not-allowed;
-//          &:before {
-//             transition-duration: 1s;
-//             opacity: 1;
-//           } 
-//       }     
-//       @keyframes rotate {
-//          0% {
-//            transform: rotate(0deg);
-//          }
-//          100% {
-//            transform: rotate(360deg);
-//          }
-//        }
-//    }
-// }
-
-
 @import 'media';
-@import './otherMedia/pageMedia';
+@import './otherMedia/categoryPageMedia';
 @import './otherMedia/aboutAppPageMedia';
 @import './otherMedia/businessPageMedia';
 @import './otherMedia/contentMedia';

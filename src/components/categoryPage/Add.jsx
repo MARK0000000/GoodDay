@@ -5,6 +5,7 @@ import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
 import addImage from '../../images/other/add.png'
 export default function Add() {
+  
   return (
     <div className='add__container'>
       <Swiper

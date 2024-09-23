@@ -2,7 +2,6 @@
     .add{
         &__container{
             padding: 0px 10px;
-
         }
     }
     .info {
@@ -66,7 +65,7 @@
      }     
     .infoMobileApp {
         &__container {
-           margin-bottom: 20px;
+            margin-bottom: 20px;
         }
         &__text {
             font-size: 12px;
@@ -77,14 +76,14 @@
             font-size: 26px;
         }
         &__buttons-box {
-           max-width: 60%;
-           height: auto;
-           gap: 10px;
+            max-width: 60%;
+            height: auto;
+            gap: 10px;
         }
         &__button {
-           &_big {
-              width: auto;
-           }
+            &_big {
+                width: auto;
+            }
         }
     }
     .content {
@@ -95,18 +94,18 @@
             position: relative;
         }
         &__loading{
-         padding: 0px 5px;
-         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-         }   
+            padding: 0px 5px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        }   
         &__title-box {
-           margin-bottom: 20px;
+            margin-bottom: 20px;
         }
         &__title {
-           font-size: 26px;
+            font-size: 26px;
         }
         &__count {
-           margin-left: 20px;
-           font-size: 14px;
+            margin-left: 20px;
+            font-size: 14px;
         }
      }
 }
@@ -167,11 +166,11 @@
             margin-bottom: 10px;
         }
         &__buttons-box {
-         width: 65%;
+            width: 65%;
         }
         &__button {
            &_big {
-              width: auto;
+                width: auto;
            }
         }
     }
@@ -181,18 +180,11 @@
             padding: 0px 10px;
         }
         &__loading{
-         padding: 0px 10px;
-         }   
+            padding: 0px 10px;
+        }   
         &__title-box{
             padding: 0px 10px;
         }
-      //   &__container{
-      //      margin: 0px 5px;
-      //      display: grid;
-      //      grid-template-columns: repeat(3, 1fr);
-      //      grid-gap: 33px;
-      //      align-items: start;
-      //   }
         &__title-box {
            margin-bottom: 15px;
         }

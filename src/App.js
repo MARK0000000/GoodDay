@@ -7,34 +7,20 @@ import { NavigateProvider } from "./context/Navigate";
 import { fetchPost } from "./api/fetch";
 import endpoints from "./api/apiConfig";
 import { CityProvider } from "./context/City";
-
+import { TypeOfDataProvider } from "./context/TypeOfData";
 function App() {
-  // const [loading, setLoading] = useState(true)
-
-  // useEffect(() => {
-  //   const userdata = {
-  //     "email": "test@test.ru",
-  //     "password": "7sdff12d"
-  //   }
-  //   const fetchData = async () => {
-  //     const data = await fetchPost(userdata, endpoints.LOGIN);
-  //     if (data) {
-  //       setLoading(false)
-  //     }
-  //   };
-  //   fetchData();
-  // }, [])
-
 
   return (
    <>
     <BrowserRouter>
       <CityProvider>
-        <SearchProvider>
-          <NavigateProvider>
-              <AppRouter/>
-          </NavigateProvider>
-        </SearchProvider>
+        <TypeOfDataProvider>
+          <SearchProvider>
+            <NavigateProvider>
+                <AppRouter/>
+            </NavigateProvider>
+          </SearchProvider>
+        </TypeOfDataProvider>
       </CityProvider>
     </BrowserRouter>
    </>

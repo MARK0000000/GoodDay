@@ -6,9 +6,8 @@ import mapMark from '../../images/icons/mapMark.svg';
 import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 
 export default function MyMap({ data }) {
-    const [activeMap, setActiveMap] = useState(false);
     
-    const [coordinates, setCoordinates] = useState([(data.addresses[0] && data.addresses[0].latitude) || false, (data.addresses[0] &&data.addresses[0].longitude) || false]);
+    const [coordinates, setCoordinates] = useState([(data.addresses[0] && data.addresses[0].latitude) || false, (data.addresses[0] && data.addresses[0].longitude) || false]);
     const [status, setStatus] = useState(getWorkTimeStatus(data.workTimeDetailed))
     const handleRouteClick = () => {
         const [latitude, longitude] = coordinates;
@@ -22,8 +21,8 @@ export default function MyMap({ data }) {
         }
         return true;
       };
-    console.log(coordinates) // [false, false]
     const condition = areCoordinatesEqual(coordinates, [false, false]);
+    
     return (
         <>
             {condition  ?
@@ -47,8 +46,8 @@ export default function MyMap({ data }) {
                             </Map>
                         </YMaps>
                     <div className="map__content">
-                        {data.address &&
-                            <h3 className="map__title">{data.address}</h3>
+                        {(data.addresses[0]) &&
+                            <h3 className="map__title">{data.addresses[0].description}</h3>
                         }
                         <div className="map__btnBox">
                             <button className="map__button" onClick={handleRouteClick}>Проложить маршрут</button>

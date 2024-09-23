@@ -1,6 +1,6 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Импорт стилей для уведомлений
+import 'react-toastify/dist/ReactToastify.css'; 
 import vkIcon from '../../images/icons/social-vk.svg.svg';
 import telegramIcon from '../../images/icons/telegram-white.svg.svg';
 import viberIcon from '../../images/icons/social-viber.svg.svg';
@@ -94,7 +94,6 @@ export default function ShareWidget() {
                     Скопировать ссылку
                 </button>
             </div>
-            {/* Компонент для отображения уведомлений */}
             <ToastContainer />
         </div>
     );

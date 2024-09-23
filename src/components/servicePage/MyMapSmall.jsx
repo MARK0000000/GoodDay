@@ -3,17 +3,15 @@ import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import mapMark from '../../images/icons/mapMark.svg';
 
 export default function MyMapSmall({ data }) {
-    // Проверяем наличие адресов
     const hasAddresses = data && data.addresses && data.addresses.length > 0;
 
-    // Устанавливаем координаты только если адреса есть
     const coordinates = hasAddresses ? [
         data.addresses[0].latitude,
         data.addresses[0].longitude
-    ] : null; // Если адресов нет, координаты будут null
+    ] : null; 
 
-    // Проверяем наличие координат
     const hasCoordinates = coordinates !== null;
+    
     return (
         <>
             {hasCoordinates && (

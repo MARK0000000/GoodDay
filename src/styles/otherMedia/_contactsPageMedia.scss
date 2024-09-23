@@ -17,8 +17,6 @@
             @include f(space-between, start);
             margin: 20px 0px 25px 0px;
         }
-        &__block {
-        }
         &__link {
             font-size: 14px;
         }
@@ -36,10 +34,7 @@
             @include f(center, center);
             margin-right: 15px;
         }
-        &__img {
-        }
     }
-    
 }
 @media (max-width: 480px) {
 }

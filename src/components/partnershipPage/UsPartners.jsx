@@ -10,6 +10,7 @@ import par8 from '../../images/other/партнеры8.png'
 import par9 from '../../images/other/партнеры9.png'
 
 export default function UsPartners() {
+  
   return (
     <section className='usPartners'>
         <h3 className="usPartners__title">
