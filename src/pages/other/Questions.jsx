@@ -1,10 +1,11 @@
 import React from 'react'
-import InDevelopment from '../../components/main/InDevelopment'
+import QuestionsBlock from '../../components/aboutAppPage/QuestionsBlock'
 
 export default function Questions() {
+
   return (
     <>
-    <InDevelopment/>
+      <QuestionsBlock/>
     </>
   )
 }

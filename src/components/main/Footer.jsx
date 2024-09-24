@@ -6,10 +6,12 @@ import googlePlay from '../../images/icons/googleplay.svg'
 import appstore from '../../images/icons/appstore.svg'
 import qrCode from '../../images/icons/qr.svg'
 import { NavigateContext } from '../../context/Navigate';
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
   const {handleNavigate, activeButton} = useContext(NavigateContext)
 
+  
   return (
     <footer className='footer'>
       <div className="footer__content container">
