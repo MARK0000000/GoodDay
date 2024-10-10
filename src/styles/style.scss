@@ -11,7 +11,8 @@
 @import './other/service';
 @import './other/servicePage';
 @import './other/contactsPage';
-
+@import './other/posters';
+@import './other/posterPage';
 .header{
    user-select: none;
    background-color: $headerWhite;
@@ -19,6 +20,7 @@
    margin-bottom: 25px;
    padding: 10px 0px;
    font-family: 'Raleway';
+   position: relative;
    &__container{
       position: relative;
       max-width: 100%;
@@ -121,6 +123,16 @@
    &__navCore {
       position: relative;
       display: flex;
+      justify-content: space-between;
+      width: 100%;
+      gap: 20px;
+      button{
+         width: 100%;
+      }
+   }
+   &__navMore{
+      position: relative;
+      display: flex;
       flex-wrap: wrap;
       justify-content: start;
       width: 100%;
@@ -148,7 +160,7 @@
       margin-bottom: 10px;
       text-wrap: nowrap;
       background-color: $backGray;
-      padding: 10px 15px;
+      padding: 10px 10px;
       border-radius: 5px;
       &::after{
          content: url('../images/icons/moreNavHeader.svg');
@@ -163,10 +175,6 @@
    &__nav-button_gray_active, .header__nav-button_blue_active, .header__nav-button_orange_active, .header__nav-button_red_active {
       background-color: transparent;
    }
-   &__nav-button_gray_disabled{
-      pointer-events: none;
-      opacity: 0.7;
-   }
    &__nav-button_gray_active{
       border: 2px solid $backGray;
    }
@@ -178,9 +186,11 @@
    &__nav-button_blue {
       background-color: $blue;
       color: white;
+      box-shadow: 1px 1px 2.8px #000;
       &_active{
          color: $blue;
          border: 1px solid $blue;
+         box-shadow: none;
          &:hover{
             background-color: $blue;
             top: 0px;
@@ -195,9 +205,11 @@
    &__nav-button_orange {
       background-color: $orange;
       color: white;
+      box-shadow: 1px 1px 2.8px #000;
       &_active{
          color: $orange;
          border: 1px solid $orange;
+         box-shadow: none;
          &:hover{
             background-color: $orange;
             top: 0px;
@@ -211,16 +223,71 @@
    &__nav-button_red {
       background-color: rgb(244, 67, 54);
       color: white;
+      box-shadow: 1px 1px 2.8px #000;
       &_active{
          color: rgb(244, 67, 54);
          border: 1px solid rgb(244, 67, 54);
          pointer-events: none;
+         box-shadow: none;
       }
       &:hover{
          background-color: rgba(244, 67, 54, 0.7);
       }
    }
+   &__nav-button_white {
+      box-shadow: 1px 1px 2.8px #000;
+      &_active{
+         box-shadow: none;
+         color: black;
+         border: 1px solid black;
+         background: transparent;
+         &:hover{
+            background-color: $backGray;
+            top: 0px;
+            color: black;
+         }   
+      }
+      &:hover{
+         background-color: $backGrayOpacity;
+      }
+   }
+
     
+}
+.cityModal{
+   z-index: 2;
+   background-color: white;
+   display: none; /* Initially hidden */
+   border-radius: 20px;
+   padding: 20px;
+   position: absolute;
+   top: 40px;
+   left: 0px;
+   width: 336px;
+   box-shadow: 1px 1px 5px #000;
+   opacity: 0; /* Start hidden */
+   transform: translateY(-10px); /* Start slightly above */
+   transition: opacity 0.3s ease, transform 0.3s ease; /* Animation for opacity and position */   
+   &_active{
+      display: block; /* Show when active */
+      opacity: 1; /* Fade in */
+      transform: translateY(0); /* Move to original position */
+   }  
+   &__title{
+      font-size: 14px;
+      font-family: 'Raleway';
+      margin-bottom: 20px;
+   }
+   &__content{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 10px;
+   }
+   &__item{
+      font-size: 14px;
+      color: #20243899;
+      font-family: 'Raleway';
+   }
 }
 .breadCrambs {
    width: 100%;
@@ -436,5 +503,7 @@
 @import './otherMedia/serviceMedia';
 @import './otherMedia/servicePageMedia';
 @import './otherMedia/contactsPageMedia';
+@import './otherMedia/postersMedia';
+@import './otherMedia/posterPageMedia';
 
 

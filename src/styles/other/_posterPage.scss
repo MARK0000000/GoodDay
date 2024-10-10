@@ -1,0 +1,89 @@
+.timetable {
+    font-family: "Segoe UI";
+    position: relative;
+    &__webLinkBtn{
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        background-color: #FF922E;
+        border-radius: 10px;
+        padding: 10px 15px;
+        //transform: translateY(-50%);
+        a{
+            color: white;
+            font-size: 13px;
+        }
+    }
+    &__item {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid #E6E6E6;
+        padding: 10px 0px ;
+    }
+    &__content{
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    &__dateBox {
+        display: flex;
+        flex-direction: column;
+        width: 105px;
+        justify-content: start;
+        flex-shrink: 0;
+    }
+    &__dayMonth-box{
+        position: relative;
+    }
+    &__day {
+        font-size: 44px;
+        font-weight: 500;
+        line-height: 46px;
+    }
+    &__month {
+        font-size: 16px;
+        font-weight: 700;
+        position: absolute;
+        top: 0px;
+        margin: 5px 0px 0px 5px;
+    }
+    &__dayOfWeek {
+        color: #999999;
+        font-size: 14px;
+        font-weight: 400;
+    }
+    &__placeBox {
+        display: flex;
+        flex-direction: column;
+    }
+    &__place {
+        font-size: 14px;
+    }
+    &__address {
+        font-size: 12px;
+        color: #999999;
+        margin-bottom: 10px;
+    }
+    &__timeBox {
+        display: flex;
+    }
+    &__timeItem {
+        margin-left: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__time {
+        display: inline-block;
+        font-size: 13px;
+        border: 1px solid #FF922E;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    &__price {
+        font-size: 10px;
+        font-weight: 400;
+    }
+}

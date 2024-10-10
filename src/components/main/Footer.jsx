@@ -53,7 +53,7 @@ export default function Footer() {
             <span>ПОЛЬЗОВАТЕЛЯМ</span>
             <hr />
             <a onClick={() => handleNavigate('questions', 'questions')}>Вопросы и ответы</a>
-            <a onClick={() => handleNavigate('cityDiscounts', 'cityDiscounts')}>Скидки города</a>
+            <a onClick={() => handleNavigate('discounts', 'discounts')}>Скидки города</a>
           </div>
           <div className="footer__item">
             <span>ПАРТНЕРАМ</span>

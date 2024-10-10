@@ -23,6 +23,11 @@
 .skeletonContentService{
     height: 165px;
 }
+.posterCategory__content{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+}
 @keyframes spin {
     0% {
         transform: rotate(0deg); 
@@ -50,7 +55,10 @@
     .skeletonContentService{
         height: 135px;
     }    
-
+    .posterCategory{
+        padding: 0px 10px;
+    }
+    
 }
 @media (max-width: 768px) {
     .contentLoader {
@@ -59,6 +67,10 @@
     .nothingFound{
         font-size: 30px;
     }
+    .posterCategory__content{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }    
 }
 @media (max-width: 480px) {
     .contentLoader {

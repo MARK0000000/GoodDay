@@ -18,6 +18,12 @@ export default function Services() {
     const [itemsPerPage] = useState(12);
     const [currentPage, setCurrentPage] = useState(1);
     const [originalCards, setOriginalCards] = useState(true); 
+    
+    useEffect(() => {
+        setCards([]); 
+        setCurrentPage(1); 
+        setIsLoading(true); 
+    }, [city]);
 
     useEffect(() => {
         const fetchData = async () => {

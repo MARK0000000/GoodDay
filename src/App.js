@@ -8,19 +8,22 @@ import { fetchPost } from "./api/fetch";
 import endpoints from "./api/apiConfig";
 import { CityProvider } from "./context/City";
 import { TypeOfDataProvider } from "./context/TypeOfData";
+import { PosterCategoriesProvider } from "./context/PosterCategories";
 function App() {
 
   return (
    <>
     <BrowserRouter>
       <CityProvider>
-        <TypeOfDataProvider>
-          <SearchProvider>
-            <NavigateProvider>
-                <AppRouter/>
-            </NavigateProvider>
-          </SearchProvider>
-        </TypeOfDataProvider>
+          <TypeOfDataProvider>
+        <PosterCategoriesProvider>
+            <SearchProvider>
+              <NavigateProvider>
+                  <AppRouter/>
+              </NavigateProvider>
+            </SearchProvider>
+        </PosterCategoriesProvider>
+          </TypeOfDataProvider>
       </CityProvider>
     </BrowserRouter>
    </>

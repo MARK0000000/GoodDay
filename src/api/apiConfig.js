@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { CityContext } from '../context/City';
 import { TypeOfDataContext } from '../context/TypeOfData';
 // production
-const API_BASE_URL = 'https://vh369.by2040.ihb.by';
+// const API_BASE_URL = 'https://vh369.by2040.ihb.by';
 // dev
-// const API_BASE_URL = 'https://elated-turing.178-124-131-24.plesk.page';
+const API_BASE_URL = 'https://elated-turing.178-124-131-24.plesk.page';
 
 const useEndpoints = () => {
   const { city } = useContext(CityContext);
@@ -17,6 +17,7 @@ const useEndpoints = () => {
   return {
     UPLOADS: `https://api.good-day.by/uploads`,
     PDF: `${API_BASE_URL}/pdfs/`,
+    CITIES: `${API_BASE_URL}/city/all`,
 
     DISCOUNTS: `${API_BASE_URL}/business/discount?cityId=${cityid}&isDiscount=true&isServices=false&isInfo=false`,
     DISCOUNT_BY_ID: `${API_BASE_URL}/business/`,
@@ -51,6 +52,19 @@ const useEndpoints = () => {
     SEARCH_SERVICES: `${API_BASE_URL}/search/services?cityId=${cityid}`,
 
     PARTNERSHIP_FORM: `${API_BASE_URL}/partner/create-partner`,
+
+    POSTER_CATEGORIES: `${API_BASE_URL}/posters/categories`,
+    // POSTERS: `${API_BASE_URL}/posters?cityId=${cityid}&date=${date}`,
+    POSTERS_BY_ID: `${API_BASE_URL}/posters/`,
+    POSTER_CATEGORY: `${API_BASE_URL}/posters/category?cityId=${cityid}`,
+    POSTER_CATEGORY_SOON: `${API_BASE_URL}/posters/category/soon?cityId=${cityid}`,
+    POSTERS_INFO: `${API_BASE_URL}/posters/info`,
+    // CATEGORY_SOON: `${API_BASE_URL}/posters/category?cityId=${cityid}&categoryId=${category}&date=${date}`,
+    // SEARCH_POSTERS: `${API_BASE_URL}/search/posters?cityId=${cityid}`,
+    // SEARCH_POSTERS: `${API_BASE_URL}/search/posters?cityId=${cityid}`,
+    // SEARCH_POSTERS_CATEGORY: `${API_BASE_URL}/search/posters?cityId=${cityid}&categoryId=${categoryId}`,
+
+
   };
 };
 

@@ -8,7 +8,7 @@ export const NavigateProvider = ({ children }) => {
 
     const getInitialButton = () => {
         const savedButton = localStorage.getItem('activeButton');
-        return savedButton ? savedButton : 'discounts';
+        return savedButton ? savedButton : 'posters';
     };
 
     const [activeButton, setActiveButton] = useState(getInitialButton);

@@ -17,7 +17,8 @@ export default function Accessories() {
   const [itemsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState();
-  const { city } = useContext(CityContext);
+  const {city, updateCity, cities} = useContext(CityContext)
+  const cityName = cities.find(item => item.id === city);
 
   useEffect(() => {
     if (data && data.data) { 
@@ -46,7 +47,7 @@ export default function Accessories() {
       <section className="content">
         <div className="content__title-box">
           <h1 className="content__title">
-            Аксессуары в <span className="content__city">{city === 1 ? "Полоцке" : "Новополоцке"}</span>
+            Аксессуары в <span className="content__city">{cityName.name}</span>
             <span className="content__count">{totalCount}</span>
           </h1>
           {/* <button className="content__viewMapBtn">посмотреть на карте</button> */}

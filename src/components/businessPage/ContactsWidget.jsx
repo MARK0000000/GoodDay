@@ -21,7 +21,7 @@ export default function ContactsWidget({business, status}) {
                     <img src={addressIcon} alt="" className="widget__item-icon" />
                 </button>
                 <p className="widget__item-text">
-                    {business.address}
+                    {business.address.description ? business.address.description : business.address}
                     <Link className='widget__item-text_linkOnMap' to="map" smooth={true}>
                         Показать
                     </Link>

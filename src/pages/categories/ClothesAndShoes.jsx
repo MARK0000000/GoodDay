@@ -18,7 +18,8 @@ export default function ClothesAndShoes() {
   const [itemsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState();
-  const { city } = useContext(CityContext);
+  const {city, updateCity, cities} = useContext(CityContext)
+  const cityName = cities.find(item => item.id === city);
 
   useEffect(() => {
     if (data && data.data) { // Проверяем, есть ли данные в контексте
@@ -47,7 +48,7 @@ export default function ClothesAndShoes() {
       <section className="content">
         <div className="content__title-box">
           <h1 className="content__title">
-            Одежда и обувь в <span className="content__city">{city === 1 ? "Полоцке" : "Новополоцке"}</span>
+            Одежда и обувь в <span className="content__city">{cityName.name}</span>
             <span className="content__count">{businesses.length}</span>
           </h1>
           {/* <button className="content__viewMapBtn">посмотреть на карте</button> */}

@@ -10,34 +10,29 @@ import { CityContext } from '../../context/City';
 import LoadingSpinner from '../UI/loaders/LoaderSpinner';
 import crossIcon from '../../images/icons/cross.svg'
 import { getEndpoint } from '../../utils/workWithUrl';
-import { TypeOfDataContext } from '../../context/TypeOfData';
+import NavPages from './header/NavPages';
+import CityModal from './header/CityModal';
 
 export default function Header() {
   const location = useLocation();
   const endpoint = getEndpoint(location);
   // const {logout} = useAuth()
   const {setSearchValue, isSearchLoading, searchValue, getCategoryId} = useContext(SearchContext)
-  const {city, updateCity} = useContext(CityContext)
+  const {city, updateCity, cities} = useContext(CityContext)
+  const cityName = cities.find(item => item.id === city);
   const {handleNavigate, activeButton} = useContext(NavigateContext)
-  const {type, changeType} = useContext(TypeOfDataContext)
   const searchInput = useRef()
-
-  const [moreButtonsActive, setMoreButtonsActive] = useState(false)
+  const [cityModalActive, setCityModalActive] = useState(false)
+  const closeCityModal = () => {
+    setCityModalActive(false)
+  }
   const [burgerActive, setBurgerActive] = useState(false)
-
   useEffect(() => {
     if (endpoint == 'promotions' || endpoint == 'discounts' || endpoint == 'services' || (endpoint in getCategoryId)) {
       setSearchValue(searchInput.current.value)
     }
   }, [endpoint])
   
-  const changeMoreButtonsActive = () => {
-    if (moreButtonsActive == true) {
-      setMoreButtonsActive(false)
-    } else {
-      setMoreButtonsActive(true)
-    }
-  }
 
   function handleSearch(event) {
     event.preventDefault()
@@ -47,28 +42,18 @@ export default function Header() {
     setSearchValue(value)
 
   }
-  const handleUpdateCity = () => {
-    if (city == 1) {
-      updateCity(2)
-    } else {
-      updateCity(1)
-    }
-  }
   const handleClearSearch = () => {
     searchInput.current.value = ''; 
     setSearchValue(''); 
   };
   
-  const typeButtonClick = (type, route) => {
-      changeType(type)
-      handleNavigate(route, route)
-  }
 
   return (
     <header className="header">
       <div className='container header__container'>
         <div className='header__firstLine'>
-          <span className='header__location'onClick={() => handleUpdateCity()}>{city == 1 ? "Полоцк" : "Новополоцк"}</span>
+          <span className='header__location'onClick={() => setCityModalActive(cityModalActive ? false : true)}>{cityName.name}</span>
+          <CityModal active={cityModalActive} onClose={closeCityModal}/>
           <img src={iconMenu} alt="#" className="header__burger" onClick={() => setBurgerActive(true)} />
           <div className={`header__about ${burgerActive && 'header__about_active'}`}>
             <img src={closeIcon} alt="#" className="header__close" onClick={() => setBurgerActive(false)} />
@@ -111,143 +96,7 @@ export default function Header() {
             <a >Регистрация</a>
           </span>  */}
         </div>
-
-        <nav className="header__nav">
-          <div className="header__navCore">
-          <button
-            className={`header__nav-button header__nav-button_blue ${type === 'discounts' ? 'header__nav-button_blue_active' : ''}`}
-            onClick={() => typeButtonClick('discounts', 'discounts')}
-            >
-            Скидки
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_orange ${type === 'promotion' ? 'header__nav-button_orange_active' : ''}`}
-            onClick={() => typeButtonClick('promotion', 'promotion')}
-            >
-            Акции
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_red ${activeButton === 'services' ? 'header__nav-button_red_active' : ''}`}
-            onClick={() => typeButtonClick('', 'services')}
-            >
-            Услуги
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'entertainment' ? 'header__nav-button_gray_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('entertainment', 'entertainment')}
-            >
-            Развлечения
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'beauty' ? 'header__nav-button_gray_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('beauty', 'beauty')}
-            >
-            Красота
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'food' ? 'header__nav-button_gray_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('food', 'food')}
-            >
-            Еда
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'health' ? 'header__nav-button_gray_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('health', 'health')}
-            >
-            Здоровье
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'children' ? 'header__nav-button_gray_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('children', 'children')}
-            >
-            Дети
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'sport' ? 'header__nav-button_gray_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('sport', 'sport')}
-            >
-            Спорт
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'education' ? 'header__nav-button_gray_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('education', 'education')}
-            >
-            Обучение
-          </button>
-          <button 
-              className={`header__nav-button header__nav-button_gray ${activeButton === 'auto' ? 'header__nav-button_gray_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-              onClick={() => handleNavigate('auto', 'auto')}
-              >
-              Авто
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'recreation' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('recreation', 'recreation')}
-            >
-            Отдых
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'accessories' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('accessories', 'accessories')}
-            >
-            Аксессуары
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'gifts' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('gifts', 'gifts')}
-            >
-            Подарки
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'clothesandshoes' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('clothesandshoes', 'clothesandshoe')}
-            >
-            Одежда и обувь
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'equipment' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('equipment', 'equipment')}
-            >
-            Техника
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'everythingforhome' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('everythingforhome', 'everythingforhome')}
-            >
-            Всё для дома
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'masterclasses' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('masterclasses', 'masterclasses')}
-            >
-            Мастер классы
-          </button>
-          <button 
-            className={`header__nav-button header__nav-button_gray ${activeButton === 'pets' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-            onClick={() => handleNavigate('pets', 'pets')}
-            >
-            Животные
-          </button>
-          <button 
-              className={`header__nav-button header__nav-button_gray ${activeButton === 'repair' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-              onClick={() => handleNavigate('repair', 'repair')}
-              >
-              Ремонт
-          </button>
-          <button 
-              className={`header__nav-button header__nav-button_gray  ${activeButton === 'other' ? 'header__nav-button_gray_active' : ''} header__nav-button_hidden ${moreButtonsActive ? 'header__nav-button_hidden_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
-              onClick={() => handleNavigate('other', 'other')}
-              >
-              Прочее
-          </button>
-          <button 
-            className={`header__nav-buttonMore header__nav-button_gray ${moreButtonsActive ? 'header__nav-buttonMore_active' : ''}`}
-            onClick={changeMoreButtonsActive}
-            >
-            Ещё
-          </button>
-          </div>
-        </nav>
+        <NavPages/>
       </div>
     </header>
   )

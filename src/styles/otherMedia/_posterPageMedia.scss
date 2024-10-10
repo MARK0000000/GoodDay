@@ -1,0 +1,49 @@
+@media (max-width: 768px) {
+    .timetable {
+        &__webLinkBtn{
+            right: 15px;
+            top: 15px;
+            background-color: #FF922E;
+            padding: 5px 10px;
+            @include f(center, center);
+            a{
+                font-size: 10px;
+            }
+        }
+        &__item {
+            padding: 10px 0px ;
+        }
+        &__dateBox {
+            width: 80px;
+        }
+        &__day {
+            font-size: 32px;
+            line-height: 36px;
+        }
+        &__month {
+            font-size: 14px;
+            margin: 5px 0px 0px 5px;
+        }
+        &__dayOfWeek {
+            font-size: 10px;
+        }
+        &__place {
+            font-size: 12px;
+        }
+        &__address {
+            font-size: 10px;
+        }
+        &__time {
+            display: inline-block;
+            font-size: 10px;
+            border: 1px solid #FF922E;
+            padding: 3px 10px;
+            border-radius: 5px;
+        }
+        &__price {
+            font-size: 9px;
+            font-weight: 400;
+        }
+    }
+    
+}
