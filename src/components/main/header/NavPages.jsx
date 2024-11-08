@@ -3,13 +3,13 @@ import { NavigateContext } from '../../../context/Navigate';
 import { TypeOfDataContext } from '../../../context/TypeOfData';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import { PosterCategoriesContext } from '../../../context/PosterCategories';
-
+import { SearchContext } from '../../../context/Search';
 export default function NavPages() {
-    const {handleNavigate, activeButton} = useContext(NavigateContext)
+    const {handleNavigate, activeButton, typeButtonClick} = useContext(NavigateContext)
     const {type, changeType} = useContext(TypeOfDataContext)
     const [moreButtonsActive, setMoreButtonsActive] = useState(false)
     const { categories } = useContext(PosterCategoriesContext);
-
+    const {setSearchValue, setData} = useContext(SearchContext)
     const changeMoreButtonsActive = () => {
         if (moreButtonsActive == true) {
           setMoreButtonsActive(false)
@@ -17,16 +17,12 @@ export default function NavPages() {
           setMoreButtonsActive(true)
         }
       }
-      const typeButtonClick = (type, route) => {
-        changeType(type)
-        handleNavigate(route, route)
-    }
       
   return (
     <nav className="header__nav">
     <div className="header__navCore">
     <button 
-            className={`header__nav-button header__nav-button_white ${activeButton === 'posters' ? 'header__nav-button_white_active' : ''}`}
+            className={`header__nav-button header__nav-button_white ${type === 'posters' ? 'header__nav-button_white_active' : ''}`}
             onClick={() => typeButtonClick('posters', 'posters')}
         >
             Афиша
@@ -44,8 +40,8 @@ export default function NavPages() {
             Акции
         </button>
         <button 
-            className={`header__nav-button header__nav-button_red ${activeButton === 'services' ? 'header__nav-button_red_active' : ''}`}
-            onClick={() => typeButtonClick('', 'services')}
+            className={`header__nav-button header__nav-button_red ${type === 'services' ? 'header__nav-button_red_active' : ''}`}
+            onClick={() => typeButtonClick('services', 'services')}
         >
             Услуги
         </button>
@@ -168,7 +164,7 @@ export default function NavPages() {
             </button>
         </div>
         :
-        type != "" &&
+        type == "posters" &&
         <div className="header__navMore">
             {categories.map(category => (
                 <Link key={category.idCategory} to={`category-${category.idCategory}`} smooth={true}>
@@ -180,6 +176,13 @@ export default function NavPages() {
                 </Link>
             
             ))}
+             <Link to={`category-soon`} smooth={true}>
+                <button 
+                    className={`header__nav-button header__nav-button_gray`}
+                >
+                    Скоро
+                </button>
+            </Link>
         </div>
     }
   </nav>

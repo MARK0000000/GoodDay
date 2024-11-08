@@ -8,6 +8,7 @@ import Add from '../../components/categoryPage/Add';
 import Content from '../../components/categoryPage/Content';
 import InfoMobileApp from '../../components/categoryPage/InfoMobileApp';
 import Info from '../../components/categoryPage/Info';
+import { usePagination } from '../../context/PaginationContext';
 
 export default function Beauty() {
   const endpoints = useEndpoints();
@@ -15,18 +16,28 @@ export default function Beauty() {
   const [businesses, setBusinesses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage] = useState(9);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState();
-  const {city, updateCity, cities} = useContext(CityContext)
-  const cityName = cities.find(item => item.id === city);
+  const {city, updateCity, cities, cityName} = useContext(CityContext)
 
+  const { paginationState, updatePage, updateCurrentPageNumbers } = usePagination(); 
+  const currentPage = paginationState.beautyPage; 
+  const currentPageNumbers = paginationState.beautyCurrentPageNumbers;
+  
+  const [previousData, setPreviousData] = useState(null);
+  
   useEffect(() => {
-    if (data && data.data) { // Проверяем, есть ли данные в контексте
+    if (data && data.data) {
+      if (previousData !== data.data) {
+        updatePage('beautyPage', 1);
+        updateCurrentPageNumbers('beauty', []);
+        setPreviousData(data.data) 
+      }
+      
       const slicedData = data.data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-      setCurrentPage(1)
       setBusinesses(slicedData);
       setIsLoading(false);
       setTotalCount(data.totalCount);
+
     } else {
       const fetchData = async () => {
         setIsLoading(true);
@@ -35,6 +46,11 @@ export default function Beauty() {
           setBusinesses(result.data);
           setIsLoading(false);
           setTotalCount(result.totalCount);
+          if (previousData !== null) {
+            updatePage('beautyPage', 1);
+            updateCurrentPageNumbers('beauty', []);
+            setPreviousData(null) 
+          }    
         }
       };
       fetchData();
@@ -45,27 +61,27 @@ export default function Beauty() {
     <>
       <Add />
       <section className="content">
-        <div className="content__title-box">
+        <div className="content__title-box" id='content'>
           <h1 className="content__title">
-            Красота в <span className="content__city">{cityName.name}</span>
+            Красота в <span className="content__city">{cityName}</span>
             <span className="content__count">{totalCount}</span>
           </h1>
-          {/* <button className="content__viewMapBtn">посмотреть на карте</button> */}
         </div>
         {isLoading ?
           <div className='content__loading'>
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
+            {[...Array(9)].map((_, index) => <SkeletonContent key={index} />)}
           </div>
           :
-          <Content businesses={businesses} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} totalCount={totalCount} />
+          <Content 
+            businesses={businesses} 
+            itemsPerPage={itemsPerPage} 
+            currentPage={currentPage} 
+            setCurrentPage={(page) => { updatePage('beautyPage', page); }} 
+            totalCount={totalCount}
+            currentPageNumbers={currentPageNumbers}
+            updateCurrentPageNumbers={(numbers) => updateCurrentPageNumbers('beauty', numbers)}
+            searchData={previousData}
+          />
         }
       </section>
       <InfoMobileApp />

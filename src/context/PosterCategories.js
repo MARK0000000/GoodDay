@@ -7,6 +7,7 @@ export const PosterCategoriesContext = createContext(null);
 
 export const PosterCategoriesProvider = ({ children }) => {
     const [categories, setCategories] = useLocalStorage('categories', [])
+    const [categoriesLoading, setCategoriesLoading] = useState(true)
     const endpoints = useEndpoints();
     const [selectedCategory, setSelectedCategory ] = useLocalStorage("selectedCategory", null)
 
@@ -18,13 +19,14 @@ export const PosterCategoriesProvider = ({ children }) => {
         const result = await fetchGet(`${endpoints.POSTER_CATEGORIES}`);
         if (result) {
             setCategories(result)
+            setCategoriesLoading(false)
         }
         };
         fetchData();
     }, [])
     
   return (
-    <PosterCategoriesContext.Provider value={{ categories, selectCategory, selectedCategory }}>
+    <PosterCategoriesContext.Provider value={{ categories, selectCategory, selectedCategory,  categoriesLoading}}>
       {children}
     </PosterCategoriesContext.Provider>
   );

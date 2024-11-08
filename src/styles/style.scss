@@ -33,6 +33,7 @@
       margin-bottom: 20px;
    }
    &__location{
+      cursor: pointer;
       text-decoration: underline dotted;
       text-underline-offset: 5px;
       display: inline-flex;
@@ -221,41 +222,44 @@
       }
    }
    &__nav-button_red {
-      background-color: rgb(244, 67, 54);
+      background-color: rgb(240, 98, 146);
       color: white;
       box-shadow: 1px 1px 2.8px #000;
       &_active{
-         color: rgb(244, 67, 54);
-         border: 1px solid rgb(244, 67, 54);
+         color: rgb(240, 98, 146);
+         border: 1px solid rgb(240, 98, 146);
          pointer-events: none;
          box-shadow: none;
       }
       &:hover{
-         background-color: rgba(244, 67, 54, 0.7);
+         background-color: rgba(240, 98, 146, 0.7);
       }
    }
    &__nav-button_white {
       box-shadow: 1px 1px 2.8px #000;
+      color: white;
+      background-color: rgb(124, 77, 255);
       &_active{
          box-shadow: none;
-         color: black;
-         border: 1px solid black;
+         color: rgb(124, 77, 255);
+         border: 1px solid rgb(124, 77, 255);
          background: transparent;
          &:hover{
-            background-color: $backGray;
+            background-color: rgb(124, 77, 255);
             top: 0px;
-            color: black;
+            color: rgb(124, 77, 255);
          }   
       }
       &:hover{
-         background-color: $backGrayOpacity;
+         background-color: rgb(124, 77, 255, 0.7);
+         color: white;
       }
    }
 
     
 }
 .cityModal{
-   z-index: 2;
+   z-index: 4;
    background-color: white;
    display: none; /* Initially hidden */
    border-radius: 20px;
@@ -287,6 +291,10 @@
       font-size: 14px;
       color: #20243899;
       font-family: 'Raleway';
+      &:hover{
+         text-decoration: underline;
+         cursor: pointer;
+      }
    }
 }
 .breadCrambs {

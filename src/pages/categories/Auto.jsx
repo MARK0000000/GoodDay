@@ -9,6 +9,7 @@ import { fetchGetCategory } from '../../api/fetch'
 import { SkeletonContent } from '../../components/UI/loaders/SkeletonContent';
 import { SearchContext } from '../../context/Search';
 import { CityContext } from '../../context/City';
+import { usePagination } from '../../context/PaginationContext'
 
 export default function Auto() {
   const endpoints = useEndpoints();
@@ -16,18 +17,28 @@ export default function Auto() {
   const [businesses, setBusinesses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage] = useState(9);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState();
-  const {city, updateCity, cities} = useContext(CityContext)
-  const cityName = cities.find(item => item.id === city);
+  const {city, updateCity, cities, cityName} = useContext(CityContext)
 
+  const { paginationState, updatePage, updateCurrentPageNumbers } = usePagination(); 
+  const currentPage = paginationState.autoPage; 
+  const currentPageNumbers = paginationState.autoCurrentPageNumbers;
+  
+  const [previousData, setPreviousData] = useState(null);
+  
   useEffect(() => {
-    if (data && data.data) { // Проверяем, есть ли данные в контексте
+    if (data && data.data) {
+      if (previousData !== data.data) {
+        updatePage('autoPage', 1);
+        updateCurrentPageNumbers('auto', []);
+        setPreviousData(data.data) 
+      }
+      
       const slicedData = data.data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-      setCurrentPage(1)
       setBusinesses(slicedData);
       setIsLoading(false);
       setTotalCount(data.totalCount);
+
     } else {
       const fetchData = async () => {
         setIsLoading(true);
@@ -36,6 +47,11 @@ export default function Auto() {
           setBusinesses(result.data);
           setIsLoading(false);
           setTotalCount(result.totalCount);
+          if (previousData !== null) {
+            updatePage('autoPage', 1);
+            updateCurrentPageNumbers('auto', []);
+            setPreviousData(null) 
+          }    
         }
       };
       fetchData();
@@ -46,27 +62,27 @@ export default function Auto() {
     <>
       <Add />
       <section className="content">
-        <div className="content__title-box">
+        <div className="content__title-box" id='content'>
           <h1 className="content__title">
-            Авто в <span className="content__city">{cityName.name}</span>
+            Авто в <span className="content__city">{cityName}</span>
             <span className="content__count">{totalCount}</span>
           </h1>
-          {/* <button className="content__viewMapBtn">посмотреть на карте</button> */}
         </div>
         {isLoading ?
           <div className='content__loading'>
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
+            {[...Array(9)].map((_, index) => <SkeletonContent key={index} />)}
           </div>
           :
-          <Content businesses={businesses} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} totalCount={totalCount}/>
+          <Content 
+            businesses={businesses} 
+            itemsPerPage={itemsPerPage} 
+            currentPage={currentPage} 
+            setCurrentPage={(page) => { updatePage('autoPage', page); }} 
+            totalCount={totalCount}
+            currentPageNumbers={currentPageNumbers}
+            updateCurrentPageNumbers={(numbers) => updateCurrentPageNumbers('auto', numbers)}
+            searchData={previousData}
+          />
         }
       </section>
       <InfoMobileApp />

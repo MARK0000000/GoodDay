@@ -2,7 +2,7 @@
     display: grid;
     gap: 20px;
     grid-template-rows: 340px;
-    grid-template-columns: 425px 580px;
+    grid-template-columns: 255px 1fr;
     &__info{
         margin-top: 50px;
         display: flex;
@@ -23,7 +23,7 @@
     }
     &__img-box {
         border-radius: 25px;
-        max-width: 425px;
+        max-width: 255px;
     }
     &__img-container{
         height: 340px;
@@ -52,15 +52,14 @@
     }
     &__imgSmall {
         height: 90px;
-        max-width: 90px;
-        min-width: 90px;
+        aspect-ratio: 16/9;
+        object-fit: cover;
         border-radius: 15px;
         background-color: rgb(183, 183, 183);
         margin-right: 10px;
     }
     &__title {
         min-height: 0; 
-        overflow: hidden;
         max-width: 100%;
         font-size: 24px;
         font-family: 'Segoe UI';
@@ -72,13 +71,28 @@
         overflow: hidden; 
         text-overflow: ellipsis; 
     }
-    &__address {
+    &__description{
         font-size: 16px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2; 
         overflow: hidden; 
         text-overflow: ellipsis; 
+    }
+    &__address {
+        display: block;
+        margin-top: 10px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        &::before{
+            content: url('../../images/icons/addressSmall.svg');
+            margin-right: 5px;
+            position: relative;
+            bottom: -3px;
+        }
     }
     &__phone {
         display: block;
@@ -140,9 +154,7 @@
         background-color: #3A5A91;
         border-radius: 12px;
         padding: 15.5px 80px;
-        a{
-            color: white;
-        }
+        color: white;
     }
 }
 .serviceDescription {
@@ -250,22 +262,20 @@
         background-color: #EEEEEF;
         padding: 10px 50px;
         border-radius: 50px;
-        a{
-            color: #3A5A91;
-        }
+        color: #3A5A91;
     }
     &__button {
         a{
             color: white;
         }
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 20px;
-    background-color: #3A5A91;
-    border-radius: 12px;
-    color: white;
-    padding: 15.5px 80px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 20px;
+        background-color: #3A5A91;
+        border-radius: 12px;
+        color: white;
+        padding: 15.5px 80px;
     }
 }
 .serviceExpamples {

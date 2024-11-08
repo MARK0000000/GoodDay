@@ -1,6 +1,6 @@
 .nothingFound{
-    font-size: 52px;
-    margin: 0px auto;
+    font-size: 34px;
+    margin: 20px auto;
     text-align: center;
     font-family: 'Segoe UI'
 }
@@ -21,7 +21,7 @@
     animation: spin 1s linear infinite; 
 }
 .skeletonContentService{
-    height: 165px;
+    height: 251px;
 }
 .posterCategory__content{
     display: grid;
@@ -49,11 +49,8 @@
     .businessPage{
         padding: 0px 10px;
     }
-    .nothingFound{
-        font-size: 40px;
-    }
     .skeletonContentService{
-        height: 135px;
+        height: 242px;
     }    
     .posterCategory{
         padding: 0px 10px;
@@ -65,11 +62,14 @@
         height: 354px; 
     }
     .nothingFound{
-        font-size: 30px;
+        font-size: 22px;
     }
     .posterCategory__content{
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
+    }    
+    .skeletonContentService{
+        height: 271px;
     }    
 }
 @media (max-width: 480px) {
@@ -77,7 +77,9 @@
         height: 354px; 
     }
     .nothingFound{
-        font-size: 20px;
+        font-size: 18px;
     }
-
+    .skeletonContentService{
+        height: 377px;
+    }    
 }

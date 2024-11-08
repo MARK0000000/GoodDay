@@ -9,6 +9,7 @@ import endpoints from "./api/apiConfig";
 import { CityProvider } from "./context/City";
 import { TypeOfDataProvider } from "./context/TypeOfData";
 import { PosterCategoriesProvider } from "./context/PosterCategories";
+import { PaginationProvider } from "./context/PaginationContext";
 function App() {
 
   return (
@@ -16,13 +17,15 @@ function App() {
     <BrowserRouter>
       <CityProvider>
           <TypeOfDataProvider>
-        <PosterCategoriesProvider>
-            <SearchProvider>
-              <NavigateProvider>
-                  <AppRouter/>
-              </NavigateProvider>
-            </SearchProvider>
-        </PosterCategoriesProvider>
+            <PosterCategoriesProvider>
+                <SearchProvider>
+                  <PaginationProvider>
+                    <NavigateProvider>
+                        <AppRouter/>
+                    </NavigateProvider>
+                  </PaginationProvider>
+                </SearchProvider>
+            </PosterCategoriesProvider>
           </TypeOfDataProvider>
       </CityProvider>
     </BrowserRouter>

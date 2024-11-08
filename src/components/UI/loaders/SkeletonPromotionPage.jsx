@@ -2,7 +2,7 @@ import React from 'react';
 import ContentLoader from 'react-content-loader';
 import classes from './Loaders.module.scss';
 
-export const SkeletonBusinessPage = () => (
+export const SkeletonPromotionPage = () => (
   <ContentLoader
     speed={2}
     height={1000}

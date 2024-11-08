@@ -8,20 +8,20 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 
 export default function ContactsWidget({business, status}) {
-
+    
   return (
     <>
-    {(business.address || business.workTime || business.phone || (business.webLink || business.vkLink)) &&
+    {((typeof business.address === 'string' ? business.address : business.address.description) || business.workTime || business.phone || (business.webLink || business.vkLink)) &&
     <>
     <div className="widget widget_contact">
         <h4 className="widget__title">Контакты</h4>
-        {business.address && 
+        {(typeof business.address === 'string' ? business.address : business.address.description) && 
             <div className="widget__item widget__item_address widget__item_border">
                 <button className="widget__item-btn">
                     <img src={addressIcon} alt="" className="widget__item-icon" />
                 </button>
                 <p className="widget__item-text">
-                    {business.address.description ? business.address.description : business.address}
+                    {(typeof business.address === 'string' ? business.address : business.address.description)}
                     <Link className='widget__item-text_linkOnMap' to="map" smooth={true}>
                         Показать
                     </Link>

@@ -6,62 +6,151 @@ import { PosterCategoriesContext } from '../context/PosterCategories';
 import useEndpoints from '../api/apiConfig';
 import { fetchGet } from '../api/fetch';
 import PostersInfo from '../components/posters/PostersInfo';
+import { SearchContext } from '../context/Search';
+import NothingFound from '../components/UI/loaders/NothingFound';
+import { TypeOfDataContext } from '../context/TypeOfData';
+
 export default function Posters() {
-    const {city, updateCity, cities} = useContext(CityContext)
-    const cityName = cities.find(item => item.id === city);
+    const { city, updateCity, cities, cityName } = useContext(CityContext);
+    const {setIsSearchLoading, searchValue} = useContext(SearchContext)
     const endpoints = useEndpoints();
-    const { categories } = useContext(PosterCategoriesContext);
-    
+    const { categories, categoriesLoading } = useContext(PosterCategoriesContext);
+    const {changeType} = useContext(TypeOfDataContext)
     const [startDate, setStartDate] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(startDate.toISOString().split('T')[0]);
-    
-    // States for loading and data
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [allDates, setAllDates] = useState(true)
+
+    const toggleAllDates = (state) => {
+        setAllDates(state)
+        
+    }
+    const [loadedCategoriesCount, setLoadedCategoriesCount] = useState(0);
+
     const [loadingStates, setLoadingStates] = useState({});
     const [data, setData] = useState({});
-    const [info, setInfo] = useState([])
-    const [isInfoLoading, setIsInfoLoading] = useState(true)
+    const [info, setInfo] = useState([]);
+    const [isInfoLoading, setIsInfoLoading] = useState(true);
+    const [soonData, setSoonData] = useState([]); 
+    const [isSoonLoading, setIsSoonLoading] = useState(true); 
     const pageNumber = 1;
     const pageSize = 6;
 
     const fetchInfo = async () => {
         const result = await fetchGet(`${endpoints.POSTERS_INFO}`);
         if (result) {
-            setInfo(result)
-            setIsInfoLoading(false)
-        }
-      };
-
-
-    // Function to fetch data by category
-    const fetchDataByCategory = async (category) => {
-        setLoadingStates(prev => ({ ...prev, [category.idCategory]: true }));
-        
-        try {
-            const result = await fetchGet(`${endpoints.POSTER_CATEGORY}&categoryId=${category.idCategory}&pageNumber=${pageNumber}&pageSize=${pageSize}&date=${selectedDate}`);
-            setData(prev => ({ ...prev, [category.idCategory]: result }));
-        } catch (error) {
-            console.error(`Ошибка при загрузке данных для категории ${category.categoryName}:`, error);
-        } finally {
-            setLoadingStates(prev => ({ ...prev, [category.idCategory]: false }));
+            setInfo(result);
+            setIsInfoLoading(false);
         }
     };
-    // Fetch data for each category
+
+
+    const fetchSoonCategories = async () => {
+        setIsSoonLoading(true);
+        if(searchValue != '') {
+            try {
+                const result = await fetchGet(`${endpoints.SEARCH_POSTER_SOON}&keyword=${searchValue}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
+                setSoonData(result); 
+            } catch (error) {
+                console.error("Ошибка при загрузке данных для ближайших категорий:", error);
+            } finally {
+                setIsSoonLoading(false);
+            }
+        } else {
+            try {
+                const result = await fetchGet(`${endpoints.POSTER_CATEGORY_SOON}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
+                setSoonData(result); 
+            } catch (error) {
+                console.error("Ошибка при загрузке данных для ближайших категорий:", error);
+            } finally {
+                setIsSoonLoading(false);
+            }    
+        }
+    };
+
+    const fetchDataByCategory = async (category) => {
+        setLoadingStates(prev => ({ ...prev, [category.idCategory]: true }));
+        if(searchValue != '') {
+            if (allDates) {
+                try {
+                    const result = await fetchGet(`${endpoints.SEARCH_POSTER_CATEGORIES_WITHOUT_DATE}&categoryId=${category.idCategory}&keyword=${searchValue}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
+                    setData(prev => ({ ...prev, [category.idCategory]: result}));
+                } catch (error) {
+                    console.error(`Ошибка при загрузке данных для категории ${category.categoryName}:`, error);
+                } finally {
+                    setLoadingStates(prev => ({ ...prev, [category.idCategory]: false }));
+                    setLoadedCategoriesCount(prevCount => prevCount + 1);
+                }    
+            } else {
+                try {
+                    const result = await fetchGet(`${endpoints.SEARCH_POSTER_CATEGORIES}&categoryId=${category.idCategory}&date=${selectedDate}&keyword=${searchValue}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
+                    setData(prev => ({ ...prev, [category.idCategory]: result}));
+                } catch (error) {
+                    console.error(`Ошибка при загрузке данных для категории ${category.categoryName}:`, error);
+                } finally {
+                    setLoadingStates(prev => ({ ...prev, [category.idCategory]: false }));
+                    setLoadedCategoriesCount(prevCount => prevCount + 1);
+                }    
+            }
+        } else {
+            if (allDates) {
+                try {
+                    const result = await fetchGet(`${endpoints.POSTERS_CATEGORY_WITHOUT_DATE}&categoryId=${category.idCategory}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
+                    setData(prev => ({ ...prev, [category.idCategory]: result }));
+                } catch (error) {
+                    console.error(`Ошибка при загрузке данных для категории ${category.categoryName}:`, error);
+                } finally {
+                    setLoadingStates(prev => ({ ...prev, [category.idCategory]: false }));
+                    setLoadedCategoriesCount(prevCount => prevCount + 1);
+                }    
+            } else {
+                try {
+                    const result = await fetchGet(`${endpoints.POSTER_CATEGORY}&categoryId=${category.idCategory}&pageNumber=${pageNumber}&pageSize=${pageSize}&date=${selectedDate}`);
+                    setData(prev => ({ ...prev, [category.idCategory]: result }));
+                } catch (error) {
+                    console.error(`Ошибка при загрузке данных для категории ${category.categoryName}:`, error);
+                } finally {
+                    setLoadingStates(prev => ({ ...prev, [category.idCategory]: false }));
+                    setLoadedCategoriesCount(prevCount => prevCount + 1);
+                }    
+            }
+        }
+    };
     useEffect(() => {
+        changeType("posters")
         setData([]); 
-        categories.forEach(category => {
-            fetchDataByCategory(category);
-        });
-        fetchInfo()
-    }, [categories, selectedDate, city]);
+        setLoadedCategoriesCount(0);
+        if (!categoriesLoading) {
+            categories.forEach(category => {
+                fetchDataByCategory(category);
+            });
+            fetchSoonCategories(); 
+        }
+    }, [ selectedDate, city, searchValue, allDates, categories]);
+
+
+    useEffect(() => {
+        if (loadedCategoriesCount === categories.length) {
+            setIsSearchLoading(false)
+        }
+    }, [loadedCategoriesCount, categories.length]);
+
+    const allDataEmpty = Object.values(data).every(arr => Array.isArray(arr) && arr.length === 0);
 
     return (
         <section className='posters'>
-            {!isInfoLoading &&
-                <PostersInfo data={info}/>
+            {!isInfoLoading && <PostersInfo data={info} />}
+            <PostersDate 
+                setSelectedDate={setSelectedDate} 
+                selectedDate={selectedDate} 
+                setStartDate={setStartDate} 
+                startDate={startDate} 
+                allDates={allDates}
+                toggleAllDates={toggleAllDates}
+            />
+            <h1 className="posters__title">Афиша мероприятий <span>{cityName}</span></h1>
+            {(loadedCategoriesCount === categories.length && allDataEmpty) && 
+                <NothingFound/>
             }
-            <PostersDate setSelectedDate={setSelectedDate} selectedDate={selectedDate} setStartDate={setStartDate} startDate={startDate} />
-            <h1 className="posters__title">Афиша мероприятий <span>{cityName.name}</span></h1>
-            
             {categories.map(category => (
                 <div key={category.idCategory}>
                     <PostersCategory 
@@ -73,6 +162,13 @@ export default function Posters() {
                     />
                 </div>
             ))}
+            <PostersCategory 
+                id={`category-soon`} 
+                title="Скоро" 
+                link="soon"
+                data={soonData} 
+                isLoading={isSoonLoading} 
+            />
         </section>
     );
 }

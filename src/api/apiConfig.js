@@ -13,7 +13,7 @@ const useEndpoints = () => {
 
   const {type} = useContext(TypeOfDataContext)
   const routeType = type == 'discounts' ? 'business' : 'promotion'
-
+  console.log(cityid)
   return {
     UPLOADS: `https://api.good-day.by/uploads`,
     PDF: `${API_BASE_URL}/pdfs/`,
@@ -50,20 +50,19 @@ const useEndpoints = () => {
     SEARCH_CATEGORY: `${API_BASE_URL}/search/${routeType}-category?cityId=${cityid}`,
     SEARCH_PROMOTIONS: `${API_BASE_URL}/search/promotions?cityId=${cityid}`,
     SEARCH_SERVICES: `${API_BASE_URL}/search/services?cityId=${cityid}`,
+    SEARCH_POSTER_CATEGORIES: `${API_BASE_URL}/search/posters?cityId=${cityid}`,
+    SEARCH_POSTER_CATEGORIES_WITHOUT_DATE: `${API_BASE_URL}/search/poster-without-date?cityId=${cityid}`,
+
+    SEARCH_POSTER_SOON: `${API_BASE_URL}/search/poster-soon?cityId=${cityid}`,
 
     PARTNERSHIP_FORM: `${API_BASE_URL}/partner/create-partner`,
 
     POSTER_CATEGORIES: `${API_BASE_URL}/posters/categories`,
-    // POSTERS: `${API_BASE_URL}/posters?cityId=${cityid}&date=${date}`,
+    POSTERS_CATEGORY_WITHOUT_DATE: `${API_BASE_URL}/posters/category-without-date?cityId=${cityid}`,
     POSTERS_BY_ID: `${API_BASE_URL}/posters/`,
     POSTER_CATEGORY: `${API_BASE_URL}/posters/category?cityId=${cityid}`,
     POSTER_CATEGORY_SOON: `${API_BASE_URL}/posters/category/soon?cityId=${cityid}`,
     POSTERS_INFO: `${API_BASE_URL}/posters/info`,
-    // CATEGORY_SOON: `${API_BASE_URL}/posters/category?cityId=${cityid}&categoryId=${category}&date=${date}`,
-    // SEARCH_POSTERS: `${API_BASE_URL}/search/posters?cityId=${cityid}`,
-    // SEARCH_POSTERS: `${API_BASE_URL}/search/posters?cityId=${cityid}`,
-    // SEARCH_POSTERS_CATEGORY: `${API_BASE_URL}/search/posters?cityId=${cityid}&categoryId=${categoryId}`,
-
 
   };
 };

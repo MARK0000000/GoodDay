@@ -42,9 +42,10 @@ export default function ServicePage() {
         }
         getData()
     }, [id])
+    console.log(service)
   return (
     <>
-    <BreadCrumbs current={getValueOrDefault(service.name, "Название не указанно")}/>
+    <BreadCrumbs mainRoute={"services"} main={"Услуги"} current={getValueOrDefault(service.name, "Название не указанно")}/>
     {isLoading ?
         isMobile ? <SkeletonServicePageMedia/> : <SkeletonServicePage/> 
     :
@@ -52,11 +53,11 @@ export default function ServicePage() {
         <div className="serviceContent">
             <div className="serviceContent__img-box">
             <Swiper
-                style={{width: '100%', height: '100%'}}
+                style={{ width: '100%', height: '100%' }}
                 spaceBetween={50}
                 autoplay={{
                     delay: 5000,
-                    disableOnInteraction: false
+                    disableOnInteraction: false,
                 }}
                 loop={true}
                 pagination={{
@@ -64,21 +65,21 @@ export default function ServicePage() {
                 }}
                 modules={[Pagination, Autoplay]}
                 >
-                {service.images[0] && service.images.map((item, index) => 
-                    <SwiperSlide  key={index}  style={{width: '100%', height: '100%'}}>
-                            <img src={endpoints.UPLOADS + item.url} alt="" className="serviceContent__img" />
+                {service.images.map((item, index) => 
+                    (service.images.length > 1 && index === 0) ? null : ( 
+                    <SwiperSlide key={index} style={{ width: '100%', height: '100%' }}>
+                        <img src={`${endpoints.UPLOADS}${item.url}`} alt="" className="serviceContent__img" />
                     </SwiperSlide>
+                    )
                 )}
-            </Swiper>
+                </Swiper>
             </div>
             <article className="serviceContent__content">
                 <div className="serviceContent__firstLine">
                     <img src={endpoints.UPLOADS + service.images[0].url} alt="" className="serviceContent__imgSmall" />
                     <div>
                         <h2 className='serviceContent__title'>{getValueOrDefault(service.name, "Название не указанно")}</h2>
-                        {service.address &&
-                            <span className="serviceContent__address">{getValueOrDefault(service.address, 'Адрес не указан')}</span>
-                        }
+                        <p className='serviceContent__description'>{service.description}</p>
                     </div>
                 </div>
                 <div className="serviceContent__body">
@@ -88,15 +89,18 @@ export default function ServicePage() {
                     {service.workTime &&
                         <>
                             <span 
-                                className={`serviceContent__workTime ${service.workTime != "По предварительной записи" && 'serviceContent__workTime_list'} ${(workTimeModalActive && service.workTime != "По предварительной записи") && 'serviceContent__workTime_list_active'}`}
+                                className={`serviceContent__workTime ${service.workTimeDetailed.length > 0 && 'serviceContent__workTime_list'} ${(workTimeModalActive && service.workTimeDetailed.length > 0) && 'serviceContent__workTime_list_active'}`}
                                 onClick={() => changeWorkTimeModalActive()}
                                 >
                                     {getValueOrDefault(service.workTime, "Время не указано")}
                             </span>
-                            {service.workTime != "По предварительной записи" &&
+                            {service.workTimeDetailed.length > 0 &&
                                 <WorkTimeModal workTimeDetailed={service.workTimeDetailed} workTimeModalActive={workTimeModalActive}/>
                             }
                         </>
+                    }
+                    {service.address &&
+                        <span className="serviceContent__address">{getValueOrDefault(service.address, 'Адрес не указан')}</span>
                     }
                     <div className="serviceContent__socialBox">
                         {service.instagramLink && 
@@ -124,19 +128,17 @@ export default function ServicePage() {
                                 <img src={sendMassageIcon} alt="" />
                             </a>
                         </button>
-                        <button className="serviceContent__button">
-                            <a onClick={() => handleNavigateSocial( `${(service.services[0] && service.services[0].link) ? 'serviceLink' : 'instagram'}` , `${(service.services[0] && service.services[0].link) || service.instagramLink}`)}>
+                        <button className="serviceContent__button" onClick={() => handleNavigateSocial( `${(service.services[0] && service.services[0].link) ? 'serviceLink' : 'instagram'}` , `${(service.services[0] && service.services[0].link) || service.instagramLink}`)}>
                                 Записаться
-                            </a>
                         </button>
                     </div>
                 </div>
             </article>
         </div>
-        <div className='serviceContent__info'> 
+        {/* <div className='serviceContent__info'> 
             <ServiceDescription service={service}/>
             <MyMapSmall data={service}/>
-        </div>
+        </div> */}
         <ServiceList data={service.services} link={service.instagramLink}/>
         {/* <ServiceExamples/> */}
     </>

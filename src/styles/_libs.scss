@@ -7,3 +7,32 @@
 :root {
     --swiper-theme-color: rgb(255, 146, 46) !important;
 }
+.fancybox__content{
+   background-color: transparent !important;
+   padding: 0px !important;
+}
+.f-button{
+   display: none !important;
+}
+// .fancybox__overlay {
+//    transition: none !important; /* Отключаем переходы */
+//  }
+ 
+//  .fancybox__content {
+//    transition: none !important; /* Отключаем переходы */
+//  }
+ 
+//  .promoCodeModal {
+//    transition: none !important; /* Убедитесь, что здесь нет задержек */
+//  }
+// .fancybox__container{
+//    width: 100vh
+// }
+// #menu {
+//    width: 100vw;
+//    position: fixed;
+//    top: 0px;
+//    left: 0;
+//    right: 0;
+//    z-index: 99;
+// }

@@ -6,13 +6,13 @@ import { getValueOrDefault } from '../../utils/getValueOrDefault';
 import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 import { getEndpoint } from '../../utils/workWithUrl';
 import { NavigateContext } from '../../context/Navigate';
-
+import { TypeOfDataContext } from '../../context/TypeOfData';
 export default function BusinessCard({item}) {
     const {handleNavigate} = useContext(NavigateContext)
     const endpoints = useEndpoints()
     const location = useLocation();
     const endpoint = getEndpoint(location)
-
+    const {type} = useContext(TypeOfDataContext)
   return (
     <article className="businessCard">
         <div className="businessCard__img-box">
@@ -42,10 +42,12 @@ export default function BusinessCard({item}) {
         </div>
         <div className="businessCard__content">
             <h3 className="businessCard__title">{getValueOrDefault(item.name, 'Название не указано')}</h3>
-            <div className="businessCard__text-box">
-                <span className="businessCard__text businessCard__text_gray">Действует по:</span>
-                <span className="businessCard__text">{getValueOrDefault(formatDate(item.promoCodeExpires), "Дата не указана")}</span>
-            </div>
+            {type != "discounts" &&
+                <div className="businessCard__text-box">
+                    <span className="businessCard__text businessCard__text_gray">Действует по:</span>
+                    <span className="businessCard__text">{getValueOrDefault(formatDate(item.activeToDate), "Дата не указана")}</span>
+                </div>
+            }
             <p className="businessCard__text  businessCard__text_p">{getValueOrDefault(item.shortDescription, 'Описание не указано')}</p>
             <div className="businessCard__text-box businessCard__text-box_vertical">
                 <span className={`businessCard__text ${

@@ -104,7 +104,6 @@ export default function Partnership() {
 
   return (
     <>
-      <BreadCrumbs current={'Для вашего бизнеса'} />
       <section className='partnership'>
         <h2 className='partnership__title'>Стать партнёром Good Day</h2>
         <div className='partnership__content'>

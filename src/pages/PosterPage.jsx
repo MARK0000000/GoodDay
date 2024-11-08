@@ -24,10 +24,8 @@ export default function BusinessPage() {
     
     const pathSegments = location.pathname.split('/'); 
     const endpoint = pathSegments.length >= 3 ? `${pathSegments[2]}` : ''; 
-    console.log(endpoint)
     const { categories, selectedCategory } = useContext(PosterCategoriesContext);
-    const category = categories.find(category => category.categoryRoute === endpoint)
-
+    const category = pathSegments.length >= 4 ? (categories.find(category => category.categoryRoute === endpoint) || {categoryName: "Скоро", categoryRoute: "soon"}) : (undefined)
     const [poster, setPoster] = useState([])
     const daysOfWeek = ['Восскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
     const monthNames = [
@@ -108,14 +106,13 @@ export default function BusinessPage() {
     getposter();
     }, [id]);
     
-    console.log(category)
     return (
         <section>
             {isLoading ? (
                 isMobile ? <SkeletonPosterPageMedia/> : <SkeletonPosterPage/> 
             ) : (
             <>
-                <Breadcrambs elements={ category && [{path: `/posters/${category.categoryRoute}`, text: category.categoryName}]} current={poster.posterName}/>
+                <Breadcrambs mainRoute={"posters"} main={"Афиша"} elements={ category && [{path: `/posters/${category.categoryRoute}`, text: category.categoryName}]} current={poster.posterName}/>
                 <article className="businessPage">
                     <div className="businessPage__firstLine"> 
                         <div className="businessPage__firstLine-textBox">

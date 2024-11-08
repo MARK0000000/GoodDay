@@ -6,9 +6,7 @@
             background-color: #FF922E;
             padding: 5px 10px;
             @include f(center, center);
-            a{
-                font-size: 10px;
-            }
+            font-size: 10px;
         }
         &__item {
             padding: 10px 0px ;

@@ -8,7 +8,9 @@
             left: 0%;
         }
     }
-        
+    .discountPage {
+        padding: 0px 10px;
+    }
     
 }
 @media (max-width: 768px) {
@@ -68,6 +70,13 @@
         box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
         padding: 15px;
         border-radius: 10px;
+        &__conditions{
+            font-size: 12px;
+        }
+        &__promoCodeBtn{
+            padding: 10px 20px;
+            font-size: 12px;
+        }
         &__shareContainer{
             display: flex;
             justify-content: space-between;
@@ -264,10 +273,151 @@
             }
         }
     }
+    .discountPage {
+        &__content{
+            grid-template-rows: 1fr;
+            grid-template-columns: 100%;
+            margin-bottom: 20px
+        }
+        &__info{
+            padding: 20px;
+        }
+        &__shortDescription {
+            font-size: 12px;
+            margin-bottom: 20px;
+            display: -webkit-box; 
+            -webkit-box-orient: vertical; 
+            -webkit-line-clamp: 3; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }    
+        &__descriptionTitle{
+            font-size: 16px;
+            margin-bottom: 10px;
+    
+        }
+        &__description{
+            font-size: 12px;
+            display: -webkit-box; 
+            -webkit-box-orient: vertical; 
+            -webkit-line-clamp: 7; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }
+        &__title {
+           font-size: 20px;
+           margin-bottom: 10px;
+           display: -webkit-box;
+           -webkit-box-orient: vertical; 
+           -webkit-line-clamp: 2; 
+           overflow: hidden; 
+           text-overflow: ellipsis; 
+        }
 
+        &__text {
+           font-size: 12px;
+           font-weight: 500;
+           &_gray {
+              color: $iconGray;
+              display: inline;
+           }
+           &_p {
+              max-width: 500px;
+           }
+        }
+        &__info-btnBox {
+              @include f(end, center);
+              position: relative;
+              bottom: auto;
+              right: auto;
+              margin-top: 20px;
+        }
+        &__button {
+           height: 50px;
+           width: 50px;
+           border-radius: 15px;
+           box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+           margin-left: 10px;
+           @include f(center, center);
+           background-color: $backGray;
+           transition: background-color 0.3s;
+           &:hover{
+              background-color: white;
+           }
+           &_big {
+              width: auto;
+              height: auto;
+              margin-right: 0;
+              background-color: $orange;
+              a{
+                 padding: 16px 25px;
+                 color: black;
+              }
+              &:hover{
+                 background-color: $orangeOpacity;
+              }
+           }
+        }
+        &__secondLine {
+           @include f(space-between, start);
+           margin-bottom: 20px;
+        }
+        &__link {
+           text-decoration: underline dotted;
+           text-underline-offset: 5px;
+        }
+        &__img-box {
+            background-color: $darkGray;
+            border-radius: 16px;
+        }
+        &__stock {
+            z-index: 2;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: $orange;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            border: none;
+            box-shadow: none;
+            font-size: 12px;
+        }
+        &__img {
+            width: 100%;
+            border-radius: 16px;
+            height: auto;
+            aspect-ratio: 9/16;
+            object-fit: cover;
+        }
+        &__widgets {
+            width: auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            gap: 10px;
+            position: relative;
+            margin-bottom: 50px;
+            padding-right: 0px;
+            &:first-child{
+                max-height: 150px;
+            }
+     
+        }
+        &__widgetsRight {
+            grid-row: auto;
+            grid-column: auto;
+        }
+    }
+    
 
 
 }
 @media (max-width: 480px) {
-
+    .promoCodeModal {
+        &__img {
+            display: none;
+        }
+    }
+    
 }

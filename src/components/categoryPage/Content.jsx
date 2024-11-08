@@ -5,7 +5,7 @@ import Pagination from '../content/Pagination';
 import BusinessCard from '../content/BusinessCard';
 import NothingFound from '../UI/loaders/NothingFound';
 
-export default function Content({ businesses, itemsPerPage, currentPage, setCurrentPage, totalCount }) {
+export default function Content({ businesses, itemsPerPage, currentPage, setCurrentPage, totalCount, currentPageNumbers, updateCurrentPageNumbers, searchData }) {
   const [businessCards, setBusinessCards] = useState(businesses); 
   const { searchValue } = useContext(SearchContext);
 
@@ -14,7 +14,7 @@ export default function Content({ businesses, itemsPerPage, currentPage, setCurr
   const [indexOfLastPage, setIndexOfLastPage] = useState(0);
 
   const [pageNumbers, setPageNumbers] = useState([]);
-  const [currentPageNumbers, setCurrentPageNumbers] = useState(pageNumbers.slice(indexOfFirstPage, indexOfLastPage));
+  // const [currentPageNumbers, setCurrentPageNumbers] = useState(pageNumbers.slice(indexOfFirstPage, indexOfLastPage));
 
 
   useEffect(() => {
@@ -26,15 +26,24 @@ export default function Content({ businesses, itemsPerPage, currentPage, setCurr
       changePageNumbers(totalCount, itemsPerPage, setPageNumbers, businessCards);
     }
   }, [totalCount]);
+  // useEffect(() => {
+  //   const screenWidth = window.innerWidth - 90;
+  //   const maxButtonsOnScreen = Math.floor(screenWidth / 40);
+  //   const newIndexOfLastPage = Math.min(maxButtonsOnScreen, pageNumbers.length);
+  //   updateCurrentPageNumbers(pageNumbers.slice(0, newIndexOfLastPage));
+  // }, [searchValue])
 
   useEffect(() => {
+    console.log("reset")
     const updateIndexOfLastPage = () => {
       const screenWidth = window.innerWidth - 90;
       const maxButtonsOnScreen = Math.floor(screenWidth / 40);
       const newIndexOfLastPage = Math.min(maxButtonsOnScreen, pageNumbers.length);
-      setIndexOfLastPage(newIndexOfLastPage);
-      setCurrentPageNumbers(pageNumbers.slice(indexOfFirstPage, newIndexOfLastPage));
-      setIndexOfFirstPage(0);
+      setIndexOfLastPage(currentPageNumbers.length != 0 ? currentPageNumbers[currentPageNumbers.length - 1] : newIndexOfLastPage);
+      if (!currentPageNumbers.length != 0 && pageNumbers.length != 0) {
+        updateCurrentPageNumbers(pageNumbers.slice(indexOfFirstPage, newIndexOfLastPage));
+      }
+      setIndexOfFirstPage(searchData == null ? 0 : currentPageNumbers.length != 0 ? (currentPageNumbers[0] - 1) : 0);
     };
 
     updateIndexOfLastPage();
@@ -58,10 +67,10 @@ export default function Content({ businesses, itemsPerPage, currentPage, setCurr
     indexOfLastPage,
     setIndexOfFirstPage,
     setIndexOfLastPage,
-    setCurrentPageNumbers,
+    updateCurrentPageNumbers,
     totalCount,
   };
-
+  console.log(pageNumbers)
   return (
     <>
       {businessCards.length == 0 ? (

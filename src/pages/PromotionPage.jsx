@@ -13,22 +13,20 @@ import Breadcrambs from '../components/main/Breadcrambs';
 import MyMap from '../components/businessPage/MyMap';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
-import { SkeletonBusinessPage } from '../components/UI/loaders/SkeletonBusinessPage'
-import { SkeletonBusinessPageMedia } from '../components/UI/loaders/SkeletonBusinessPageMedia' 
+import { SkeletonPromotionPage } from '../components/UI/loaders/SkeletonPromotionPage'
+import { SkeletonPromotionPageMedia } from '../components/UI/loaders/SkeletonPromotionPageMedia' 
 import ShareWidget from '../components/businessPage/ShareWidget';
 import ContactsWidget from '../components/businessPage/ContactsWidget';
 import InfoWidget from '../components/businessPage/InfoWidget';
 import AboutStock from '../components/businessPage/AboutStock';
 import { handleNavigateSocial } from '../utils/navigateSocial';
-import { TypeOfDataContext } from '../context/TypeOfData';
 
-export default function BusinessPage() {
+export default function PromotionPage() {
     const endpoints = useEndpoints();
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const {id} = useParams();
     const [business, setBusiness] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const {type} = useContext(TypeOfDataContext)
 
     const [links, setLinks] = useState([])
     const [activeLink, setActiveLink] = useState(links[0] || {}); 
@@ -40,7 +38,7 @@ export default function BusinessPage() {
     
     useEffect(() => {
       async function getData() {
-        const data = await fetchGet(`${type == 'discounts' ? endpoints.DISCOUNT_BY_ID + id : endpoints.PROMOTION_BY_ID + id} `);
+        const data = await fetchGet(`${endpoints.PROMOTION_BY_ID + id}`);
         if (data && data != Promise) {
             setBusiness(data);
             setLinks([
@@ -67,9 +65,9 @@ export default function BusinessPage() {
 
     return (
         <section>
-            <Breadcrambs current={business.name}/>
+            <Breadcrambs mainRoute={"promotion"} main={"Акции"} current={business.name}/>
             {isLoading ? (
-                isMobile ? <SkeletonBusinessPageMedia/> : <SkeletonBusinessPage/> 
+                isMobile ? <SkeletonPromotionPageMedia/> : <SkeletonPromotionPage/> 
             ) : (
             <>
                 <article className="businessPage">
@@ -78,7 +76,7 @@ export default function BusinessPage() {
                             <h3 className="businessPage__title">{getValueOrDefault(business.name, 'Название не указано')}</h3>
                             <div className="businessPage__text-box">
                                 <span className="businessPage__text businessPage__text_gray">Действует по: </span>
-                                <span className="businessPage__text">{getValueOrDefault(formatDate(business.promoCodeExpires), "Дата не указана")}</span>
+                                <span className="businessPage__text">{getValueOrDefault(formatDate(business.activeToDate), "Дата не указана")}</span>
                             </div>
                         </div>
                         <div className="businessPage__firstLine-btnBox">
@@ -97,11 +95,11 @@ export default function BusinessPage() {
                                 </button>
                             }
                             {business.address[0] &&
-                                <button className="businessPage__button">
                                     <Link to="map" smooth={true}>
-                                        <img src={addressIcon} alt="" />
+                                        <button className="businessPage__button">
+                                                <img src={addressIcon} alt="" />
+                                        </button>
                                     </Link>
-                                </button>
                             }
                             {/* Promocode */}
                             {/* {business.isPromoCode &&
@@ -115,7 +113,6 @@ export default function BusinessPage() {
                     </div>
                     <div className="businessPage__secondLine">
                         <p className="businessPage__text businessPage__text_p">{getValueOrDefault(business.shortDescription, 'Описание не указано')}</p>
-                        {/* <a href="" className="businessPage__link">Отзывы</a> */}
                     </div>
                     <div className="businessPage__widgets">
                         <div className="businessPage__img-box">
@@ -154,41 +151,6 @@ export default function BusinessPage() {
                 <MyMap data={business}/>
             </>
             )}
-            {/* comments */}
-            {/* <div className="comments">
-                <div className="comments__firstLine">
-                    <div>
-                        <h3 className="comments__title">Отзывы</h3>
-                        <span>Раскажите о ваших впечатлениях...</span>
-                    </div>
-                    <button className="comments__button">Написать отзыв</button>
-                </div>
-                <div className="comments__category-box">
-                    <button className="comments__categotyBtn">
-                        Все
-                    </button>
-                </div>
-                <div className="comments__content">
-                    <div className="comment">
-                        <div className="comment__FirstLine">
-                            <img src="" alt="" className="comment__avatar" />
-                            <div className="comment__author-box">
-                                <span className="comment__name">Ноунэйм</span>
-                                <span>
-                                    <span className="comment__author-info">Позитивный отзыв</span>
-                                    <span className="comment__author-info">8 июля 2024 в 15:45</span>
-                                </span>
-                            </div>
-                        </div>
-                        <p className="comment__text">БлаБлаБла</p>
-                        <div className="comment__lastLine">
-                            <span className="comment__commInfo comment__commInfo_like">2 человека считают этот отзыв полезным</span>
-                            <span className="comment__commInfo comment__commInfo_comment">Ответить</span>
-                            <button className="comment__more">...</button>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
         </section>
   )
 }

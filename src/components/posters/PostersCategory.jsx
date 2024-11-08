@@ -12,27 +12,30 @@ export default function PostersCategory({ data, title, link, id, isLoading }) {
         handleNavigate("posters/" + link,"posters/" + link)
     }
     return (
-        <section className="postersCategory" id={id}>
-            <h2 
-                className={`postersCategory__title ${link && 'postersCategory__title_link'}`}
-                onClick={() => categoryHandleNavigate(link)}
-            >
-                {title}
-            </h2>
-            <div className="postersCategory__content">
-                {isLoading ? (
-                    [...Array(6)].map((_, index) => (
-                        <SkeletonPosterCard key={index} />
-                    ))
-                ) : (
-                    data && data.length > 0 && (
-                        data.map((item, index) => (
-                            <PosterCard key={index} data={item} />
-                        ))
-                    )
-                )}
-            </div>
-            {(!(data && data.length > 0) && !isLoading) && <NothingFound/> }
-        </section>
+        <>
+            {!(!(data && data.length > 0) && !isLoading) && 
+                <section className="postersCategory" id={id}>
+                    <h2 
+                        className={`postersCategory__title ${link && 'postersCategory__title_link'}`}
+                        onClick={() => categoryHandleNavigate(link)}
+                    >
+                        {title}
+                    </h2>
+                    <div className="postersCategory__content">
+                        {isLoading ? (
+                            [...Array(6)].map((_, index) => (
+                                <SkeletonPosterCard key={index} />
+                            ))
+                        ) : (
+                            data && data.length > 0 && (
+                                data.map((item, index) => (
+                                    <PosterCard key={index} data={item} />
+                                ))
+                            )
+                        )}
+                    </div>
+                </section>
+            }
+        </>
     );
 }

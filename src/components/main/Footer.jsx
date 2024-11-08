@@ -9,7 +9,7 @@ import { NavigateContext } from '../../context/Navigate';
 import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
-  const {handleNavigate, activeButton} = useContext(NavigateContext)
+  const {handleNavigateOtherPages, activeButton, typeButtonClick} = useContext(NavigateContext)
 
   
   return (
@@ -46,19 +46,19 @@ export default function Footer() {
           <div className="footer__item">
             <span>КОМПАНИЯ</span>
             <hr />
-            <a onClick={() => handleNavigate('aboutapp', 'aboutapp')}>О приложении</a>
-            <a onClick={() => handleNavigate('contacts', 'contacts')}>Контакты</a>
+            <a onClick={() => handleNavigateOtherPages('aboutapp', 'aboutapp')}>О приложении</a>
+            <a onClick={() => handleNavigateOtherPages('contacts', 'contacts')}>Контакты</a>
           </div>
           <div className="footer__item">
             <span>ПОЛЬЗОВАТЕЛЯМ</span>
             <hr />
-            <a onClick={() => handleNavigate('questions', 'questions')}>Вопросы и ответы</a>
-            <a onClick={() => handleNavigate('discounts', 'discounts')}>Скидки города</a>
+            <a onClick={() => handleNavigateOtherPages('questions', 'questions')}>Вопросы и ответы</a>
+            <a onClick={() => typeButtonClick('discounts', 'discounts')}>Скидки города</a>
           </div>
           <div className="footer__item">
             <span>ПАРТНЕРАМ</span>
             <hr />
-            <a onClick={() => handleNavigate('partnership', 'partnership')}>Для вашего бизнеса</a>
+            <a onClick={() => handleNavigateOtherPages('partnership', 'partnership')}>Для вашего бизнеса</a>
             <a href='http://partners.good-day.by/franshizabel' target='_blank'>Франчайзинг</a>
           </div>
         </div>

@@ -23,7 +23,14 @@ export const handleNavigateSocial = (typeOfLink, link) => {
             }
             break;
         case 'serviceLink':
+            if (link.startsWith('https://') || link.startsWith('http://')) {
             url = link; 
+            } else if (link.startsWith('bumpix.net') || link.startsWith('dikidi.net') || link.startsWith('n')) {
+                url = "https://" + link
+            }
+            else  {
+                url = link
+            }
             break;
         default:
             return;

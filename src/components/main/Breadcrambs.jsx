@@ -3,17 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { NavigateContext } from '../../context/Navigate';
 import { TypeOfDataContext } from '../../context/TypeOfData';
 
-export default function Breadcrambs({ elements, current }) {
+export default function Breadcrambs({main, mainRoute, elements, current }) {
     const navigate = useNavigate();
     const {handleNavigate} = useContext(NavigateContext)
     const {changeType} = useContext(TypeOfDataContext)
+
     const handleNavigatePosters = (route, buttonId) => {
         handleNavigate(route, buttonId)
-        changeType('posters')
     }
     return (
         <div className="breadCrambs">
-            <a onClick={() => handleNavigatePosters("posters", "posters")} className="breadCrambs__link">Главная</a>
+            <a onClick={() => handleNavigatePosters(mainRoute, mainRoute)} className="breadCrambs__link">{main}</a>
             {elements !== undefined && elements.map((item, index) => (
                 <React.Fragment key={index}>
                     <span className="breadCrambs__span">&gt;</span>

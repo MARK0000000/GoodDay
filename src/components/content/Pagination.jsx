@@ -14,14 +14,14 @@ export default function Pagination(props) {
         indexOfLastPage,
         setIndexOfFirstPage,
         setIndexOfLastPage,
-        setCurrentPageNumbers,
+        updateCurrentPageNumbers,
         totalCount
     } = props;
 return (
     <ul className='pagination__container'>
         <li
-            className={`pagination__item pagination__item_prev ${indexOfFirstPage === 0 ? 'pagination__item_disabled' : ''}`}
-            onClick={() => handlePrevPage(pageNumbers, indexOfFirstPage, indexOfLastPage, setIndexOfFirstPage, setIndexOfLastPage, setCurrentPageNumbers)}
+            className={`pagination__item pagination__item_prev ${currentPageNumbers[0] === 1 ? 'pagination__item_disabled' : ''}`}
+            onClick={() => handlePrevPage(pageNumbers, indexOfFirstPage, indexOfLastPage, setIndexOfFirstPage, setIndexOfLastPage, updateCurrentPageNumbers)}
         >
             &lt;&lt;
         </li>
@@ -36,7 +36,7 @@ return (
         }
         <li
             className={`pagination__item pagination__item_next ${indexOfLastPage >= Math.ceil(totalCount / itemsPerPage) ? 'pagination__item_disabled' : ''}`}
-            onClick={() => handleNextPage(pageNumbers, indexOfFirstPage, indexOfLastPage, setIndexOfFirstPage, setIndexOfLastPage, setCurrentPageNumbers)}
+            onClick={() => handleNextPage(pageNumbers, indexOfFirstPage, indexOfLastPage, setIndexOfFirstPage, setIndexOfLastPage, updateCurrentPageNumbers)}
         >
             &gt;&gt;
         </li>

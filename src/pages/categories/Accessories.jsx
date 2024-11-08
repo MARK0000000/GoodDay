@@ -8,25 +8,35 @@ import { fetchGetCategory } from '../../api/fetch'
 import { SkeletonContent } from '../../components/UI/loaders/SkeletonContent';
 import { SearchContext } from '../../context/Search';
 import { CityContext } from '../../context/City';
-
+import { usePagination } from '../../context/PaginationContext'
 export default function Accessories() {
   const endpoints = useEndpoints();
   const { data } = useContext(SearchContext);
   const [businesses, setBusinesses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage] = useState(9);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState();
-  const {city, updateCity, cities} = useContext(CityContext)
-  const cityName = cities.find(item => item.id === city);
+  const {city, updateCity, cities, cityName} = useContext(CityContext)
 
+  const { paginationState, updatePage, updateCurrentPageNumbers } = usePagination(); 
+  const currentPage = paginationState.accessoriesPage; 
+  const currentPageNumbers = paginationState.accessoriesCurrentPageNumbers;
+  
+  const [previousData, setPreviousData] = useState(null);
+  
   useEffect(() => {
-    if (data && data.data) { 
+    if (data && data.data) {
+      if (previousData !== data.data) {
+        updatePage('accessoriesPage', 1);
+        updateCurrentPageNumbers('accessories', []);
+        setPreviousData(data.data) 
+      }
+      
       const slicedData = data.data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-      setCurrentPage(1)
       setBusinesses(slicedData);
       setIsLoading(false);
       setTotalCount(data.totalCount);
+
     } else {
       const fetchData = async () => {
         setIsLoading(true);
@@ -35,6 +45,11 @@ export default function Accessories() {
           setBusinesses(result.data);
           setIsLoading(false);
           setTotalCount(result.totalCount);
+          if (previousData !== null) {
+            updatePage('accessoriesPage', 1);
+            updateCurrentPageNumbers('accessories', []);
+            setPreviousData(null) 
+          }    
         }
       };
       fetchData();
@@ -45,27 +60,27 @@ export default function Accessories() {
     <>
       <Add />
       <section className="content">
-        <div className="content__title-box">
+        <div className="content__title-box" id='content'>
           <h1 className="content__title">
-            Аксессуары в <span className="content__city">{cityName.name}</span>
+            Аксессуары в <span className="content__city">{cityName}</span>
             <span className="content__count">{totalCount}</span>
           </h1>
-          {/* <button className="content__viewMapBtn">посмотреть на карте</button> */}
         </div>
         {isLoading ?
           <div className='content__loading'>
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
-            <SkeletonContent />
+            {[...Array(9)].map((_, index) => <SkeletonContent key={index} />)}
           </div>
           :
-          <Content businesses={businesses} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} totalCount={totalCount}/>
+          <Content 
+            businesses={businesses} 
+            itemsPerPage={itemsPerPage} 
+            currentPage={currentPage} 
+            setCurrentPage={(page) => { updatePage('accessoriesPage', page); }} 
+            totalCount={totalCount}
+            currentPageNumbers={currentPageNumbers}
+            updateCurrentPageNumbers={(numbers) => updateCurrentPageNumbers('accessories', numbers)}
+            searchData={previousData}
+          />
         }
       </section>
       <InfoMobileApp />

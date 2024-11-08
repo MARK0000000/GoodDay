@@ -34,6 +34,9 @@
         z-index: 2;
         padding: 15px;
     }
+    &__link{
+        display: block;
+    }
     &__description {
         color: white;
         font-size: 24px;
@@ -107,6 +110,9 @@
             border: 1px solid #F1F1F1;
             border-radius: 5px;
         }
+        &_all{
+            @include f(center, center);
+        }
     }
     &__next {
         font-size: 20px;
@@ -163,7 +169,7 @@
         object-fit: cover;
         border-radius: 10px;
         margin-bottom: 10px;
-        
+        cursor: pointer;
     }
     &__title {
         font-size: 14px;

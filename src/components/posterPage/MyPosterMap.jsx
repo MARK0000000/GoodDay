@@ -20,7 +20,6 @@ export default function MyPosterMap({ data }) {
         return true;
       };
     const condition = areCoordinatesEqual(coordinates, [false, false]);
-    console.log(coordinates)
     return (
         <>
             {condition  ?

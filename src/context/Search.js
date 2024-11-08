@@ -1,15 +1,20 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import { fetchGetCategory } from '../api/fetch';
 import { useLocation } from 'react-router-dom';
 import { getEndpoint } from '../utils/workWithUrl';
+import { PosterCategoriesContext } from './PosterCategories';
 import useEndpoints from '../api/apiConfig';
+import { CityContext } from './City';
 
 export const SearchContext = createContext(null);
 
 export const SearchProvider = ({ children }) => {
+  const {city} = useContext(CityContext)
   const endpoints = useEndpoints()
   const location = useLocation();
   const endpoint = getEndpoint(location);
+  const {categories} = useContext(PosterCategoriesContext)
+  let fullPath = location.pathname.slice(1)
 
   const getCategoryId = {
     education: 2,
@@ -40,8 +45,9 @@ export const SearchProvider = ({ children }) => {
   };
 
   const [searchValue, setSearchValue] = useState('');
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [isSearchLoading, setIsSearchLoading] = useState(true)
+
 
   useEffect(() => {
     setIsSearchLoading(true)
@@ -56,6 +62,16 @@ export const SearchProvider = ({ children }) => {
           url = routes.promotions;
         } else if (endpoint === 'services') {
           url = routes.services;
+        } else if (endpoint === 'posters'){
+          setIsSearchLoading(true)
+        } else if (fullPath.startsWith('posters/')){
+           const categoryRoute = endpoint.split('/')[1];
+          
+           const categoryExists = categories.some(category => category.categoryRoute === categoryRoute);
+           
+           if (categoryExists) {
+             setIsSearchLoading(true);
+           }
         } else {
           setSearchValue('')
           console.log('Unknown endpoint');
@@ -77,10 +93,10 @@ export const SearchProvider = ({ children }) => {
     };
 
     fetchSearchData();
-  }, [searchValue, endpoint]);
+  }, [searchValue, endpoint, city]);
 
   return (
-    <SearchContext.Provider value={{ searchValue, setSearchValue, data, isSearchLoading, setIsSearchLoading, getCategoryId }}>
+    <SearchContext.Provider value={{ searchValue, setSearchValue, data, setData, isSearchLoading, setIsSearchLoading, getCategoryId }}>
       {children}
     </SearchContext.Provider>
   );

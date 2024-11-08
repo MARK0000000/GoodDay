@@ -10,7 +10,6 @@ import QuestionsBlock from '../../components/aboutAppPage/QuestionsBlock'
 export default function AboutApp() {
   return (
     <>
-      <BreadCrumbs current={"О приложении"}/>
       <InfoAboutCompany/>
       <HowItWorks/>
       <Opportunities/>

@@ -52,19 +52,39 @@
          }
       }
       &__nav-button_red {
-         background-color: rgb(244, 67, 54);
+         background-color: rgb(240, 98, 146);
          color: white;
          &_active{
-            color: rgb(244, 67, 54);
-            border: 1px solid rgb(244, 67, 54);
+            color: rgb(240, 98, 146);
+            border: 1px solid rgb(240, 98, 146);
             pointer-events: none;
          }
          &:hover{
             background-color: transparent;
-            color: rgb(244, 67, 54);
-            border: 1px solid rgb(244, 67, 54);
+            color: rgb(240, 98, 146);
+            border: 1px solid rgb(240, 98, 146);
          }
       }   
+
+      &__nav-button_white {
+         color: white;
+         background-color: rgb(124, 77, 255);
+         &_active{
+            color: rgb(124, 77, 255);
+            border: 1px solid rgb(124, 77, 255);
+            background: transparent;
+            &:hover{
+               background-color: transparent;
+               top: 0px;
+               color: rgb(124, 77, 255);
+            }   
+         }
+         &:hover{
+            background-color: transparent;
+            color: rgb(124, 77, 255);
+         }
+      }
+   
    }        
    .footer {
       &__pagesLinks{

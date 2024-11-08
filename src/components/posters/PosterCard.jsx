@@ -14,7 +14,7 @@ export default function PosterCard({ data }) {
   return (
     <article className='posterCard'>
         <img 
-            src={endpoints.UPLOADS + data.preview} 
+            src={endpoints.UPLOADS + data.preview.url} 
             alt="" 
             className="posterCard__img" 
             onClick={() => handleNavigate(`${endpoint}/${data.idPoster}`, `${endpoint}/${data.idPoster}`)} 

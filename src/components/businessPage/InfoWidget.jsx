@@ -13,8 +13,8 @@ export default function InfoWidget({links, activeLink, handleLinkClick}) {
         {link.title}
         </span>
         {link.link &&
-          <button className='timetable__webLinkBtn'>
-            <a href={link.link} target='_blank'>Перейти на сайт</a>
+          <button   onClick={(() => window.open(link.link, 'blank'))} className='timetable__webLinkBtn'>
+            Перейти на сайт
         </button>    
         }
     </>

@@ -90,16 +90,17 @@
     background-color: rgb(242, 242, 246);
     border-radius: 10px;
     padding: 10px;
-    height: 165px;
+    height: 100%;
+    padding-bottom: 70px;
     &__container{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         align-items: start;
         gap: 20px;      
     }
     &__loaderBox{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         align-items: start;
         gap: 20px;      
     }
@@ -109,15 +110,17 @@
         right: 10px;
     }
     &__content {
-        @include f(start, center);
+        // @include f(start, center);
     }
     &__img {
-        height: 80px;
-        min-width: 80px;
-        max-width: 80px;
+        width: 100%;
+        // aspect-ratio: 16/9;
+        height: 94px;
         background-color: rgb(194, 194, 197);
         border-radius: 10px;
-        margin-right: 10px;
+        margin-bottom: 10px;
+        object-fit: cover;
+        
     }
     &__text {
         @include f(start, start);
@@ -144,22 +147,18 @@
         overflow-wrap: break-word;
         word-break: break-all
     }
-    &__bottom {
-        @include f(space-between, center);
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-    }
     &__button {
         background-color: white;
         color: rgb(27, 139, 245);
         padding: 8px 30px;
         border-radius: 30px;
         font-weight: 600;
-        
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
-
 .placeServices {
     background-image: url('../../images/other/подразместитьсвоиуслуги.png');
     background-size: 100% 100%;
@@ -170,10 +169,14 @@
     position: relative;
     left: 0;
     right: 0;
-    width: calc(100vw - (100vw + 140px - 1140px) / 2);
+    width: 100%;
     margin-bottom: 50px;
+    &__img{
+        max-height: 330px;
+    }
     &__content {
         color: white;
+        margin-right: 60px;
     }
     &__title {
         font-size: 28px;
