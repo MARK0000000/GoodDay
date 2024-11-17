@@ -1,5 +1,4 @@
 import React from 'react'
-import { formatDate } from '../../utils/formatDate';
 import { getValueOrDefault } from '../../utils/getValueOrDefault';
 
 export default function AboutDiscount({business}) {

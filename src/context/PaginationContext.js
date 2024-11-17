@@ -124,9 +124,53 @@ export const PaginationProvider = ({ children }) => {
       sportCurrentPageNumbers: [],
     }));
   };
+  const resetAllPagination = () => {
+    setPaginationState((prev) => ({
+      promotionPage: 1, 
+      promotionCurrentPageNumbers: [], 
+      discountsPage: 1, 
+      discountsCurrentPageNumbers: [],
+      accessoriesPage: 1,
+      accessoriesCurrentPageNumbers: [],
+      autoPage: 1,
+      autoCurrentPageNumbers: [],
+      beautyPage: 1,
+      beautyCurrentPageNumbers: [],
+      childrenPage: 1,
+      childrenCurrentPageNumbers: [],
+      clothesAndShoesPage: 1,
+      clothesAndShoesCurrentPageNumbers: [],
+      educationPage: 1,
+      educationCurrentPageNumbers: [],
+      entertaimentPage: 1,
+      entertaimentCurrentPageNumbers: [],
+      equipmentPage: 1,
+      equipmentCurrentPageNumbers: [],
+      everythingForHomePage: 1,
+      everythingForHomeCurrentPageNumbers: [],
+      foodPage: 1,
+      foodCurrentPageNumbers: [],
+      giftsPage: 1,
+      giftsCurrentPageNumbers: [],
+      healthPage: 1,
+      healthCurrentPageNumbers: [],
+      masterClassesPage: 1,
+      masterClassesCurrentPageNumbers: [],
+      otherPage: 1,
+      otherCurrentPageNumbers: [],
+      petsPage: 1,
+      petsCurrentPageNumbers: [],
+      recreationPage: 1,
+      recreationCurrentPageNumbers: [],
+      repairPage: 1,
+      repairCurrentPageNumbers: [],  
+      sportPage: 1,
+      sportCurrentPageNumbers: [],
+    }));
+  };
 
   return (
-    <PaginationContext.Provider value={{ paginationState, updatePage, updateCurrentPageNumbers, resetPagination }}>
+    <PaginationContext.Provider value={{ paginationState, updatePage, updateCurrentPageNumbers, resetPagination, resetAllPagination }}>
       {children}
     </PaginationContext.Provider>
   );

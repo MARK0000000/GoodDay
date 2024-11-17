@@ -36,11 +36,6 @@
     }
 }
 @media (max-width: 768px) {
-    .add{
-        &__slide{
-            height: 75px !important;
-        }
-    }    
     .info {
         &__h4 {
            font-size: 15px;
@@ -131,11 +126,6 @@
 
 }
 @media (max-width: 480px) {
-    .add{
-        &__slide{
-            height: 60px !important;
-        }
-    }    
     .info {
         margin-bottom: 20px;
         padding: 0px 5px;

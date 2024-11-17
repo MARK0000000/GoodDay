@@ -9,9 +9,9 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.7.2",
     "date-fns": "^3.6.0",
     "gh-pages": "^6.1.1",
+    "GoodDay": "file:",
     "react": "^18.2.0",
     "react-content-loader": "^7.0.2",
     "react-datepicker": "^7.4.0",
@@ -21,8 +21,7 @@
     "react-scroll": "^1.9.0",
     "react-toastify": "^10.0.5",
     "sass": "^1.69.6",
-    "swiper": "^11.1.4",
-    "web-vitals": "^2.1.4"
+    "swiper": "^11.1.4"
   },
   "scripts": {
     "predeploy": "npm run build",

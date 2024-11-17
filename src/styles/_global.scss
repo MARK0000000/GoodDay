@@ -14,7 +14,11 @@
    user-select: none;
 }
 p{
+   white-space: pre-wrap;
    user-select: text;
+}
+span{
+   white-space: pre-wrap;
 }
 #root{
    display: flex;

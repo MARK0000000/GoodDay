@@ -44,7 +44,27 @@ export default function DiscountPage() {
     }
     getData();
     }, [id]);
+    const extractFirstWebLink = (webLinks) => {
+        if (!webLinks || webLinks.length === 0) return null; 
 
+        let linksArray;
+        try {
+            linksArray = JSON.parse(webLinks); 
+        } catch (error) {
+            console.error("Invalid JSON format:", error);
+            return null;
+        }
+
+        if (!Array.isArray(linksArray) || linksArray.length === 0) return null; 
+
+        const firstLink = linksArray[0].replace(/^==>\s*/, ''); 
+        return firstLink;
+    };
+    const firstWebLink = extractFirstWebLink(business.webLinks);
+
+    const removeLeadingSymbols = (str) => {
+        return str ? str.replace(/^==>\s*/, '') : str;
+    };
     return (
         <section>
             <Breadcrambs mainRoute={"discounts"} main={"Скидки"} current={business.name}/>
@@ -91,16 +111,16 @@ export default function DiscountPage() {
                                 </div>
                             </div>
                             <div className="discountPage__info-btnBox">
-                                {business.phone &&
+                                {business.phones.length > 0 &&
                                     <button className="discountPage__button">
-                                        <a href={`tel:${business.phone}`} >
+                                        <a href={`tel:${removeLeadingSymbols(business.phones[0].phone)}`} >
                                             <img src={telIcon} alt="" />
                                         </a>
                                     </button>
                                 }
-                                {business.webLink &&
+                                {firstWebLink &&
                                     <button className="discountPage__button">
-                                        <a onClick={() => handleNavigateSocial('web', `${business.webLink}`)}>
+                                        <a onClick={() => handleNavigateSocial('web', `${firstWebLink}`)}>
                                             <img src={internetIcon} alt="" />
                                         </a>
                                     </button>

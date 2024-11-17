@@ -22,7 +22,6 @@ export const SkeletonPosterPageMedia = () => (
     {/* widget-info */}
     <rect x="0" y="40%" rx="6" ry='6' width='5%' height='2%' />
     <rect x="8%" y="40%" rx="6" ry='6' width='5%' height='2%' />
-    <rect x="16%" y="40%" rx="6" ry='6' width='5%' height='2%' />
     <rect x="0" y="43%" rx="6" ry='6' width='60%' height='1.5%' />
 
 

@@ -22,6 +22,13 @@ export const handleNavigateSocial = (typeOfLink, link) => {
                 url = `https://instagram.com/${link}`; 
             }
             break;
+        case 'telegram':
+            if (link.startsWith('https://') || link.startsWith('http://')) {
+                url = link; 
+            } else {
+                url = `https://t.me/${link}`; 
+            }
+            break;
         case 'serviceLink':
             if (link.startsWith('https://') || link.startsWith('http://')) {
             url = link; 

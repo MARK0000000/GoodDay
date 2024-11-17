@@ -60,9 +60,8 @@
       display: flex;
       &_vertical{
          flex-direction: column;
-         :first-child{
-            margin-bottom: 5px;
-         }
+         margin-bottom: 5px;
+         min-height: 23px;
       }
    }
    &__text {
@@ -73,6 +72,8 @@
       text-overflow: ellipsis; 
       line-height: 1.5;
       max-height: 3em; 
+      font-size: 14px;
+      font-weight: 500;
       &_open::after{
          content: '';
          display: inline-block;
@@ -116,46 +117,43 @@
          line-height: 1.5;
          max-height: 3em; 
          min-height: 3em;
-      }
-      font-size: 14px;
-      font-weight: 500;
-      &_gray {
-            color: $iconGray;
-            display: inline;
-            margin-right: 10px;
-      }
-      &_bottom {
-            display: inline-flex;
-            align-items: center;
-            margin-right: 20px;
-            font-size: 14px;
-            font-weight: 500;
-      }
-      &_bottom_paid {
-         &::before{
-            content: url("../../images/icons/paid.svg");
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            margin-right: 10px;
+      }         
+   }
+   &_gray {
+         color: $iconGray;
+         display: inline;
+         margin-right: 10px;
+   }
+   &_bottom {
+         display: inline-flex;
+         align-items: center;
+         margin-right: 20px;
+         font-size: 14px;
+         font-weight: 500;
+   }
+   &_bottom_paid {
+      &::before{
+         content: url("../../images/icons/paid.svg");
+         display: inline-block;
+         width: 20px;
+         height: 20px;
+         background-size: contain;
+         background-repeat: no-repeat;
+         margin-right: 10px;
 
-         }
       }
-      &_bottom_comments{
-         &::before{
-            display: inline-block;
-            content: url("../../images/icons/comment.svg");
-            width: 20px;
-            height: 20px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            margin-right: 10px;
-         }    
-      }
-
+   }
+   &_bottom_comments{
+      &::before{
+         display: inline-block;
+         content: url("../../images/icons/comment.svg");
+         width: 20px;
+         height: 20px;
+         background-size: contain;
+         background-repeat: no-repeat;
+         background-position: center;
+         margin-right: 10px;
+      }    
    }
    &__hr{
       width: 100%;

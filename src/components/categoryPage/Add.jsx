@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
-import addImage from '../../images/other/add.png'
+import addImage from '../../images/add/рекламыный баннер.png'
 export default function Add() {
   
   return (
@@ -23,7 +23,7 @@ export default function Add() {
       >
         <SwiperSlide
           className='add__slide'
-          style={{height: '100px', display: 'flex', width: "100%"}}
+          style={{height: 'auto', display: 'flex', width: "100%"}}
           >
           <img src={addImage} className='add__image' alt="" />
         </SwiperSlide>

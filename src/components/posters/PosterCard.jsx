@@ -12,12 +12,11 @@ export default function PosterCard({ data }) {
   const { handleNavigate } = useContext(NavigateContext);
   
   return (
-    <article className='posterCard'>
+    <article className='posterCard' onClick={() => handleNavigate(`${endpoint}/${data.idPoster}`, `${endpoint}/${data.idPoster}`)} >
         <img 
             src={endpoints.UPLOADS + data.preview.url} 
             alt="" 
             className="posterCard__img" 
-            onClick={() => handleNavigate(`${endpoint}/${data.idPoster}`, `${endpoint}/${data.idPoster}`)} 
         />
         <h3 className="posterCard__title">{data.posterName}</h3>
         <p className="posterCard__categories">

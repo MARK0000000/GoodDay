@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from 'react'
 import logoHeader from '../../images/other/logoHeader.svg'
-import { useLocation } from 'react-router-dom';
 import lupa from '../../images/icons/lupa.svg'
+import { useLocation } from 'react-router-dom';
 import { SearchContext } from '../../context/Search';
 import { NavigateContext } from '../../context/Navigate';
 import iconMenu from '../../images/icons/icon_menu.svg';
@@ -9,29 +9,31 @@ import closeIcon from '../../images/icons/close.svg';
 import { CityContext } from '../../context/City';
 import LoadingSpinner from '../UI/loaders/LoaderSpinner';
 import crossIcon from '../../images/icons/cross.svg'
-import { getEndpoint } from '../../utils/workWithUrl';
 import NavPages from './header/NavPages';
 import CityModal from './header/CityModal';
-import { TypeOfDataContext } from '../../context/TypeOfData';
+import { getEndpoint } from '../../utils/workWithUrl';
+import { usePagination } from '../../context/PaginationContext';
 export default function Header() {
+
   const location = useLocation();
   const endpoint = getEndpoint(location);
   const {setSearchValue, isSearchLoading, searchValue, getCategoryId} = useContext(SearchContext)
-  const {city, updateCity, cities, cityName} = useContext(CityContext)
-  const {handleNavigateOtherPages, activeButton} = useContext(NavigateContext)
-  const {type, changeType} = useContext(TypeOfDataContext)
+  const {resetAllPagination} = usePagination()
+  const {cityName} = useContext(CityContext)
+  const {handleNavigateOtherPages,typeButtonClick} = useContext(NavigateContext)
 
   const searchInput = useRef()
   const [cityModalActive, setCityModalActive] = useState(false)
   const closeCityModal = () => {
     setCityModalActive(false)
   }
+  useEffect(() => {
+    if (endpoint == 'promotion' || endpoint == 'discounts' || endpoint == 'services' || (endpoint in getCategoryId) || endpoint == 'posters') {
+      setSearchValue(searchInput.current.value)
+    }
+  }, [endpoint])
+
   const [burgerActive, setBurgerActive] = useState(false)
-  // useEffect(() => {
-  //   if (endpoint == 'promotion' || endpoint == 'discounts' || endpoint == 'services' || (endpoint in getCategoryId) || endpoint == 'posters') {
-  //     setSearchValue(searchInput.current.value)
-  //   }
-  // }, [endpoint])
   
 
   function handleSearch(event) {
@@ -47,15 +49,12 @@ export default function Header() {
       handleClearSearch()
     }
   }, [searchValue])
+
   const handleClearSearch = () => {
     searchInput.current.value = ''; 
     setSearchValue(''); 
+    resetAllPagination()
   };
-  const logoNavigate = (type, route) => {
-    changeType(type)
-    handleNavigateOtherPages(route, route)
-}
-
 
   return (
     <header className="header">
@@ -63,8 +62,8 @@ export default function Header() {
         <div className='header__firstLine'>
           <span className='header__location'
             onClick={(e) => {
-              e.stopPropagation(); // Предотвращаем всплытие события
-              setCityModalActive(prevState => !prevState); // Переключаем состояние модального окна
+              e.stopPropagation(); 
+              setCityModalActive(prevState => !prevState); 
             }}>                
               {cityName}
           </span>
@@ -81,7 +80,7 @@ export default function Header() {
         </div>
 
         <div className='header__secondLine'>
-          <a onClick={() => logoNavigate('posters', 'posters')}>
+          <a onClick={() => typeButtonClick('discounts', 'discounts')}>
             <img src={logoHeader} alt="#" className="header__logo" />
           </a>
           <form action="" className="header__search-box" onSubmit={handleSearch}>
@@ -90,14 +89,13 @@ export default function Header() {
               type="text" 
               className="header__search" 
               placeholder='Поиск услуг и компаний...'
-              // onBlur={handleSearchBlur}
             />
             <div className='header__search-iconBox'>
               <button>
-                {(isSearchLoading == true && searchValue != '') ?
+                {(isSearchLoading === true && searchValue !== '') ?
                   <LoadingSpinner/>
                   :
-                  (isSearchLoading == false && searchValue != '') ?
+                  (isSearchLoading === false && searchValue !== '') ?
                       <img className='header__search-icon_cross' src={crossIcon} alt="#" onClick={() => handleClearSearch()}/>
                       :
                       <img className='header__search-icon' src={lupa} alt="#" />
@@ -105,11 +103,6 @@ export default function Header() {
               </button>
             </div>
           </form>
-          {/* <span className="header__auth" onClick={() => logout()}>
-            <a >Вход</a>
-            <span className="header__auth-slash">/</span>
-            <a >Регистрация</a>
-          </span>  */}
         </div>
         <NavPages/>
       </div>

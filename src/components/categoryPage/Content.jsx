@@ -14,7 +14,6 @@ export default function Content({ businesses, itemsPerPage, currentPage, setCurr
   const [indexOfLastPage, setIndexOfLastPage] = useState(0);
 
   const [pageNumbers, setPageNumbers] = useState([]);
-  // const [currentPageNumbers, setCurrentPageNumbers] = useState(pageNumbers.slice(indexOfFirstPage, indexOfLastPage));
 
 
   useEffect(() => {
@@ -26,15 +25,8 @@ export default function Content({ businesses, itemsPerPage, currentPage, setCurr
       changePageNumbers(totalCount, itemsPerPage, setPageNumbers, businessCards);
     }
   }, [totalCount]);
-  // useEffect(() => {
-  //   const screenWidth = window.innerWidth - 90;
-  //   const maxButtonsOnScreen = Math.floor(screenWidth / 40);
-  //   const newIndexOfLastPage = Math.min(maxButtonsOnScreen, pageNumbers.length);
-  //   updateCurrentPageNumbers(pageNumbers.slice(0, newIndexOfLastPage));
-  // }, [searchValue])
 
   useEffect(() => {
-    console.log("reset")
     const updateIndexOfLastPage = () => {
       const screenWidth = window.innerWidth - 90;
       const maxButtonsOnScreen = Math.floor(screenWidth / 40);
@@ -70,7 +62,7 @@ export default function Content({ businesses, itemsPerPage, currentPage, setCurr
     updateCurrentPageNumbers,
     totalCount,
   };
-  console.log(pageNumbers)
+
   return (
     <>
       {businessCards.length == 0 ? (

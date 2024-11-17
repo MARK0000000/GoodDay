@@ -58,17 +58,10 @@ export const SkeletonPromotionPage = () => (
     <rect x="1.5%" y="40%" rx="6" ry='6' width='20%' height='2%' />
     <rect x="1.5%" y="43%" rx="6" ry='6' width='10%' height='1.5%' />
     <rect x="1.5%" y="45%" rx="6" ry='6' width='10%' height='1.5%' />
-    <rect x="16%" y="43%" rx="6" ry='6' width='10%' height='1.5%' />
-    <rect x="16%" y="45%" rx="6" ry='6' width='10%' height='1.5%' />
-    <rect x="31%" y="43%" rx="6" ry='6' width='10%' height='1.5%' />
-    <rect x="31%" y="45%" rx="6" ry='6' width='10%' height='1.5%' />
-    <rect x="1.5%" y="47%" rx="6" ry='6' width='30%' height='1.5%' />
+    <rect x="1.5%" y="48%" rx="6" ry='6' width='10%' height='1.5%' />
+    <rect x="1.5%" y="50%" rx="6" ry='6' width='10%' height='1.5%' />
+    <rect x="1.5%" y="54%" rx="6" ry='6' width='30%' height='1.5%' />
 
-    {/* widget-info */}
-    <rect x="0" y="52%" rx="6" ry='6' width='5%' height='2%' />
-    <rect x="8%" y="52%" rx="6" ry='6' width='5%' height='2%' />
-    <rect x="16%" y="52%" rx="6" ry='6' width='5%' height='2%' />
-    <rect x="0" y="55%" rx="6" ry='6' width='60%' height='1.5%' />
 
   </ContentLoader>
 );

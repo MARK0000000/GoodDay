@@ -73,8 +73,9 @@ export const SearchProvider = ({ children }) => {
              setIsSearchLoading(true);
            }
         } else {
-          setSearchValue('')
+          // setSearchValue('')
           console.log('Unknown endpoint');
+          setIsSearchLoading(false)
           return;
         }
 
@@ -94,7 +95,7 @@ export const SearchProvider = ({ children }) => {
 
     fetchSearchData();
   }, [searchValue, endpoint, city]);
-
+  
   return (
     <SearchContext.Provider value={{ searchValue, setSearchValue, data, setData, isSearchLoading, setIsSearchLoading, getCategoryId }}>
       {children}

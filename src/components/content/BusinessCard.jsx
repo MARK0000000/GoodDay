@@ -13,6 +13,10 @@ export default function BusinessCard({item}) {
     const location = useLocation();
     const endpoint = getEndpoint(location)
     const {type} = useContext(TypeOfDataContext)
+
+    const workTimeStatus = getWorkTimeStatus(item.workTimeDetailed);
+    const isWorkTimeDetailedEmpty = Array.isArray(item.workTimeDetailed) && item.workTimeDetailed.length === 0;
+    const isWorkTimeEmpty = !item.workTime || item.workTime.trim() === '';
   return (
     <article className="businessCard">
         <div className="businessCard__img-box">
@@ -44,21 +48,24 @@ export default function BusinessCard({item}) {
             <h3 className="businessCard__title">{getValueOrDefault(item.name, 'Название не указано')}</h3>
             {type != "discounts" &&
                 <div className="businessCard__text-box">
-                    <span className="businessCard__text businessCard__text_gray">Действует по:</span>
+                    <span className="businessCard__text businessCard__text_gray">Действует по: </span>
                     <span className="businessCard__text">{getValueOrDefault(formatDate(item.activeToDate), "Дата не указана")}</span>
                 </div>
             }
             <p className="businessCard__text  businessCard__text_p">{getValueOrDefault(item.shortDescription, 'Описание не указано')}</p>
             <div className="businessCard__text-box businessCard__text-box_vertical">
-                <span className={`businessCard__text ${
-                    getWorkTimeStatus(item.workTimeDetailed) === 'Открыто' 
-                        ? 'businessCard__text_open' 
-                        : getWorkTimeStatus(item.workTimeDetailed).includes('Откроется через') 
-                            ? 'businessCard__text_coming_soon' 
-                            : 'businessCard__text_closed'
-                }`}>
-                    {getValueOrDefault(getWorkTimeStatus(item.workTimeDetailed), 'Статус не указан')}
-                </span>
+                {isWorkTimeEmpty ? null : (
+                    <span className={`businessCard__text ${
+                        isWorkTimeDetailedEmpty ? '' : 
+                        workTimeStatus === 'Открыто' 
+                            ? 'businessCard__text_open' 
+                            : workTimeStatus.includes('Откроется через') 
+                                ? 'businessCard__text_coming_soon' 
+                                : 'businessCard__text_closed'
+                    }`}>
+                        {isWorkTimeDetailedEmpty ? item.workTime : getValueOrDefault(workTimeStatus, 'Статус не указан')}
+                    </span>
+                )}
             </div>
         </div>
         <hr className='businessCard__hr' />

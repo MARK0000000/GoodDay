@@ -12,8 +12,8 @@ const useEndpoints = () => {
   const cityid = city;
 
   const {type} = useContext(TypeOfDataContext)
-  const routeType = type == 'discounts' ? 'business' : 'promotion'
-  console.log(cityid)
+  const routeType = type === 'discounts' ? 'business' : 'promotion'
+
   return {
     UPLOADS: `https://api.good-day.by/uploads`,
     PDF: `${API_BASE_URL}/pdfs/`,

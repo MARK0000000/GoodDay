@@ -16,8 +16,8 @@ export const NavigateProvider = ({ children }) => {
     const [activeButton, setActiveButton] = useState(getInitialButton);
 
     const handleNavigate = (route, buttonId) => {
-        setSearchValue('')
-        setData([])
+        // setSearchValue('')
+        // setData([])
         navigate(route, { replace: false });
         setActiveButton(buttonId);
         localStorage.setItem('activeButton', buttonId);
@@ -25,8 +25,8 @@ export const NavigateProvider = ({ children }) => {
     };
 
     const handleNavigateOtherPages = (route, buttonId) => {
-        setSearchValue('')
-        setData([])
+        // setSearchValue('')
+        // setData([])
         navigate(route, { replace: false });
         setActiveButton(buttonId);
         localStorage.setItem('activeButton', buttonId);
@@ -37,8 +37,8 @@ export const NavigateProvider = ({ children }) => {
     const typeButtonClick = (type, route) => {
         changeType(type)
         handleNavigate(route, route)
-        setSearchValue('')
-        setData(null)
+        // setSearchValue('')
+        // setData(null)
     }
 
     useEffect(() => {

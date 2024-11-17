@@ -6,7 +6,7 @@ import useEndpoints from '../api/apiConfig';
 import { SkeletonContentServices } from '../components/UI/loaders/SkeletonContetServices';
 import { SearchContext } from '../context/Search';
 import { CityContext } from '../context/City';
-
+import Add from '../components/categoryPage/Add';
 export default function Services() {
     const endpoints = useEndpoints();
     const { data } = useContext(SearchContext); 
@@ -27,7 +27,6 @@ export default function Services() {
     }, [city]);
 
     useEffect(() => {
-        console.log("fhdsjfhsdjf", data)
         const fetchData = async () => {
             if (data && data.data) {
                 if (previousData !== data.data) {
@@ -76,6 +75,7 @@ export default function Services() {
 
     return (
         <>
+            <Add/>
             <section className='catalog'>
                 <h2 className="catalog__title">Каталог</h2>
                 {isLoading ?

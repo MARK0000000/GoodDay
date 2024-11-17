@@ -1,3 +1,8 @@
+@media (max-width: 1024px) {
+    .posterPage {
+        padding: 0px 10px;
+    }
+}
 @media (max-width: 768px) {
     .timetable {
         &__webLinkBtn{
@@ -43,5 +48,57 @@
             font-weight: 400;
         }
     }
+    .posterPage {
+        &__firstLine {
+           margin-bottom: 10px;
+        }
+        &__title {
+           font-size: 16px;
+        }
+        &__text {
+           font-size: 12px;
+        }
+        &__img-box {
+            max-width: none;
+            max-height: none;
+            aspect-ratio: 16 / 9;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+        &__button {
+           height: 40px;
+           width: 40px;
+           margin-right: 5px;
+           &_big {
+              a{
+                 padding: 16px 25px;
+                 color: black;
+              }
+           }
+        }
+
+        &__secondLine {
+           margin-bottom: 10px;
+        }
+        &__widgets {
+           width: 100%;
+           display: grid;
+           grid-template-columns: 100%;
+           grid-template-rows: repeat(3, auto);
+           padding-right: 0px;
+           gap: 10px;
+           position: relative;
+           margin-bottom: 20px;
+           &:first-child{
+              max-height: 150px;
+           }
+     
+        }
+        &__widgetsRight {
+           grid-row: 3/4;
+           grid-column: 1/2;     
+        }
+    }
+
     
 }

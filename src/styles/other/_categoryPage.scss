@@ -3,12 +3,13 @@
       width: 100% !important;
    }
    &__slide{
-      background-color: rgb(150, 150, 150);
       border-radius: 10px;
       @include f(center, center);
    }
    &__image{
-      height: 100%;
+      width: 100%;
+      border-radius: 10px;
+      object-fit: contain;
    }
 }
 .infoMobileApp {
