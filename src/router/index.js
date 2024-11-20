@@ -27,9 +27,8 @@ const generateBusinessRoutes = (basePath) => {
    );
 };
 
-// Компонент для выбора страницы в зависимости от типа
 const DynamicBusinessPage = () => {
-    const { type } = useContext(TypeOfDataContext); // Получаем тип из контекста
+    const { type } = useContext(TypeOfDataContext); 
 
     if (type === 'promotion') {
         return <PromotionPage />;
@@ -37,7 +36,7 @@ const DynamicBusinessPage = () => {
         return <DiscountPage />;
     }
 
-    return null; // Возвращаем null, если тип не соответствует
+    return null; 
 };
 
 export const privateRoute = [
@@ -55,8 +54,6 @@ export const privateRoute = [
 
     { path: 'partnership', element: <OtherPages.Partnership /> },
     { path: 'aboutapp', element: <OtherPages.AboutApp /> },
-    { path: 'cooperation', element: <OtherPages.Cooperation /> },
-    { path: 'invite', element: <OtherPages.Invite /> },
     { path: 'questions', element: <OtherPages.Questions /> },
     { path: 'contacts', element: <OtherPages.Contacts /> },
 ];

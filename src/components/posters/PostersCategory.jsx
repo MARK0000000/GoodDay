@@ -2,8 +2,8 @@ import React, {useContext} from 'react';
 import PosterCard from './PosterCard';
 import { NavigateContext } from '../../context/Navigate';
 import { SkeletonPosterCard } from '../../components/UI/loaders/SkeletopPosterCard'; 
-import NothingFound from '../UI/loaders/NothingFound';
 import { PosterCategoriesContext } from '../../context/PosterCategories';
+
 export default function PostersCategory({ data, title, link, id, isLoading }) {
     const { handleNavigate } = useContext(NavigateContext);
     const { selectCategory  } = useContext(PosterCategoriesContext);

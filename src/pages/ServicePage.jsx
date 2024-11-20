@@ -6,9 +6,7 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import sendMassageIcon from '../images/icons/sendMassageIcon.svg'
 import instaSmall from '../images/icons/instagramSmall.svg'
 import vkSmall from '../images/icons/vkSmall.svg'
-import MyMapSmall from '../components/servicePage/MyMapSmall';
 import ServiceList from '../components/servicePage/ServiceList';
-import ServiceDescription from '../components/servicePage/ServiceDescription';
 import useEndpoints from '../api/apiConfig';
 import { fetchGet } from '../api/fetch';
 import { getValueOrDefault } from '../utils/getValueOrDefault';
@@ -23,10 +21,10 @@ export default function ServicePage() {
     const [service, setService] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [workTimeModalActive, setWorkTimeModalActive] = useState(false)
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile] = useState(window.innerWidth < 768);
 
     const changeWorkTimeModalActive = () => {
-        if (workTimeModalActive == true) {
+        if (workTimeModalActive === true) {
             setWorkTimeModalActive(false)
         } else {
             setWorkTimeModalActive(true)
@@ -42,7 +40,7 @@ export default function ServicePage() {
         }
         getData()
     }, [id])
-    console.log(service)
+
   return (
     <>
     <BreadCrumbs mainRoute={"services"} main={"Услуги"} current={getValueOrDefault(service.name, "Название не указанно")}/>
@@ -135,25 +133,9 @@ export default function ServicePage() {
                 </div>
             </article>
         </div>
-        {/* <div className='serviceContent__info'> 
-            <ServiceDescription service={service}/>
-            <MyMapSmall data={service}/>
-        </div> */}
         <ServiceList data={service.services} link={service.instagramLink}/>
-        {/* <ServiceExamples/> */}
     </>
     }
     </>
   )
 }
-
-                        {/* rating */}
-                        {/* <span className="serviceContent__ratingCount"></span>
-                        <div>
-                            <div className="serviceContent__stars">
-
-                            </div>
-                            <span className="serviceContent__countOfRatings">
-
-                            </span>
-                        </div> */}

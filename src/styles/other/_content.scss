@@ -1,7 +1,7 @@
 .businessCard {
-   @include f(start, start);
+   @include f(flex-start, flex-start);
    flex-direction: column;
-   border-radius: 20px 20px 0px 0px;
+   border-radius: 20px 20px 20px 20px;
    box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
    min-width: 0; 
    width: 100%;
@@ -51,6 +51,7 @@
       display: -webkit-box; 
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 1; 
+      line-clamp: 1;
       overflow: hidden;
       text-overflow: ellipsis; 
       line-height: 1.5;
@@ -68,6 +69,7 @@
       display: -webkit-box; 
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 1; 
+      line-clamp: 1;
       overflow: hidden;
       text-overflow: ellipsis; 
       line-height: 1.5;
@@ -112,6 +114,7 @@
          display: -webkit-box; 
          -webkit-box-orient: vertical;
          -webkit-line-clamp: 2; 
+         line-clamp: 2;
          overflow: hidden;
          text-overflow: ellipsis; 
          line-height: 1.5;

@@ -34,7 +34,7 @@ const PostersDate = ({setStartDate, startDate, setSelectedDate, selectedDate, re
   const [itemsPerPage, setItemsPerPage] = useState(14)
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false); 
 
-  const [widthOfDevice, setWidthOfDevice] = useState(window.innerWidth);
+  const [widthOfDevice] = useState(window.innerWidth);
 
   useEffect(() => {
     if (widthOfDevice <= 1024) {

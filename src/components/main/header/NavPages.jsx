@@ -1,17 +1,17 @@
 import React, {useState, useContext} from 'react'
 import { NavigateContext } from '../../../context/Navigate';
 import { TypeOfDataContext } from '../../../context/TypeOfData';
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link } from 'react-scroll';
 import { PosterCategoriesContext } from '../../../context/PosterCategories';
 import { SearchContext } from '../../../context/Search';
 export default function NavPages() {
     const {handleNavigate, activeButton, typeButtonClick} = useContext(NavigateContext)
-    const {type, changeType} = useContext(TypeOfDataContext)
+    const {type} = useContext(TypeOfDataContext)
     const [moreButtonsActive, setMoreButtonsActive] = useState(false)
     const { categories } = useContext(PosterCategoriesContext);
-    const {setSearchValue, setData} = useContext(SearchContext)
+    useContext(SearchContext)
     const changeMoreButtonsActive = () => {
-        if (moreButtonsActive == true) {
+        if (moreButtonsActive === true) {
           setMoreButtonsActive(false)
         } else {
           setMoreButtonsActive(true)
@@ -46,7 +46,7 @@ export default function NavPages() {
             Услуги
         </button>
     </div>
-    {(type == "discounts" || type == "promotion") ?
+    {(type === "discounts" || type === "promotion") ?
         <div className="header__navMore">
             <button 
             className={`header__nav-button header__nav-button_gray ${activeButton === 'entertainment' ? 'header__nav-button_gray_active' : ''} ${type === '' ? 'header__nav-button_gray_disabled' : ''}`}
@@ -164,7 +164,7 @@ export default function NavPages() {
             </button>
         </div>
         :
-        type == "posters" &&
+        type === "posters" &&
         <div className="header__navMore">
             {categories.map(category => (
                 <Link key={category.idCategory} to={`category-${category.idCategory}`} smooth={true}>

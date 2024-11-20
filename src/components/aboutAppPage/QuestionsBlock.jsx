@@ -41,7 +41,7 @@ export default function QuestionsBlock() {
         <details>
             <summary>У меня остались вопросы, куда сообщить?</summary>
             <p>
-                Если у вас есть вопросы, предложения или жалобы — напишите в нашу службу поддержки на почту <a href="mailto::support@good-day.by" target='_blank'>support@good-day.by</a> . Мы всегда рады помочь и принять во внимание вашу обратную связь.
+                Если у вас есть вопросы, предложения или жалобы — напишите в нашу службу поддержки на почту <a href="mailto::support@good-day.by" target='_blank' rel='noreferrer'>support@good-day.by</a> . Мы всегда рады помочь и принять во внимание вашу обратную связь.
             </p>
         </details>
         <hr className="question__hr" />

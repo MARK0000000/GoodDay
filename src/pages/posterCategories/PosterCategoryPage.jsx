@@ -15,7 +15,7 @@ export default function PosterCategoryPage() {
     const endpoints = useEndpoints();
     const {setIsSearchLoading, searchValue} = useContext(SearchContext)
     const { categories, selectedCategory } = useContext(PosterCategoriesContext);
-    const {city, updateCity, cities, cityName} = useContext(CityContext)
+    const {city, cityName} = useContext(CityContext)
   
     const [startDate, setStartDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(null);
@@ -53,9 +53,6 @@ export default function PosterCategoryPage() {
         setCards([]); 
         setCurrentPage(1); 
         setIsLoading(true); 
-        // setCardsSoon([])
-        // setCurrentPageSoon(1)
-        // setIsSoonLoading(true)
     }, [city, selectedDate, allDates, searchValue]);
 
 
@@ -65,7 +62,7 @@ export default function PosterCategoryPage() {
                 setIsSoonLoading(true);
             } 
 
-            if (searchValue != '') {
+            if (searchValue !== '') {
                 try {
                     const result = await fetchGet(`${endpoints.SEARCH_POSTER_SOON}&pageNumber=${currentPageSoon}&pageSize=${itemsPerPageSoon}&keyword=${searchValue}`);
                     if (result) {
@@ -102,7 +99,7 @@ export default function PosterCategoryPage() {
             }
         };
         fetchSoonData(); 
-    }, [currentPageSoon, city, searchValue]);
+    }, [currentPageSoon, city, searchValue, endpoints.SEARCH_POSTER_SOON, endpoints.POSTER_CATEGORY_SOON, itemsPerPageSoon]);
 
     const foundCategory = categories.find(category => category.categoryRoute === selectedCategory);
 
@@ -116,7 +113,7 @@ export default function PosterCategoryPage() {
             if (currentPage === 1) {
                 setIsLoading(true); 
             } 
-            if(searchValue != '') {
+            if(searchValue !== '') {
                 if (allDates) {
                     try {
                         const result = await fetchGet(`${endpoints.SEARCH_POSTER_CATEGORIES_WITHOUT_DATE}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}&keyword=${searchValue}`);
@@ -189,7 +186,7 @@ export default function PosterCategoryPage() {
 
         fetchData();
 
-    }, [currentPage, city, selectedCategory, selectedDate, searchValue, allDates]); 
+    }, [currentPage, city, selectedCategory, selectedDate, searchValue, allDates, foundCategory, endpoints.SEARCH_POSTER_CATEGORIES_WITHOUT_DATE, endpoints.SEARCH_POSTER_CATEGORIES, endpoints.POSTERS_CATEGORY_WITHOUT_DATE, endpoints.POSTER_CATEGORY, itemsPerPage, setIsSearchLoading]); 
 
     return (
         <section className='postersCategoryPage'>

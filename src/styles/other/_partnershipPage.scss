@@ -28,7 +28,7 @@
         margin: 0 auto;
         max-width: 1024px;
         padding: 0px 15px 0px 15px;
-        @include f(center, start);
+        @include f(center, flex-start);
         gap: 90px
     }
     &__form {
@@ -60,7 +60,7 @@
         @include f(center, center);
     }
     &__contacts {
-        @include f(start, start);
+        @include f(flex-start, flex-start);
         flex-direction: column;
         span:nth-child(even) {
             font-weight: bold;
@@ -206,7 +206,7 @@
         object-fit: contain;
     }
     &__content {
-        @include f(start, start);
+        @include f(flex-start, flex-start);
         flex-direction: column;
     }
     &__text {

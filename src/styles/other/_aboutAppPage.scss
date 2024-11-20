@@ -20,7 +20,7 @@
         }
         &_blue {
             background-color: $blue;
-            @include f(center, start);
+            @include f(center, flex-start);
             grid-row: span 2;
             padding: 0px;
         }
@@ -119,12 +119,12 @@
         color: white;
         &_blue {
             background-color: rgb(152, 175, 223);
-            @include f(space-between, start);
+            @include f(space-between, flex-start);
             flex-direction: column;
             padding: 30px 5px 0px 5px;
         }
         &_white {
-            @include f(space-between, start);
+            @include f(space-between, flex-start);
             background-color: rgb(235, 235, 235);
             color: black;
             flex-direction: column;
@@ -145,7 +145,7 @@
 
         }
         &_orange {
-            @include f(space-between, start);
+            @include f(space-between, flex-start);
             background-color: rgb(255, 138, 98);
             flex-direction: column;
             padding-top: 30px;
@@ -348,7 +348,7 @@
     }
     &__block {
         @extend %blockAboutApp;
-        @include f(start, center);
+        @include f(flex-start, center);
         flex-direction: column;
         &_white {
             padding: 30px 10px 10px 10px;
@@ -362,9 +362,6 @@
             background-color: transparent;
             border: 2px solid white;
         }
-        // &_second{
-        //     position: relative;
-        // }
     }
     &__count {
         font-family: "Raleway", sans-serif;

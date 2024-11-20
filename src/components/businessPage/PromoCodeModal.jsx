@@ -8,7 +8,6 @@ import { Fancybox } from '@fancyapps/ui';
 
 export default function PromoCodeModal({ promoCodeRules }) {
   const handleClose = () => {
-    // Закрываем модальное окно
     Fancybox.close();
   };
 

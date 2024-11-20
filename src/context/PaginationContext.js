@@ -79,7 +79,6 @@ export const PaginationProvider = ({ children }) => {
     }));
   };
 
-  // Функция для сброса всех значений, кроме первых двух
   const resetPagination = () => {
     setPaginationState((prev) => ({
       promotionPage: prev.promotionPage, // Сохраняем значение promotion

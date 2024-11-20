@@ -1,12 +1,8 @@
 import React, {useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
 import { NavigateContext } from '../../context/Navigate';
-import { TypeOfDataContext } from '../../context/TypeOfData';
 
 export default function Breadcrambs({main, mainRoute, elements, current }) {
-    const navigate = useNavigate();
     const {handleNavigate} = useContext(NavigateContext)
-    const {changeType} = useContext(TypeOfDataContext)
 
     const handleNavigatePosters = (route, buttonId) => {
         handleNavigate(route, buttonId)

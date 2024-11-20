@@ -18,12 +18,11 @@ import { handleNavigateSocial } from '../utils/navigateSocial';
 import MyMap from '../components/businessPage/MyMap';
 import ShareWidget from '../components/businessPage/ShareWidget';
 import ContactsWidget from '../components/businessPage/ContactsWidget';
-import InfoWidget from '../components/businessPage/InfoWidget';
 import AboutStock from '../components/businessPage/AboutStock';
 
 export default function PromotionPage() {
     const endpoints = useEndpoints();
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile] = useState(window.innerWidth < 768);
     const {id} = useParams();
     const [business, setBusiness] = useState({});
     const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +33,7 @@ export default function PromotionPage() {
     useEffect(() => {
       async function getData() {
         const data = await fetchGet(`${endpoints.PROMOTION_BY_ID + id}`);
-        if (data && data != Promise) {
+        if (data && data !== Promise) {
             setBusiness(data);
             setStatus(getWorkTimeStatus(data.workTimeDetailed));
             setIsLoading(false);            

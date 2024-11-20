@@ -12,7 +12,7 @@ import { usePagination } from '../context/PaginationContext';
 
 export default function Promotion() {
   const endpoints = useEndpoints();
-  const { data, searchValue } = useContext(SearchContext);
+  const { data } = useContext(SearchContext);
   const [businesses, setBusinesses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage] = useState(9);

@@ -27,13 +27,13 @@ export default function InfoAboutCompany() {
         <div className="infoAboutCompany__block infoAboutCompany__block_orange">
             <div className="infoAboutCompany__icons">
             <span className="infoAboutCompany__text_white">Доступно в</span>
-            <a href="https://play.google.com/store/apps/details?id=by.goodday" target="_blank" >
+            <a href="https://play.google.com/store/apps/details?id=by.goodday" target="_blank" rel="noreferrer" >
                 <img src={googlePlay} alt="" className="infoAboutCompany__icon" />
             </a>
-            <a href="https://apps.apple.com/us/app/good-day-экономь-всегда/id1668241700" target="_blank" >
+            <a href="https://apps.apple.com/us/app/good-day-экономь-всегда/id1668241700" target="_blank" rel="noreferrer" >
                 <img src={appstore} alt="" className="infoAboutCompany__icon" />
             </a>
-            <a href="https://appgallery.huawei.com/app/C107641983" target="_blank" >
+            <a href="https://appgallery.huawei.com/app/C107641983" target="_blank" rel="noreferrer" >
                 <img src={appgalery} alt="" className="infoAboutCompany__icon" />
             </a>
         </div>

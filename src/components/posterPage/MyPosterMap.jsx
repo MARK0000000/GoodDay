@@ -5,7 +5,7 @@ import mapMark from '../../images/icons/mapMark.svg';
 
 export default function MyPosterMap({ data }) {
     
-    const [coordinates, setCoordinates] = useState([(data.address && data.address.latitude) || false, (data.address && data.address.longitude) || false]);
+    const [coordinates] = useState([(data.address && data.address.latitude) || false, (data.address && data.address.longitude) || false]);
 
     const handleRouteClick = () => {
         const [latitude, longitude] = coordinates;

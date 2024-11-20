@@ -108,7 +108,7 @@ export default function ContactsWidget({ business, status }) {
                     </button>
                     <div className="widget__item-text_big">
                         <p className="widget__item-text widget__item-text_green">
-                            <a onClick={() => handleNavigateSocial('telegram', removeAtSymbol(business.telegramLink))}>
+                            <a href={handleNavigateSocial('telegram', removeAtSymbol(business.telegramLink))} target='_blank' rel='noreferrer'>
                                 {removeAtSymbol(business.telegramLink)}
                             </a>
                         </p>
@@ -123,7 +123,7 @@ export default function ContactsWidget({ business, status }) {
                     </button>
                     <div className="widget__item-text_big">
                         <p className="widget__item-text widget__item-text_green">
-                            <a onClick={() => handleNavigateSocial('instagram', removeAtSymbol(business.instagramLink))}>
+                            <a href={handleNavigateSocial('instagram', removeAtSymbol(business.instagramLink))} target='_blank' rel='noreferrer'>
                                 {removeAtSymbol(business.instagramLink)}
                             </a>
                         </p>
@@ -138,7 +138,7 @@ export default function ContactsWidget({ business, status }) {
                     </button>
                     <div className="widget__item-text_big">
                         <p className="widget__item-text widget__item-text_green">
-                            <a onClick={() => handleNavigateSocial('vk', removeAtSymbol(business.vkLink))}>
+                            <a href={handleNavigateSocial('vk', removeAtSymbol(business.vkLink))} target='_blank' rel='noreferrer'>
                                 {removeAtSymbol(business.vkLink)}
                             </a>
                         </p>
@@ -165,7 +165,7 @@ export default function ContactsWidget({ business, status }) {
                     </button>
                     <div className="widget__item-text_big">
                         <p className="widget__item-text">
-                            <a onClick={() => handleNavigateSocial('web', `${firstWebLink}`)}>{firstWebLink}</a>
+                            <a href={handleNavigateSocial('web', removeAtSymbol(firstWebLink))} target='_blank' rel='noreferrer'>{firstWebLink}</a>
                         </p>
                     </div> 
                 </div>
@@ -178,7 +178,7 @@ export default function ContactsWidget({ business, status }) {
                         </button>
                         <div className="widget__item-text_big">
                             <p className="widget__item-text">
-                                <a onClick={() => handleNavigateSocial('web', `${business.webLink}`)}>{business.webLink}</a>
+                                <a href={handleNavigateSocial('web', removeAtSymbol(business.webLink))} target='_blank' rel='noreferrer'>{business.webLink}</a>
                             </p>
                         </div> 
                     </div>

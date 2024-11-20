@@ -49,7 +49,7 @@ export default function PostersInfo({ data }) {
                   <img src={`${endpoints.UPLOADS + item.image.url}`}  className='postersInfo__image' alt="" />
                   <div className='postersInfo__descriptionBlock'>
                       <p className="postersInfo__description">{item.description}</p>
-                      <a href={item.link} target='_blank' className="postersInfo__link">{item.linkName}</a>
+                      <a href={item.link} target='_blank' className="postersInfo__link" rel="noreferrer">{item.linkName}</a>
                   </div>
               </div>
             </SwiperSlide>

@@ -4,44 +4,48 @@ export const handleNavigateSocial = (typeOfLink, link) => {
         case 'vk':
             if (link.startsWith('https://') || link.startsWith('http://')) {
                 url = link; 
+                return url;
             } else {
                 url = `https://vk.com/${link}`; 
+                return url;
             }
-            break;
         case 'web':
             if (link.startsWith('https://')) {
                 url = link; 
+                return url;
             } else {
                 url = `https://${link}`; 
+                return url;
             }
-            break; 
         case 'instagram':
             if (link.startsWith('https://') || link.startsWith('http://')) {
                 url = link; 
+                return url;
             } else {
                 url = `https://instagram.com/${link}`; 
+                return url;
             }
-            break;
         case 'telegram':
             if (link.startsWith('https://') || link.startsWith('http://')) {
                 url = link; 
+                return url;
             } else {
                 url = `https://t.me/${link}`; 
+                return url;
             }
-            break;
         case 'serviceLink':
             if (link.startsWith('https://') || link.startsWith('http://')) {
-            url = link; 
+                url = link; 
+                return url;
             } else if (link.startsWith('bumpix.net') || link.startsWith('dikidi.net') || link.startsWith('n')) {
                 url = "https://" + link
+                return url;
             }
             else  {
                 url = link
+                return url;
             }
-            break;
         default:
             return;
     }
-
-    window.open(url, '_blank'); 
 }

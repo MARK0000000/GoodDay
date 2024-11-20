@@ -44,7 +44,8 @@
         font-family: "Segoe UI";
         display: -webkit-box;        
         -webkit-box-orient: vertical; 
-        -webkit-line-clamp: 3;       
+        -webkit-line-clamp: 3; 
+        line-clamp: 3;      
         overflow: hidden;             
         text-overflow: ellipsis;      
     }
@@ -64,15 +65,11 @@
         left: 0px;
         transform: translate(-50%, -50%);
     }
-    &_img {
-    }
     &_next {
         position: absolute;
         top: 50%;
         right: 0px;
         transform: translate(50%, -50%);
-    }
-    &_img {
     }
 }
 .postersDate {
@@ -104,7 +101,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         padding: 15px 0px;
         &_selected{
             border: 1px solid #F1F1F1;
@@ -177,7 +174,8 @@
         margin-bottom: 10px;
         display: -webkit-box;        
         -webkit-box-orient: vertical; 
-        -webkit-line-clamp: 2;       
+        -webkit-line-clamp: 2;  
+        line-clamp: 2;     
         overflow: hidden;             
         text-overflow: ellipsis;      
     }

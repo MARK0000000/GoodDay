@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import ContentServices from '../components/services/ContentServices';
 import PlaceServices from '../components/services/PlaceServices';
-import { fetchGet, fetchGetCategory } from '../api/fetch';
+import { fetchGetCategory } from '../api/fetch';
 import useEndpoints from '../api/apiConfig';
 import { SkeletonContentServices } from '../components/UI/loaders/SkeletonContetServices';
 import { SearchContext } from '../context/Search';

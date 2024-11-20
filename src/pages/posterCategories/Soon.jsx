@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PosterCard from '../../components/posters/PosterCard';
-import PostersDate from '../../components/posters/PostersDate';
 import Breadcrambs from '../../components/main/Breadcrambs';
 import { CityContext } from '../../context/City';
 import { SearchContext } from '../../context/Search';
@@ -13,8 +12,8 @@ import NothingFound from '../../components/UI/loaders/NothingFound';
 export default function Soon() {
     const endpoints = useEndpoints();
     const { setIsSearchLoading, searchValue } = useContext(SearchContext);
-    const { categories, selectedCategory } = useContext(PosterCategoriesContext);
-    const {city, updateCity, cities, cityName} = useContext(CityContext)
+    const {  selectedCategory } = useContext(PosterCategoriesContext);
+    const {city, cityName} = useContext(CityContext)
   
     const [cards, setCards] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +37,7 @@ export default function Soon() {
             if (currentPage === 1) {
                 setIsLoading(true); 
             } 
-            if (searchValue != '') {
+            if (searchValue !== '') {
                 try {
                     const result = await fetchGet(`${endpoints.SEARCH_POSTER_SOON}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&keyword=${searchValue}`);
                     if (result) {
@@ -71,7 +70,7 @@ export default function Soon() {
 
         fetchData();
 
-    }, [currentPage, city, selectedCategory, searchValue]); 
+    }, [currentPage, city, selectedCategory, searchValue, endpoints.SEARCH_POSTER_SOON, endpoints.POSTER_CATEGORY_SOON, itemsPerPage, setIsSearchLoading]); 
 
     return (
         <section className='postersCategoryPage'>

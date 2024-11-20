@@ -6,10 +6,9 @@ import googlePlay from '../../images/icons/googleplay.svg'
 import appstore from '../../images/icons/appstore.svg'
 import qrCode from '../../images/icons/qr.svg'
 import { NavigateContext } from '../../context/Navigate';
-import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
-  const {handleNavigateOtherPages, activeButton, typeButtonClick} = useContext(NavigateContext)
+  const {handleNavigateOtherPages, typeButtonClick} = useContext(NavigateContext)
 
   
   return (
@@ -28,12 +27,12 @@ export default function Footer() {
           <hr/>
           <div className='footer__buttons-box'>
             <button className="footer__button ">
-              <a href=" https://play.google.com/store/apps/details?id=by.goodday" target="_blank">
+              <a href=" https://play.google.com/store/apps/details?id=by.goodday" target="_blank" rel="noreferrer">
                 <img src={googlePlay} alt="" className="footer__button-img" />
               </a>
             </button>
             <button className="footer__button ">
-              <a href="https://apps.apple.com/us/app/good-day-экономь-всегда/id1668241700" target="_blank">
+              <a href="https://apps.apple.com/us/app/good-day-экономь-всегда/id1668241700" target="_blank" rel="noreferrer">
                 <img src={appstore} alt="" className="footer__button-img" />
               </a>
             </button>
@@ -59,7 +58,7 @@ export default function Footer() {
             <span>ПАРТНЕРАМ</span>
             <hr />
             <a onClick={() => handleNavigateOtherPages('partnership', 'partnership')}>Для вашего бизнеса</a>
-            <a href='http://partners.good-day.by/franshizabel' target='_blank'>Франчайзинг</a>
+            <a href='http://partners.good-day.by/franshizabel' target='_blank' rel="noreferrer">Франчайзинг</a>
           </div>
         </div>
       </div>
@@ -67,25 +66,25 @@ export default function Footer() {
       <div className='footer__underLine container'>
         <div className="footer__item footer__item_underLine">
           <span>&copy; 202<span className='footer__bigLetter'>4</span> Good Day</span>
-          <a href="https://docs.google.com/document/d/1wyhH682ZA0xYQrs4vX89_EaHKBMZLQ_QMnY7ppavQUs/edit?usp=sharing" target='_blank'>Обработка персональных данных</a>
-          <a href="https://docs.google.com/document/d/1CGd0r9m1pvsAJqrkru2kZ2NvB5fPO9XXILUI4okUP6Q/edit?usp=sharing" target='_blank'>Публичная оферта</a>
+          <a href="https://docs.google.com/document/d/1wyhH682ZA0xYQrs4vX89_EaHKBMZLQ_QMnY7ppavQUs/edit?usp=sharing" target='_blank' rel="noreferrer">Обработка персональных данных</a>
+          <a href="https://docs.google.com/document/d/1CGd0r9m1pvsAJqrkru2kZ2NvB5fPO9XXILUI4okUP6Q/edit?usp=sharing" target='_blank' rel="noreferrer">Публичная оферта</a>
         </div>
         <div className="footer__item footer__item_underLine">
           <span>Гарантия, поддержка <br /> 2<span className='footer__bigLetter'>4</span> часа возврата средств</span>
         </div>
         <div className="footer__social">
           <button className="footer__social-btn">
-            <a href="https://instagram.com/good_day_info/" target='_blank'>
+            <a href="https://instagram.com/good_day_info/" target='_blank' rel="noreferrer">
               <img src={instagram} alt="" className="footer__social-img" />
             </a>
           </button>
           <button className="footer__social-btn">
-            <a href="https://www.youtube.com/@good_day_news" target="_blank">
+            <a href="https://www.youtube.com/@good_day_news" target="_blank" rel="noreferrer">
               <img src={youtube} alt="" className="footer__social-img" />
             </a>
           </button>
           <button className="footer__social-btn">
-            <a href="https://www.tiktok.com/@good_day_news_" target="_blank">
+            <a href="https://www.tiktok.com/@good_day_news_" target="_blank" rel="noreferrer">
               <img src={tiktok} alt="" className="footer__social-img" />
             </a>
           </button>

@@ -14,7 +14,7 @@
             margin-bottom: 10px
         }
         &__content {
-            @include f(space-between, start);
+            @include f(space-between, flex-start);
             margin: 20px 0px 25px 0px;
         }
         &__link {

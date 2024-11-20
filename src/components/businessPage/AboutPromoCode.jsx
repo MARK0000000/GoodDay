@@ -2,30 +2,28 @@
 import React from 'react';
 import { formatDate } from '../../utils/formatDate';
 import { getValueOrDefault } from '../../utils/getValueOrDefault';
-import PromoCodeModal from './PromoCodeModal'; // Импортируйте ваш модальный компонент
+import PromoCodeModal from './PromoCodeModal'; 
 import { Fancybox } from '@fancyapps/ui';
 import ReactDOM from 'react-dom';
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 export default function AboutPromoCode({ business }) {
   const handleGetPromoCode = () => {
-    // Создаем элемент для рендеринга
+
     const modalContainer = document.createElement('div');
 
-    // Открытие модального окна с помощью Fancybox
     Fancybox.show([
       {
         src: modalContainer,
-        type: 'html', // Указываем тип как html
+        type: 'html', 
         opts: {
-            hideClass: false, // Отключаем класс скрытия
-            hideScrollbar: false, // Отключаем скрытие скроллбара
-            animationEffect: 'none', // Отключаем анимацию
-            transitionEffect: 'none', // Отключаем переходы
+            hideClass: false, 
+            hideScrollbar: false, 
+            animationEffect: 'none', 
+            transitionEffect: 'none', 
           },
       },
     ]);
 
-    // Рендерим компонент PromoCodeModal в созданный контейнер
     ReactDOM.render(<PromoCodeModal promoCodeRules={business.promoCodeRules} />, modalContainer);
   };
 

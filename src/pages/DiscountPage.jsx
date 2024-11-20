@@ -1,13 +1,12 @@
-import React, {useEffect, useState, useContext} from 'react'
-import { useLocation, useParams } from 'react-router-dom';
+import React, {useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 import addressIcon from '../images/icons/share-map.svg.svg'
 import telIcon from '../images/icons/quick-call.svg.svg'
 import internetIcon from '../images/icons/quick-globe.svg.svg'
 import { fetchGet } from '../api/fetch';
 import useEndpoints from '../api/apiConfig';
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link } from 'react-scroll';
 import { getWorkTimeStatus } from '../utils/workTimeDetailed';
-import { formatDate } from '../utils/formatDate';
 import { getValueOrDefault } from '../utils/getValueOrDefault';
 import Breadcrambs from '../components/main/Breadcrambs';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -18,14 +17,12 @@ import { handleNavigateSocial } from '../utils/navigateSocial';
 import MyMap from '../components/businessPage/MyMap';
 import ShareWidget from '../components/businessPage/ShareWidget';
 import ContactsWidget from '../components/businessPage/ContactsWidget';
-import InfoWidget from '../components/businessPage/InfoWidget';
-import AboutStock from '../components/businessPage/AboutStock';
 import AboutDiscount from '../components/businessPage/AboutDiscount';
 import AboutPromoCode from '../components/businessPage/AboutPromoCode';
 
 export default function DiscountPage() {
     const endpoints = useEndpoints();
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile] = useState(window.innerWidth < 768);
     const {id} = useParams();
     const [business, setBusiness] = useState({});
     const [isLoading, setIsLoading] = useState(true);
@@ -36,14 +33,15 @@ export default function DiscountPage() {
     useEffect(() => {
       async function getData() {
         const data = await fetchGet(`${endpoints.DISCOUNT_BY_ID + id} `);
-        if (data && data != Promise) {
+        if (data && data !== Promise) {
             setBusiness(data);
             setStatus(getWorkTimeStatus(data.workTimeDetailed));
             setIsLoading(false);            
         }
     }
     getData();
-    }, [id]);
+    }, [endpoints.DISCOUNT_BY_ID, id]);
+    
     const extractFirstWebLink = (webLinks) => {
         if (!webLinks || webLinks.length === 0) return null; 
 

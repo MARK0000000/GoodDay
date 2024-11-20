@@ -88,18 +88,18 @@
    }        
    .footer {
       &__pagesLinks{
-         @include f(center, start);
+         @include f(center, flex-start);
          gap: 20px;
          width: auto;
       }
       &__content {
-         @include f(center, start);
+         @include f(center, flex-start);
          gap: 20px;
          margin-bottom: 50px;
          padding: 0px 10px;
       }
       &__contactUs {
-         @include f(start, center);
+         @include f(flex-start, center);
          flex-direction: column;
       }
       &__contactUs-text{
@@ -118,7 +118,7 @@
          }
       }
       &__item {
-         @include f(start, start);
+         @include f(flex-start, flex-start);
          flex-direction: column;
          gap: 20px;
          &_apps{
@@ -167,7 +167,7 @@
          margin-bottom: 20px;
       }
       &__underLine {
-         @include f(space-between, start);
+         @include f(space-between, flex-start);
          color: rgb(99, 101, 111);
          a{
             color: rgb(99, 101, 111);
@@ -191,7 +191,7 @@
          vertical-align: top;
       }
       &__social {
-         @include f(start, start);
+         @include f(flex-start, flex-start);
          :last-child{
             margin-right: 0px;
          }
@@ -306,7 +306,7 @@
       }
       &__pagesLinks{
          width: 100%;
-         @include f(center, start);
+         @include f(center, flex-start);
          flex-wrap: wrap;
          gap: 10px;
          margin-top: 15px
@@ -319,7 +319,7 @@
          padding: 0px 10px;
       }
       &__contactUs {
-         @include f(start, center);
+         @include f(flex-start, center);
          flex-direction: column;
       }
       &__contactUs-text{
@@ -339,7 +339,7 @@
    
       }
       &__item {
-         @include f(start, start);
+         @include f(flex-start, flex-start);
          flex-direction: column;
          gap: 10px;
          &_apps{
@@ -387,7 +387,7 @@
          margin-bottom: 10px;
       }
       &__underLine {
-         @include f(space-between, start);
+         @include f(space-between, flex-start);
          color: rgb(99, 101, 111);
          a{
             color: rgb(99, 101, 111);
@@ -411,7 +411,7 @@
          vertical-align: top;
       }
       &__social {
-         @include f(start, start);
+         @include f(flex-start, flex-start);
          :last-child{
             margin-right: 0px;
          }

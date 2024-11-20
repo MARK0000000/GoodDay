@@ -1,13 +1,11 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SearchContext } from './Search';
 import { TypeOfDataContext } from './TypeOfData';
 export const NavigateContext = createContext(null);
 
 export const NavigateProvider = ({ children }) => {
     const navigate = useNavigate();
     const {changeType} = useContext(TypeOfDataContext)
-    const {setSearchValue, setData} = useContext(SearchContext)
     const getInitialButton = () => {
         const savedButton = localStorage.getItem('activeButton');
         return savedButton ? savedButton : 'posters';
@@ -16,8 +14,6 @@ export const NavigateProvider = ({ children }) => {
     const [activeButton, setActiveButton] = useState(getInitialButton);
 
     const handleNavigate = (route, buttonId) => {
-        // setSearchValue('')
-        // setData([])
         navigate(route, { replace: false });
         setActiveButton(buttonId);
         localStorage.setItem('activeButton', buttonId);
@@ -25,8 +21,6 @@ export const NavigateProvider = ({ children }) => {
     };
 
     const handleNavigateOtherPages = (route, buttonId) => {
-        // setSearchValue('')
-        // setData([])
         navigate(route, { replace: false });
         setActiveButton(buttonId);
         localStorage.setItem('activeButton', buttonId);
@@ -37,8 +31,6 @@ export const NavigateProvider = ({ children }) => {
     const typeButtonClick = (type, route) => {
         changeType(type)
         handleNavigate(route, route)
-        // setSearchValue('')
-        // setData(null)
     }
 
     useEffect(() => {

@@ -1,8 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useEffect } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-// import useEndpoints from '../api/apiConfig'; // Закомментирован
-// import { fetchGet } from '../api/fetch'; // Закомментирован
-
 export const CityContext = createContext(null);
 
 export const CityProvider = ({ children }) => {
@@ -85,20 +82,6 @@ export const CityProvider = ({ children }) => {
     ];
 
     useEffect(() => {
-        // Закомментируем запрос к API
-        // const fetchData = async () => {
-        //     try {
-        //         const result = await fetchGet(`https://elated-turing.178-124-131-24.plesk.page/city/all`);
-        //         if (result) {
-        //             setCities(result);
-        //         }
-        //     } catch (error) {
-        //         console.error("Error fetching cities:", error);
-        //     }
-        // };
-        // fetchData();
-
-        // Устанавливаем статический массив городов
         setCities(belarusianCities);
     }, []);
 

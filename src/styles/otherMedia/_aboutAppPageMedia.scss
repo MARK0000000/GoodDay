@@ -386,7 +386,7 @@
                 position: relative;
             }
             &_white {
-                @include f(space-between, start);
+                @include f(space-between, flex-start);
                 background-color: rgb(235, 235, 235);
                 color: black;
                 flex-direction: column;

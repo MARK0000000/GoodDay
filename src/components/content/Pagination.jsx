@@ -1,13 +1,12 @@
 import React from 'react'
 import { handleNextPage, handlePrevPage } from '../../utils/pagination'
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link } from 'react-scroll';
 
 export default function Pagination(props) {
     const {
         itemsPerPage,
         currentPage,
         setCurrentPage,
-        businesses,
         currentPageNumbers,
         pageNumbers,
         indexOfFirstPage,

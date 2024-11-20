@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import phone from '../../images/other/phone.png';
 import useEndpoints from '../../api/apiConfig';
 export default function InfoAboutApp() {

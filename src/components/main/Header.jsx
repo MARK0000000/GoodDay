@@ -13,6 +13,7 @@ import NavPages from './header/NavPages';
 import CityModal from './header/CityModal';
 import { getEndpoint } from '../../utils/workWithUrl';
 import { usePagination } from '../../context/PaginationContext';
+
 export default function Header() {
 
   const location = useLocation();
@@ -28,10 +29,10 @@ export default function Header() {
     setCityModalActive(false)
   }
   useEffect(() => {
-    if (endpoint == 'promotion' || endpoint == 'discounts' || endpoint == 'services' || (endpoint in getCategoryId) || endpoint == 'posters') {
+    if (endpoint === 'promotion' || endpoint === 'discounts' || endpoint === 'services' || (endpoint in getCategoryId) || endpoint === 'posters') {
       setSearchValue(searchInput.current.value)
     }
-  }, [endpoint])
+  }, [endpoint, getCategoryId, setSearchValue])
 
   const [burgerActive, setBurgerActive] = useState(false)
   
@@ -45,16 +46,17 @@ export default function Header() {
 
   }
   useEffect(() => {
-    if (searchValue == '') {
+    if (searchValue === '') {
       handleClearSearch()
     }
   }, [searchValue])
-
+  
   const handleClearSearch = () => {
     searchInput.current.value = ''; 
     setSearchValue(''); 
     resetAllPagination()
   };
+
 
   return (
     <header className="header">
@@ -73,7 +75,7 @@ export default function Header() {
             <img src={closeIcon} alt="#" className="header__close" onClick={() => setBurgerActive(false)} />
             <a onClick={() => handleNavigateOtherPages('partnership', 'partnership')}>Для вашего бизнеса</a>
             <a onClick={() => handleNavigateOtherPages('aboutapp', 'aboutapp')}>О приложении</a>
-            <a href='http://partners.good-day.by/franshizabel' target='_blank'>Франшиза</a>
+            <a href='http://partners.good-day.by/franshizabel' target='_blank' rel="noreferrer">Франшиза</a>
             <a onClick={() => handleNavigateOtherPages('contacts', 'contacts')}>Контакты</a>
           </div>
           <a href="tel:+375336949638" className='header__tel'>+375 (33) 694-96-38</a>

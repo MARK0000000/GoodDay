@@ -3,7 +3,6 @@ import MyInput from '../../components/UI/input/MyInput';
 import InfoAboutApp from '../../components/partnershipPage/InfoAboutApp';
 import InfoPartnership from '../../components/partnershipPage/InfoPartnership';
 import UsPartners from '../../components/partnershipPage/UsPartners';
-import BreadCrumbs from '../../components/main/Breadcrambs';
 import BecomePartnes from '../../components/partnershipPage/BecomePartnes';
 import { fetchPost } from '../../api/fetch';
 import useEndpoints from '../../api/apiConfig';
@@ -35,10 +34,10 @@ export default function Partnership() {
   const validateInput = (inputValue, inputName) => {
     if (!inputValue.trim()) {
       setErrors((prevErrors) => ({ ...prevErrors, [inputName]: 'Поле не заполнено' }));
-      return false; // Возвращаем false, если поле не заполнено
+      return false; 
     } else {
       setErrors((prevErrors) => ({ ...prevErrors, [inputName]: '' }));
-      return true; // Возвращаем true, если поле заполнено
+      return true; 
     }
   };
 
@@ -67,7 +66,6 @@ export default function Partnership() {
     const isValidName = validateInput(name, 'name');
     const isValidPhone = validateInput(phone, 'phone');
 
-    // Проверяем, все ли поля валидны
     if (
       isValidCompanyName &&
       isValidCompanyContact &&
@@ -98,7 +96,7 @@ export default function Partnership() {
         setIsLoading(false);
       }
     } else {
-      setIsLoading(false); // Сбрасываем состояние загрузки, если есть ошибки
+      setIsLoading(false); 
     }
   };
 

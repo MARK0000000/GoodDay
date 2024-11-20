@@ -3,20 +3,17 @@ import { CityContext } from '../../../context/City';
 
 export default function CityModal({ active, onClose }) {
     const { updateCity, cities } = useContext(CityContext);
-    const modalRef = useRef(null); // Create a ref for the modal
+    const modalRef = useRef(null); 
 
-    // Effect to handle clicks outside the modal
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (modalRef.current && !modalRef.current.contains(event.target)) {
-                onClose(); // Call the onClose function when clicking outside
+                onClose(); 
             }
         };
 
-        // Bind the event listener
         document.addEventListener('mousedown', handleClickOutside);
 
-        // Cleanup function to remove the event listener
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
@@ -32,7 +29,7 @@ export default function CityModal({ active, onClose }) {
                         className="cityModal__item" 
                         onClick={() => {
                             updateCity(city.id);
-                            onClose(); // Close modal after selecting a city
+                            onClose(); 
                         }}
                     >
                         {city.name}

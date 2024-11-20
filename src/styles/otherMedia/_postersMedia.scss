@@ -86,7 +86,8 @@
         margin: 0px 15px 20px 15px;
         &__description {
             font-size: 14px;
-            -webkit-line-clamp: 2;       
+            -webkit-line-clamp: 2;     
+            line-clamp: 2;  
             overflow: hidden;             
         }
     }    

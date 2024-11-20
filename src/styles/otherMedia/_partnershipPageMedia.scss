@@ -91,7 +91,7 @@
         }
         &__content {
             padding: 0px 10px 0px 10px;
-            @include f(center, start);
+            @include f(center, flex-start);
             gap: 20px
         }
         &__form {

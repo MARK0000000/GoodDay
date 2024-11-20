@@ -11,7 +11,7 @@ import NothingFound from '../components/UI/loaders/NothingFound';
 import { TypeOfDataContext } from '../context/TypeOfData';
 
 export default function Posters() {
-    const { city, updateCity, cities, cityName } = useContext(CityContext);
+    const { city, cityName } = useContext(CityContext);
     const {setIsSearchLoading, searchValue} = useContext(SearchContext)
     const endpoints = useEndpoints();
     const { categories, categoriesLoading } = useContext(PosterCategoriesContext);
@@ -46,7 +46,7 @@ export default function Posters() {
 
     const fetchSoonCategories = async () => {
         setIsSoonLoading(true);
-        if(searchValue != '') {
+        if(searchValue !== '') {
             try {
                 const result = await fetchGet(`${endpoints.SEARCH_POSTER_SOON}&keyword=${searchValue}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
                 setSoonData(result); 
@@ -69,7 +69,7 @@ export default function Posters() {
 
     const fetchDataByCategory = async (category) => {
         setLoadingStates(prev => ({ ...prev, [category.idCategory]: true }));
-        if(searchValue != '') {
+        if(searchValue !== '') {
             if (allDates) {
                 try {
                     const result = await fetchGet(`${endpoints.SEARCH_POSTER_CATEGORIES_WITHOUT_DATE}&categoryId=${category.idCategory}&keyword=${searchValue}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
@@ -125,6 +125,7 @@ export default function Posters() {
             });
             fetchSoonCategories(); 
         }
+        fetchInfo()
     }, [ selectedDate, city, searchValue, allDates, categories]);
 
 

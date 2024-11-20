@@ -10,10 +10,7 @@ function AppRouter() {
    const {categories} = useContext(PosterCategoriesContext)
 
    return (
-         // <AuthProvider>
-         // </AuthProvider>
          <Routes>
-            {/* <Route path='/login' element={<Login/>}/> */}
             <Route path='/' element={
                      <Main />
                   }>

@@ -7,8 +7,8 @@ import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 
 export default function MyMap({ data }) {
     
-    const [coordinates, setCoordinates] = useState([(data.addresses[0] && data.addresses[0].latitude) || false, (data.addresses[0] && data.addresses[0].longitude) || false]);
-    const [status, setStatus] = useState(getWorkTimeStatus(data.workTimeDetailed))
+    const [coordinates] = useState([(data.addresses[0] && data.addresses[0].latitude) || false, (data.addresses[0] && data.addresses[0].longitude) || false]);
+    const [status] = useState(getWorkTimeStatus(data.workTimeDetailed))
     const handleRouteClick = () => {
         const [latitude, longitude] = coordinates;
         const url = `https://yandex.ru/maps/?pt=${longitude},${latitude}&z=16&l=map&origin=jsapi_2_1_74&um=constructor:YOUR_CONSTRUCTOR_ID`;

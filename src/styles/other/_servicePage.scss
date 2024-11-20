@@ -41,9 +41,9 @@
         padding: 20px;
     }
     &__firstLine {
-        @include f(start, center);
+        @include f(flex-start, center);
         div{
-            @include f(start, start);
+            @include f(flex-start, flex-start);
             flex-direction: column;
             max-width: 100%;
             min-height: 0; 
@@ -68,6 +68,7 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2; 
+        line-clamp: 2;
         overflow: hidden; 
         text-overflow: ellipsis; 
     }
@@ -76,6 +77,7 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2; 
+        line-clamp: 2;
         overflow: hidden; 
         text-overflow: ellipsis; 
     }
@@ -85,6 +87,7 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2; 
+        line-clamp: 2;
         overflow: hidden; 
         text-overflow: ellipsis; 
         &::before{
@@ -127,7 +130,7 @@
     }
     &__socialBox {
         margin-top: 15px;
-        @include f(start, start);
+        @include f(flex-start, flex-start);
         margin-bottom: 50px;
     }
     &__social {
@@ -140,7 +143,7 @@
         bottom: 25px
     }
     &__buttons {
-        @include f(start, start);
+        @include f(flex-start, flex-start);
     }
     &__buttonSendMassage {
         margin-right: 15px;
@@ -157,52 +160,6 @@
         color: white;
     }
 }
-.serviceDescription {
-    width: 550px;
-    display: inline-block;
-    margin-right: 20px;
-    max-height: 200px;
-    &__title {
-        font-size: 20px;
-        font-family: 'Segoe UI';
-        font-weight: 700;
-        margin-bottom: 30px;
-    }
-    &__text {
-        display: -webkit-box; 
-        -webkit-box-orient: vertical; 
-        overflow: hidden; 
-        -webkit-line-clamp: 9; 
-        text-overflow: ellipsis; 
-    }
-}
-.serviceMap {
-    display: inline-block;
-    width: 450px;
-    height: 200px;
-    &__title {
-        font-size: 20px;
-        font-family: 'Segoe UI';
-        font-weight: 700;
-        margin-bottom: 30px;
-    }
-    &__content {
-        position: relative;
-        width: 450;
-        height: 143px;
-        border-radius: 20px;
-    }
-    &__button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 132px;
-        height: 50px;
-        border-radius: 53px;
-        color: #0066C5;
-    }
-}
 .serviceList {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -215,14 +172,12 @@
         color: #8A99A0;
     }
     }
-    &__content {
-    }
     &__item {
         @include f(space-between, center);
         margin-bottom: 10px;
     }
     &__left {
-    @include f(start, center);
+    @include f(flex-start, center);
     img{
         width: 50px;
         height: 50px;
@@ -235,6 +190,7 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2; 
+        line-clamp: 2;
         overflow: hidden; 
         text-overflow: ellipsis; 
     }
@@ -245,6 +201,7 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2; 
+        line-clamp: 2;
         overflow: hidden; 
         text-overflow: ellipsis; 
     }
@@ -276,26 +233,5 @@
         border-radius: 12px;
         color: white;
         padding: 15.5px 80px;
-    }
-}
-.serviceExpamples {
-    &__title {
-        font-size: 20px;
-        font-family: 'Segoe UI';
-        font-weight: 700;
-        margin-bottom: 30px;
-        span{
-            color: #8A99A0;
-        }
-    }
-    &__content {
-        @include f(start, start)
-    }
-    &__img {
-        width: 168px;
-        height: 168px;
-        border-radius: 12px;
-        background-color: #D9D9D9;
-        margin-right: 10px;
     }
 }

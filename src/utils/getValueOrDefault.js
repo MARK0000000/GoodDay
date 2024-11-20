@@ -1,5 +1,5 @@
 export const getValueOrDefault = (value, defaultValue) => {
-    if (value == '') {
+    if (value === '') {
       return defaultValue
     }
     return value ? value : defaultValue;

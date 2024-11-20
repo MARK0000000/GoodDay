@@ -3,7 +3,7 @@ import serviceItemImg from '../../images/icons/serviceIcon.png'
 import { handleNavigateSocial } from '../../utils/navigateSocial'
 
 export default function ServiceList({data, link}) {
-    const [services, setServices] = useState(data)
+    const [services] = useState(data)
 
   return (
     <section className="serviceList">

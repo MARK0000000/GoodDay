@@ -28,7 +28,7 @@
         display: flex;
         flex-direction: column;
         width: 105px;
-        justify-content: start;
+        justify-content: flex-start;
         flex-shrink: 0;
     }
     &__dayMonth-box{
@@ -87,7 +87,7 @@
 .posterPage {
     max-width: 1024px;
     &__firstLine {
-       @include f(space-between, start);
+       @include f(space-between, flex-start);
        width: 100%;
        margin-bottom: 20px;
        gap: 10px;
@@ -95,8 +95,6 @@
     &__title {
        font-size: 20px;
        margin-bottom: 5px;
-    }
-    &__text-box {
     }
     &__text {
        font-size: 14px;
@@ -110,7 +108,7 @@
        }
     }
     &__firstLine-btnBox {
-          @include f(start, start);
+          @include f(flex-start, flex-start);
     }
     &__button {
        height: 50px;
@@ -126,7 +124,7 @@
        }
     }
     &__secondLine {
-       @include f(space-between, start);
+       @include f(space-between, flex-start);
        margin-bottom: 20px;
     }
     &__link {
