@@ -1,10 +1,10 @@
 import React, { useEffect, useState} from 'react';
 import { changePageNumbers } from '../../utils/pagination';
 import Pagination from '../content/Pagination';
-import BusinessCard from '../content/BusinessCard';
+import BusinessCard from '../content/CardDiscounts';
 import NothingFound from '../UI/loaders/NothingFound';
 
-export default function Content({ businesses, itemsPerPage, currentPage, setCurrentPage, totalCount, currentPageNumbers, updateCurrentPageNumbers, searchData }) {
+export default function ContentPromotion({ businesses, itemsPerPage, currentPage, setCurrentPage, totalCount, currentPageNumbers, updateCurrentPageNumbers, searchData }) {
   const [businessCards, setBusinessCards] = useState(businesses); 
 
   const [indexOfFirstPage, setIndexOfFirstPage] = useState(0);

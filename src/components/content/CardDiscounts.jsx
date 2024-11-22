@@ -7,7 +7,7 @@ import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 import { getEndpoint } from '../../utils/workWithUrl';
 import { NavigateContext } from '../../context/Navigate';
 import { TypeOfDataContext } from '../../context/TypeOfData';
-export default function BusinessCard({item}) {
+export default function CardDiscounts({item}) {
     const {handleNavigate} = useContext(NavigateContext)
     const endpoints = useEndpoints()
     const location = useLocation();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import Add from '../components/categoryPage/Add';
-import Content from '../components/categoryPage/Content';
+import Content from '../components/categoryPage/ContentDiscounts';
 import InfoMobileApp from '../components/categoryPage/InfoMobileApp';
 import Info from '../components/categoryPage/Info';
 import useEndpoints from '../api/apiConfig';
