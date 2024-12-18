@@ -1,17 +1,20 @@
 import React, { useEffect, useState, useContext } from 'react';
 import Add from '../components/categoryPage/Add';
-import Content from '../components/categoryPage/ContentDiscounts';
+import Content from '../components/categoryPage/Content';
 import InfoMobileApp from '../components/categoryPage/InfoMobileApp';
 import Info from '../components/categoryPage/Info';
 import useEndpoints from '../api/apiConfig';
-import { fetchGetCategory } from '../api/fetch';
+import { fetchGetWithCount } from '../api/fetch';
 import { SkeletonContent } from '../components/UI/loaders/SkeletonContent';
 import { CityContext } from '../context/City';
 import { SearchContext } from '../context/Search';
 import { usePagination } from '../context/PaginationContext'; 
+import { CategoriesContext } from '../context/CategoriesContext';
 
 export default function Promotion() {
   const endpoints = useEndpoints();
+  const {promotionCategory} = useContext(CategoriesContext)
+
   const { data } = useContext(SearchContext);
   const [businesses, setBusinesses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,14 +23,13 @@ export default function Promotion() {
   const { city, cities } = useContext(CityContext);
   const cityName = cities.find(item => item.id === city);
   
-  const { paginationState, updatePage, updateCurrentPageNumbers, resetPagination } = usePagination(); 
+  const { paginationState, updatePage, updateCurrentPageNumbers } = usePagination(); 
   const currentPage = paginationState.promotionPage; 
   const currentPageNumbers = paginationState.promotionCurrentPageNumbers;
   
   const [previousData, setPreviousData] = useState(null);
 
   useEffect(() => {
-    resetPagination()
     if (data && data.data) {
       if (previousData !== data.data) {
         updatePage('promotionPage', 1);
@@ -43,7 +45,12 @@ export default function Promotion() {
     } else {
       const fetchData = async () => {
         setIsLoading(true);
-        const result = await fetchGetCategory(`${endpoints.PROMOTION}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+        let result
+        if (promotionCategory) {
+          result = await fetchGetWithCount(`${endpoints.PROMOTION_CATEGORY}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&categoryId=${promotionCategory}`);
+        } else {
+          result = await fetchGetWithCount(`${endpoints.PROMOTION}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
+        }
         if (result) {
           setBusinesses(result.data);
           setIsLoading(false);
@@ -57,7 +64,7 @@ export default function Promotion() {
       };
       fetchData();
     }
-  }, [currentPage, data, city]);
+  }, [currentPage, data, city, promotionCategory]);
 
   return (
     <>

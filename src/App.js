@@ -8,22 +8,25 @@ import { CityProvider } from "./context/City";
 import { TypeOfDataProvider } from "./context/TypeOfData";
 import { PosterCategoriesProvider } from "./context/PosterCategories";
 import { PaginationProvider } from "./context/PaginationContext";
+import {CategoriesProvider} from "./context/CategoriesContext"
 function App() {
 
   return (
    <>
     <BrowserRouter>
       <CityProvider>
-          <TypeOfDataProvider>
-            <PosterCategoriesProvider>
-                <SearchProvider>
-                  <PaginationProvider>
-                    <NavigateProvider>
-                        <AppRouter/>
-                    </NavigateProvider>
-                  </PaginationProvider>
-                </SearchProvider>
-            </PosterCategoriesProvider>
+        <TypeOfDataProvider>
+          <PaginationProvider>
+              <CategoriesProvider>
+                <PosterCategoriesProvider>
+                    <SearchProvider>
+                        <NavigateProvider>
+                            <AppRouter/>
+                        </NavigateProvider>
+                    </SearchProvider>
+                </PosterCategoriesProvider>
+              </CategoriesProvider>
+            </PaginationProvider>
           </TypeOfDataProvider>
       </CityProvider>
     </BrowserRouter>

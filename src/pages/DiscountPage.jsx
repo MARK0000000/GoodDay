@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react'
+import React, {useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom';
 import addressIcon from '../images/icons/share-map.svg.svg'
 import telIcon from '../images/icons/quick-call.svg.svg'
@@ -26,7 +26,7 @@ export default function DiscountPage() {
     const {id} = useParams();
     const [business, setBusiness] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-
+    const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
     const [status, setStatus] = useState('Закрыто');
     
@@ -63,6 +63,26 @@ export default function DiscountPage() {
     const removeLeadingSymbols = (str) => {
         return str ? str.replace(/^==>\s*/, '') : str;
     };
+    const handleToggle = () => {
+        setIsDescriptionExpanded(!isDescriptionExpanded);
+    };
+
+    const [isOverflowing, setIsOverflowing] = useState(false);
+    const descriptionRef = useRef(null);
+    const MAX_LINES = 8; 
+    const [widthOfDevice] = useState(window.innerWidth);
+
+    useEffect(() => {
+        if (descriptionRef.current) {
+            let lineHeight;
+            widthOfDevice <= 768 ? lineHeight = 16 : lineHeight = 19;
+            console.log(lineHeight)
+            const maxHeight = lineHeight * MAX_LINES;
+            console.log(descriptionRef.current.scrollHeight,maxHeight )
+            setIsOverflowing(descriptionRef.current.scrollHeight > maxHeight);
+        }
+    }, [business]);
+
     return (
         <section>
             <Breadcrambs mainRoute={"discounts"} main={"Скидки"} current={business.name}/>
@@ -105,7 +125,12 @@ export default function DiscountPage() {
                                 }
                                 <div className="discountPage__descriptionBlock">
                                     <h4 className="discountPage__descriptionTitle">Описание</h4>
-                                    <p className="discountPage__description">{getValueOrDefault(business.description, 'Описание не указано')}</p>
+                                    <p ref={descriptionRef} className={`discountPage__description ${isDescriptionExpanded && 'discountPage__description_extended'}`}>{getValueOrDefault(business.description, 'Описание не указано')}</p>
+                                    {(isOverflowing && !isDescriptionExpanded) && (
+                                        <span className="discountPage__descriptionMoreLink" onClick={handleToggle}>
+                                            Показать ещё
+                                        </span>
+                                    )}
                                 </div>
                             </div>
                             <div className="discountPage__info-btnBox">

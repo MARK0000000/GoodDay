@@ -52,7 +52,6 @@ export default function Services() {
                 }
 
                 const response = await fetchGetCategory(`${endpoints.SERVICE}&pageSize=${itemsPerPage}&pageNumber=${currentPage}`);
-                console.log(response.data)
                 if (originalCards === false) {
                     setCards([]); 
                     setOriginalCards(true);
@@ -72,7 +71,7 @@ export default function Services() {
     const showMoreCards = () => {
         setCurrentPage(prev => prev + 1); 
     };
-
+    console.log(data)
     return (
         <>
             <Add/>

@@ -3,7 +3,7 @@ import useEndpoints from '../../api/apiConfig';
 import { NavigateContext } from '../../context/Navigate';
 import NothingFound from '../UI/loaders/NothingFound';
 export default function ContentServices({totalCount, data, showMoreCards}) {
-    const {handleNavigate} = useContext(NavigateContext)
+    const {typeButtonClick} = useContext(NavigateContext)
     const endpoints = useEndpoints()
     const [cards, setCards] = useState([])
     
@@ -21,13 +21,13 @@ export default function ContentServices({totalCount, data, showMoreCards}) {
                     {cards.map((item, index) => 
                         <article className='service' key={index}>
                             <div className="service__content">
-                                <img onClick={() => handleNavigate(`services/${item.id}`, `services/${item.id}`)} src={item.images && item.images[0] ? (endpoints.UPLOADS + item.images[0].url) : ''} alt="" className="service__img" />
+                                <img onClick={() => typeButtonClick(`services/${item.id}`, `services/${item.id}`)} src={item.images && item.images[0] ? (endpoints.UPLOADS + item.images[0].url) : ''} alt="" className="service__img" />
                                 <div className="service__text">
                                     <h3 className="service__title">{item.name}</h3>
                                     <span className="service__address">{item.shortDescription || 'Описание не указано'}</span>
                                 </div>
                             </div>
-                            <button onClick={() => handleNavigate(`services/${item.id}`, `services/${item.id}`)} className="service__button">Подробнее</button>
+                            <button onClick={() => typeButtonClick(`services/${item.id}`, `services/${item.id}`)} className="service__button">Подробнее</button>
                         </article>
                     )}        
                 </div>

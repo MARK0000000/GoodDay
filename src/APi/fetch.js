@@ -27,6 +27,19 @@ export async function fetchGet(url) {
   }
 }
 
+export async function fetchGetWithCount(url) {
+  try {
+    const res = await fetch(url, {
+      method: 'GET',
+    });
+    const totalCount = res.headers.get('X-Total-Count');
+    const json = await res.json();
+    return { data: json, totalCount };
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
 export async function fetchGetCategory(url) {
   try {
     const res = await fetch(url, {
@@ -39,4 +52,5 @@ export async function fetchGetCategory(url) {
     console.warn(err);
   }
 }
+
 

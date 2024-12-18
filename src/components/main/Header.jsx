@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useRef, useState} from 'react'
 import logoHeader from '../../images/other/logoHeader.svg'
 import lupa from '../../images/icons/lupa.svg'
-import { useLocation } from 'react-router-dom';
 import { SearchContext } from '../../context/Search';
 import { NavigateContext } from '../../context/Navigate';
 import iconMenu from '../../images/icons/icon_menu.svg';
@@ -11,29 +10,21 @@ import LoadingSpinner from '../UI/loaders/LoaderSpinner';
 import crossIcon from '../../images/icons/cross.svg'
 import NavPages from './header/NavPages';
 import CityModal from './header/CityModal';
-import { getEndpoint } from '../../utils/workWithUrl';
-import { usePagination } from '../../context/PaginationContext';
+import { PosterCategoriesContext } from '../../context/PosterCategories';
 
 export default function Header() {
 
-  const location = useLocation();
-  const endpoint = getEndpoint(location);
-  const {setSearchValue, isSearchLoading, searchValue, getCategoryId} = useContext(SearchContext)
-  const {resetAllPagination} = usePagination()
+  const {setSearchValue, isSearchLoading, searchValue, setData} = useContext(SearchContext)
   const {cityName} = useContext(CityContext)
-  const {handleNavigateOtherPages,typeButtonClick} = useContext(NavigateContext)
-
+  const {typeButtonClick} = useContext(NavigateContext)
+  const {setNavCategories, setSoonIsEpmty} = useContext(PosterCategoriesContext)
   const searchInput = useRef()
   const [cityModalActive, setCityModalActive] = useState(false)
+
+
   const closeCityModal = () => {
     setCityModalActive(false)
   }
-  useEffect(() => {
-    if (endpoint === 'promotion' || endpoint === 'discounts' || endpoint === 'services' || (endpoint in getCategoryId) || endpoint === 'posters') {
-      setSearchValue(searchInput.current.value)
-    }
-  }, [endpoint, getCategoryId, setSearchValue])
-
   const [burgerActive, setBurgerActive] = useState(false)
   
 
@@ -41,20 +32,19 @@ export default function Header() {
     event.preventDefault()
 
     let value = searchInput.current.value
-
-    setSearchValue(value)
-
-  }
-  useEffect(() => {
-    if (searchValue === '') {
+    if (value === "") {
       handleClearSearch()
+    } else {
+      setSearchValue(value)
     }
-  }, [searchValue])
+  }
   
   const handleClearSearch = () => {
     searchInput.current.value = ''; 
     setSearchValue(''); 
-    resetAllPagination()
+    setNavCategories([])
+    setData([])
+    setSoonIsEpmty(true)
   };
 
 
@@ -73,10 +63,10 @@ export default function Header() {
           <img src={iconMenu} alt="#" className="header__burger" onClick={() => setBurgerActive(true)} />
           <div className={`header__about ${burgerActive && 'header__about_active'}`}>
             <img src={closeIcon} alt="#" className="header__close" onClick={() => setBurgerActive(false)} />
-            <a onClick={() => handleNavigateOtherPages('partnership', 'partnership')}>Для вашего бизнеса</a>
-            <a onClick={() => handleNavigateOtherPages('aboutapp', 'aboutapp')}>О приложении</a>
+            <a onClick={() => typeButtonClick('partnership', 'partnership')}>Для вашего бизнеса</a>
+            <a onClick={() => typeButtonClick('aboutapp', 'aboutapp')}>О приложении</a>
             <a href='http://partners.good-day.by/franshizabel' target='_blank' rel="noreferrer">Франшиза</a>
-            <a onClick={() => handleNavigateOtherPages('contacts', 'contacts')}>Контакты</a>
+            <a onClick={() => typeButtonClick('contacts', 'contacts')}>Контакты</a>
           </div>
           <a href="tel:+375336949638" className='header__tel'>+375 (33) 694-96-38</a>
         </div>

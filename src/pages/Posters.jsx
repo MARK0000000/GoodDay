@@ -14,7 +14,7 @@ export default function Posters() {
     const { city, cityName } = useContext(CityContext);
     const {setIsSearchLoading, searchValue} = useContext(SearchContext)
     const endpoints = useEndpoints();
-    const { categories, categoriesLoading } = useContext(PosterCategoriesContext);
+    const { categories, categoriesLoading, setNavCategories, setSoonIsEpmty } = useContext(PosterCategoriesContext);
     const {changeType} = useContext(TypeOfDataContext)
     const [startDate, setStartDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(null);
@@ -50,6 +50,9 @@ export default function Posters() {
             try {
                 const result = await fetchGet(`${endpoints.SEARCH_POSTER_SOON}&keyword=${searchValue}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
                 setSoonData(result); 
+                if (result.length !== 0) {
+                    setSoonIsEpmty(false)
+                }
             } catch (error) {
                 console.error("Ошибка при загрузке данных для ближайших категорий:", error);
             } finally {
@@ -59,6 +62,9 @@ export default function Posters() {
             try {
                 const result = await fetchGet(`${endpoints.POSTER_CATEGORY_SOON}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
                 setSoonData(result); 
+                if (result.length !== 0) {
+                    setSoonIsEpmty(false)
+                }
             } catch (error) {
                 console.error("Ошибка при загрузке данных для ближайших категорий:", error);
             } finally {
@@ -74,6 +80,9 @@ export default function Posters() {
                 try {
                     const result = await fetchGet(`${endpoints.SEARCH_POSTER_CATEGORIES_WITHOUT_DATE}&categoryId=${category.idCategory}&keyword=${searchValue}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
                     setData(prev => ({ ...prev, [category.idCategory]: result}));
+                    if (result.length !== 0) {
+                        setNavCategories(prev => [...prev, category])
+                    }
                 } catch (error) {
                     console.error(`Ошибка при загрузке данных для категории ${category.categoryName}:`, error);
                 } finally {
@@ -84,6 +93,9 @@ export default function Posters() {
                 try {
                     const result = await fetchGet(`${endpoints.SEARCH_POSTER_CATEGORIES}&categoryId=${category.idCategory}&date=${selectedDate}&keyword=${searchValue}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
                     setData(prev => ({ ...prev, [category.idCategory]: result}));
+                    if (result.length !== 0) {
+                        setNavCategories(prev => [...prev, category])
+                    }
                 } catch (error) {
                     console.error(`Ошибка при загрузке данных для категории ${category.categoryName}:`, error);
                 } finally {
@@ -96,6 +108,9 @@ export default function Posters() {
                 try {
                     const result = await fetchGet(`${endpoints.POSTERS_CATEGORY_WITHOUT_DATE}&categoryId=${category.idCategory}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
                     setData(prev => ({ ...prev, [category.idCategory]: result }));
+                    if (result.length !== 0) {
+                        setNavCategories(prev => [...prev, category])
+                    }
                 } catch (error) {
                     console.error(`Ошибка при загрузке данных для категории ${category.categoryName}:`, error);
                 } finally {
@@ -106,6 +121,9 @@ export default function Posters() {
                 try {
                     const result = await fetchGet(`${endpoints.POSTER_CATEGORY}&categoryId=${category.idCategory}&pageNumber=${pageNumber}&pageSize=${pageSize}&date=${selectedDate}`);
                     setData(prev => ({ ...prev, [category.idCategory]: result }));
+                    if (result.length !== 0) {
+                        setNavCategories(prev => [...prev, category])
+                    }
                 } catch (error) {
                     console.error(`Ошибка при загрузке данных для категории ${category.categoryName}:`, error);
                 } finally {
@@ -119,6 +137,10 @@ export default function Posters() {
         changeType("posters")
         setData([]); 
         setLoadedCategoriesCount(0);
+        if (searchValue !== '') {
+            setNavCategories([])
+            setSoonIsEpmty(true)
+        }
         if (!categoriesLoading) {
             categories.forEach(category => {
                 fetchDataByCategory(category);

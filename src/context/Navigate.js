@@ -1,35 +1,44 @@
-import React, { createContext, useEffect} from 'react';
+import React, { createContext, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { TypeOfDataContext } from './TypeOfData';
+import { CategoriesContext } from './CategoriesContext';
 export const NavigateContext = createContext(null);
 
 export const NavigateProvider = ({ children }) => {
     const navigate = useNavigate();
+    const {changeType, type} = useContext(TypeOfDataContext)
+    const { discountCategory, promotionCategory, updateDiscountCategory, updatePromotionCategory} = useContext(CategoriesContext)
 
-
-    const handleNavigate = (route, buttonId) => {
-        navigate(route, { replace: false });
-        localStorage.setItem('activeButton', buttonId);
-        window.scrollTo(0, 0);
-    };
-
-    const handleNavigateOtherPages = (route, buttonId) => {
-        navigate(route, { replace: false });
-        localStorage.setItem('activeButton', buttonId);
-        window.scrollTo(0, 0);
-    };
+    // const handleNavigate = (route, buttonId) => {
+    //     navigate(route, { replace: false });
+    //     window.scrollTo(0, 0);
+    // };
 
     const typeButtonClick = (type, route) => {
-        handleNavigate(route, route)
+        navigate(route, { replace: false });
+        window.scrollTo(0, 0);
+    }
+    const typeButtonCategoriesClick = (newType, route) => {
+        typeButtonClick(newType, route)
+
+        switch (newType) {
+            case "discounts":
+                if (discountCategory && type === "discounts") {
+                    updateDiscountCategory(null)
+                }
+                break;
+            case "promotion":
+                if (promotionCategory && type === "promotion") {
+                    updatePromotionCategory(null)
+                }
+                break;
+            default:
+                break;
+        }
     }
 
-    useEffect(() => {
-        return () => {
-            localStorage.removeItem('activeButton');
-        };
-    }, []);
-
     return (
-        <NavigateContext.Provider value={{ handleNavigate,  handleNavigateOtherPages, typeButtonClick  }}>
+        <NavigateContext.Provider value={{  typeButtonClick, typeButtonCategoriesClick   }}>
             {children}
         </NavigateContext.Provider>
     );

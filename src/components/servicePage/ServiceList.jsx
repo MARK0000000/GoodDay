@@ -21,7 +21,7 @@ export default function ServiceList({data, link}) {
                 <div className="serviceList__right">
                     <span className="serviceList__price">{item.price} BYN</span>
                     <span className="serviceList__time">{item.duration} м</span>
-                    <button className="serviceList__item-button" onClick={() => handleNavigateSocial( `${ (data[0] && data[0].link) ? 'serviceLink' : 'instagram'}` , `${(data[0] && data[0].link) || link}`)}>
+                    <button className="serviceList__item-button" onClick={() => window.open(handleNavigateSocial( `${ (data[0] && data[0].link) ? 'serviceLink' : 'instagram'}` , `${(data[0] && data[0].link) || link}`), '_blank')}>
                             Записаться
                     </button>
                 </div>

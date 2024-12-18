@@ -84,6 +84,11 @@
             color: rgb(124, 77, 255);
          }
       }
+      &__nav-button_posters {
+         &:hover{
+            background-color: $backGray;
+         }
+      }
    
    }        
    .footer {

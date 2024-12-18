@@ -8,7 +8,7 @@ import qrCode from '../../images/icons/qr.svg'
 import { NavigateContext } from '../../context/Navigate';
 
 export default function Footer() {
-  const {handleNavigateOtherPages, typeButtonClick} = useContext(NavigateContext)
+  const {typeButtonClick} = useContext(NavigateContext)
 
   
   return (
@@ -45,19 +45,19 @@ export default function Footer() {
           <div className="footer__item">
             <span>КОМПАНИЯ</span>
             <hr />
-            <a onClick={() => handleNavigateOtherPages('aboutapp', 'aboutapp')}>О приложении</a>
-            <a onClick={() => handleNavigateOtherPages('contacts', 'contacts')}>Контакты</a>
+            <a onClick={() => typeButtonClick('aboutapp', 'aboutapp')}>О приложении</a>
+            <a onClick={() => typeButtonClick('contacts', 'contacts')}>Контакты</a>
           </div>
           <div className="footer__item">
             <span>ПОЛЬЗОВАТЕЛЯМ</span>
             <hr />
-            <a onClick={() => handleNavigateOtherPages('questions', 'questions')}>Вопросы и ответы</a>
+            <a onClick={() => typeButtonClick('questions', 'questions')}>Вопросы и ответы</a>
             <a onClick={() => typeButtonClick('discounts', 'discounts')}>Скидки города</a>
           </div>
           <div className="footer__item">
             <span>ПАРТНЕРАМ</span>
             <hr />
-            <a onClick={() => handleNavigateOtherPages('partnership', 'partnership')}>Для вашего бизнеса</a>
+            <a onClick={() => typeButtonClick('partnership', 'partnership')}>Для вашего бизнеса</a>
             <a href='http://partners.good-day.by/franshizabel' target='_blank' rel="noreferrer">Франчайзинг</a>
           </div>
         </div>

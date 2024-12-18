@@ -7,16 +7,18 @@ import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 import { getEndpoint } from '../../utils/workWithUrl';
 import { NavigateContext } from '../../context/Navigate';
 import { TypeOfDataContext } from '../../context/TypeOfData';
-export default function CardDiscounts({item}) {
-    const {handleNavigate} = useContext(NavigateContext)
+
+export default function BusinessCard({item}) {
+    const {typeButtonClick} = useContext(NavigateContext)
     const endpoints = useEndpoints()
     const location = useLocation();
     const endpoint = getEndpoint(location)
     const {type} = useContext(TypeOfDataContext)
 
-    const workTimeStatus = getWorkTimeStatus(item.workTimeDetailed);
+    const workTimeStatus = item.workTimeDetailed &&  getWorkTimeStatus(item.workTimeDetailed);
     const isWorkTimeDetailedEmpty = Array.isArray(item.workTimeDetailed) && item.workTimeDetailed.length === 0;
     const isWorkTimeEmpty = !item.workTime || item.workTime.trim() === '';
+
   return (
     <article className="businessCard">
         <div className="businessCard__img-box">
@@ -53,7 +55,7 @@ export default function CardDiscounts({item}) {
         <div className="businessCard__bottom">
             <div>
             </div>
-            <button className="businessCard__button" onClick={() => handleNavigate(`${endpoint}/${item.id}`, `${endpoint}/${item.id}`)}> <span>Посмотреть</span></button>
+            <button className="businessCard__button" onClick={() => typeButtonClick(`${endpoint}/${item.id}`, `${endpoint}/${item.id}`)}> <span>Посмотреть</span></button>
         </div>
     </article>
   )

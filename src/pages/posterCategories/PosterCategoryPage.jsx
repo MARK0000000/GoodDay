@@ -5,7 +5,7 @@ import Breadcrambs from '../../components/main/Breadcrambs';
 import { CityContext } from '../../context/City';
 import { SearchContext } from '../../context/Search';
 import { PosterCategoriesContext } from '../../context/PosterCategories';
-import { fetchGet } from '../../api/fetch';
+import { fetchGetWithCount } from '../../api/fetch';
 import useEndpoints from '../../api/apiConfig';
 import { SkeletonPosterCard } from '../../components/UI/loaders/SkeletopPosterCard'; 
 import PostersCategory from '../../components/posters/PostersCategory';
@@ -35,7 +35,8 @@ export default function PosterCategoryPage() {
     const [isSoonLoading, setIsSoonLoading] = useState(true);
     const [itemsPerPageSoon] = useState(6);
     const [currentPageSoon, setCurrentPageSoon] = useState(1);
-
+    const [totalCount, setTotalCount] = useState();
+    const [totalCountSoon, setTotalCountSoon] = useState();
     const resetPage = () => {
         setCurrentPage(1);
         setCards([]); 
@@ -64,12 +65,15 @@ export default function PosterCategoryPage() {
 
             if (searchValue !== '') {
                 try {
-                    const result = await fetchGet(`${endpoints.SEARCH_POSTER_SOON}&pageNumber=${currentPageSoon}&pageSize=${itemsPerPageSoon}&keyword=${searchValue}`);
+                    const result = await fetchGetWithCount(`${endpoints.SEARCH_POSTER_SOON}&pageNumber=${currentPageSoon}&pageSize=${itemsPerPageSoon}&keyword=${searchValue}`);
                     if (result) {
                         if (currentPageSoon !== 1) {
-                        setCardsSoon(prevCards => [...prevCards, ...result]); 
+                            setCardsSoon(prevCards => [...prevCards, ...result.data]); 
+                            setTotalCountSoon(result.totalCount)
                         } else {
-                            setCardsSoon(result)
+                            setCardsSoon(result.data)
+                            setTotalCountSoon(result.totalCount)
+
                         }
                     }
                 } catch (error) {
@@ -81,14 +85,17 @@ export default function PosterCategoryPage() {
                 }    
             } else {
                 try {
-                    const result = await fetchGet(`${endpoints.POSTER_CATEGORY_SOON}&pageNumber=${currentPageSoon}&pageSize=${itemsPerPageSoon}`);
+                    const result = await fetchGetWithCount(`${endpoints.POSTER_CATEGORY_SOON}&pageNumber=${currentPageSoon}&pageSize=${itemsPerPageSoon}`);
                     if (result) {
                         if (currentPageSoon !== 1) {
-                            setCardsSoon(prevCards => [...prevCards, ...result]); 
-                            } else {
-                                setCardsSoon(result)
-                            }
+                            setCardsSoon(prevCards => [...prevCards, ...result.data]); 
+                            setTotalCountSoon(result.totalCount)
+                        } else {
+                            setCardsSoon(result.data)
+                            setTotalCountSoon(result.totalCount)
+    
                         }
+                    }
                 } catch (error) {
                     console.error("Error fetching soon data:", error);
                 } finally {
@@ -99,14 +106,12 @@ export default function PosterCategoryPage() {
             }
         };
         fetchSoonData(); 
-    }, [currentPageSoon, city, searchValue, endpoints.SEARCH_POSTER_SOON, endpoints.POSTER_CATEGORY_SOON, itemsPerPageSoon]);
+    }, [currentPageSoon, city, searchValue]);
 
     const foundCategory = categories.find(category => category.categoryRoute === selectedCategory);
 
     useEffect(() => {
         if (!selectedCategory) return; 
-
-        
         if (!foundCategory) return; 
 
         const fetchData = async () => {
@@ -116,12 +121,14 @@ export default function PosterCategoryPage() {
             if(searchValue !== '') {
                 if (allDates) {
                     try {
-                        const result = await fetchGet(`${endpoints.SEARCH_POSTER_CATEGORIES_WITHOUT_DATE}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}&keyword=${searchValue}`);
+                        const result = await fetchGetWithCount(`${endpoints.SEARCH_POSTER_CATEGORIES_WITHOUT_DATE}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}&keyword=${searchValue}`);
                         if (result) {
                             if (currentPage !== 1) {
-                            setCards(prevCards => [...prevCards, ...result]); 
-                            } else {
-                                setCards(result)
+                                setCards(prevCards => [...prevCards, ...result.data]); 
+                                setTotalCount(result.totalCount)
+                                } else {
+                                    setCards(result.data); 
+                                    setTotalCount(result.totalCount)        
                             }
                         }
                     } catch (error) {
@@ -134,12 +141,14 @@ export default function PosterCategoryPage() {
                     }    
                 } else {
                     try {
-                        const result = await fetchGet(`${endpoints.SEARCH_POSTER_CATEGORIES}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}&keyword=${searchValue}`);
+                        const result = await fetchGetWithCount(`${endpoints.SEARCH_POSTER_CATEGORIES}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}&keyword=${searchValue}`);
                         if (result) {
                             if (currentPage !== 1) {
-                                setCards(prevCards => [...prevCards, ...result]); 
+                                setCards(prevCards => [...prevCards, ...result.data]); 
+                                setTotalCount(result.totalCount)
                                 } else {
-                                    setCards(result)
+                                    setCards(result.data); 
+                                    setTotalCount(result.totalCount)
                                 }
                             }
                     } catch (error) {
@@ -154,9 +163,10 @@ export default function PosterCategoryPage() {
             } else{
                 if (allDates) {
                     try {
-                        const result = await fetchGet(`${endpoints.POSTERS_CATEGORY_WITHOUT_DATE}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}`);
+                        const result = await fetchGetWithCount(`${endpoints.POSTERS_CATEGORY_WITHOUT_DATE}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}`);
                         if (result) {
-                            setCards(prevCards => [...prevCards, ...result]); 
+                            setCards(prevCards => [...prevCards, ...result.data]); 
+                            setTotalCount(result.totalCount)
                         }
                     } catch (error) {
                         console.error("Error fetching data:", error);
@@ -168,9 +178,10 @@ export default function PosterCategoryPage() {
                     }    
                 } else {
                     try {
-                        const result = await fetchGet(`${endpoints.POSTER_CATEGORY}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}`);
+                        const result = await fetchGetWithCount(`${endpoints.POSTER_CATEGORY}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}`);
                         if (result) {
-                            setCards(prevCards => [...prevCards, ...result]); 
+                            setCards(prevCards => [...prevCards, ...result.data]); 
+                            setTotalCount(result.totalCount)
                         }
                     } catch (error) {
                         console.error("Error fetching data:", error);
@@ -186,7 +197,7 @@ export default function PosterCategoryPage() {
 
         fetchData();
 
-    }, [currentPage, city, selectedCategory, selectedDate, searchValue, allDates, foundCategory, endpoints.SEARCH_POSTER_CATEGORIES_WITHOUT_DATE, endpoints.SEARCH_POSTER_CATEGORIES, endpoints.POSTERS_CATEGORY_WITHOUT_DATE, endpoints.POSTER_CATEGORY, itemsPerPage, setIsSearchLoading]); 
+    }, [currentPage, city, selectedCategory, selectedDate, searchValue, allDates,   setIsSearchLoading]); 
 
     return (
         <section className='postersCategoryPage'>
@@ -213,7 +224,7 @@ export default function PosterCategoryPage() {
                 )}
             </div>
                 {(!(cards && cards.length > 0) && !isLoading) && <NothingFound/> }
-            {cards.length >= 12 &&
+            {(cards.length >= 12 &&  cards.length < totalCount) &&
                 <button 
                     className="postersCategoryPage__button"
                     onClick={() => showMoreCards()}
@@ -227,7 +238,7 @@ export default function PosterCategoryPage() {
                data={cardsSoon} 
                isLoading={isSoonLoading} 
             />
-            {cardsSoon.length >= 6 &&
+            {(cardsSoon.length >= 6 &&  cardsSoon.length < totalCountSoon) &&
                 <button 
                     className="postersCategoryPage__button"
                     onClick={() => showMoreSoonCards()}

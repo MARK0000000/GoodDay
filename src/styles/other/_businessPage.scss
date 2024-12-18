@@ -342,6 +342,7 @@
         margin-top: 20px;
         overflow: hidden;
         text-overflow: ellipsis;
+        white-space: pre-wrap;
     }
 }
 .map {
@@ -441,14 +442,48 @@
         margin-bottom: 10px;
 
     }
-    &__description{
-        display: -webkit-box; 
-        -webkit-box-orient: vertical; 
-        -webkit-line-clamp: 7; 
-        line-clamp: 7;
-        overflow: hidden; 
-        text-overflow: ellipsis; 
+    .discountPage__descriptionBlock {
+        position: relative;
     }
+    
+    .discountPage__description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 8; /* Ограничение по количеству строк */
+        overflow: hidden; /* Скрывает переполнение */
+        text-overflow: ellipsis; /* Добавляет многоточие */
+        transition: max-height 0.3s ease;
+    }
+    
+    .discountPage__description_extended {
+        display: block; /* Убирает ограничение по строкам */
+        -webkit-line-clamp: unset; /* Снимает ограничение по строкам */
+        max-height: none; /* Убирает ограничение по высоте */
+    }
+    
+    .discountPage__descriptionBlock {
+        max-height: 220px; /* Максимальная высота блока */
+        overflow-y: auto;
+        padding-right: 5px;
+        &::-webkit-scrollbar{
+            background-color: transparent;
+            width: 5px;
+            border-left: none;
+         }
+         &::-webkit-scrollbar-thumb {
+            border-radius: 10px; 
+        }
+        padding-bottom: 25px;
+    }
+    &__descriptionMoreLink{
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        color: $orange;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
     &__title {
        font-size: 24px;
        margin-bottom: 10px;

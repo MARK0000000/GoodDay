@@ -9,10 +9,10 @@ export default function PosterCard({ data }) {
   
   const endpoint = location.pathname; 
   
-  const { handleNavigate } = useContext(NavigateContext);
+  const { typeButtonClick } = useContext(NavigateContext);
   
   return (
-    <article className='posterCard' onClick={() => handleNavigate(`${endpoint}/${data.idPoster}`, `${endpoint}/${data.idPoster}`)} >
+    <article className='posterCard' onClick={() => typeButtonClick(`${endpoint}/${data.idPoster}`, `${endpoint}/${data.idPoster}`)} >
         <img 
             src={endpoints.UPLOADS + data.preview.url} 
             alt="" 

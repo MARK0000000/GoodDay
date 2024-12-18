@@ -5,11 +5,11 @@ import { SkeletonPosterCard } from '../../components/UI/loaders/SkeletopPosterCa
 import { PosterCategoriesContext } from '../../context/PosterCategories';
 
 export default function PostersCategory({ data, title, link, id, isLoading }) {
-    const { handleNavigate } = useContext(NavigateContext);
+    const { typeButtonClick } = useContext(NavigateContext);
     const { selectCategory  } = useContext(PosterCategoriesContext);
     const categoryHandleNavigate = (link) => {
         selectCategory(link)
-        handleNavigate("posters/" + link,"posters/" + link)
+        typeButtonClick("posters/" + link,"posters/" + link)
     }
     return (
         <>

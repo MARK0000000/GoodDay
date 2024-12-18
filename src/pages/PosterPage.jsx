@@ -101,7 +101,7 @@ export default function PosterPage() {
     }
     getposter();
     }, [id]);
-    console.log(links)
+    
     return (
         <section>
             {isLoading ? (

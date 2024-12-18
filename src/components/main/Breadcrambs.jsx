@@ -2,10 +2,10 @@ import React, {useContext} from 'react';
 import { NavigateContext } from '../../context/Navigate';
 
 export default function Breadcrambs({main, mainRoute, elements, current }) {
-    const {handleNavigate} = useContext(NavigateContext)
+    const {typeButtonClick} = useContext(NavigateContext)
 
     const handleNavigatePosters = (route, buttonId) => {
-        handleNavigate(route, buttonId)
+        typeButtonClick(route, buttonId)
     }
     return (
         <div className="breadCrambs">

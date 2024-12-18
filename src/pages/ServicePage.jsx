@@ -103,14 +103,14 @@ export default function ServicePage() {
                     <div className="serviceContent__socialBox">
                         {service.instagramLink && 
                             <button className="serviceContent__social">
-                                <a onClick={() => handleNavigateSocial('instagram', `${service.instagramLink}`)}>
+                                <a href={handleNavigateSocial('instagram', `${service.instagramLink}`)} target='_blank' rel="noreferrer" >
                                     <img src={instaSmall} alt="" />
                                 </a>
                             </button>
                         } 
                         {service.vkLink && 
                             <button className="serviceContent__social">
-                                <a onClick={() => handleNavigateSocial('vk', `${service.vkLink}`)}>
+                                <a href={handleNavigateSocial('vk', `${service.vkLink}`)} target='_blank' rel="noreferrer">
                                     <img src={vkSmall} alt="" />
                                 </a>
                             </button>
@@ -122,11 +122,11 @@ export default function ServicePage() {
                     </div>
                     <div className="serviceContent__buttons">
                         <button className="serviceContent__buttonSendMassage">
-                            <a onClick={() => handleNavigateSocial( `${ (service.services[0] && service.services[0].link) ? 'serviceLink' : 'instagram'}` , `${(service.services[0] && service.services[0].link) || service.instagramLink}`)}>
+                            <a  href={handleNavigateSocial( `${ (service.services[0] && service.services[0].link) ? 'serviceLink' : 'instagram'}` , `${(service.services[0] && service.services[0].link) || service.instagramLink}`)} target='_blank' rel="noreferrer">
                                 <img src={sendMassageIcon} alt="" />
                             </a>
                         </button>
-                        <button className="serviceContent__button" onClick={() => handleNavigateSocial( `${(service.services[0] && service.services[0].link) ? 'serviceLink' : 'instagram'}` , `${(service.services[0] && service.services[0].link) || service.instagramLink}`)}>
+                        <button className="serviceContent__button" onClick={() => window.open(handleNavigateSocial( `${(service.services[0] && service.services[0].link) ? 'serviceLink' : 'instagram'}` , `${(service.services[0] && service.services[0].link) || service.instagramLink}`), '_blank')}>
                                 Записаться
                         </button>
                     </div>
