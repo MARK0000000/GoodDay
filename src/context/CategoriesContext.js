@@ -10,9 +10,7 @@ export const CategoriesProvider = ({ children }) => {
       setDiscountCategory(categoryId)
     }
 
-
     const [promotionCategory, setPromotionCategory] = useState(null)
-
     function updatePromotionCategory(categoryId) {
       resetPromotionPagination()
       setPromotionCategory(categoryId)

@@ -3,9 +3,10 @@
         padding: 0px 10px;
     }
 }
+
 @media (max-width: 768px) {
     .timetable {
-        &__webLinkBtn{
+        &__webLinkBtn {
             right: 15px;
             top: 15px;
             background-color: #FF922E;
@@ -13,29 +14,37 @@
             @include f(center, center);
             font-size: 10px;
         }
+
         &__item {
-            padding: 10px 0px ;
+            padding: 10px 0px;
         }
+
         &__dateBox {
             width: 80px;
         }
+
         &__day {
             font-size: 32px;
             line-height: 36px;
         }
+
         &__month {
             font-size: 14px;
             margin: 5px 0px 0px 5px;
         }
+
         &__dayOfWeek {
             font-size: 10px;
         }
+
         &__place {
             font-size: 12px;
         }
+
         &__address {
             font-size: 10px;
         }
+
         &__time {
             display: inline-block;
             font-size: 10px;
@@ -43,21 +52,26 @@
             padding: 3px 10px;
             border-radius: 5px;
         }
+
         &__price {
             font-size: 9px;
             font-weight: 400;
         }
     }
+
     .posterPage {
         &__firstLine {
-           margin-bottom: 10px;
+            margin-bottom: 10px;
         }
+
         &__title {
-           font-size: 16px;
+            font-size: 16px;
         }
+
         &__text {
-           font-size: 12px;
+            font-size: 12px;
         }
+
         &__img-box {
             max-width: none;
             max-height: none;
@@ -65,40 +79,45 @@
             grid-row-start: 1;
             grid-row-end: 2;
         }
+
         &__button {
-           height: 40px;
-           width: 40px;
-           margin-right: 5px;
-           &_big {
-              a{
-                 padding: 16px 25px;
-                 color: black;
-              }
-           }
+            height: 40px;
+            width: 40px;
+            margin-right: 5px;
+
+            &_big {
+                a {
+                    padding: 16px 25px;
+                    color: black;
+                }
+            }
         }
 
         &__secondLine {
-           margin-bottom: 10px;
+            margin-bottom: 10px;
         }
+
         &__widgets {
-           width: 100%;
-           display: grid;
-           grid-template-columns: 100%;
-           grid-template-rows: repeat(3, auto);
-           padding-right: 0px;
-           gap: 10px;
-           position: relative;
-           margin-bottom: 20px;
-           &:first-child{
-              max-height: 150px;
-           }
-     
+            width: 100%;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: repeat(3, auto);
+            padding-right: 0px;
+            gap: 10px;
+            position: relative;
+            margin-bottom: 20px;
+
+            &:first-child {
+                max-height: 150px;
+            }
+
         }
+
         &__widgetsRight {
-           grid-row: 3/4;
-           grid-column: 1/2;     
+            grid-row: 3/4;
+            grid-column: 1/2;
         }
     }
 
-    
+
 }

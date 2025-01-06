@@ -1,4 +1,8 @@
-@mixin f ($j, $a) {display: flex; justify-content: $j; align-items: $a;}
+@mixin f ($j, $a) {
+    display: flex;
+    justify-content: $j;
+    align-items: $a;
+}
 
 
 $blue: rgb(57, 83, 138);
@@ -18,7 +22,7 @@ $headerWhite: rgb(253, 253, 253);
 $contentWhite: rgb(255, 255, 255);
 $footerBlue: rgb(33, 36, 51);
 
-%block{
+%block {
     background-color: white;
     box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
     padding: 15px;

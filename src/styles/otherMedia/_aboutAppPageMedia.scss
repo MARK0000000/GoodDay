@@ -2,37 +2,45 @@
     .infoAboutCompany {
         margin-top: 40px;
         margin-bottom: 40px;
-        grid-template-columns: 2fr minmax(100px, 1.5fr); 
-        grid-gap: 10px; 
+        grid-template-columns: 2fr minmax(100px, 1.5fr);
+        grid-gap: 10px;
         padding: 0px 10px;
+
         &__block {
             &_white {
                 padding: 20px;
                 position: relative;
             }
+
             &_blue {
                 padding-right: 40px;
             }
+
             &_orange {
                 padding: 20px;
             }
         }
+
         &__text {
             font-size: 28px;
             margin-bottom: 15px;
+
             &_blue {
                 font-size: 36px;
                 margin-bottom: 15px;
             }
+
             &_white {
                 margin-right: 20px;
                 font-size: 18px;
             }
         }
+
         &__list-item {
             font-size: 14px;
             margin-bottom: 10px;
         }
+
         &__img {
             position: relative;
             top: 0;
@@ -41,71 +49,87 @@
             object-fit: fill;
             max-width: 100%;
         }
+
         &__icons {
             margin-bottom: 15px;
         }
+
         &__icon {
             margin-right: 10px;
         }
+
         &__paragrath {
             margin-bottom: 15px;
             font-size: 14px;
         }
     }
+
     .howItWorks {
         margin-bottom: 40px;
         padding: 0px 10px;
-        &__title{
+
+        &__title {
             text-align: center;
         }
-        &__hr{
+
+        &__hr {
             margin-bottom: 30px;
         }
+
         &__bloks {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(3, auto); 
+            grid-template-rows: repeat(3, auto);
             gap: 20px;
         }
+
         &__block {
             &_blue {
                 padding: 30px 5px 0px 5px;
                 position: relative;
             }
+
             &_white {
                 position: relative;
-                img{
+
+                img {
                     max-height: 90%;
                     position: absolute;
                     left: auto;
                     right: 30px;
                     bottom: 0px;
                     transform: translateX(-0%);
-                }        
+                }
             }
+
             &_orange {
                 padding-top: 30px;
                 position: relative;
-                p{
+
+                p {
                     margin-bottom: 20px;
                 }
             }
         }
+
         &__span {
             margin-left: 30px;
             margin-bottom: 30px;
             font-size: 22px;
         }
+
         &__paragrath {
             margin-left: 30px;
             margin-bottom: 40px;
             font-size: 22px;
         }
+
         &__img {
             max-height: 90%;
             position: absolute;
             right: 30px;
             bottom: 0px;
         }
+
         &__button {
             margin-top: 10px;
             width: 175px;
@@ -113,103 +137,128 @@
             font-size: 20px;
         }
     }
+
     .opportunities {
         margin-bottom: 40px;
         padding: 20px 10px;
-        &__title{
+
+        &__title {
             text-align: center;
         }
-        &__hr{
+
+        &__hr {
             margin-bottom: 30px;
         }
+
         &__block {
             position: relative;
             padding: 25px 20px 0px 20px;
+
             &_big {
                 grid-column: span 2;
                 padding: 25px 35px 15px 35px;
             }
-            &_3{
-                h4{
+
+            &_3 {
+                h4 {
                     margin-top: 0px;
                 }
-                hr{
+
+                hr {
                     margin-bottom: 10px;
                 }
             }
-            &_5{
+
+            &_5 {
                 padding: 25px 30px 15px 30px;
             }
         }
+
         &__block-title {
             font-size: 16px;
             margin-bottom: 10px;
         }
+
         &__block-hr {
             margin-bottom: 10px;
         }
+
         &__block-p {
             font-size: 12px;
             line-height: 22px;
         }
+
         &__block-icon {
             position: relative;
             object-fit: contain;
             bottom: 0px;
             left: 100%;
             transform: translateX(-100px);
-            &_1{
+
+            &_1 {
                 bottom: -15px;
                 width: 100px;
                 transform: translateX(-120px);
                 width: 89px;
             }
-            &_2{
+
+            &_2 {
                 transform: translateX(-80px);
                 bottom: 0px;
                 width: 71px;
             }
-            &_3{
+
+            &_3 {
                 bottom: 10px;
                 width: 76px;
             }
-        
+
         }
     }
+
     .invitation {
         padding: 0px 10px;
         grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) 1.5fr;
         grid-template-rows: repeat(2, minmax(100px, 1fr));
         gap: 10px;
         margin-bottom: 30px;
+
         &__block {
             @extend %blockAboutApp;
             border-radius: 40px;
+
             &_img {
-                &_1{
+                &_1 {
                     background-size: auto auto;
                 }
-                &_2{
-                    background-size: auto auto;        
-                }
-                &_3{
+
+                &_2 {
                     background-size: auto auto;
                 }
-                &_4{
+
+                &_3 {
+                    background-size: auto auto;
+                }
+
+                &_4 {
                     background-size: auto auto;
                 }
             }
         }
+
         &__span {
             font-size: 16px;
         }
+
         &__title {
             font-size: 20px;
             margin-bottom: 20px;
         }
+
         &__paragrath {
             font-size: 18px;
         }
+
         &__img {
             width: auto;
             height: 161px;
@@ -218,49 +267,60 @@
             top: 20px;
             right: 30px;
         }
-    }      
+    }
+
     .ratings {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2, auto);
         padding: 10px 10px;
+
         &__block {
             flex-direction: column;
+
             &_transparent {
                 max-height: 50%;
                 margin-bottom: 20px;
             }
-            &_qrAndLogo{
+
+            &_qrAndLogo {
                 display: flex;
                 justify-content: center;
                 gap: 20px;
                 max-height: 45%;
             }
         }
+
         &__count {
             margin: 20px;
             font-size: 62px;
             margin-bottom: 35px;
         }
+
         &__paragrath {
             margin-bottom: 10px;
             font-size: 18px;
         }
+
         &__img {
             max-height: 250px;
         }
+
         &__qr {
             width: auto;
             max-width: 230px;
             position: inherit;
             height: auto;
         }
+
         &__qr-text {
             font-size: 18px;
         }
+
         &__qr-img {
             width: auto;
             max-height: 100%;
         }
+
         &__logo {
             height: auto;
             width: auto;
@@ -268,9 +328,11 @@
             position: inherit;
         }
     }
+
     .question {
         margin-bottom: 40px;
         padding: 0px 10px;
+
         &__title {
             font-size: 42px;
             font-weight: 700;
@@ -280,11 +342,13 @@
             text-align: center;
             margin-bottom: 15px;
         }
-        &__hr{
+
+        &__hr {
             border: 1px solid rgb(237, 237, 237);
             margin: 15px 0px;
         }
-        summary{
+
+        summary {
             font-family: "Raleway", sans-serif;
             list-style: none;
             font-size: 24px;
@@ -294,97 +358,118 @@
             justify-content: space-between;
             align-items: center;
         }
-        summary::after{
+
+        summary::after {
             content: url("../../images/icons/plus.svg");
             margin-left: auto;
             margin-right: 5px;
-            transition: transform 0.3s ease; 
+            transition: transform 0.3s ease;
         }
-        
+
         details[open] summary::after {
-            transform: rotate(45deg); 
+            transform: rotate(45deg);
         }
-        details[open] summary{
+
+        details[open] summary {
             margin-bottom: 10px;
         }
-        p{
+
+        p {
             font-size: 16px;
             font-weight: 500;
         }
-    } 
+    }
 }
+
 @media (max-width: 768px) {
     .infoAboutCompany {
         margin-top: 20px;
         margin-bottom: 20px;
-        grid-template-columns: 2fr minmax(100px, 1.5fr); 
-        grid-template-rows: repeat(2, auto); 
+        grid-template-columns: 2fr minmax(100px, 1.5fr);
+        grid-template-rows: repeat(2, auto);
+
         &__block {
             &_white {
                 padding: 20px;
                 grid-column: span 2;
             }
+
             &_blue {
                 display: none;
             }
+
             &_orange {
                 padding: 20px;
                 grid-column: span 2;
             }
         }
+
         &__text {
             font-size: 24px;
             margin-bottom: 15px;
+
             &_blue {
                 font-size: 32px;
                 margin-bottom: 15px;
             }
+
             &_white {
                 margin-right: 20px;
                 font-size: 18px;
             }
         }
+
         &__list-item {
             font-size: 12px;
             margin-bottom: 10px;
         }
+
         &__img_mobile {
             display: block;
             position: absolute;
             bottom: 0px;
             right: 40px;
-            height: 80% ;
+            height: 80%;
             max-width: 120px;
         }
+
         &__icons {
             margin-bottom: 15px;
         }
+
         &__icon {
             margin-right: 10px;
         }
+
         &__paragrath {
             margin-bottom: 15px;
             font-size: 14px;
         }
+
         &__button {
             font-size: 16px;
         }
     }
+
     .howItWorks {
         margin-bottom: 20px;
         padding: 0px 10px;
+
         &__title {
             margin-bottom: 10px;
             font-size: 24px;
         }
+
         &__hr {
             margin-bottom: 20px;
         }
+
         &__block {
             &_blue {
                 padding: 30px 5px 0px 5px;
                 position: relative;
             }
+
             &_white {
                 @include f(space-between, flex-start);
                 background-color: rgb(235, 235, 235);
@@ -393,7 +478,8 @@
                 padding-bottom: 0px;
                 padding-top: 30px;
                 position: relative;
-                img{
+
+                img {
                     max-height: 90%;
                     position: absolute;
                     left: auto;
@@ -401,36 +487,44 @@
                     bottom: 0px;
                     transform: translateX(-0%);
                 }
-                span{
+
+                span {
                     margin-left: 0px;
                 }
-                p{
+
+                p {
                     margin-left: 0px;
                 }
-        
+
             }
+
             &_orange {
                 padding-top: 30px;
                 position: relative;
-                p{
+
+                p {
                     margin-left: 0px;
                     margin-bottom: 20px;
                 }
-                img{
+
+                img {
                     max-height: 89%;
                 }
             }
         }
+
         &__span {
             margin-left: 20px;
             margin-bottom: 20px;
             font-size: 18px;
         }
+
         &__paragrath {
             margin-left: 20px;
             margin-bottom: 40px;
             font-size: 16px;
         }
+
         &__button {
             margin-top: 10px;
             width: 175px;
@@ -438,83 +532,102 @@
             font-size: 16px;
         }
     }
+
     .opportunities {
         margin-bottom: 40px;
         padding: 20px 10px;
-        &__title{
+
+        &__title {
             font-size: 24px;
             margin-bottom: 10px;
         }
-        &__hr{
+
+        &__hr {
             margin-bottom: 20px;
         }
+
         &__bloks {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(5, auto); 
+            grid-template-rows: repeat(5, auto);
             gap: 10px;
         }
+
         &__block {
             position: relative;
             padding: 25px 20px 0px 20px;
+
             &_big {
                 grid-column: span 1;
                 padding: 25px 20px 25px 20px;
             }
-            &_3{
-                h4{
+
+            &_3 {
+                h4 {
                     margin-top: 0px;
                 }
-                hr{
+
+                hr {
                     margin-bottom: 10px;
                 }
             }
-            &_5{
+
+            &_5 {
                 padding: 25px 20px 25px 20px;
             }
         }
+
         &__block-title {
             font-size: 16px;
             margin-bottom: 10px;
         }
+
         &__block-hr {
             margin-bottom: 10px;
         }
+
         &__block-p {
             font-size: 12px;
             line-height: 22px;
         }
+
         &__block-icon {
             position: relative;
             object-fit: contain;
             bottom: 0px;
             left: 100%;
             transform: translateX(-100px);
-            &_1{
+
+            &_1 {
                 bottom: 0px;
                 width: 100px;
                 transform: translateX(-120px);
                 width: 89px;
             }
-            &_2{
+
+            &_2 {
                 transform: translateX(-80px);
                 bottom: 0px;
                 width: 71px;
             }
-            &_3{
+
+            &_3 {
                 bottom: 10px;
                 width: 76px;
             }
-        
+
         }
     }
+
     .invitation {
         padding: 0px 10px;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, 1fr);
         gap: 10px;
         margin-bottom: 30px;
+
         &__block {
             border-radius: 40px;
+
             &_text {
                 grid-column-start: 2;
                 grid-column-end: 3;
@@ -522,16 +635,20 @@
                 grid-row-end: 4;
             }
         }
+
         &__span {
             font-size: 16px;
         }
+
         &__title {
             font-size: 16px;
             margin-bottom: 20px;
         }
+
         &__paragrath {
             font-size: 12px;
         }
+
         &__img {
             width: auto;
             height: 50%;
@@ -539,59 +656,73 @@
             bottom: 20px;
         }
     }
+
     .ratings {
         gap: 15px;
     }
+
     .question {
         margin-bottom: 30px;
+
         &__title {
             font-size: 28px;
             padding-bottom: 30px;
             margin-bottom: 15px;
         }
-        &__hr{
+
+        &__hr {
             margin: 15px 0px;
         }
-        summary{
+
+        summary {
             font-size: 18px;
             font-weight: 600;
         }
-        
-        p{
+
+        p {
             font-size: 12px;
         }
-    }        
+    }
 }
+
 @media (max-width: 480px) {
     .infoAboutCompany {
         &__img_mobile {
             display: none;
         }
     }
+
     .howItWorks {
         margin-bottom: 20px;
         padding: 0px 10px;
+
         &__hr {
             margin-bottom: 10px;
         }
+
         &__bloks {
             gap: 10px;
         }
-        &__img{
+
+        &__img {
             display: none;
         }
+
         &__button {
             width: 100%;
         }
     }
+
     .invitation {
         padding: 0px 10px;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, 1fr);
         gap: 10px;
         margin-bottom: 30px;
+
         &__block {
             border-radius: 40px;
+
             &_text {
                 padding: 20px 10px;
                 grid-column-start: 2;
@@ -600,20 +731,25 @@
                 grid-row-end: 4;
             }
         }
+
         &__span {
             font-size: 16px;
         }
+
         &__title {
             font-size: 16px;
             margin-bottom: 10px;
         }
+
         &__paragrath {
             font-size: 12px;
         }
+
         &__img {
             display: none;
         }
     }
+
     .ratings {
         &__block {
             &_transparent {
@@ -622,31 +758,38 @@
                 margin-bottom: 20px;
             }
         }
+
         &__text {
             font-size: 18px;
+
             &_bottom {
                 bottom: 1px;
                 padding-top: 5px;
                 width: 100%;
             }
         }
+
         &__qr {
             padding: 10px;
             max-width: 150px;
         }
     }
+
     .question {
         margin-bottom: 20px;
+
         &__title {
             font-size: 24px;
             padding-bottom: 10px;
             margin-bottom: 15px;
         }
-        &__hr{
+
+        &__hr {
             margin: 10px 0px;
         }
-        summary{
+
+        summary {
             font-size: 16px;
-        }    
-    }        
+        }
+    }
 }

@@ -6,7 +6,7 @@ import mapMark from '../../images/icons/mapMark.svg';
 import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 
 export default function MyMap({ data }) {
-    
+
     const [coordinates] = useState([(data.addresses[0] && data.addresses[0].latitude) || false, (data.addresses[0] && data.addresses[0].longitude) || false]);
     const [status] = useState(getWorkTimeStatus(data.workTimeDetailed))
     const handleRouteClick = () => {
@@ -17,34 +17,34 @@ export default function MyMap({ data }) {
     const areCoordinatesEqual = (arr1, arr2) => {
         if (arr1.length !== arr2.length) return false;
         for (let i = 0; i < arr1.length; i++) {
-          if (arr1[i] !== arr2[i]) return false;
+            if (arr1[i] !== arr2[i]) return false;
         }
         return true;
-      };
+    };
     const condition = areCoordinatesEqual(coordinates, [false, false]);
-    
+
     return (
         <>
-            {condition  ?
+            {condition ?
                 <div></div>
                 :
-                <div className='map'>
-                        <YMaps>
-                            <Map
-                                defaultState={{ center: coordinates, zoom: 16 }}
-                                width="100%" height="100%"
-                                options={{ controls: ['zoomControl'] }}
-                            >
-                                <Placemark
-                                    geometry={coordinates}
-                                    options={{
-                                        iconLayout: 'default#image',
-                                        iconImageHref: `${mapMark}`,
-                                        iconImageSize: [50, 50],
-                                    }}
-                                />
-                            </Map>
-                        </YMaps>
+                <div className='map' id='map'>
+                    <YMaps>
+                        <Map
+                            defaultState={{ center: coordinates, zoom: 16 }}
+                            width="100%" height="100%"
+                            options={{ controls: ['zoomControl'] }}
+                        >
+                            <Placemark
+                                geometry={coordinates}
+                                options={{
+                                    iconLayout: 'default#image',
+                                    iconImageHref: `${mapMark}`,
+                                    iconImageSize: [50, 50],
+                                }}
+                            />
+                        </Map>
+                    </YMaps>
                     <div className="map__content">
                         {(data.addresses[0]) &&
                             <h3 className="map__title">{data.addresses[0].description}</h3>
@@ -63,13 +63,12 @@ export default function MyMap({ data }) {
                                     </button>
                                     <p className="map__item-text">
                                         {data.workTime} <br />
-                                        <span className={`widget__item-text ${
-                                        getWorkTimeStatus(data.workTimeDetailed) === 'Открыто' 
-                                            ? 'widget__item-text_green' 
-                                            : getWorkTimeStatus(data.workTimeDetailed).includes('Откроется через') 
-                                                ? 'widget__item-text_orange' 
-                                                : 'widget__item-text_red'
-                                        }`}>{status}</span>
+                                        <span className={`widget__item-text ${getWorkTimeStatus(data.workTimeDetailed) === 'Открыто'
+                                                ? 'widget__item-text_green'
+                                                : getWorkTimeStatus(data.workTimeDetailed).includes('Откроется через')
+                                                    ? 'widget__item-text_orange'
+                                                    : 'widget__item-text_red'
+                                            }`}>{status}</span>
                                     </p>
                                 </div>
                                 <hr className="map__hr" />

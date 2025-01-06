@@ -7,7 +7,7 @@ export default function BecomePartnes() {
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = `${endpoints.PDF + 'doPartnership'}`;
-    link.download = 'doPartnership.pdf'; 
+    link.download = 'doPartnership.pdf';
     link.click();
   };
 

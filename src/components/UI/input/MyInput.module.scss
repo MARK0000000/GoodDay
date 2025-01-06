@@ -1,9 +1,14 @@
 @keyframes fadeIn {
-   from { opacity: 0; }
-   to { opacity: 1; }
- }
+   from {
+      opacity: 0;
+   }
 
-.myInput{
+   to {
+      opacity: 1;
+   }
+}
+
+.myInput {
    display: block;
    width: 100%;
    padding: 10px 0px 10px 15px;
@@ -12,7 +17,8 @@
    border-radius: 5px;
    margin: 10px auto;
    animation: fadeIn 2s;
-   &::placeholder{
+
+   &::placeholder {
       color: rgb(205, 206, 211);
    }
 }

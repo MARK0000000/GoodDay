@@ -6,15 +6,15 @@ import { SearchContext } from '../../context/Search';
 import { PosterCategoriesContext } from '../../context/PosterCategories';
 import { fetchGet } from '../../api/fetch';
 import useEndpoints from '../../api/apiConfig';
-import { SkeletonPosterCard } from '../../components/UI/loaders/SkeletopPosterCard'; 
+import { SkeletonPosterCard } from '../../components/UI/loaders/SkeletopPosterCard';
 import NothingFound from '../../components/UI/loaders/NothingFound';
 
 export default function Soon() {
     const endpoints = useEndpoints();
     const { setIsSearchLoading, searchValue } = useContext(SearchContext);
-    const {  selectedCategory } = useContext(PosterCategoriesContext);
-    const {city, cityName} = useContext(CityContext)
-  
+    const { selectedCategory } = useContext(PosterCategoriesContext);
+    const { city, cityName } = useContext(CityContext)
+
     const [cards, setCards] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [itemsPerPage] = useState(12);
@@ -26,41 +26,41 @@ export default function Soon() {
     };
 
     useEffect(() => {
-        setCards([]); 
-        setCurrentPage(1); 
-        setIsLoading(true); 
+        setCards([]);
+        setCurrentPage(1);
+        setIsLoading(true);
     }, [city]);
 
 
     useEffect(() => {
         const fetchData = async () => {
             if (currentPage === 1) {
-                setIsLoading(true); 
-            } 
+                setIsLoading(true);
+            }
             if (searchValue !== '') {
                 try {
                     const result = await fetchGet(`${endpoints.SEARCH_POSTER_SOON}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&keyword=${searchValue}`);
                     if (result) {
-                        setCards(prevCards => [...prevCards, ...result]); 
+                        setCards(prevCards => [...prevCards, ...result]);
                     }
                 } catch (error) {
                     console.error("Error fetching data:", error);
                 } finally {
-                    setIsSearchLoading(false); 
+                    setIsSearchLoading(false);
                     if (currentPage === 1) {
                         setIsLoading(false);
                     }
-                }    
+                }
             } else {
                 try {
                     const result = await fetchGet(`${endpoints.POSTER_CATEGORY_SOON}&pageNumber=${currentPage}&pageSize=${itemsPerPage}`);
                     if (result) {
-                        setCards(prevCards => [...prevCards, ...result]); 
+                        setCards(prevCards => [...prevCards, ...result]);
                     }
                 } catch (error) {
                     console.error("Error fetching data:", error);
                 } finally {
-                    setIsSearchLoading(false); 
+                    setIsSearchLoading(false);
                     if (currentPage === 1) {
                         setIsLoading(false);
                     }
@@ -70,14 +70,14 @@ export default function Soon() {
 
         fetchData();
 
-    }, [currentPage, city, selectedCategory, searchValue, endpoints.SEARCH_POSTER_SOON, endpoints.POSTER_CATEGORY_SOON, itemsPerPage, setIsSearchLoading]); 
+    }, [currentPage, city, selectedCategory, searchValue, endpoints.SEARCH_POSTER_SOON, endpoints.POSTER_CATEGORY_SOON, itemsPerPage, setIsSearchLoading]);
 
     return (
         <section className='postersCategoryPage'>
             <Breadcrambs mainRoute={"posters"} main={"Афиша"} current="Скоро" />
             <h1 className='postersCategoryPage__title'>Скоро в <span>{cityName}</span></h1>
             <div className="postersCategoryPage__content">
-                {isLoading && currentPage === 1 ? ( 
+                {isLoading && currentPage === 1 ? (
                     [...Array(12)].map((_, index) => (
                         <SkeletonPosterCard key={index} />
                     ))
@@ -87,9 +87,9 @@ export default function Soon() {
                     )
                 )}
             </div>
-                {(!(cards && cards.length > 0) && !isLoading) && <NothingFound/> }
+            {(!(cards && cards.length > 0) && !isLoading) && <NothingFound />}
             {cards.length >= 12 &&
-                <button 
+                <button
                     className="postersCategoryPage__button"
                     onClick={() => showMoreCards()}
                 >

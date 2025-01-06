@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
 import addImage from '../../images/add/рекламный баннер.png'
 export default function Add() {
-  
+
   return (
     <div className='add__container'>
       <Swiper
@@ -23,11 +23,11 @@ export default function Add() {
       >
         <SwiperSlide
           className='add__slide'
-          style={{height: 'auto', display: 'flex', width: "100%"}}
-          >
-            <a href="https://goodday.taplink.ws/" target='_blank' rel='noreferrer'>
-              <img src={addImage} className='add__image' alt="#"  />
-            </a>
+          style={{ height: 'auto', display: 'flex', width: "100%" }}
+        >
+          <a href="https://goodday.taplink.ws/" target='_blank' rel='noreferrer'>
+            <img src={addImage} className='add__image' alt="#" />
+          </a>
         </SwiperSlide>
 
       </Swiper>

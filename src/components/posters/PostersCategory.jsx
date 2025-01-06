@@ -1,21 +1,21 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import PosterCard from './PosterCard';
 import { NavigateContext } from '../../context/Navigate';
-import { SkeletonPosterCard } from '../../components/UI/loaders/SkeletopPosterCard'; 
+import { SkeletonPosterCard } from '../../components/UI/loaders/SkeletopPosterCard';
 import { PosterCategoriesContext } from '../../context/PosterCategories';
 
 export default function PostersCategory({ data, title, link, id, isLoading }) {
     const { typeButtonClick } = useContext(NavigateContext);
-    const { selectCategory  } = useContext(PosterCategoriesContext);
+    const { selectCategory } = useContext(PosterCategoriesContext);
     const categoryHandleNavigate = (link) => {
         selectCategory(link)
-        typeButtonClick("posters/" + link,"posters/" + link)
+        typeButtonClick("posters/" + link, "posters/" + link)
     }
     return (
         <>
-            {!(!(data && data.length > 0) && !isLoading) && 
+            {!(!(data && data.length > 0) && !isLoading) &&
                 <section className="postersCategory" id={id}>
-                    <h2 
+                    <h2
                         className={`postersCategory__title ${link && 'postersCategory__title_link'}`}
                         onClick={() => categoryHandleNavigate(link)}
                     >

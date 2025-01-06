@@ -26,14 +26,6 @@ export const SkeletonServicePage = () => (
     <rect x="70%" y="25.5%" rx="50%" ry='50%' width='5.5%' height='5.5%' />
     <rect x="80%" y="25.5%" rx="20" ry='20' width='17.5%' height='5.5%' />
 
-
-    {/* info */}
-    {/* <rect x="0%" y="39%" rx="6" ry='6' width='8%' height='3%' />
-    <rect x="0%" y="45%" rx="6" ry='6' width='30%' height='5%' />
-    <rect x="55%" y="39%" rx="6" ry='6' width='8%' height='3%' />
-    <rect x="55%" y="45%" rx="6" ry='6' width='430' height='150' /> */}
-
-
     {/* service */}
     <rect x="0%" y="39%" rx="6" ry='6' width='8%' height='3%' />
 
@@ -57,12 +49,5 @@ export const SkeletonServicePage = () => (
     <rect x="83%" y="57.5%" rx="20" ry='20' width='17%' height='4%' />
     <rect x="45%" y="58.5%" rx="6" ry='6' width='8%' height='1.5%' />
     <rect x="65%" y="58.5%" rx="6" ry='6' width='8%' height='1.5%' />
-
-
-
-
-
-
-
   </ContentLoader>
 );

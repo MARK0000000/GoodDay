@@ -9,12 +9,12 @@ import QuestionsBlock from '../../components/aboutAppPage/QuestionsBlock'
 export default function AboutApp() {
   return (
     <>
-      <InfoAboutCompany/>
-      <HowItWorks/>
-      <Opportunities/>
-      <Invitation/>
-      <Ratings/>
-      <QuestionsBlock/>
+      <InfoAboutCompany />
+      <HowItWorks />
+      <Opportunities />
+      <Invitation />
+      <Ratings />
+      <QuestionsBlock />
     </>
   )
 }

@@ -9,7 +9,7 @@ import next from '../../images/icons/next.svg'
 import useEndpoints from '../../api/apiConfig';
 
 export default function PostersInfo({ data }) {
-  const swiperRef = useRef(null); 
+  const swiperRef = useRef(null);
   const endpoints = useEndpoints();
 
   const handleNext = () => {
@@ -20,50 +20,50 @@ export default function PostersInfo({ data }) {
 
   const handlePrev = () => {
     if (swiperRef.current) {
-      swiperRef.current.swiper.slidePrev(); 
+      swiperRef.current.swiper.slidePrev();
     }
   };
   return (
     <>
-    {data.length > 0 &&
-      <div className='postersInfo'>
-        <Swiper
-          ref={swiperRef} 
-          spaceBetween={20}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-          pagination={false} 
-          modules={[Pagination, Autoplay]}
-          slidesPerView={'auto'} 
-        >
-          {data.map((item, index) => (
-            <SwiperSlide
-              key={index}
-              className='postersInfo__slide'
-              style={{ width: '75%', height: 'auto', display: 'flex' }}
-            >
-              <div className='postersInfo__slideContainer'>
-                  <img src={`${endpoints.UPLOADS + item.image.url}`}  className='postersInfo__image' alt="" />
+      {data.length > 0 &&
+        <div className='postersInfo'>
+          <Swiper
+            ref={swiperRef}
+            spaceBetween={20}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            pagination={false}
+            modules={[Pagination, Autoplay]}
+            slidesPerView={'auto'}
+          >
+            {data.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                className='postersInfo__slide'
+                style={{ width: '75%', height: 'auto', display: 'flex' }}
+              >
+                <div className='postersInfo__slideContainer'>
+                  <img src={`${endpoints.UPLOADS + item.image.url}`} className='postersInfo__image' alt="" />
                   <div className='postersInfo__descriptionBlock'>
-                      <p className="postersInfo__description">{item.description}</p>
-                      <a href={item.link} target='_blank' className="postersInfo__link" rel="noreferrer">{item.linkName}</a>
+                    <p className="postersInfo__description">{item.description}</p>
+                    <a href={item.link} target='_blank' className="postersInfo__link" rel="noreferrer">{item.linkName}</a>
                   </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-  
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
           <button onClick={handlePrev} className="custom-button custom-button_prev">
-              <img src={prev} alt="" className="custom-button_img_prev" />
+            <img src={prev} alt="" className="custom-button_img_prev" />
           </button>
           <button onClick={handleNext} className="custom-button custom-button_next">
-              <img src={next} alt="" className="custom-button_img_next" />
+            <img src={next} alt="" className="custom-button_img_next" />
           </button>
-      </div>
-        }
+        </div>
+      }
     </>
   );
 }

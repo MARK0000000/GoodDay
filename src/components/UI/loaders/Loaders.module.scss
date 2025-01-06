@@ -1,85 +1,105 @@
-.nothingFound{
+.nothingFound {
     font-size: 34px;
     margin: 20px auto;
     text-align: center;
     font-family: 'Segoe UI'
 }
-.contentLoader{
+
+.contentLoader {
     width: 100%;
-    max-width: 100%; 
+    max-width: 100%;
     height: 523px;
 }
-.businessPageMedia{
+
+.businessPageMedia {
     padding: 0 10px;
 }
+
 .loadingSpinner {
-    border: 4px solid transparent; 
-    border-top: 4px solid white; 
+    border: 4px solid transparent;
+    border-top: 4px solid white;
     border-radius: 50%;
-    width: 25px; 
-    height: 25px; 
-    animation: spin 1s linear infinite; 
+    width: 25px;
+    height: 25px;
+    animation: spin 1s linear infinite;
 }
-.skeletonContentService{
+
+.skeletonContentService {
     height: 251px;
 }
-.posterCategory__content{
+
+.posterCategory__content {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 15px;
 }
+
 @keyframes spin {
     0% {
-        transform: rotate(0deg); 
+        transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
+
 @media (max-width: 1024px) {
-    .servicePage{
+    .servicePage {
         padding: 0px 10px;
-    }    
-    .servicePageMedia{
+    }
+
+    .servicePageMedia {
         padding: 0px 10px;
-    }    
+    }
+
     .contentLoader {
-        height: 397px; 
+        height: 397px;
     }
-    .businessPage{
+
+    .businessPage {
         padding: 0px 10px;
     }
-    .skeletonContentService{
+
+    .skeletonContentService {
         height: 242px;
-    }    
-    .posterCategory{
+    }
+
+    .posterCategory {
         padding: 0px 10px;
     }
-    
+
 }
+
 @media (max-width: 768px) {
     .contentLoader {
-        height: 354px; 
+        height: 354px;
     }
-    .nothingFound{
+
+    .nothingFound {
         font-size: 22px;
     }
-    .posterCategory__content{
+
+    .posterCategory__content {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
-    }    
-    .skeletonContentService{
+    }
+
+    .skeletonContentService {
         height: 271px;
-    }    
+    }
 }
+
 @media (max-width: 480px) {
     .contentLoader {
-        height: 354px; 
+        height: 354px;
     }
-    .nothingFound{
+
+    .nothingFound {
         font-size: 18px;
     }
-    .skeletonContentService{
+
+    .skeletonContentService {
         height: 377px;
-    }    
+    }
 }

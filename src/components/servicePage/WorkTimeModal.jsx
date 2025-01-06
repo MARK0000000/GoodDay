@@ -16,7 +16,7 @@ export default function WorkTimeModal({ workTimeDetailed, workTimeModalActive })
     <div className={`serviceContent__workTimeDetailed ${workTimeModalActive && 'serviceContent__workTimeDetailed_active'}`}>
       {workTimeDetailed.map((day, index) => (
         <span key={index}>
-          {day.isDayOff 
+          {day.isDayOff
             ? `${daysOfWeek[index]}: Выходной`
             : `${daysOfWeek[index]}: ${day.start}:00 - ${day.end}:00`}
         </span>

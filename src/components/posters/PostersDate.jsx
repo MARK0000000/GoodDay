@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { ru } from 'date-fns/locale'; 
+import { ru } from 'date-fns/locale';
 import chioceDate from '../../images/icons/choiceDate.svg';
 
 
@@ -10,7 +10,7 @@ registerLocale('ru', ru);
 
 const getFormattedDateParts = (date) => {
   const day = date.toLocaleDateString('ru-RU', { day: 'numeric' });
-  const month = date.toLocaleDateString('ru-RU', { month: 'long' }).slice(0, 4) + '.'; 
+  const month = date.toLocaleDateString('ru-RU', { month: 'long' }).slice(0, 4) + '.';
   const weekdays = {
     'понедельник': 'пн',
     'вторник': 'вт',
@@ -22,30 +22,30 @@ const getFormattedDateParts = (date) => {
   };
 
   const fullWeekday = date.toLocaleDateString('ru-RU', { weekday: 'long' });
-  const weekday = weekdays[fullWeekday]; 
+  const weekday = weekdays[fullWeekday];
 
-  const isWeekend = (date.getDay() === 0 || date.getDay() === 6); 
-  
+  const isWeekend = (date.getDay() === 0 || date.getDay() === 6);
+
   return { day, month, weekday, isWeekend };
 };
 
-const PostersDate = ({setStartDate, startDate, setSelectedDate, selectedDate, resetPage, allDates, toggleAllDates}) => {
+const PostersDate = ({ setStartDate, startDate, setSelectedDate, selectedDate, resetPage, allDates, toggleAllDates }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(14)
-  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false); 
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
   const [widthOfDevice] = useState(window.innerWidth);
 
   useEffect(() => {
     if (widthOfDevice <= 1024) {
       setItemsPerPage(12)
-    } 
+    }
     if (widthOfDevice <= 768) {
       setItemsPerPage(10)
-    } 
+    }
     if (widthOfDevice <= 480) {
       setItemsPerPage(8)
-    } 
+    }
 
   }, [widthOfDevice])
 
@@ -71,10 +71,10 @@ const PostersDate = ({setStartDate, startDate, setSelectedDate, selectedDate, re
   };
 
   const handleSelectDateFromPagination = (date) => {
-      toggleAllDates(false)
-      setSelectedDate(date.toISOString().split('T')[0]);
-      setStartDate(date); 
-      resetPage && resetPage()
+    toggleAllDates(false)
+    setSelectedDate(date.toISOString().split('T')[0]);
+    setStartDate(date);
+    resetPage && resetPage()
   };
 
   const dates = generateDates();
@@ -86,7 +86,7 @@ const PostersDate = ({setStartDate, startDate, setSelectedDate, selectedDate, re
         </button>
 
         <div className={`postersDate__item postersDate__item_all ${allDates ? 'postersDate__item_selected' : ''}`} onClick={() => toggleAllDates(true)} >
-          <span className="postersDate__day">Всё</span> 
+          <span className="postersDate__day">Всё</span>
         </div>
 
         {dates.map((date, index) => {
@@ -94,18 +94,18 @@ const PostersDate = ({setStartDate, startDate, setSelectedDate, selectedDate, re
           const isSelected = date.toISOString().split('T')[0] === selectedDate;
 
           return (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`postersDate__item ${(isSelected && !allDates) ? 'postersDate__item_selected' : ''}`}
-              onClick={() => handleSelectDateFromPagination(date)} 
+              onClick={() => handleSelectDateFromPagination(date)}
             >
-              <span className={`postersDate__weekday ${isWeekend ? 'postersDate__weekday_weekend' : ''}`}>{weekday}</span> 
-              <span className="postersDate__day">{day}</span> 
+              <span className={`postersDate__weekday ${isWeekend ? 'postersDate__weekday_weekend' : ''}`}>{weekday}</span>
+              <span className="postersDate__day">{day}</span>
               <span className="postersDate__month">{month}</span>
             </div>
           );
         })}
-        
+
         <button className='postersDate__choiceDate' onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}>
           <img src={chioceDate} alt="" />
         </button>
@@ -116,14 +116,14 @@ const PostersDate = ({setStartDate, startDate, setSelectedDate, selectedDate, re
               selected={startDate}
               onChange={(date) => {
                 setStartDate(date);
-                setSelectedDate(date.toISOString().split('T')[0]); 
-                setCurrentPage(0); 
-                setIsDatePickerOpen(false); 
+                setSelectedDate(date.toISOString().split('T')[0]);
+                setCurrentPage(0);
+                setIsDatePickerOpen(false);
                 toggleAllDates(false)
               }}
-              locale="ru" 
-              dateFormat="dd.MM.yyyy" 
-              inline 
+              locale="ru"
+              dateFormat="dd.MM.yyyy"
+              inline
             />
           </div>
         )}

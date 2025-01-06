@@ -11,7 +11,7 @@ export const SkeletonDiscountPage = () => (
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
   >
-    
+
     {/* img */}
     <rect x="0" y="0" rx="6" ry='6' width='25.5%' height='45%' />
     {/* content */}

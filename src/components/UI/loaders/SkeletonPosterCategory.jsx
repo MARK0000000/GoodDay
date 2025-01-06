@@ -14,12 +14,12 @@ export const SkeletonPosterCategory = () => (
     <rect x="0" y="20" rx="25" ry='25' width='30%' height='30' />
 
     <div className='postersCategory__content'>
-            <SkeletonPosterCard/>
-            <SkeletonPosterCard/>
-            <SkeletonPosterCard/>
-            <SkeletonPosterCard/>
-            <SkeletonPosterCard/>
-            <SkeletonPosterCard/>
+      <SkeletonPosterCard />
+      <SkeletonPosterCard />
+      <SkeletonPosterCard />
+      <SkeletonPosterCard />
+      <SkeletonPosterCard />
+      <SkeletonPosterCard />
     </div>
   </ContentLoader>
 );

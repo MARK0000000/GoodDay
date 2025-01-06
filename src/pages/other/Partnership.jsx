@@ -34,10 +34,10 @@ export default function Partnership() {
   const validateInput = (inputValue, inputName) => {
     if (!inputValue.trim()) {
       setErrors((prevErrors) => ({ ...prevErrors, [inputName]: 'Поле не заполнено' }));
-      return false; 
+      return false;
     } else {
       setErrors((prevErrors) => ({ ...prevErrors, [inputName]: '' }));
-      return true; 
+      return true;
     }
   };
 
@@ -96,7 +96,7 @@ export default function Partnership() {
         setIsLoading(false);
       }
     } else {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 

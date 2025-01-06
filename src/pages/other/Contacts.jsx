@@ -11,7 +11,7 @@ export default function Contacts() {
           <a href="mailto::support@good-day.by" target='_blank' className="contacts__link" rel="noreferrer">support@good-day.by</a>
         </div>
         <div className="contacts__block">
-        <h3 className="contacts__title">Вопросы и предложения по партнерству</h3>
+          <h3 className="contacts__title">Вопросы и предложения по партнерству</h3>
           <a href="mailto::partners@good-day.by" target='_blank' className="contacts__link" rel="noreferrer">partners@good-day.by</a>
           <p className="contacts__text">Подробная информация на сайте <a href="http://partners.good-day.by/" target="_blank" className="contacts__link" rel="noreferrer">partners.good-day.by</a></p>
         </div>
@@ -20,19 +20,19 @@ export default function Contacts() {
         <h3 className="contacts__title contacts__title_big">Новости, акции и специальные предложения от наших партнеров</h3>
         <div className="contacts__item">
           <button className="contacts__button">
-              <a href="https://instagram.com/good_day_info/" target="_blank" rel="noreferrer">
-                <img src={instaIcon} alt="" className="contacts__img"/>
-              </a>
-            </button>
-            <a href="https://instagram.com/good_day_info/" target="_blank" className="contacts__link" rel="noreferrer">@good_day_info</a>
+            <a href="https://instagram.com/good_day_info/" target="_blank" rel="noreferrer">
+              <img src={instaIcon} alt="" className="contacts__img" />
+            </a>
+          </button>
+          <a href="https://instagram.com/good_day_info/" target="_blank" className="contacts__link" rel="noreferrer">@good_day_info</a>
         </div>
         <div className="contacts__item">
           <button className="contacts__button">
-              <a href="https://www.tiktok.com/@good_day_news_" target="_blank" rel="noreferrer">
-                <img src={tiktokIcon} alt="" className="contacts__img"/>
-              </a>
-            </button>
-            <a href="https://www.tiktok.com/@good_day_news_" target="_blank" className="contacts__link" rel="noreferrer">@good_day_news</a>
+            <a href="https://www.tiktok.com/@good_day_news_" target="_blank" rel="noreferrer">
+              <img src={tiktokIcon} alt="" className="contacts__img" />
+            </a>
+          </button>
+          <a href="https://www.tiktok.com/@good_day_news_" target="_blank" className="contacts__link" rel="noreferrer">@good_day_news</a>
         </div>
       </div>
     </section>

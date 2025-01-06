@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import logoHeader from '../../images/other/logoHeader.svg'
 import lupa from '../../images/icons/lupa.svg'
 import { SearchContext } from '../../context/Search';
@@ -14,10 +14,10 @@ import { PosterCategoriesContext } from '../../context/PosterCategories';
 
 export default function Header() {
 
-  const {setSearchValue, isSearchLoading, searchValue, setData} = useContext(SearchContext)
-  const {cityName} = useContext(CityContext)
-  const {typeButtonClick} = useContext(NavigateContext)
-  const {setNavCategories, setSoonIsEpmty} = useContext(PosterCategoriesContext)
+  const { setSearchValue, isSearchLoading, searchValue, setData } = useContext(SearchContext)
+  const { cityName } = useContext(CityContext)
+  const { typeButtonClick } = useContext(NavigateContext)
+  const { setNavCategories, setSoonIsEpmty } = useContext(PosterCategoriesContext)
   const searchInput = useRef()
   const [cityModalActive, setCityModalActive] = useState(false)
 
@@ -26,7 +26,7 @@ export default function Header() {
     setCityModalActive(false)
   }
   const [burgerActive, setBurgerActive] = useState(false)
-  
+
 
   function handleSearch(event) {
     event.preventDefault()
@@ -38,10 +38,10 @@ export default function Header() {
       setSearchValue(value)
     }
   }
-  
+
   const handleClearSearch = () => {
-    searchInput.current.value = ''; 
-    setSearchValue(''); 
+    searchInput.current.value = '';
+    setSearchValue('');
     setNavCategories([])
     setData([])
     setSoonIsEpmty(true)
@@ -54,12 +54,12 @@ export default function Header() {
         <div className='header__firstLine'>
           <span className='header__location'
             onClick={(e) => {
-              e.stopPropagation(); 
-              setCityModalActive(prevState => !prevState); 
-            }}>                
-              {cityName}
+              e.stopPropagation();
+              setCityModalActive(prevState => !prevState);
+            }}>
+            {cityName}
           </span>
-          <CityModal active={cityModalActive} onClose={closeCityModal}/>
+          <CityModal active={cityModalActive} onClose={closeCityModal} />
           <img src={iconMenu} alt="#" className="header__burger" onClick={() => setBurgerActive(true)} />
           <div className={`header__about ${burgerActive && 'header__about_active'}`}>
             <img src={closeIcon} alt="#" className="header__close" onClick={() => setBurgerActive(false)} />
@@ -72,31 +72,31 @@ export default function Header() {
         </div>
 
         <div className='header__secondLine'>
-          <a onClick={() => typeButtonClick('discounts', 'discounts')}>
+          <a onClick={() => typeButtonClick('posters', 'posters')}>
             <img src={logoHeader} alt="#" className="header__logo" />
           </a>
           <form action="" className="header__search-box" onSubmit={handleSearch}>
-            <input 
-              ref={searchInput} 
-              type="text" 
-              className="header__search" 
+            <input
+              ref={searchInput}
+              type="text"
+              className="header__search"
               placeholder='Поиск услуг и компаний...'
             />
             <div className='header__search-iconBox'>
               <button>
                 {(isSearchLoading === true && searchValue !== '') ?
-                  <LoadingSpinner/>
+                  <LoadingSpinner />
                   :
                   (isSearchLoading === false && searchValue !== '') ?
-                      <img className='header__search-icon_cross' src={crossIcon} alt="#" onClick={() => handleClearSearch()}/>
-                      :
-                      <img className='header__search-icon' src={lupa} alt="#" />
+                    <img className='header__search-icon_cross' src={crossIcon} alt="#" onClick={() => handleClearSearch()} />
+                    :
+                    <img className='header__search-icon' src={lupa} alt="#" />
                 }
               </button>
             </div>
           </form>
         </div>
-        <NavPages/>
+        <NavPages />
       </div>
     </header>
   )

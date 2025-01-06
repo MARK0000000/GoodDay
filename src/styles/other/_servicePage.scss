@@ -3,53 +3,63 @@
     gap: 20px;
     grid-template-rows: 340px;
     grid-template-columns: 255px 1fr;
-    &__info{
+
+    &__info {
         margin-top: 50px;
         display: flex;
         justify-content: space-between;
     }
-    &__workTimeDetailed{
+
+    &__workTimeDetailed {
         background-color: white;
         position: absolute;
         border-radius: 25px;
         padding: 15px;
         font-size: 12px;
         display: none;
-        &_active{
+
+        &_active {
             display: flex;
             flex-direction: column;
             z-index: 2;
         }
     }
+
     &__img-box {
         border-radius: 25px;
         max-width: 255px;
     }
-    &__img-container{
+
+    &__img-container {
         height: 340px;
     }
+
     &__img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 25px;
     }
+
     &__content {
         position: relative;
         border-radius: 25px;
         background-color: rgb(242, 242, 246);
         padding: 20px;
     }
+
     &__firstLine {
         @include f(flex-start, center);
-        div{
+
+        div {
             @include f(flex-start, flex-start);
             flex-direction: column;
             max-width: 100%;
-            min-height: 0; 
+            min-height: 0;
             overflow: hidden;
         }
     }
+
     &__imgSmall {
         height: 90px;
         aspect-ratio: 16/9;
@@ -58,8 +68,9 @@
         background-color: rgb(183, 183, 183);
         margin-right: 10px;
     }
+
     &__title {
-        min-height: 0; 
+        min-height: 0;
         max-width: 100%;
         font-size: 24px;
         font-family: 'Segoe UI';
@@ -67,84 +78,98 @@
         margin-bottom: 10px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2; 
+        -webkit-line-clamp: 2;
         line-clamp: 2;
-        overflow: hidden; 
-        text-overflow: ellipsis; 
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
-    &__description{
+
+    &__description {
         font-size: 16px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2; 
+        -webkit-line-clamp: 2;
         line-clamp: 2;
-        overflow: hidden; 
-        text-overflow: ellipsis; 
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
+
     &__address {
         display: block;
         margin-top: 10px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2; 
+        -webkit-line-clamp: 2;
         line-clamp: 2;
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-        &::before{
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &::before {
             content: url('../../images/icons/addressSmall.svg');
             margin-right: 5px;
             position: relative;
             bottom: -3px;
         }
     }
+
     &__phone {
         display: block;
         margin-top: 10px;
-        &::before{
+
+        &::before {
             content: url('../../images/icons/phoneIcon.svg');
             margin-right: 5px;
             position: relative;
             bottom: -3px;
         }
     }
+
     &__workTime {
         margin-top: 10px;
         display: block;
-        &::before{
+
+        &::before {
             content: url('../../images/icons/clockIcon.svg');
             margin-right: 5px;
             position: relative;
             bottom: -2px;
         }
-        &_list{
-            &::after{
+
+        &_list {
+            &::after {
                 content: url('../../images/icons/moreNavHeader.svg');
                 margin-left: 5px;
                 transition: transform 0.3s;
                 display: inline-block;
-            }  
-            &_active::after{
+            }
+
+            &_active::after {
                 transform: rotate(-180deg) !important;
             }
         }
     }
+
     &__socialBox {
         margin-top: 15px;
         @include f(flex-start, flex-start);
         margin-bottom: 50px;
     }
+
     &__social {
         margin-right: 10px;
     }
+
     &__bottom {
         @include f(space-between, center);
         position: absolute;
         right: 25px;
         bottom: 25px
     }
+
     &__buttons {
         @include f(flex-start, flex-start);
     }
+
     &__buttonSendMassage {
         margin-right: 15px;
         height: 50px;
@@ -153,6 +178,7 @@
         background-color: #CAE1FF;
         @include f(center, center);
     }
+
     &__button {
         background-color: #3A5A91;
         border-radius: 12px;
@@ -160,71 +186,85 @@
         color: white;
     }
 }
+
 .serviceList {
     margin-top: 30px;
     margin-bottom: 30px;
+
     &__title {
         font-size: 20px;
         font-family: 'Segoe UI';
         font-weight: 700;
         margin-bottom: 30px;
-    span{
-        color: #8A99A0;
+
+        span {
+            color: #8A99A0;
+        }
     }
-    }
+
     &__item {
         @include f(space-between, center);
         margin-bottom: 10px;
     }
+
     &__left {
-    @include f(flex-start, center);
-    img{
-        width: 50px;
-        height: 50px;
-        border-radius: 10px;
-        margin-right: 10px;
+        @include f(flex-start, center);
+
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
     }
-    }
+
     &__item-title {
         width: 310px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2; 
+        -webkit-line-clamp: 2;
         line-clamp: 2;
-        overflow: hidden; 
-        text-overflow: ellipsis; 
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
+
     &__description {
         width: 310px;
         margin-right: 10px;
         color: #8A99A0;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2; 
+        -webkit-line-clamp: 2;
         line-clamp: 2;
-        overflow: hidden; 
-        text-overflow: ellipsis; 
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
+
     &__right {
         width: 50%;
         @include f(space-between, center);
     }
+
     &__price {
         min-width: 100px;
     }
+
     &__time {
         min-width: 100px;
     }
+
     &__item-button {
         background-color: #EEEEEF;
         padding: 10px 50px;
         border-radius: 50px;
         color: #3A5A91;
     }
+
     &__button {
-        a{
+        a {
             color: white;
         }
+
         position: relative;
         left: 50%;
         transform: translateX(-50%);

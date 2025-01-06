@@ -2,28 +2,35 @@
     .promotionPage {
         padding: 0px 10px;
     }
+
     .map {
-        width: 100vw; 
+        width: 100vw;
+
         &__content {
             left: 0%;
         }
     }
+
     .discountPage {
         padding: 0px 10px;
     }
-    
+
 }
+
 @media (max-width: 768px) {
     .promotionPage {
         &__firstLine {
-           margin-bottom: 10px;
+            margin-bottom: 10px;
         }
+
         &__title {
-           font-size: 16px;
+            font-size: 16px;
         }
+
         &__text {
-           font-size: 12px;
+            font-size: 12px;
         }
+
         &__img-box {
             max-width: none;
             max-height: none;
@@ -31,99 +38,120 @@
             grid-row-start: 1;
             grid-row-end: 2;
         }
+
         &__button {
-           height: 40px;
-           width: 40px;
-           margin-right: 5px;
-           &_big {
-              a{
-                 padding: 16px 25px;
-                 color: black;
-              }
-           }
+            height: 40px;
+            width: 40px;
+            margin-right: 5px;
+
+            &_big {
+                a {
+                    padding: 16px 25px;
+                    color: black;
+                }
+            }
         }
 
         &__secondLine {
-           margin-bottom: 10px;
+            margin-bottom: 10px;
         }
+
         &__widgets {
-           width: 100%;
-           display: grid;
-           grid-template-columns: 100%;
-           grid-template-rows: repeat(3, auto);
-           padding-right: 0px;
-           gap: 10px;
-           position: relative;
-           margin-bottom: 20px;
-           &:first-child{
-              max-height: 150px;
-           }
-     
+            width: 100%;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: repeat(3, auto);
+            padding-right: 0px;
+            gap: 10px;
+            position: relative;
+            margin-bottom: 20px;
+
+            &:first-child {
+                max-height: 150px;
+            }
+
         }
+
         &__widgetsRight {
-           grid-row: 3/4;
-           grid-column: 1/2;     
+            grid-row: 3/4;
+            grid-column: 1/2;
         }
     }
+
     .widget {
         background-color: white;
         box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
         padding: 15px;
         border-radius: 10px;
-        &__conditions{
+
+        &__conditions {
             font-size: 12px;
         }
-        &__promoCodeBtn{
+
+        &__promoCodeBtn {
             padding: 10px 20px;
             font-size: 12px;
         }
-        &__shareContainer{
+
+        &__shareContainer {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        &_contact{
+
+        &_contact {
             margin-bottom: 10px;
         }
+
         &__title {
-           font-size: 14px;
-           margin-bottom: 10px
+            font-size: 14px;
+            margin-bottom: 10px
         }
+
         &__content {
-           margin-bottom: 10px
+            margin-bottom: 10px
         }
+
         &__text-box {
-           @include f(flex-start, flex-start);
-           flex-direction: column;
-           margin-right: 10px;
+            @include f(flex-start, flex-start);
+            flex-direction: column;
+            margin-right: 10px;
         }
+
         &__text {
             font-size: 12px;
-           &_gray {
-              margin-bottom: 10px;
-           }
+
+            &_gray {
+                margin-bottom: 10px;
+            }
         }
+
         &__item {
             @include f(flex-start, center);
             gap: 10px;
             margin-bottom: 10px;
-            &_share{
+
+            &_share {
                 align-items: center;
                 gap: 0px;
                 margin-bottom: 0px;
             }
+
             &_address {
                 position: relative;
             }
-            &_big{
+
+            &_big {
                 @include f(flex-start, flex-start);
                 margin-bottom: 0px;
             }
-            &_border{
+
+            &_border {
                 padding-bottom: 10px;
                 border-bottom: 1px solid rgb(242, 242, 244);
             }
-            &-btn{
+
+            &-btn {
                 height: 30px;
                 min-width: 30px;
                 border-radius: 10px;
@@ -131,99 +159,120 @@
                 margin-right: 5px;
                 @include f(center, center);
                 transition: border 0.2s;
-                &_selected{
+
+                &_selected {
                     border: 2px solid black;
                 }
-                &_vk{
+
+                &_vk {
                     background-color: rgb(70, 128, 194);
                     @include f(center, center);
                 }
-                &_telegram{
+
+                &_telegram {
                     background-color: rgb(68, 166, 255);
                     @include f(center, center);
                 }
-                &_viber{
+
+                &_viber {
                     background-color: rgb(116, 96, 242);
                     @include f(center, center);
                 }
-                &_ok{
+
+                &_ok {
                     background-color: rgb(238, 130, 8);
                     @include f(center, center);
                 }
-                &_mailru{
+
+                &_mailru {
                     background-color: rgb(1, 94, 249);
                     @include f(center, center);
                 }
-                &_big{
+
+                &_big {
                     height: 35px;
                     width: auto;
                     padding: 0px 20px;
                     border-radius: 10px;
                     font-size: 12px;
-                    background-color: rgb(245, 245, 245);   
+                    background-color: rgb(245, 245, 245);
                     transition: background-color 0.3s, transform 0.1s;
-                    &:hover{
+
+                    &:hover {
                         background-color: $orange;
                         color: white;
                     }
                 }
             }
         }
+
         &__item-text {
             font-size: 12px;
+
             &_green {
                 user-select: none;
                 color: green;
             }
-            &_red{
+
+            &_red {
                 color: rgb(244, 67, 54);
             }
-            &_orange{
+
+            &_orange {
                 color: rgb(255, 171, 0);
             }
-            &_big{
-            @include f(flex-start, flex-start);
-            flex-direction: column;
+
+            &_big {
+                @include f(flex-start, flex-start);
+                flex-direction: column;
             }
-            &_linkOnMap{
-            font-size: 12px;
-            cursor: pointer;
-            color: blue;
-            position: absolute;
-            bottom: -3px;
-            right: 0;
+
+            &_linkOnMap {
+                font-size: 12px;
+                cursor: pointer;
+                color: blue;
+                position: absolute;
+                bottom: -3px;
+                right: 0;
             }
         }
     }
+
     .widget-info {
         max-width: none;
         grid-row-start: 2;
         grid-row-end: 3;
+
         &__link {
             font-size: 14px;
             margin-right: 10px;
             padding-bottom: 10px;
         }
+
         &__content {
             margin-top: 10px;
             font-size: 12px;
         }
     }
+
     .map {
         min-width: 360px;
         margin-bottom: 30px;
         height: 450px;
+
         &__content {
             position: absolute;
             top: 100%;
             left: 50%;
             transform: translate(-50%, -115%);
         }
+
         &__btnBox {
             margin: 15px 0px;
             padding: 0px 15px;
             width: 100%;
         }
+
         &__button {
             padding: 10px 30px;
             background-color: $blue;
@@ -232,29 +281,33 @@
             width: 100%;
             transition: background-color 0.3s, transform 0.1s;
             font-size: 12px;
-            &:hover{
+
+            &:hover {
                 background-color: rgba(57, 83, 138, 0.7);
             }
         }
+
         &__title {
             font-size: 14px;
             margin: 15px;
             margin-bottom: 10px;
             width: 280px;
         }
-        
+
         &__item {
             margin: 15px;
             @include f(flex-start, center);
             gap: 10px;
             margin-bottom: 10px;
         }
-        &__hr{
+
+        &__hr {
             border: 1px solid rgb(242, 242, 244);
             margin-bottom: 10px;
             position: relative;
             width: 100%;
         }
+
         &__item-btn {
             height: 35px;
             min-width: 35px;
@@ -263,115 +316,135 @@
             margin-right: 3px;
             @include f(center, center);
         }
+
         &__item-text {
             font-size: 12px;
             font-weight: 500;
             word-wrap: break-word;
+
             &_green {
                 color: green;
             }
         }
     }
+
     .discountPage {
-        &__content{
+        &__content {
             grid-template-rows: 1fr;
             grid-template-columns: 100%;
             margin-bottom: 20px
         }
-        &__info{
+
+        &__info {
             padding: 20px;
         }
+
         &__shortDescription {
             font-size: 12px;
             margin-bottom: 20px;
-            display: -webkit-box; 
-            -webkit-box-orient: vertical; 
-            -webkit-line-clamp: 3; 
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
             line-clamp: 3;
-            overflow: hidden; 
-            text-overflow: ellipsis; 
-        }    
-        &__descriptionTitle{
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &__descriptionTitle {
             font-size: 16px;
             margin-bottom: 10px;
-    
+
         }
-        &__description{
+
+        &__description {
             font-size: 12px;
-            display: -webkit-box; 
-            -webkit-box-orient: vertical; 
-            -webkit-line-clamp: 7; 
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 7;
             line-clamp: 3;
-            overflow: hidden; 
-            text-overflow: ellipsis; 
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+
         &__title {
-           font-size: 20px;
-           margin-bottom: 10px;
-           display: -webkit-box;
-           -webkit-box-orient: vertical; 
-           -webkit-line-clamp: 2; 
-           line-clamp: 2;
-           overflow: hidden; 
-           text-overflow: ellipsis; 
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         &__text {
-           font-size: 12px;
-           font-weight: 500;
-           &_gray {
-              color: $iconGray;
-              display: inline;
-           }
-           &_p {
-              max-width: 500px;
-           }
+            font-size: 12px;
+            font-weight: 500;
+
+            &_gray {
+                color: $iconGray;
+                display: inline;
+            }
+
+            &_p {
+                max-width: 500px;
+            }
         }
+
         &__info-btnBox {
-              @include f(flex-end, center);
-              position: relative;
-              bottom: auto;
-              right: auto;
-              margin-top: 20px;
+            @include f(flex-end, center);
+            position: relative;
+            bottom: auto;
+            right: auto;
+            margin-top: 20px;
         }
+
         &__button {
-           height: 50px;
-           width: 50px;
-           border-radius: 15px;
-           box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
-           margin-left: 10px;
-           @include f(center, center);
-           background-color: $backGray;
-           transition: background-color 0.3s;
-           &:hover{
-              background-color: white;
-           }
-           &_big {
-              width: auto;
-              height: auto;
-              margin-right: 0;
-              background-color: $orange;
-              a{
-                 padding: 16px 25px;
-                 color: black;
-              }
-              &:hover{
-                 background-color: $orangeOpacity;
-              }
-           }
+            height: 50px;
+            width: 50px;
+            border-radius: 15px;
+            box-shadow: 1px 3px 8px 0px $iconGray, -1px 3px 8px 0px $iconGray;
+            margin-left: 10px;
+            @include f(center, center);
+            background-color: $backGray;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: white;
+            }
+
+            &_big {
+                width: auto;
+                height: auto;
+                margin-right: 0;
+                background-color: $orange;
+
+                a {
+                    padding: 16px 25px;
+                    color: black;
+                }
+
+                &:hover {
+                    background-color: $orangeOpacity;
+                }
+            }
         }
+
         &__secondLine {
-           @include f(space-between, flex-start);
-           margin-bottom: 20px;
+            @include f(space-between, flex-start);
+            margin-bottom: 20px;
         }
+
         &__link {
-           text-decoration: underline dotted;
-           text-underline-offset: 5px;
+            text-decoration: underline dotted;
+            text-underline-offset: 5px;
         }
+
         &__img-box {
             background-color: $darkGray;
             border-radius: 16px;
         }
+
         &__stock {
             z-index: 2;
             position: absolute;
@@ -385,6 +458,7 @@
             box-shadow: none;
             font-size: 12px;
         }
+
         &__img {
             width: 100%;
             border-radius: 16px;
@@ -392,6 +466,7 @@
             aspect-ratio: 9/16;
             object-fit: cover;
         }
+
         &__widgets {
             width: auto;
             display: grid;
@@ -401,25 +476,28 @@
             position: relative;
             margin-bottom: 50px;
             padding-right: 0px;
-            &:first-child{
+
+            &:first-child {
                 max-height: 150px;
             }
-     
+
         }
+
         &__widgetsRight {
             grid-row: auto;
             grid-column: auto;
         }
     }
-    
+
 
 
 }
+
 @media (max-width: 480px) {
     .promoCodeModal {
         &__img {
             display: none;
         }
     }
-    
+
 }

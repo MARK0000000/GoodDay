@@ -10,13 +10,13 @@ import { TypeOfDataContext } from './TypeOfData';
 export const SearchContext = createContext(null);
 
 export const SearchProvider = ({ children }) => {
-  const {city} = useContext(CityContext)
-  const {discountCategory, promotionCategory} = useContext(CategoriesContext)
-  const {type} = useContext(TypeOfDataContext)
+  const { city } = useContext(CityContext)
+  const { discountCategory, promotionCategory } = useContext(CategoriesContext)
+  const { type } = useContext(TypeOfDataContext)
   const endpoints = useEndpoints()
   const location = useLocation();
   const endpoint = getEndpoint(location);
-  const {categoriesLoading, categories} = useContext(PosterCategoriesContext)
+  const { categoriesLoading, categories } = useContext(PosterCategoriesContext)
   let fullPath = location.pathname.slice(1)
 
   const routes = {
@@ -41,12 +41,12 @@ export const SearchProvider = ({ children }) => {
           url = promotionCategory ? routes.promotionCategories(promotionCategory) : routes.promotions;
         } else if (endpoint === 'services') {
           url = routes.services;
-        } else if (endpoint === 'posters'){
+        } else if (endpoint === 'posters') {
           setIsSearchLoading(true)
-          setData({data: []})
-        } else if ((fullPath === 'posters' || categories.filter((category) => category.categoryRoute === fullPath.split('/')[1]).length !== 0) && typeof fullPath.split('/')[2] == "undefined"){
-            setIsSearchLoading(true);
-            setData({data: []})
+          setData({ data: [] })
+        } else if ((fullPath === 'posters' || categories.filter((category) => category.categoryRoute === fullPath.split('/')[1]).length !== 0) && typeof fullPath.split('/')[2] == "undefined") {
+          setIsSearchLoading(true);
+          setData({ data: [] })
         } else {
           console.log('Unknown endpoint');
           setIsSearchLoading(false)
@@ -63,14 +63,14 @@ export const SearchProvider = ({ children }) => {
         } catch (error) {
           console.error('Error fetching data:', error);
         }
-      } 
+      }
     };
 
     !categoriesLoading && fetchSearchData();
   }, [searchValue, endpoint, city, discountCategory, promotionCategory, type]);
 
   return (
-    <SearchContext.Provider value={{ searchValue, setSearchValue, data, setData, isSearchLoading, setIsSearchLoading,}}>
+    <SearchContext.Provider value={{ searchValue, setSearchValue, data, setData, isSearchLoading, setIsSearchLoading, }}>
       {children}
     </SearchContext.Provider>
   );

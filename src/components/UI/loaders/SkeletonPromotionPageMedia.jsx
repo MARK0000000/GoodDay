@@ -16,7 +16,7 @@ export const SkeletonPromotionPageMedia = () => (
     <rect x="0" y="3%" rx="6" ry='6' width='120' height='16' />
     <rect x="80%" y="0" rx="6" ry='6' width='20%' height='40' />
     <rect x="0" y="6%" rx="6" ry='6' width='50%' height='16' />
-    
+
     {/* img */}
     <rect x="0" y="9%" rx="6" ry='6' width='100%' height='30%' />
     {/* first widget */}

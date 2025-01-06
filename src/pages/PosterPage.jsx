@@ -1,17 +1,17 @@
-import React, {useEffect, useState, useContext} from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useLocation, useParams } from 'react-router-dom';
 import addressIcon from '../images/icons/share-map.svg.svg'
 import telIcon from '../images/icons/quick-call.svg.svg'
 import internetIcon from '../images/icons/quick-globe.svg.svg'
 import { fetchGet } from '../api/fetch';
 import useEndpoints from '../api/apiConfig';
-import { Link} from 'react-scroll';
+import { Link } from 'react-scroll';
 import { getValueOrDefault } from '../utils/getValueOrDefault';
 import Breadcrambs from '../components/main/Breadcrambs';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { SkeletonPosterPage } from '../components/UI/loaders/SkeletonPosterPage'
-import { SkeletonPosterPageMedia } from '../components/UI/loaders/SkeletonPosterPageMedia' 
+import { SkeletonPosterPageMedia } from '../components/UI/loaders/SkeletonPosterPageMedia'
 import { handleNavigateSocial } from '../utils/navigateSocial';
 import MyPosterMap from '../components/posterPage/MyPosterMap';
 import { PosterCategoriesContext } from '../context/PosterCategories';
@@ -21,11 +21,11 @@ import InfoWidget from '../components/businessPage/InfoWidget';
 
 export default function PosterPage() {
     const location = useLocation();
-    
-    const pathSegments = location.pathname.split('/'); 
-    const endpoint = pathSegments.length >= 3 ? `${pathSegments[2]}` : ''; 
-    const { categories} = useContext(PosterCategoriesContext);
-    const category = pathSegments.length >= 4 ? (categories.find(category => category.categoryRoute === endpoint) || {categoryName: "Скоро", categoryRoute: "soon"}) : (undefined)
+
+    const pathSegments = location.pathname.split('/');
+    const endpoint = pathSegments.length >= 3 ? `${pathSegments[2]}` : '';
+    const { categories } = useContext(PosterCategoriesContext);
+    const category = pathSegments.length >= 4 ? (categories.find(category => category.categoryRoute === endpoint) || { categoryName: "Скоро", categoryRoute: "soon" }) : (undefined)
     const [poster, setPoster] = useState([])
     const daysOfWeek = ['Восскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
     const monthNames = [
@@ -35,121 +35,121 @@ export default function PosterPage() {
 
     const endpoints = useEndpoints();
     const [isMobile] = useState(window.innerWidth < 768);
-    const {id} = useParams();
+    const { id } = useParams();
     const [isLoading, setIsLoading] = useState(true);
 
     const [links, setLinks] = useState()
-    const [activeLink, setActiveLink] = useState('Описание'); 
+    const [activeLink, setActiveLink] = useState('Описание');
     const handleLinkClick = (link) => {
         setActiveLink(link);
-    };  
-    
+    };
+
     useEffect(() => {
-      async function getposter() {
-        const data = await fetchGet(`${endpoints.POSTERS_BY_ID}${id}`);
-        if (data && data !== Promise) {
-            setPoster(data);
-            setLinks([
-                {
-                title: 'Описание',
-                body: data.posterDescription || "Описание не указанно",
-                },
-                {
-                title: 'Расписание',
-                link: data.webLinkTimetable,
-                body: (
-                    <div className="timetable">
-                        {data.timetable.map((item, index) => {
-                            const date = new Date(new Date().getFullYear(), item.month - 1, item.day);
-                            const dayOfWeek = daysOfWeek[date.getDay()];
-                            const monthName = monthNames[item.month - 1]; 
-                            return (
-                                <div key={index} className="timetable__item">
-                                    <div className='timetable__dateBox'>
-                                        <div className='timetable__dayMonth-box'>
-                                            <span className="timetable__day">{item.day}</span>
-                                            <span className="timetable__month">{monthName}</span>
-                                        </div>
-                                        <span className="timetable__dayOfWeek">{dayOfWeek}</span>
-                                    </div>
-                                    <div className="timetable__content">
-                                        <div className='timetable__placeBox'>
-                                            <span className="timetable__place">{data.venueName}</span>
-                                            <span className="timetable__address">{data.address.description}</span>
-                                        </div>
-                                        <div className="timetable__timeBox">
-                                            {item.time.map((item, index) =>
-                                                <div key={index} className="timetable__timeItem">
-                                                    <span className="timetable__time">{item.time}</span>
-                                                    <span className="timetable__price">{item.price}</span>
+        async function getposter() {
+            const data = await fetchGet(`${endpoints.POSTERS_BY_ID}${id}`);
+            if (data && data !== Promise) {
+                setPoster(data);
+                setLinks([
+                    {
+                        title: 'Описание',
+                        body: data.posterDescription || "Описание не указанно",
+                    },
+                    {
+                        title: 'Расписание',
+                        link: data.webLinkTimetable,
+                        body: (
+                            <div className="timetable">
+                                {data.timetable.map((item, index) => {
+                                    const date = new Date(new Date().getFullYear(), item.month - 1, item.day);
+                                    const dayOfWeek = daysOfWeek[date.getDay()];
+                                    const monthName = monthNames[item.month - 1];
+                                    return (
+                                        <div key={index} className="timetable__item">
+                                            <div className='timetable__dateBox'>
+                                                <div className='timetable__dayMonth-box'>
+                                                    <span className="timetable__day">{item.day}</span>
+                                                    <span className="timetable__month">{monthName}</span>
                                                 </div>
-                                            )}
+                                                <span className="timetable__dayOfWeek">{dayOfWeek}</span>
+                                            </div>
+                                            <div className="timetable__content">
+                                                <div className='timetable__placeBox'>
+                                                    <span className="timetable__place">{data.venueName}</span>
+                                                    <span className="timetable__address">{data.address.description}</span>
+                                                </div>
+                                                <div className="timetable__timeBox">
+                                                    {item.time.map((item, index) =>
+                                                        <div key={index} className="timetable__timeItem">
+                                                            <span className="timetable__time">{item.time}</span>
+                                                            <span className="timetable__price">{item.price}</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            )
-                        }
-                        )}
-        
-                    </div>
-                ),
-                },
-            ])
-            setActiveLink('Описание')     
-            setIsLoading(false);            
+                                    )
+                                }
+                                )}
+
+                            </div>
+                        ),
+                    },
+                ])
+                setActiveLink('Описание')
+                setIsLoading(false);
+            }
         }
-    }
-    getposter();
+        getposter();
     }, [id]);
-    
+
     return (
         <section>
             {isLoading ? (
-                isMobile ? <SkeletonPosterPageMedia/> : <SkeletonPosterPage/> 
+                isMobile ? <SkeletonPosterPageMedia /> : <SkeletonPosterPage />
             ) : (
-            <>
-                <Breadcrambs mainRoute={"posters"} main={"Афиша"} elements={ category && [{path: `/posters/${category.categoryRoute}`, text: category.categoryName}]} current={poster.posterName}/>
-                <article className="posterPage">
-                    <div className="posterPage__firstLine"> 
-                        <div className="posterPage__firstLine-textBox">
-                            <h3 className="posterPage__title">{getValueOrDefault(poster.posterName, 'Название не указано')}</h3>
-                            <div className="posterPage__text-box">
-                                {poster.categories.map((item, index) =>
-                                    <span key={index} className="posterPage__text posterPage__text_gray">{item.categoryName} </span>
-                                )}
+                <>
+                    <Breadcrambs mainRoute={"posters"} main={"Афиша"} elements={category && [{ path: `/posters/${category.categoryRoute}`, text: category.categoryName }]} current={poster.posterName} />
+                    <article className="posterPage">
+                        <div className="posterPage__firstLine">
+                            <div className="posterPage__firstLine-textBox">
+                                <h3 className="posterPage__title">{getValueOrDefault(poster.posterName, 'Название не указано')}</h3>
+                                <div className="posterPage__text-box">
+                                    {poster.categories.map((item, index) =>
+                                        <span key={index} className="posterPage__text posterPage__text_gray">{item.categoryName} </span>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="posterPage__firstLine-btnBox">
+                                {poster.phone &&
+                                    <button className="posterPage__button">
+                                        <a href={`tel:${poster.phone}`} >
+                                            <img src={telIcon} alt="" />
+                                        </a>
+                                    </button>
+                                }
+                                {poster.webLink &&
+                                    <button className="posterPage__button">
+                                        <a onClick={() => handleNavigateSocial('web', `${poster.webLink}`)}>
+                                            <img src={internetIcon} alt="" />
+                                        </a>
+                                    </button>
+                                }
+                                {poster.address &&
+                                    <button className="posterPage__button">
+                                        <Link to="map" smooth={true}>
+                                            <img src={addressIcon} alt="" />
+                                        </Link>
+                                    </button>
+                                }
                             </div>
                         </div>
-                        <div className="posterPage__firstLine-btnBox">
-                            {poster.phone &&
-                                <button className="posterPage__button">
-                                    <a href={`tel:${poster.phone}`} >
-                                        <img src={telIcon} alt="" />
-                                    </a>
-                                </button>
-                            }
-                            {poster.webLink &&
-                                <button className="posterPage__button">
-                                    <a onClick={() => handleNavigateSocial('web', `${poster.webLink}`)}>
-                                        <img src={internetIcon} alt="" />
-                                    </a>
-                                </button>
-                            }
-                            {poster.address &&
-                                <button className="posterPage__button">
-                                    <Link to="map" smooth={true}>
-                                        <img src={addressIcon} alt="" />
-                                    </Link>
-                                </button>
-                            }
+                        <div className="posterPage__secondLine">
+                            <p className="posterPage__text posterPage__text_p">{getValueOrDefault(poster.shortPosterDescription, 'Описание не указано')}</p>
                         </div>
-                    </div>
-                    <div className="posterPage__secondLine">
-                        <p className="posterPage__text posterPage__text_p">{getValueOrDefault(poster.shortPosterDescription, 'Описание не указано')}</p>
-                    </div>
-                    <div className="posterPage__widgets">
-                        <div className="posterPage__img-box">
+                        <div className="posterPage__widgets">
+                            <div className="posterPage__img-box">
                                 <Swiper
-                                    style={{height: '100%'}}
+                                    style={{ height: '100%' }}
                                     spaceBetween={50}
                                     autoplay={{
                                         delay: 5000,
@@ -160,25 +160,25 @@ export default function PosterPage() {
                                         clickable: true,
                                     }}
                                     modules={[Pagination, Autoplay]}
-                                    >
+                                >
 
-                                    {poster.images.map((item, index) => 
-                                        <SwiperSlide  key={index} >
-                                            <img src={endpoints.UPLOADS + item.url} alt="" className="posterPage__img"/>
+                                    {poster.images.map((item, index) =>
+                                        <SwiperSlide key={index} >
+                                            <img src={endpoints.UPLOADS + item.url} alt="" className="posterPage__img" />
                                         </SwiperSlide>
                                     )}
                                 </Swiper>
+                            </div>
+                            <InfoWidget links={links} activeLink={activeLink} handleLinkClick={handleLinkClick} />
+                            <div className='posterPage__widgetsRight'>
+                                <ContactsWidget business={poster} />
+                                <ShareWidget />
+                            </div>
                         </div>
-                        <InfoWidget links={links} activeLink={activeLink} handleLinkClick={handleLinkClick}/>
-                        <div className='posterPage__widgetsRight'>
-                            <ContactsWidget business={poster}/>
-                            <ShareWidget/>
-                        </div>
-                    </div>
-                </article>
-                <MyPosterMap data={poster}/>
-            </>
+                    </article>
+                    <MyPosterMap data={poster} />
+                </>
             )}
         </section>
-  )
+    )
 }

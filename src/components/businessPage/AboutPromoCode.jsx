@@ -1,12 +1,13 @@
-// AboutPromoCode.js
 import React from 'react';
 import { formatDate } from '../../utils/formatDate';
 import { getValueOrDefault } from '../../utils/getValueOrDefault';
-import PromoCodeModal from './PromoCodeModal'; 
+import PromoCodeModal from './PromoCodeModal';
 import { Fancybox } from '@fancyapps/ui';
 import ReactDOM from 'react-dom';
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
 export default function AboutPromoCode({ business }) {
+
   const handleGetPromoCode = () => {
 
     const modalContainer = document.createElement('div');
@@ -14,13 +15,13 @@ export default function AboutPromoCode({ business }) {
     Fancybox.show([
       {
         src: modalContainer,
-        type: 'html', 
+        type: 'html',
         opts: {
-            hideClass: false, 
-            hideScrollbar: false, 
-            animationEffect: 'none', 
-            transitionEffect: 'none', 
-          },
+          hideClass: false,
+          hideScrollbar: false,
+          animationEffect: 'none',
+          transitionEffect: 'none',
+        },
       },
     ]);
 

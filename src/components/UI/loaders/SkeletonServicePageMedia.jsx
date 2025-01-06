@@ -13,7 +13,7 @@ export const SkeletonServicePageMedia = () => (
   >
     {/* content */}
     <rect x="0" y="0" rx="25" ry='25' width='100%' height='50%' />
-    
+
     <rect x="20" y="54%" rx="6" ry='6' width='30%' height='2%' />
     <rect x="20" y="56.5%" rx="6" ry='6' width='30%' height='1.5%' />
     <rect x="20" y="60%" rx="6" ry='6' width='30%' height='1.5%' />
@@ -24,15 +24,6 @@ export const SkeletonServicePageMedia = () => (
 
     <rect x="55%" y="67%" rx="50%" ry='50%' width='50' height='50' />
     <rect x="72%" y="67%" rx="20" ry='20' width='25%' height='50' />
-
-
-    {/* info
-    <rect x="0" y="43%" rx="6" ry='6' width='20%' height='3%' />
-    <rect x="0" y="47%" rx="6" ry='6' width='100%' height='5%' />
-
-    <rect x="0" y="54%" rx="6" ry='6' width='20%' height='3%' />
-    <rect x="0" y="58%" rx="6" ry='6' width='100%' height='150' />
- */}
 
     {/* service */}
     <rect x="0%" y="72%" rx="6" ry='6' width='20%' height='3%' />

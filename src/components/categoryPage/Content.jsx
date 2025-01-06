@@ -1,11 +1,11 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { changePageNumbers } from '../../utils/pagination';
-import Pagination from '../content/Pagination';
-import BusinessCard from '../content/BusinessCard';
+import Pagination from './content/Pagination';
+import BusinessCard from './content/BusinessCard';
 import NothingFound from '../UI/loaders/NothingFound';
 
 export default function Content({ businesses, itemsPerPage, currentPage, setCurrentPage, totalCount, currentPageNumbers, updateCurrentPageNumbers, searchData }) {
-  const [businessCards, setBusinessCards] = useState(businesses); 
+  const [businessCards, setBusinessCards] = useState(businesses);
 
   const [indexOfFirstPage, setIndexOfFirstPage] = useState(0);
   const [indexOfLastPage, setIndexOfLastPage] = useState(0);
@@ -37,10 +37,10 @@ export default function Content({ businesses, itemsPerPage, currentPage, setCurr
 
     updateIndexOfLastPage();
 
-    window.addEventListener('resize', updateIndexOfLastPage); 
+    window.addEventListener('resize', updateIndexOfLastPage);
 
     return () => {
-      window.removeEventListener('resize', updateIndexOfLastPage); 
+      window.removeEventListener('resize', updateIndexOfLastPage);
     };
   }, [pageNumbers]);
 

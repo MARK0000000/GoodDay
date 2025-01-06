@@ -1,4 +1,3 @@
-// PromoCodeModal.js
 import React from 'react';
 import googlePlay from '../../images/icons/googleplayBlack.svg';
 import appstore from '../../images/icons/appstoreBlack.svg';
@@ -14,7 +13,7 @@ export default function PromoCodeModal({ promoCodeRules }) {
   return (
     <div className='promoCodeModal'>
       <button className="promoCodeModal__close" onClick={handleClose} aria-label="Close">
-        &times; 
+        &times;
       </button>
       <h4 className="promoCodeModal__title">Промокод</h4>
       <p className="promoCodeModal__text">{promoCodeRules}</p>

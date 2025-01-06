@@ -1,22 +1,27 @@
-.posters{
+.posters {
     margin: 30px 0px;
-    &__title{
+
+    &__title {
         text-align: center;
         font-size: 37px;
         font-weight: 700;
         font-family: "Segoe UI";
+
         span {
             color: #FF922E;
         }
     }
 }
+
 .postersInfo {
     position: relative;
     margin: 0px 20px 30px 20px;
-    &__slideContainer{
+
+    &__slideContainer {
         position: relative;
         width: 100%;
     }
+
     &__image {
         width: 100%;
         aspect-ratio: 16/9;
@@ -24,7 +29,8 @@
         object-fit: cover;
 
     }
-    &__descriptionBlock{
+
+    &__descriptionBlock {
         position: absolute;
         left: 50px;
         bottom: 50px;
@@ -34,22 +40,25 @@
         z-index: 2;
         padding: 15px;
     }
-    &__link{
+
+    &__link {
         display: block;
     }
+
     &__description {
         color: white;
         font-size: 24px;
         font-weight: 700;
         font-family: "Segoe UI";
-        display: -webkit-box;        
-        -webkit-box-orient: vertical; 
-        -webkit-line-clamp: 3; 
-        line-clamp: 3;      
-        overflow: hidden;             
-        text-overflow: ellipsis;      
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
+
 .custom-button {
     height: 40px;
     width: 40px;
@@ -59,12 +68,14 @@
     justify-content: center;
     align-items: center;
     z-index: 3;
+
     &_prev {
         position: absolute;
         top: 50%;
         left: 0px;
         transform: translate(-50%, -50%);
     }
+
     &_next {
         position: absolute;
         top: 50%;
@@ -72,12 +83,14 @@
         transform: translate(50%, -50%);
     }
 }
+
 .postersDate {
     font-family: "Segoe UI";
     display: flex;
     position: relative;
     margin-bottom: 30px;
-    &__choiceDate{
+
+    &__choiceDate {
         background-color: white;
         display: flex;
         align-items: center;
@@ -86,15 +99,18 @@
         border-radius: 5px;
         width: 70px;
     }
+
     &__prev {
         font-size: 20px;
         background-color: transparent;
         padding-right: 5px;
-        &_disabled{
+
+        &_disabled {
             pointer-events: none;
             color: #CCCCCC;
         }
     }
+
     &__item {
         cursor: pointer;
         width: 70px;
@@ -103,34 +119,42 @@
         align-items: center;
         justify-content: flex-start;
         padding: 15px 0px;
-        &_selected{
+
+        &_selected {
             border: 1px solid #F1F1F1;
             border-radius: 5px;
         }
-        &_all{
+
+        &_all {
             @include f(center, center);
         }
     }
+
     &__next {
         font-size: 20px;
         padding-left: 5px;
         background-color: transparent;
     }
-    &__month{
+
+    &__month {
         color: #CCCCCC;
         font-size: 10px;
     }
-    &__day{
+
+    &__day {
         font-weight: 600;
         font-size: 20px;
     }
-    &__weekday{
+
+    &__weekday {
         font-size: 10px;
-        &_weekend{
+
+        &_weekend {
             color: #FF2D2D;
         }
     }
 }
+
 .postersCategory {
     &__title {
         font-size: 22px;
@@ -138,29 +162,35 @@
         font-family: "Segoe UI";
         margin: 30px 0px;
         pointer-events: none;
-        &_link{
+
+        &_link {
             pointer-events: all;
-            &:hover{
+
+            &:hover {
                 text-decoration: underline;
             }
-            &::after{
+
+            &::after {
                 content: url('../../images/icons/posterCategoryLink.svg');
                 position: relative;
                 top: 1px;
                 margin-left: 10px;
             }
-    
+
         }
     }
+
     &__content {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         gap: 15px;
     }
 }
+
 .posterCard {
     font-family: "Segoe UI";
     cursor: pointer;
+
     &__img {
         width: 100%;
         aspect-ratio: 9/16;
@@ -168,34 +198,40 @@
         border-radius: 10px;
         margin-bottom: 10px;
     }
+
     &__title {
         font-size: 14px;
         font-weight: 600;
         margin-bottom: 10px;
-        display: -webkit-box;        
-        -webkit-box-orient: vertical; 
-        -webkit-line-clamp: 2;  
-        line-clamp: 2;     
-        overflow: hidden;             
-        text-overflow: ellipsis;      
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
+
     &__categories {
         margin-bottom: 5px;
-        &::before{
+
+        &::before {
             content: url('../../images/icons/categories.svg');
             position: relative;
             top: 1px;
             margin-right: 5px;
         }
     }
+
     &__category {
         font-size: 12px;
         margin-right: 5px;
         display: inline-block;
     }
+
     &__price {
         font-size: 12px;
-        &::before{
+
+        &::before {
             content: url('../../images/icons/price.svg');
             position: relative;
             top: 1px;
@@ -203,30 +239,36 @@
         }
     }
 }
+
 .postersCategoryPage {
     margin-bottom: 30px;
+
     &__title {
         text-align: center;
         font-size: 37px;
         font-weight: 700;
         font-family: "Segoe UI";
         margin-bottom: 30px;
+
         &_soon {
             font-size: 22px;
             font-weight: 700;
             font-family: "Segoe UI";
-            margin: 30px 0px;    
+            margin: 30px 0px;
         }
+
         span {
             color: #FF922E;
         }
     }
+
     &__content {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         gap: 15px;
     }
-    &__button{
+
+    &__button {
         height: 49px;
         position: relative;
         left: 50%;
@@ -237,7 +279,8 @@
         margin-top: 30px;
         border-radius: 10px;
         transition: background-color 0.3s, transform 0.1s, padding 0.2s;
-        &:hover{
+
+        &:hover {
             background-color: rgba(242, 242, 246, 0.7);
             padding: 15px 100px;
         }

@@ -1,4 +1,3 @@
-
 export const filterBusinesses = (businesses, searchValue) => {
     if (searchValue.trim() === '') return businesses;
 

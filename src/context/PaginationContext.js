@@ -27,18 +27,18 @@ export const PaginationProvider = ({ children }) => {
 
   const resetDiscountstPagination = () => {
     setPaginationState((prev) => ({
-      promotionPage: prev.promotionPage, 
-      promotionCurrentPageNumbers: prev.promotionCurrentPageNumbers, 
-      discountsPage: 1, 
+      promotionPage: prev.promotionPage,
+      promotionCurrentPageNumbers: prev.promotionCurrentPageNumbers,
+      discountsPage: 1,
       discountsCurrentPageNumbers: [],
 
     }));
   };
   const resetPromotionPagination = () => {
     setPaginationState((prev) => ({
-      promotionPage: 1, 
-      promotionCurrentPageNumbers: [], 
-      discountsPage: prev.discountsPage, 
+      promotionPage: 1,
+      promotionCurrentPageNumbers: [],
+      discountsPage: prev.discountsPage,
       discountsCurrentPageNumbers: prev.discountsCurrentPageNumbers,
     }));
   };

@@ -1,4 +1,4 @@
-import React, { createContext, useContext} from 'react';
+import React, { createContext, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TypeOfDataContext } from './TypeOfData';
 import { CategoriesContext } from './CategoriesContext';
@@ -6,13 +6,8 @@ export const NavigateContext = createContext(null);
 
 export const NavigateProvider = ({ children }) => {
     const navigate = useNavigate();
-    const {changeType, type} = useContext(TypeOfDataContext)
-    const { discountCategory, promotionCategory, updateDiscountCategory, updatePromotionCategory} = useContext(CategoriesContext)
-
-    // const handleNavigate = (route, buttonId) => {
-    //     navigate(route, { replace: false });
-    //     window.scrollTo(0, 0);
-    // };
+    const { type } = useContext(TypeOfDataContext)
+    const { discountCategory, promotionCategory, updateDiscountCategory, updatePromotionCategory } = useContext(CategoriesContext)
 
     const typeButtonClick = (type, route) => {
         navigate(route, { replace: false });
@@ -38,7 +33,7 @@ export const NavigateProvider = ({ children }) => {
     }
 
     return (
-        <NavigateContext.Provider value={{  typeButtonClick, typeButtonCategoriesClick   }}>
+        <NavigateContext.Provider value={{ typeButtonClick, typeButtonCategoriesClick }}>
             {children}
         </NavigateContext.Provider>
     );

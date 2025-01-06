@@ -1,52 +1,61 @@
-
-::-webkit-scrollbar{
+::-webkit-scrollbar {
    background-color: transparent;
    width: 10px;
    border-left: 1px solid #5A5A5A;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
    background-color: $orange;
    height: 5px;
    border: 1px solid #5A5A5A;
 }
-*{
+
+* {
    -webkit-tap-highlight-color: transparent;
    user-select: none;
 }
-p{
+
+p {
    white-space: pre-wrap;
    user-select: text;
 }
-span{
+
+span {
    white-space: pre-wrap;
 }
-#root{
+
+#root {
    display: flex;
    flex-direction: column;
    min-height: 100vh;
    margin: 0;
 }
+
 main {
    flex-grow: 1;
 }
- 
+
 footer {
    margin-top: auto;
 }
-a{
+
+a {
    user-select: none;
    color: $textGray;
    text-decoration: none;
    font-size: 14px;
    cursor: pointer;
 }
-button{
+
+button {
    cursor: pointer;
    border: none;
 }
-html{
+
+html {
    overflow-x: hidden;
 }
+
 body {
    font-size: 14px;
    min-width: 360px;
@@ -56,17 +65,24 @@ body {
    word-wrap: break-word;
    line-height: normal;
 }
-h1, h2, h3, h4, h5, h6{
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
    font-family: 'Segoe UI';
 }
 
-.container{
+.container {
    width: 1024px;
    max-width: 100vw;
    margin: 0 auto;
    min-width: 360px;
 }
-.container-fluid{
+
+.container-fluid {
    max-width: 1920px;
    margin: 0 auto;
    padding: 0 10px;

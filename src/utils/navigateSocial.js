@@ -3,45 +3,45 @@ export const handleNavigateSocial = (typeOfLink, link) => {
     switch (typeOfLink) {
         case 'vk':
             if (link.startsWith('https://') || link.startsWith('http://')) {
-                url = link; 
+                url = link;
                 return url;
             } else {
-                url = `https://vk.com/${link}`; 
+                url = `https://vk.com/${link}`;
                 return url;
             }
         case 'web':
             if (link.startsWith('https://')) {
-                url = link; 
+                url = link;
                 return url;
             } else {
-                url = `https://${link}`; 
+                url = `https://${link}`;
                 return url;
             }
         case 'instagram':
             if (link.startsWith('https://') || link.startsWith('http://')) {
-                url = link; 
+                url = link;
                 return url;
             } else {
-                url = `https://instagram.com/${link}`; 
+                url = `https://instagram.com/${link}`;
                 return url;
             }
         case 'telegram':
             if (link.startsWith('https://') || link.startsWith('http://')) {
-                url = link; 
+                url = link;
                 return url;
             } else {
-                url = `https://t.me/${link}`; 
+                url = `https://t.me/${link}`;
                 return url;
             }
         case 'serviceLink':
             if (link.startsWith('https://') || link.startsWith('http://')) {
-                url = link; 
+                url = link;
                 return url;
             } else if (link.startsWith('bumpix.net') || link.startsWith('dikidi.net') || link.startsWith('n')) {
                 url = "https://" + link
                 return url;
             }
-            else  {
+            else {
                 url = link
                 return url;
             }

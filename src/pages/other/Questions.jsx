@@ -5,7 +5,7 @@ export default function Questions() {
 
   return (
     <>
-      <QuestionsBlock/>
+      <QuestionsBlock />
     </>
   )
 }

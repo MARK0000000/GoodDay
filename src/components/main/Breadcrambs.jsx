@@ -1,8 +1,8 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { NavigateContext } from '../../context/Navigate';
 
-export default function Breadcrambs({main, mainRoute, elements, current }) {
-    const {typeButtonClick} = useContext(NavigateContext)
+export default function Breadcrambs({ main, mainRoute, elements, current }) {
+    const { typeButtonClick } = useContext(NavigateContext)
 
     const handleNavigatePosters = (route, buttonId) => {
         typeButtonClick(route, buttonId)

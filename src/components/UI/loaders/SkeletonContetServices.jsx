@@ -5,7 +5,7 @@ import classes from './Loaders.module.scss';
 export const SkeletonContentServices = () => (
   <ContentLoader
     speed={2}
-    width="100%" // Ширина 100% от родительского контейнера
+    width="100%" 
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
     className={classes.skeletonContentService}

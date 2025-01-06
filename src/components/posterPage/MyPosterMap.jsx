@@ -4,7 +4,7 @@ import telIcon from '../../images/icons/quick-call.svg.svg';
 import mapMark from '../../images/icons/mapMark.svg';
 
 export default function MyPosterMap({ data }) {
-    
+
     const [coordinates] = useState([(data.address && data.address.latitude) || false, (data.address && data.address.longitude) || false]);
 
     const handleRouteClick = () => {
@@ -15,33 +15,33 @@ export default function MyPosterMap({ data }) {
     const areCoordinatesEqual = (arr1, arr2) => {
         if (arr1.length !== arr2.length) return false;
         for (let i = 0; i < arr1.length; i++) {
-          if (arr1[i] !== arr2[i]) return false;
+            if (arr1[i] !== arr2[i]) return false;
         }
         return true;
-      };
+    };
     const condition = areCoordinatesEqual(coordinates, [false, false]);
     return (
         <>
-            {condition  ?
+            {condition ?
                 <div></div>
                 :
-                <div className='map'>
-                        <YMaps>
-                            <Map
-                                defaultState={{ center: coordinates, zoom: 16 }}
-                                width="100%" height="100%"
-                                options={{ controls: ['zoomControl'] }}
-                            >
-                                <Placemark
-                                    geometry={coordinates}
-                                    options={{
-                                        iconLayout: 'default#image',
-                                        iconImageHref: `${mapMark}`,
-                                        iconImageSize: [50, 50],
-                                    }}
-                                />
-                            </Map>
-                        </YMaps>
+                <div className='map' id='map'>
+                    <YMaps>
+                        <Map
+                            defaultState={{ center: coordinates, zoom: 16 }}
+                            width="100%" height="100%"
+                            options={{ controls: ['zoomControl'] }}
+                        >
+                            <Placemark
+                                geometry={coordinates}
+                                options={{
+                                    iconLayout: 'default#image',
+                                    iconImageHref: `${mapMark}`,
+                                    iconImageSize: [50, 50],
+                                }}
+                            />
+                        </Map>
+                    </YMaps>
                     <div className="map__content">
                         {(data.address) &&
                             <h3 className="map__title">{data.address.description}</h3>

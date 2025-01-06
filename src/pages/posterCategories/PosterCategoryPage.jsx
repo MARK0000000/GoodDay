@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PosterCard from '../../components/posters/PosterCard';
 import PostersDate from '../../components/posters/PostersDate';
 import Breadcrambs from '../../components/main/Breadcrambs';
@@ -7,23 +7,23 @@ import { SearchContext } from '../../context/Search';
 import { PosterCategoriesContext } from '../../context/PosterCategories';
 import { fetchGetWithCount } from '../../api/fetch';
 import useEndpoints from '../../api/apiConfig';
-import { SkeletonPosterCard } from '../../components/UI/loaders/SkeletopPosterCard'; 
+import { SkeletonPosterCard } from '../../components/UI/loaders/SkeletopPosterCard';
 import PostersCategory from '../../components/posters/PostersCategory';
 import NothingFound from '../../components/UI/loaders/NothingFound';
 
 export default function PosterCategoryPage() {
     const endpoints = useEndpoints();
-    const {setIsSearchLoading, searchValue} = useContext(SearchContext)
+    const { setIsSearchLoading, searchValue } = useContext(SearchContext)
     const { categories, selectedCategory } = useContext(PosterCategoriesContext);
-    const {city, cityName} = useContext(CityContext)
-  
+    const { city, cityName } = useContext(CityContext)
+
     const [startDate, setStartDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(null);
     const [allDates, setAllDates] = useState(true)
 
     const toggleAllDates = (state) => {
         setAllDates(state)
-        
+
     }
 
     const [cards, setCards] = useState([]);
@@ -39,8 +39,8 @@ export default function PosterCategoryPage() {
     const [totalCountSoon, setTotalCountSoon] = useState();
     const resetPage = () => {
         setCurrentPage(1);
-        setCards([]); 
-        setIsLoading(true); 
+        setCards([]);
+        setIsLoading(true);
     };
 
     const showMoreCards = () => {
@@ -51,9 +51,9 @@ export default function PosterCategoryPage() {
         setCurrentPageSoon(prev => prev + 1);
     };
     useEffect(() => {
-        setCards([]); 
-        setCurrentPage(1); 
-        setIsLoading(true); 
+        setCards([]);
+        setCurrentPage(1);
+        setIsLoading(true);
     }, [city, selectedDate, allDates, searchValue]);
 
 
@@ -61,14 +61,14 @@ export default function PosterCategoryPage() {
         const fetchSoonData = async () => {
             if (currentPageSoon === 1) {
                 setIsSoonLoading(true);
-            } 
+            }
 
             if (searchValue !== '') {
                 try {
                     const result = await fetchGetWithCount(`${endpoints.SEARCH_POSTER_SOON}&pageNumber=${currentPageSoon}&pageSize=${itemsPerPageSoon}&keyword=${searchValue}`);
                     if (result) {
                         if (currentPageSoon !== 1) {
-                            setCardsSoon(prevCards => [...prevCards, ...result.data]); 
+                            setCardsSoon(prevCards => [...prevCards, ...result.data]);
                             setTotalCountSoon(result.totalCount)
                         } else {
                             setCardsSoon(result.data)
@@ -82,18 +82,18 @@ export default function PosterCategoryPage() {
                     if (currentPageSoon === 1) {
                         setIsSoonLoading(false);
                     }
-                }    
+                }
             } else {
                 try {
                     const result = await fetchGetWithCount(`${endpoints.POSTER_CATEGORY_SOON}&pageNumber=${currentPageSoon}&pageSize=${itemsPerPageSoon}`);
                     if (result) {
                         if (currentPageSoon !== 1) {
-                            setCardsSoon(prevCards => [...prevCards, ...result.data]); 
+                            setCardsSoon(prevCards => [...prevCards, ...result.data]);
                             setTotalCountSoon(result.totalCount)
                         } else {
                             setCardsSoon(result.data)
                             setTotalCountSoon(result.totalCount)
-    
+
                         }
                     }
                 } catch (error) {
@@ -105,30 +105,30 @@ export default function PosterCategoryPage() {
                 }
             }
         };
-        fetchSoonData(); 
+        fetchSoonData();
     }, [currentPageSoon, city, searchValue]);
 
     const foundCategory = categories.find(category => category.categoryRoute === selectedCategory);
 
     useEffect(() => {
-        if (!selectedCategory) return; 
-        if (!foundCategory) return; 
+        if (!selectedCategory) return;
+        if (!foundCategory) return;
 
         const fetchData = async () => {
             if (currentPage === 1) {
-                setIsLoading(true); 
-            } 
-            if(searchValue !== '') {
+                setIsLoading(true);
+            }
+            if (searchValue !== '') {
                 if (allDates) {
                     try {
                         const result = await fetchGetWithCount(`${endpoints.SEARCH_POSTER_CATEGORIES_WITHOUT_DATE}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}&keyword=${searchValue}`);
                         if (result) {
                             if (currentPage !== 1) {
-                                setCards(prevCards => [...prevCards, ...result.data]); 
+                                setCards(prevCards => [...prevCards, ...result.data]);
                                 setTotalCount(result.totalCount)
-                                } else {
-                                    setCards(result.data); 
-                                    setTotalCount(result.totalCount)        
+                            } else {
+                                setCards(result.data);
+                                setTotalCount(result.totalCount)
                             }
                         }
                     } catch (error) {
@@ -138,19 +138,19 @@ export default function PosterCategoryPage() {
                         if (currentPage === 1) {
                             setIsLoading(false);
                         }
-                    }    
+                    }
                 } else {
                     try {
                         const result = await fetchGetWithCount(`${endpoints.SEARCH_POSTER_CATEGORIES}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}&keyword=${searchValue}`);
                         if (result) {
                             if (currentPage !== 1) {
-                                setCards(prevCards => [...prevCards, ...result.data]); 
+                                setCards(prevCards => [...prevCards, ...result.data]);
                                 setTotalCount(result.totalCount)
-                                } else {
-                                    setCards(result.data); 
-                                    setTotalCount(result.totalCount)
-                                }
+                            } else {
+                                setCards(result.data);
+                                setTotalCount(result.totalCount)
                             }
+                        }
                     } catch (error) {
                         console.error("Error fetching data:", error);
                     } finally {
@@ -158,35 +158,35 @@ export default function PosterCategoryPage() {
                         if (currentPage === 1) {
                             setIsLoading(false);
                         }
-                    }    
+                    }
                 }
-            } else{
+            } else {
                 if (allDates) {
                     try {
                         const result = await fetchGetWithCount(`${endpoints.POSTERS_CATEGORY_WITHOUT_DATE}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}`);
                         if (result) {
-                            setCards(prevCards => [...prevCards, ...result.data]); 
+                            setCards(prevCards => [...prevCards, ...result.data]);
                             setTotalCount(result.totalCount)
                         }
                     } catch (error) {
                         console.error("Error fetching data:", error);
                     } finally {
-                        setIsSearchLoading(false); 
+                        setIsSearchLoading(false);
                         if (currentPage === 1) {
                             setIsLoading(false);
                         }
-                    }    
+                    }
                 } else {
                     try {
                         const result = await fetchGetWithCount(`${endpoints.POSTER_CATEGORY}&categoryId=${foundCategory.idCategory}&pageNumber=${currentPage}&pageSize=${itemsPerPage}&date=${selectedDate}`);
                         if (result) {
-                            setCards(prevCards => [...prevCards, ...result.data]); 
+                            setCards(prevCards => [...prevCards, ...result.data]);
                             setTotalCount(result.totalCount)
                         }
                     } catch (error) {
                         console.error("Error fetching data:", error);
                     } finally {
-                        setIsSearchLoading(false); 
+                        setIsSearchLoading(false);
                         if (currentPage === 1) {
                             setIsLoading(false);
                         }
@@ -197,23 +197,23 @@ export default function PosterCategoryPage() {
 
         fetchData();
 
-    }, [currentPage, city, selectedCategory, selectedDate, searchValue, allDates,   setIsSearchLoading]); 
+    }, [currentPage, city, selectedCategory, selectedDate, searchValue, allDates, setIsSearchLoading]);
 
     return (
         <section className='postersCategoryPage'>
             <Breadcrambs mainRoute={"posters"} main={"Афиша"} current={foundCategory.categoryName} />
-            <PostersDate 
-                setSelectedDate={setSelectedDate} 
-                selectedDate={selectedDate} 
-                setStartDate={setStartDate} 
-                startDate={startDate} 
-                resetPage={resetPage} 
+            <PostersDate
+                setSelectedDate={setSelectedDate}
+                selectedDate={selectedDate}
+                setStartDate={setStartDate}
+                startDate={startDate}
+                resetPage={resetPage}
                 allDates={allDates}
                 toggleAllDates={toggleAllDates}
             />
             <h1 className='postersCategoryPage__title'>{foundCategory.categoryName} в <span>{cityName}</span></h1>
             <div className="postersCategoryPage__content">
-                {isLoading && currentPage === 1 ? ( 
+                {isLoading && currentPage === 1 ? (
                     [...Array(12)].map((_, index) => (
                         <SkeletonPosterCard key={index} />
                     ))
@@ -223,9 +223,9 @@ export default function PosterCategoryPage() {
                     )
                 )}
             </div>
-                {(!(cards && cards.length > 0) && !isLoading) && <NothingFound/> }
-            {(cards.length >= 12 &&  cards.length < totalCount) &&
-                <button 
+            {(!(cards && cards.length > 0) && !isLoading) && <NothingFound />}
+            {(cards.length >= 12 && cards.length < totalCount) &&
+                <button
                     className="postersCategoryPage__button"
                     onClick={() => showMoreCards()}
                 >
@@ -233,13 +233,13 @@ export default function PosterCategoryPage() {
                 </button>
             }
             <PostersCategory
-               title="Скоро" 
-               link={'soon'} 
-               data={cardsSoon} 
-               isLoading={isSoonLoading} 
+                title="Скоро"
+                link={'soon'}
+                data={cardsSoon}
+                isLoading={isSoonLoading}
             />
-            {(cardsSoon.length >= 6 &&  cardsSoon.length < totalCountSoon) &&
-                <button 
+            {(cardsSoon.length >= 6 && cardsSoon.length < totalCountSoon) &&
+                <button
                     className="postersCategoryPage__button"
                     onClick={() => showMoreSoonCards()}
                 >

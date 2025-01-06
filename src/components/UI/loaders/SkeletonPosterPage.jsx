@@ -18,7 +18,7 @@ export const SkeletonPosterPage = () => (
     <rect x="89%" y="0" rx="6" ry='6' width='5%' height='4%' />
     <rect x="95%" y="0" rx="6" ry='6' width='5%' height='4%' />
     <rect x="0" y="6%" rx="6" ry='6' width='50%' height='2.5%' />
-    
+
     {/* img */}
     <rect x="0" y="9%" rx="6" ry='6' width='67%' height='28%' />
 

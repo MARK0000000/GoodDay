@@ -10,26 +10,26 @@ import par8 from '../../images/other/партнеры8.png'
 import par9 from '../../images/other/партнеры9.png'
 
 export default function UsPartners() {
-  
+
   return (
     <section className='usPartners'>
-        <h3 className="usPartners__title">
-            Наши партнёры
-        </h3>
-        <div className='usPartners__icons-box'>
-            <img src={par1} alt="" className="usPartners__icon" />
-            <img src={par2} alt="" className="usPartners__icon" />
-            <img src={par3} alt="" className="usPartners__icon" />
-            <img src={par4} alt="" className="usPartners__icon" />
-            <img src={par5} alt="" className="usPartners__icon usPartners__icon_border" />
-            <img src={par6} alt="" className="usPartners__icon" />
-            <img src={par7} alt="" className="usPartners__icon" />
-            <img src={par8} alt="" className="usPartners__icon" />
-            <img src={par9} alt="" className="usPartners__icon" />
-            <div className="usPartners__more-icon">
-                <span>и еще более 1200 компаний</span>
-            </div>
+      <h3 className="usPartners__title">
+        Наши партнёры
+      </h3>
+      <div className='usPartners__icons-box'>
+        <img src={par1} alt="" className="usPartners__icon" />
+        <img src={par2} alt="" className="usPartners__icon" />
+        <img src={par3} alt="" className="usPartners__icon" />
+        <img src={par4} alt="" className="usPartners__icon" />
+        <img src={par5} alt="" className="usPartners__icon usPartners__icon_border" />
+        <img src={par6} alt="" className="usPartners__icon" />
+        <img src={par7} alt="" className="usPartners__icon" />
+        <img src={par8} alt="" className="usPartners__icon" />
+        <img src={par9} alt="" className="usPartners__icon" />
+        <div className="usPartners__more-icon">
+          <span>и еще более 1200 компаний</span>
         </div>
+      </div>
     </section>
   )
 }

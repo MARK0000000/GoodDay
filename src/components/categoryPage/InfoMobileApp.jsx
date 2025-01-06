@@ -10,7 +10,7 @@ export default function InfoMobileApp() {
       <article className="infoMobileApp__content">
         <h2 className="infoMobileApp__title">Мобильное приложение Good Day</h2>
         <p className="infoMobileApp__text">Мы разработали удобные мобильные приложения для всех
-           распространеных устройств. Теперь услуги, развлечения, кафе, рестораны и многое другое со скидками доступными для вас в любом месте. Удобный поиск по карте и вашему местоположению поможет экономить  удобнее и быстрее!</p>
+          распространеных устройств. Теперь услуги, развлечения, кафе, рестораны и многое другое со скидками доступными для вас в любом месте. Удобный поиск по карте и вашему местоположению поможет экономить  удобнее и быстрее!</p>
         <div className='infoMobileApp__buttons-box'>
           <button className="infoMobileApp__button ">
             <a href=" https://play.google.com/store/apps/details?id=by.goodday" target='_blank'>

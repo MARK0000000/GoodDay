@@ -1,6 +1,6 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 import vkIcon from '../../images/icons/social-vk.svg.svg';
 import telegramIcon from '../../images/icons/telegram-white.svg.svg';
 import viberIcon from '../../images/icons/social-viber.svg.svg';
@@ -37,7 +37,7 @@ export default function ShareWidget() {
                 shareUrl = `https://telegram.me/share/url?url=${currentUrl}`;
                 break;
             case 'viber':
-                shareUrl = `viber://forward?text=${currentUrl}`;
+                shareUrl = `https://www.viber.com/forward?text=${currentUrl}`;
                 break;
             case 'ok':
                 shareUrl = `https://connect.ok.ru/offer?url=${currentUrl}`;

@@ -10,9 +10,9 @@ export const calculatePagesPerScroll = (pageNumbers, buttonWidth) => {
     const maxButtonsOnScreen = Math.floor(screenWidth / buttonWidth);
     const indexOfLastPage = Math.min(maxButtonsOnScreen, pageNumbers.length);
     return indexOfLastPage;
-  };
+};
 
-  export const handlePrevPage = (pageNumbers, indexOfFirstPage, indexOfLastPage, setIndexOfFirstPage, setIndexOfLastPage, updateCurrentPageNumbers) => {
+export const handlePrevPage = (pageNumbers, indexOfFirstPage, indexOfLastPage, setIndexOfFirstPage, setIndexOfLastPage, updateCurrentPageNumbers) => {
     const totalPages = pageNumbers.length;
 
     // Проверяем, можем ли мы прокрутить страницы назад
@@ -21,10 +21,10 @@ export const calculatePagesPerScroll = (pageNumbers, buttonWidth) => {
 
         // Новый первый индекс - это текущий первый индекс минус количество страниц для прокрутки
         const newIndexOfFirstPage = Math.max(0, indexOfFirstPage - pagesPerScroll);
-        
+
         // Новый последний индекс - это новый первый индекс плюс количество страниц для отображения
         const newIndexOfLastPage = Math.min(newIndexOfFirstPage + pagesPerScroll, totalPages);
-        console.log("fhsdjfh", newIndexOfFirstPage , newIndexOfLastPage  )
+        console.log("fhsdjfh", newIndexOfFirstPage, newIndexOfLastPage)
         setIndexOfFirstPage(newIndexOfFirstPage, newIndexOfLastPage);
         setIndexOfLastPage(newIndexOfLastPage);
 
@@ -40,7 +40,7 @@ export const handleNextPage = (pageNumbers, indexOfFirstPage, indexOfLastPage, s
         const pagesPerScroll = calculatePagesPerScroll(pageNumbers, 40); // Определите количество страниц для прокрутки
 
         // Новый первый индекс - это текущий последний индекс
-        const newIndexOfFirstPage = indexOfLastPage; 
+        const newIndexOfFirstPage = indexOfLastPage;
 
         // Новый последний индекс - это новый первый индекс плюс количество страниц для отображения
         const newIndexOfLastPage = Math.min(newIndexOfFirstPage + pagesPerScroll, totalPages);
@@ -59,4 +59,4 @@ export const calculateIndexOfLastPage = (pageNumbers, buttonWidth) => {
     const maxButtonsOnScreen = Math.floor(screenWidth / buttonWidth);
     const indexOfLastPage = Math.min(maxButtonsOnScreen, pageNumbers.length);
     return indexOfLastPage;
-  };
+};

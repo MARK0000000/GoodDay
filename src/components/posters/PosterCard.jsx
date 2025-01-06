@@ -6,25 +6,25 @@ import useEndpoints from '../../api/apiConfig';
 export default function PosterCard({ data }) {
   const endpoints = useEndpoints();
   const location = useLocation();
-  
-  const endpoint = location.pathname; 
-  
+
+  const endpoint = location.pathname;
+
   const { typeButtonClick } = useContext(NavigateContext);
-  
+
   return (
     <article className='posterCard' onClick={() => typeButtonClick(`${endpoint}/${data.idPoster}`, `${endpoint}/${data.idPoster}`)} >
-        <img 
-            src={endpoints.UPLOADS + data.preview.url} 
-            alt="" 
-            className="posterCard__img" 
-        />
-        <h3 className="posterCard__title">{data.posterName}</h3>
-        <p className="posterCard__categories">
-            {data.categories.map((item, index) => 
-                <span key={index} className="posterCard__category">{item.categoryName}</span>
-            )}
-        </p>
-        <p className="posterCard__price">{data.price}</p>
+      <img
+        src={endpoints.UPLOADS + data.preview.url}
+        alt=""
+        className="posterCard__img"
+      />
+      <h3 className="posterCard__title">{data.posterName}</h3>
+      <p className="posterCard__categories">
+        {data.categories.map((item, index) =>
+          <span key={index} className="posterCard__category">{item.categoryName}</span>
+        )}
+      </p>
+      <p className="posterCard__price">{data.price}</p>
     </article>
   );
 }

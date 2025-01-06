@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import instagram from '../../images/icons/instagram-outline.svg'
 import tiktok from '../../images/icons/tiktok.svg'
 import youtube from '../../images/icons/youtube.svg'
@@ -8,9 +8,9 @@ import qrCode from '../../images/icons/qr.svg'
 import { NavigateContext } from '../../context/Navigate';
 
 export default function Footer() {
-  const {typeButtonClick} = useContext(NavigateContext)
+  const { typeButtonClick } = useContext(NavigateContext)
 
-  
+
   return (
     <footer className='footer'>
       <div className="footer__content container">
@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
         <div className="footer__item footer__item_apps">
           <span>МОБИЛЬНОЕ ПРИЛОЖЕНИЕ</span>
-          <hr/>
+          <hr />
           <div className='footer__buttons-box'>
             <button className="footer__button ">
               <a href=" https://play.google.com/store/apps/details?id=by.goodday" target="_blank" rel="noreferrer">
@@ -62,7 +62,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <hr  className='footer__hr'/>
+      <hr className='footer__hr' />
       <div className='footer__underLine container'>
         <div className="footer__item footer__item_underLine">
           <span>&copy; 202<span className='footer__bigLetter'>4</span> Good Day</span>

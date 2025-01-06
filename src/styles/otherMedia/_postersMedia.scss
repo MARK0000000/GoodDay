@@ -1,22 +1,27 @@
 @media (max-width: 1024px) {
-    .posters{
+    .posters {
         padding: 0px 10px;
-    }   
+    }
+
     .postersCategoryPage {
         padding: 0px 10px;
     }
 }
+
 @media (max-width: 768px) {
-    .posters{
+    .posters {
         margin: 20px 0px;
-        &__title{
+
+        &__title {
             font-size: 26px;
         }
-    }    
+    }
+
     .postersInfo {
         position: relative;
         margin: 0px 20px 20px 20px;
-        &__descriptionBlock{
+
+        &__descriptionBlock {
             left: 20px;
             bottom: 20px;
             margin-right: 20px;
@@ -24,40 +29,49 @@
             z-index: 2;
             padding: 10px;
         }
+
         &__description {
             font-size: 18px;
             right: 20px;
         }
-    }    
+    }
+
     .postersDate {
         margin-bottom: 20px;
     }
+
     .postersCategory {
         &__title {
             font-size: 18px;
             margin: 20px 0px;
         }
+
         &__content {
             display: grid;
             gap: 10px;
             grid-template-columns: repeat(3, 1fr);
         }
     }
+
     .postersCategoryPage {
         margin-bottom: 20px;
+
         &__title {
             font-size: 26px;
             margin-bottom: 20px;
+
             &_soon {
                 font-size: 18px;
-                margin: 20px 0px;    
+                margin: 20px 0px;
             }
         }
+
         &__content {
             gap: 10px;
             grid-template-columns: repeat(3, 1fr);
         }
-        &__button{
+
+        &__button {
             height: 49px;
             position: relative;
             left: 50%;
@@ -68,53 +82,64 @@
             margin-top: 30px;
             border-radius: 10px;
             transition: background-color 0.3s, transform 0.1s, padding 0.2s;
-            &:hover{
+
+            &:hover {
                 background-color: rgba(242, 242, 246, 0.7);
                 padding: 15px 100px;
             }
         }
-    
-    }    
+
+    }
 }
+
 @media (max-width: 480px) {
-    .posters{
-        &__title{
+    .posters {
+        &__title {
             font-size: 22px;
         }
-    }    
+    }
+
     .postersInfo {
         margin: 0px 15px 20px 15px;
+
         &__description {
             font-size: 14px;
-            -webkit-line-clamp: 2;     
-            line-clamp: 2;  
-            overflow: hidden;             
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
         }
-    }    
+    }
+
     .custom-button {
         height: 30px;
         width: 30px;
-    }    
+    }
+
     .postersCategory {
         &__title {
             font-size: 18px;
             margin: 20px 0px;
         }
+
         &__content {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
     }
+
     .posterCard {
         font-family: "Segoe UI";
+
         &__title {
             font-size: 12px;
             margin-bottom: 10px;
         }
+
         &__category {
             font-size: 10px;
         }
+
         &__price {
             font-size: 10px;
         }
