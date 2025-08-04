@@ -6,8 +6,7 @@ const useEndpoints = () => {
   const cityid = city;
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const UPLOADS = process.env.REACT_APP_UPLOADS;
-  console.log(API_BASE_URL)
-  
+
   return {
     UPLOADS: `${UPLOADS}`,
     PDF: `${API_BASE_URL}/pdfs/`,
