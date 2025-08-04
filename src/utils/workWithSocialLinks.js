@@ -17,7 +17,8 @@ export const extractFirstWebLink = (webLinks) => {
 
 
 export const removeLeadingSymbols = (str) => {
-    return str ? str.replace(/^==>\s*/, '') : str;
+    return str ? str.replace(/.*[=|@>]{1,2}\s*/, '') : str;
+
 };
 
 export const removeAtSymbol = (link) => {

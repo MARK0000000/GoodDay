@@ -65,7 +65,7 @@ export default function Footer() {
       <hr className='footer__hr' />
       <div className='footer__underLine container'>
         <div className="footer__item footer__item_underLine">
-          <span>&copy; 202<span className='footer__bigLetter'>4</span> Good Day</span>
+          <span>&copy; 202<span className='footer__bigLetter'>5</span> Good Day</span>
           <a href="https://docs.google.com/document/d/1wyhH682ZA0xYQrs4vX89_EaHKBMZLQ_QMnY7ppavQUs/edit?usp=sharing" target='_blank' rel="noreferrer">Обработка персональных данных</a>
           <a href="https://docs.google.com/document/d/1CGd0r9m1pvsAJqrkru2kZ2NvB5fPO9XXILUI4okUP6Q/edit?usp=sharing" target='_blank' rel="noreferrer">Публичная оферта</a>
         </div>
@@ -84,7 +84,7 @@ export default function Footer() {
             </a>
           </button>
           <button className="footer__social-btn">
-            <a href="https://www.tiktok.com/@good_day_news_" target="_blank" rel="noreferrer">
+            <a href="https://www.tiktok.com/@good_day_news" target="_blank" rel="noreferrer">
               <img src={tiktok} alt="" className="footer__social-img" />
             </a>
           </button>

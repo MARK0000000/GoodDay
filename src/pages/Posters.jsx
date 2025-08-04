@@ -11,7 +11,7 @@ import NothingFound from '../components/UI/loaders/NothingFound';
 import { TypeOfDataContext } from '../context/TypeOfData';
 
 export default function Posters() {
-    const { city, cityName } = useContext(CityContext);
+    const { city, cityName, cityLoading } = useContext(CityContext);
     const { setIsSearchLoading, searchValue } = useContext(SearchContext)
     const endpoints = useEndpoints();
     const { categories, categoriesLoading, setNavCategories, setSoonIsEpmty } = useContext(PosterCategoriesContext);
@@ -134,6 +134,7 @@ export default function Posters() {
         }
     };
     useEffect(() => {
+        if (cityLoading) return;
         changeType("posters")
         setData([]);
         setLoadedCategoriesCount(0);
@@ -150,7 +151,7 @@ export default function Posters() {
             fetchSoonCategories();
         }
         fetchInfo()
-    }, [selectedDate, city, searchValue, allDates, categories]);
+    }, [selectedDate, city, searchValue, allDates, categories, cityLoading]);
 
 
     useEffect(() => {

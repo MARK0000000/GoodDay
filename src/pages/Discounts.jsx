@@ -18,8 +18,8 @@ export default function Discounts() {
   const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage] = useState(9);
   const [totalCount, setTotalCount] = useState();
-  const { city, cities } = useContext(CityContext);
-  const cityName = cities.find(item => item.id === city);
+  const { city, cityName, cityLoading } = useContext(CityContext);
+
 
   const { paginationState, updatePage, updateCurrentPageNumbers } = usePagination();
   const currentPage = paginationState.discountsPage;
@@ -28,6 +28,7 @@ export default function Discounts() {
   const [previousData, setPreviousData] = useState(null);
 
   useEffect(() => {
+    if (cityLoading) return;
     if (data && data.data) {
       if (previousData !== data.data) {
         updatePage('discountsPage', 1);
@@ -62,7 +63,7 @@ export default function Discounts() {
       };
       fetchData();
     }
-  }, [currentPage, data, city, discountCategory]);
+  }, [currentPage, data, city, discountCategory, cityLoading]);
 
   return (
     <>
@@ -70,7 +71,7 @@ export default function Discounts() {
       <section className="content">
         <div className="content__title-box" id='content'>
           <h1 className="content__title">
-            Скидки в <span className="content__city">{cityName.name}</span>
+            Скидки в <span className="content__city">{cityName}</span>
             <span className="content__count">{totalCount}</span>
           </h1>
         </div>

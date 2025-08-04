@@ -12,19 +12,16 @@ import NavPages from './header/NavPages';
 import CityModal from './header/CityModal';
 import { PosterCategoriesContext } from '../../context/PosterCategories';
 
+import { Fancybox } from '@fancyapps/ui';
+import ReactDOM from 'react-dom';
 export default function Header() {
 
   const { setSearchValue, isSearchLoading, searchValue, setData } = useContext(SearchContext)
-  const { cityName } = useContext(CityContext)
+  const { cityName, cities, updateCity } = useContext(CityContext)
   const { typeButtonClick } = useContext(NavigateContext)
   const { setNavCategories, setSoonIsEpmty } = useContext(PosterCategoriesContext)
   const searchInput = useRef()
-  const [cityModalActive, setCityModalActive] = useState(false)
 
-
-  const closeCityModal = () => {
-    setCityModalActive(false)
-  }
   const [burgerActive, setBurgerActive] = useState(false)
 
 
@@ -47,22 +44,34 @@ export default function Header() {
     setSoonIsEpmty(true)
   };
 
+  const handleGetCityModal = () => {
+
+    const modalContainer = document.createElement('div');
+
+    Fancybox.show([
+      {
+        src: modalContainer,
+        type: 'html',
+      },
+    ]);
+
+    ReactDOM.render(<CityModal cities={cities} updateCity={updateCity}/>, modalContainer);
+  };
 
   return (
     <header className="header">
       <div className='container header__container'>
         <div className='header__firstLine'>
           <span className='header__location'
-            onClick={(e) => {
-              e.stopPropagation();
-              setCityModalActive(prevState => !prevState);
-            }}>
+            onClick={handleGetCityModal}
+            >
             {cityName}
           </span>
-          <CityModal active={cityModalActive} onClose={closeCityModal} />
           <img src={iconMenu} alt="#" className="header__burger" onClick={() => setBurgerActive(true)} />
           <div className={`header__about ${burgerActive && 'header__about_active'}`}>
             <img src={closeIcon} alt="#" className="header__close" onClick={() => setBurgerActive(false)} />
+            <a href='https://partners.good-day.by/goodday_openair2025' target='_blank' rel="noreferrer">Good Day Open Air</a>
+            {/* <a href='https://partners.good-day.by/gastrofest' target='_blank' rel="noreferrer">Good Day Gastrofest</a> */}
             <a onClick={() => typeButtonClick('partnership', 'partnership')}>Для вашего бизнеса</a>
             <a onClick={() => typeButtonClick('aboutapp', 'aboutapp')}>О приложении</a>
             <a href='http://partners.good-day.by/franshizabel' target='_blank' rel="noreferrer">Франшиза</a>

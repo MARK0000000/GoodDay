@@ -1,16 +1,15 @@
 import { useContext } from 'react';
 import { CityContext } from '../context/City';
-// dev
-// const API_BASE_URL = 'https://vh369.by2040.ihb.by';
-// production
-const API_BASE_URL = 'https://elated-turing.178-124-131-24.plesk.page';
 
 const useEndpoints = () => {
   const { city } = useContext(CityContext);
   const cityid = city;
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const UPLOADS = process.env.REACT_APP_UPLOADS;
+  console.log(API_BASE_URL)
+  
   return {
-    UPLOADS: `https://api.good-day.by/uploads`,
+    UPLOADS: `${UPLOADS}`,
     PDF: `${API_BASE_URL}/pdfs/`,
     CITIES: `${API_BASE_URL}/city/all`,
 

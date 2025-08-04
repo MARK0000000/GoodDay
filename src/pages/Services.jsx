@@ -10,7 +10,7 @@ import Add from '../components/categoryPage/Add';
 export default function Services() {
     const endpoints = useEndpoints();
     const { data } = useContext(SearchContext);
-    const { city } = useContext(CityContext);
+    const { city, cityLoading } = useContext(CityContext);
     const [cards, setCards] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [itemsPerPage] = useState(15);
@@ -27,6 +27,7 @@ export default function Services() {
     }, [city]);
 
     useEffect(() => {
+        if (cityLoading) return;
         const fetchData = async () => {
             if (data && data.data) {
                 if (previousData !== data.data) {
@@ -66,7 +67,7 @@ export default function Services() {
             }
         };
         fetchData();
-    }, [currentPage, data, city]);
+    }, [currentPage, data, city, cityLoading]);
 
     const showMoreCards = () => {
         setCurrentPage(prev => prev + 1);

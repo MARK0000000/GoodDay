@@ -24,7 +24,6 @@ export const handlePrevPage = (pageNumbers, indexOfFirstPage, indexOfLastPage, s
 
         // Новый последний индекс - это новый первый индекс плюс количество страниц для отображения
         const newIndexOfLastPage = Math.min(newIndexOfFirstPage + pagesPerScroll, totalPages);
-        console.log("fhsdjfh", newIndexOfFirstPage, newIndexOfLastPage)
         setIndexOfFirstPage(newIndexOfFirstPage, newIndexOfLastPage);
         setIndexOfLastPage(newIndexOfLastPage);
 
@@ -36,7 +35,7 @@ export const handleNextPage = (pageNumbers, indexOfFirstPage, indexOfLastPage, s
     const totalPages = pageNumbers.length;
 
     // Проверяем, можем ли мы прокрутить страницы вперед
-    if (indexOfLastPage < totalPages) {
+    if (indexOfLastPage < totalPages) { 
         const pagesPerScroll = calculatePagesPerScroll(pageNumbers, 40); // Определите количество страниц для прокрутки
 
         // Новый первый индекс - это текущий последний индекс
@@ -47,7 +46,7 @@ export const handleNextPage = (pageNumbers, indexOfFirstPage, indexOfLastPage, s
 
         setIndexOfFirstPage(newIndexOfFirstPage);
         setIndexOfLastPage(newIndexOfLastPage);
-
+        console.log(pagesPerScroll, newIndexOfFirstPage, newIndexOfLastPage)
         // Обновляем текущие номера страниц
         updateCurrentPageNumbers(pageNumbers.slice(newIndexOfFirstPage, newIndexOfLastPage));
     }

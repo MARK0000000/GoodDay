@@ -15,6 +15,8 @@ export const PaginationProvider = ({ children }) => {
     setPaginationState((prev) => ({
       ...prev,
       [component]: page,
+      discountsCurrentPageNumbers: [],
+      promotionCurrentPageNumbers: [],
     }));
   };
 

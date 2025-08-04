@@ -1,41 +1,42 @@
-import React, { useContext, useRef, useEffect } from 'react';
-import { CityContext } from '../../../context/City';
+import React from 'react';
+import { Fancybox } from '@fancyapps/ui';
 
-export default function CityModal({ active, onClose }) {
-    const { updateCity, cities } = useContext(CityContext);
-    const modalRef = useRef(null); 
+export default function CityModal({ cities, updateCity }) {
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (modalRef.current && !modalRef.current.contains(event.target)) {
-                onClose(); 
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [onClose]);
+    const handleClose = () => {
+        Fancybox.close();
+    };
 
     return (
-        <div className={`cityModal ${active ? 'cityModal_active' : ''}`} ref={modalRef}>
+        <div className='cityModal'>
+            <button className="cityModal__close" onClick={handleClose} aria-label="Close">
+                &times;
+            </button>
+
             <h3 className='cityModal__title'>Выберите свой город</h3>
-            <div className="cityModal__content">
-                {cities.map(city => (
-                    <span 
-                        key={city.id} 
-                        className="cityModal__item" 
-                        onClick={() => {
-                            updateCity(city.id);
-                            onClose(); 
-                        }}
-                    >
-                        {city.name}
-                    </span>
-                ))}
-            </div>
+
+            {cities.map(country => (
+                <div key={country.countryName}>
+                    <h4 className='cityModal__title cityModal__title_country'>{country.countryName}</h4>
+                    <div className="cityModal__content">
+                        {country.cities
+                            .slice() 
+                            .sort((a, b) => a.name.localeCompare(b.name)) 
+                            .map(city => (
+                                <span
+                                    key={city.id}
+                                    className="cityModal__item"
+                                    onClick={() => {
+                                        updateCity(city.id);
+                                        handleClose();
+                                    }}
+                                >
+                                    {city.name}
+                                </span>
+                            ))}
+                    </div>
+                </div>
+            ))}
         </div>
     );
 }

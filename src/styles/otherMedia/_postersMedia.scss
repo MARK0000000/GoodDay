@@ -6,6 +6,16 @@
     .postersCategoryPage {
         padding: 0px 10px;
     }
+    .posterCard {
+        &:hover{
+            .posterCard__img {
+                margin-top: 0;
+                box-shadow: none;
+                filter: none;
+            }
+        }
+    
+    }
 }
 
 @media (max-width: 768px) {

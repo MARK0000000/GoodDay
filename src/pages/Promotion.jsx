@@ -20,8 +20,7 @@ export default function Promotion() {
   const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage] = useState(9);
   const [totalCount, setTotalCount] = useState();
-  const { city, cities } = useContext(CityContext);
-  const cityName = cities.find(item => item.id === city);
+  const { city, cityName, cityLoading } = useContext(CityContext);
 
   const { paginationState, updatePage, updateCurrentPageNumbers } = usePagination();
   const currentPage = paginationState.promotionPage;
@@ -30,6 +29,7 @@ export default function Promotion() {
   const [previousData, setPreviousData] = useState(null);
 
   useEffect(() => {
+    if (cityLoading) return;
     if (data && data.data) {
       if (previousData !== data.data) {
         updatePage('promotionPage', 1);
@@ -64,7 +64,7 @@ export default function Promotion() {
       };
       fetchData();
     }
-  }, [currentPage, data, city, promotionCategory]);
+  }, [currentPage, data, city, promotionCategory, cityLoading]);
 
   return (
     <>
@@ -72,7 +72,7 @@ export default function Promotion() {
       <section className="content">
         <div className="content__title-box" id='content'>
           <h1 className="content__title">
-            Акции в <span className="content__city">{cityName.name}</span>
+            Акции в <span className="content__city">{cityName}</span>
             <span className="content__count">{totalCount}</span>
           </h1>
         </div>

@@ -4,7 +4,7 @@ import { getValueOrDefault } from '../../utils/getValueOrDefault';
 import PromoCodeModal from './PromoCodeModal';
 import { Fancybox } from '@fancyapps/ui';
 import ReactDOM from 'react-dom';
-import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
 
 export default function AboutPromoCode({ business }) {
 
@@ -16,12 +16,6 @@ export default function AboutPromoCode({ business }) {
       {
         src: modalContainer,
         type: 'html',
-        opts: {
-          hideClass: false,
-          hideScrollbar: false,
-          animationEffect: 'none',
-          transitionEffect: 'none',
-        },
       },
     ]);
 

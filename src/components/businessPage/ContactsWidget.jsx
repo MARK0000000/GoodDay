@@ -13,10 +13,13 @@ import { getWorkTimeStatus } from '../../utils/workTimeDetailed';
 import { extractFirstWebLink } from '../../utils/workWithSocialLinks';
 import { removeLeadingSymbols } from '../../utils/workWithSocialLinks';
 import { removeAtSymbol } from '../../utils/workWithSocialLinks';
+import getAddress from '../../utils/getAddress';
+
 export default function ContactsWidget({ business, status }) {
 
     const firstWebLink = extractFirstWebLink(business.webLinks);
 
+    const address = getAddress(business)
     const [coordinates] = useState(business.addresses ? [(business.addresses[0] && business.addresses[0].latitude) || false, (business.addresses[0] && business.addresses[0].longitude) || false] : [(business.address && business.address.latitude) || false, (business.address && business.address.longitude) || false]);
 
     const areCoordinatesEqual = (arr1, arr2) => {
@@ -30,17 +33,17 @@ export default function ContactsWidget({ business, status }) {
 
     return (
         <>
-            {((typeof business.address === 'string' ? business.address : business.address.description) || business.workTime || (business.phones && business.phones.length > 0) || business.phone || business.telegramLink || business.instagramLink || business.email || business.vkLink || firstWebLink || business.webLink) &&
+            {(address || business.workTime || (business.phones && business.phones.length > 0) || business.phone || business.telegramLink || business.instagramLink || business.email || business.vkLink || firstWebLink || business.webLink) &&
                 <>
                     <div className="widget widget_contact">
                         <h4 className="widget__title">Контакты</h4>
-                        {(typeof business.address === 'string' ? business.address : business.address.description) &&
+                        {address &&
                             <div className="widget__item widget__item_address widget__item_border">
                                 <button className="widget__item-btn">
                                     <img src={addressIcon} alt="" className="widget__item-icon" />
                                 </button>
                                 <p className="widget__item-text">
-                                    {(typeof business.address === 'string' ? business.address : business.address.description)}
+                                    {address}
                                     {!condition &&
                                         <Link className='widget__item-text_linkOnMap' to="map" smooth={true}>
                                             Показать
@@ -154,7 +157,7 @@ export default function ContactsWidget({ business, status }) {
                                 </button>
                                 <div className="widget__item-text_big">
                                     <p className="widget__item-text">
-                                        <a href={handleNavigateSocial('web', removeAtSymbol(firstWebLink))} target='_blank' rel='noreferrer'>{firstWebLink}</a>
+                                        <a href={handleNavigateSocial('web', removeLeadingSymbols(firstWebLink))} target='_blank' rel='noreferrer'>{removeLeadingSymbols(firstWebLink)}</a>
                                     </p>
                                 </div>
                             </div>
@@ -167,7 +170,7 @@ export default function ContactsWidget({ business, status }) {
                                     </button>
                                     <div className="widget__item-text_big">
                                         <p className="widget__item-text">
-                                            <a href={handleNavigateSocial('web', removeAtSymbol(business.webLink))} target='_blank' rel='noreferrer'>{business.webLink}</a>
+                                            <a href={handleNavigateSocial('web', removeLeadingSymbols(business.webLink))} target='_blank' rel='noreferrer'>{removeLeadingSymbols(business.webLink)}</a>
                                         </p>
                                     </div>
                                 </div>

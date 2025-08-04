@@ -6,7 +6,7 @@ export default function InfoWidget({ links, activeLink, handleLinkClick }) {
       {links.map((link, index) =>
         <>
           <span
-            key={index}
+            key={link}
             className={`widget-info__link ${activeLink === link.title ? 'widget-info__link_active' : ''}`}
             onClick={() => handleLinkClick(link.title)}
           >
